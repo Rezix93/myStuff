@@ -1,4 +1,4 @@
-# Assignement 2 (Azure)
+# Running hadoop and spark
 
 We did this assignement on an Azure Ubuntu VM
 
