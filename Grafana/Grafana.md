@@ -114,7 +114,13 @@ then somthin new happen. Docker stop did not work!
 solution: 
 ```bash
 sudo aa-remove-unknown
+```
+One liner to stop / remove all of Docker containers:
 
+
+```bash
+docker stop $(docker ps -a -q)
+docker rm $(docker ps -a -q)
 ```
 
 2. Change directory.
