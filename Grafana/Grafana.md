@@ -105,7 +105,10 @@ plugins = "/path/to/grafana-plugins"
 npx @grafana/toolkit plugin:create my-plugin
 ```
 I got this error: Module.createRequire is not a function
+```bash
+ sudo systemctl restart docker.socket docker.service
 
+```
 
 2. Change directory.
 ```bash
