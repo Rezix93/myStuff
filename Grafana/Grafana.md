@@ -110,6 +110,13 @@ I got this error: Module.createRequire is not a function
 ```
 After two hours I got that it should be created on root folder (~)
 
+then somthin new happen. Docker stop did not work!
+solution: 
+```bash
+sudo aa-remove-unknown
+
+```
+
 2. Change directory.
 ```bash
 
