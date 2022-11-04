@@ -107,8 +107,8 @@ npx @grafana/toolkit plugin:create my-plugin
 I got this error: Module.createRequire is not a function
 ```bash
  sudo systemctl restart docker.socket docker.service
-
 ```
+After two hours I got that it should be created on root folder (~)
 
 2. Change directory.
 ```bash
