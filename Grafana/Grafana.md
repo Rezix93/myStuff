@@ -4,6 +4,73 @@ This dashboard is creating by Apache Spark Metric System + InfluxDB + Grafana:
 ![Spark_metrics_dashboard_arch](https://user-images.githubusercontent.com/80580733/199869697-568e7c8e-044e-4abc-bc7b-bf98e8c887ea.png)
 
 After installing and work on Grafana, I thought I could go deeper on grafana and import our trace file there to see the result. SO here I‌ exaplain What I have done.
-'''bash
 
-'''
+# Introduction
+Grafana is an open source interactive data-visualization platform, developed by Grafana Labs, which allows users to see their data via charts and graphs that are unified into one dashboard (or multiple dashboards!) for easier interpretation and understanding. Installing process is from "https://grafana.com/tutorials/grafana-fundamentals/?utm_source=grafana_gettingstarted"
+
+1. Clone the github.com/grafana/tutorial-environment repository.
+```bash
+git clone https://github.com/grafana/tutorial-environment.git
+cd tutorial-environment
+```
+2. Make sure docer is running:
+```bash
+docker ps
+```
+3. Now start the sample application:
+```bash
+docker-compose up -d
+```
+ **Warning** Note: If you already have Grafana, Loki, or Prometheus running on your system, then you might see errors because the Docker image is trying to use ports that your local installations are already using. Stop the services, then run the command again. 
+ 
+4. Ensure all services are up-and-running:
+```bash
+docker-compose ps
+```
+You shoud see somthing like this: 
+```bash![Screenshot from 2022-11-03 22-27-59](https://user-images.githubusercontent.com/80580733/199872253-ad776fbd-7f9f-4222-8a84-8e28d76cd16b.png)
+
+5.Browse to the sample application on localhost:8081.
+
+# Grafana news
+The sample application, Grafana News, lets you post links and vote for the ones you like.
+
+To add a link:
+
+1. In Title, enter Example.
+
+2. In URL, enter https://example.com.
+
+3. Click Submit to add the link.
+
+# Login to Grafana
+
+Open a new tab.
+
+1. Browse to localhost:3000.
+
+2. In email or username, enter admin.
+
+3. In password, enter admin.
+
+4. Click Log In.
+
+# Add a metrics data source
+
+The sample application exposes metrics which are stored in Prometheus, a popular time series database (TSDB).
+
+To be able to visualize the metrics from Prometheus, you first need to add it as a data source in Grafana.
+
+1. In the sidebar, hover your cursor over the Configuration (gear) icon, and then click Data sources.
+
+2. Click Add data source.
+
+3. In the list of data sources, click Prometheus.
+
+4. In the URL box, enter http://prometheus:9090.
+
+5. Click Save & test.
+
+Prometheus is now available as a data source in Grafana.
+
+
