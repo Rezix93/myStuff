@@ -19,6 +19,7 @@ docker ps
 ```
 3. Now start the sample application:
 ```bash
+cd /home/rezghool2/Desktop/grafana/tutorial-environment
 docker-compose up -d
 ```
  **Warning** Note: If you already have Grafana, Loki, or Prometheus running on your system, then you might see errors because the Docker image is trying to use ports that your local installations are already using. Stop the services, then run the command again. 
