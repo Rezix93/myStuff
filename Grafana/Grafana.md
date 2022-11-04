@@ -30,7 +30,7 @@ docker-compose ps
 You shoud see somthing like this: 
 ![Screenshot from 2022-11-03 22-27-59](https://user-images.githubusercontent.com/80580733/199872253-ad776fbd-7f9f-4222-8a84-8e28d76cd16b.png)
 
-5.Browse to the sample application on localhost:8081.
+5.Browse to the sample application on http://localhost:8081.
 
 # Grafana news
 The sample application, Grafana News, lets you post links and vote for the ones you like.
@@ -47,7 +47,7 @@ To add a link:
 
 Open a new tab.
 
-1. Browse to localhost:3000.
+1. Browse to http://localhost:3000.
 
 2. In email or username, enter admin.
 
