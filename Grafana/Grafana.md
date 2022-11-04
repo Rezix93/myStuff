@@ -28,7 +28,7 @@ docker-compose up -d
 docker-compose ps
 ```
 You shoud see somthing like this: 
-```bash![Screenshot from 2022-11-03 22-27-59](https://user-images.githubusercontent.com/80580733/199872253-ad776fbd-7f9f-4222-8a84-8e28d76cd16b.png)
+![Screenshot from 2022-11-03 22-27-59](https://user-images.githubusercontent.com/80580733/199872253-ad776fbd-7f9f-4222-8a84-8e28d76cd16b.png)
 
 5.Browse to the sample application on localhost:8081.
 
@@ -72,5 +72,30 @@ To be able to visualize the metrics from Prometheus, you first need to add it as
 5. Click Save & test.
 
 Prometheus is now available as a data source in Grafana.
+
+# What is Prometheus? 
+based on google: Prometheus is a monitoring solution for storing time series data like metrics. Grafana allows to visualize the data stored in Prometheus (and other sources). This sample demonstrates how to capture NServiceBus metrics, storing these in Prometheus and visualizing these metrics using Grafana
+
+# Waht is data source?
+Grafana supports many different storage backends for your time series data (data source). Refer to Add a data source for instructions on how to add a data source to Grafana. Only users with the organization admin role can add data sources.
+
+# Data source plugins
+You can install additional data sources as plugins. To view available data source plugins, see the Grafana Plugins catalog. To build your own, see the “Build a data source plugin” tutorial and our documentation about building a plugin.
+
+So First we need to build a simple plugin, then jump in to build a data soruce plugin.
+
+# Build a data source plugin
+
+1. Create a directory called grafana-plugins in your preferred workspace.
+2. Find the plugins property in the Grafana configuration file and set the plugins property to the path of your grafana-plugins directory.
+```bash
+plugins = "/path/to/grafana-plugins"
+```
+For finding the file grafana.ini I run find command and there was in: /var/snap/docker/common/var-lib-docker/overlay2/516cbc3950f0b79c18ec947aa4323c66460261bd5ffb7ff646c56d2b16ecc9d2/diff/etc/grafana
+```bash
+plugins = "/path/to/grafana-plugins"
+```
+3. Restart Grafana if it’s already running, to load the new configuration.
+
 
 
