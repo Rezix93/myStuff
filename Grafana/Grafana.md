@@ -98,6 +98,34 @@ nano grafana.ini
 plugins = "/path/to/grafana-plugins"
 ```
 3. Restart Grafana if it’s already running, to load the new configuration.
+4. 
+# Create a new plugin
+1. In the plugin directory, create a plugin from template using the plugin:create command:
+```bash
+npx @grafana/toolkit plugin:create my-plugin
+```
+I got this error: Module.createRequire is not a function
+
+
+2. Change directory.
+```bash
+
+```
+cd my-plugin
+3. Download necessary dependencies:
+```bash
+yarn install
+```
+4. Build the plugin:
+```bash
+yarn dev
+```
+
+4. Restart the Grafana server for Grafana to discover your plugin.
+
+6. Open Grafana and go to Configuration -> Plugins. Make sure that your plugin is there
+
+
 
 
 
