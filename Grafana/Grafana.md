@@ -102,7 +102,7 @@ nano /var/snap/docker/common/var-lib-docker/overlay2/516cbc3950f0b79c18ec947aa43
 # Create a new plugin
 1. In the plugin directory, create a plugin from template using the plugin:create command:
 ```bash
-npx @grafana/toolkit plugin:create my-plugin
+sudo npx @grafana/toolkit plugin:create my-plugin
 ```
 I got this error: Module.createRequire is not a function
 ```bash
