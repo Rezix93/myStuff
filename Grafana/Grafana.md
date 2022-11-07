@@ -94,9 +94,8 @@ plugins = "/path/to/grafana-plugins"
 ```
 For finding the file grafana.ini I run find command and there was in: 
 ```bash
-cd /var/snap/docker/common/var-lib-docker/overlay2/516cbc3950f0b79c18ec947aa4323c66460261bd5ffb7ff646c56d2b16ecc9d2/diff/etc/grafana
-nano grafana.ini
-plugins = "/path/to/grafana-plugins"
+nano /var/snap/docker/common/var-lib-docker/overlay2/516cbc3950f0b79c18ec947aa4323c66460261bd5ffb7ff646c56d2b16ecc9d2/diff/etc/grafana/grafana.ini
+#plugins = "/path/to/grafana-plugins"
 ```
 3. Restart Grafana if it’s already running, to load the new configuration.
 4. 
