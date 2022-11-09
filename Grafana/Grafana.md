@@ -141,7 +141,10 @@ yarn dev
 
 6. Open Grafana and go to Configuration -> Plugins. Make sure that your plugin is there
 
+Grafana data source:‌
+https://grafana.com/docs/grafana/latest/datasources/add-a-data-source/
 
-
+Grafana plugins: 
+https://grafana.com/docs/grafana/latest/developers/plugins/
 
 
