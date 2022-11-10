@@ -1,4 +1,5 @@
-https://www.databricks.com/session_na21/monitor-apache-spark-3-on-kubernetes-using-metrics-and-plugins
+The source video: https://www.databricks.com/session_na21/monitor-apache-spark-3-on-kubernetes-using-metrics-and-plugins
+
 For installing the spark dashboard: 
 https://github.com/cerndb/spark-dashboard
  
