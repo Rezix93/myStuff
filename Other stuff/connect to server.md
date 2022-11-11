@@ -11,7 +11,8 @@ ls -l ~/.ssh/id_*.pub
 ```
 
 ```console
-ssh rezghool@ubuntu@buildServer.dorsal.polymtl.ca
+ssh ubuntu@buildServer.dorsal.polymtl.ca
+
 ```
 I got erros. why? beacause I sent Arnauld my pulic key from my laptop and now I'm on pc from lab :). So I have to copy my public and private key from my laptop to this pc. the solution is found here:‌
 
