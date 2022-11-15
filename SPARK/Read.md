@@ -22,7 +22,18 @@ If you get something like spark-submit command not found, you can also do:
  time /usr/local/bin/spark-submit sparkWordCount.py dataset/buchanj-midwinter-00-t.txt
 ```
 ------------------------------------------------------------------
-
+```bash
+spark-shell
+```
 For install it on server I have done these steps from this link: https://www.projectpro.io/apache-spark-tutorial/apache-spark-installation-tutorial
 
+```bash
+SPARK_HOME=/opt/spark
+export PATH=$SPARK_HOME/bin:$PATH
+source  ~/.bashrc
+spark-shell
+```
+
+
+**install from source:
 
