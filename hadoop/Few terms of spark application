@@ -1,0 +1,47 @@
+from this link: https://www.projectpro.io/apache-spark-tutorial/apache-spark-installation-tutorial
+Next we will write a basic Scala application to load a file and then see its content on the console. But before we start writing any java application let’s get familiar with few terms of spark application:
+
+Application jar
+User program and its dependencies are bundled into the application jar so that all of its dependencies are available to the application.
+Driver program
+It acts as the entry point of the application. This is the process which starts complete execution.
+Cluster Manager
+This is an external service which manages resources needed for the job execution.
+It can be standalone spark manager, Apache Mesos, YARN, etc.
+Deploy Mode
+Cluster – Here driver runs inside the cluster
+Client – Here driver is not part of the cluster. It is only responsible for job submission.
+Worker Node
+This is the node that runs the application program on the machine which contains the data.
+Executor
+Process launched on the worker node that runs tasks
+It uses worker node’s resources and memory
+Task
+Fundamental unit of the Job that is run by the executor
+Job
+It is combination of multiple tasks
+Stage
+Each job is divided into smaller set of tasks called stages. Each stage is sequential and depend on each other.
+Learn Hadoop by working on interesting Big Data and Hadoop Projects 
+
+SparkContext
+It gets the application program access to the distributed cluster.
+This acts as a handle to the resources of cluster.
+We can pass custom configuration using the sparkcontext object.
+It can be used to create RDD, accumulators and broadcast variable
+RDD(Resilient Distributed Dataset)
+RDD is the core of the spark’s API
+It distributes the source data into multiple chunks over which we can perform operation simultaneously
+Various transformation and actions can be applied over the RDD
+RDD is created through SparkContext
+Accumulator
+This is used to carry shared variable across all partitions.
+They can be used to implement counters (as in MapReduce) or sums
+Accumulator’s value  can only be read by the driver program
+It is set by the spark context
+Broadcast Variable
+Again a way of sharing variables across the partitions
+It is a read only variable
+Allows the programmer to distribute a read-only variable cached on each machine rather than shipping a copy of it with tasks thus avoiding wastage of disk space.
+Any common data that is needed by each stage is distributed across all the nodes
+Spark provides different programming APIs to manipulate data like Java, R, Scala and Python. We have interactive shell for three programming languages i.e. R, Scala and Python among the four languages. Unfortunately Java doesn’t provide interactive shell as of now.
