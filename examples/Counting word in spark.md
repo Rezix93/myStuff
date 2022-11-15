@@ -1,7 +1,7 @@
 
 # This is a simpel example just for starting work in spark 
 
-```console
+```bash
 spark-shell
 var Data = sc.textFile("/opt/spark/CHANGES.txt")
 var tokens = Data.flatMap(s => s.split(" ")) #: To tokenize each line of the input file to individual words
