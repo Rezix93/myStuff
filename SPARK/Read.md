@@ -35,5 +35,7 @@ spark-shell
 ```
 
 
-**install from source:
+**install from source:**
+
+https://spark.apache.org/downloads.html
 
