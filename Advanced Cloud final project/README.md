@@ -27,6 +27,46 @@ SELECT COUNT(*) FROM film_text;
 
 [2] Installing mysql. https://www.linode.com/docs/databases/mysql/install-mysql-on-ubuntu-14-04/
 
-[3] Installing mysql cluster. https://stansantiago.wordpress.com/2012/01/04/installing-mysql-cluster-onec2/
+[3] Installing mysql cluster. https://stansantiago.wordpress.com/2012/
+
+instead of [3] someone introduced this one : 
+
+[3.1] https://cloudinfrastructureservices.co.uk/how-to-create-a-multi-node-mysql-cluster-on-ubuntu-20-04/
+
+
+```bash
+
+```
+
+```bash
+
+```
+```bash
+[ndbd default]
+# Options affecting ndbd processes on all data nodes:
+NoOfReplicas=2	# Number of replicas
+
+[ndb_mgmd]
+# Management process options:
+hostname=192.168.10.10 # Hostname of the manager
+datadir=/var/lib/mysql-cluster 	# Directory for the log files
+
+[ndbd]
+hostname=192.168.10.11 # Hostname/IP of the first data node
+NodeId=2			# Node ID for this data node
+datadir=/usr/local/mysql/data	# Remote directory for the data files
+
+[ndbd]
+hostname=192.168.10.12 # Hostname/IP of the second data node
+NodeId=3			# Node ID for this data node
+datadir=/usr/local/mysql/data	# Remote directory for the data files
+
+[mysqld]
+# SQL node options:
+hostname=192.168.10.10 # In our case the MySQL server/client is on the same Droplet as the cluster manager
+```
+
+
+
 
 [4] Sysbench benchmark. http://www.jamescoyle.net/how-to/1131-benchmark-mysql-server-performancewith-sysbench
