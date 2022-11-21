@@ -34,9 +34,6 @@ instead of [3] someone introduced this one :
 [3.1] https://cloudinfrastructureservices.co.uk/how-to-create-a-multi-node-mysql-cluster-on-ubuntu-20-04/
 
 
-```bash
-
-```
 
 ```bash
 
@@ -48,25 +45,41 @@ NoOfReplicas=2	# Number of replicas
 
 [ndb_mgmd]
 # Management process options:
-hostname=192.168.10.10 # Hostname of the manager
+hostname= ip-172-31-84-235.ec2.internal # Hostname of the manager
 datadir=/var/lib/mysql-cluster 	# Directory for the log files
 
 [ndbd]
-hostname=192.168.10.11 # Hostname/IP of the first data node
+hostname=ip-172-31-84-194.ec2.internal # Hostname/IP of the first data node
 NodeId=2			# Node ID for this data node
 datadir=/usr/local/mysql/data	# Remote directory for the data files
 
 [ndbd]
-hostname=192.168.10.12 # Hostname/IP of the second data node
+hostname=ip-172-31-95-48.ec2.internal # Hostname/IP of the second data node
 NodeId=3			# Node ID for this data node
 datadir=/usr/local/mysql/data	# Remote directory for the data files
 
 [mysqld]
 # SQL node options:
-hostname=192.168.10.10 # In our case the MySQL server/client is on the same Droplet as the cluster manager
+hostname=ip-172-31-84-235.ec2.internal # In our case the MySQL server/client is on the same Droplet as the cluster manager
 ```
 
 
 
+```bash
+sudo ufw allow from ip-172-31-84-194.ec2.internal 
+sudo ufw allow from ip-172-31-95-48.ec2.internal
+
+```
+
+
+
+
+and I found this link: 
+3.1:‌ https://www.digitalocean.com/community/tutorials/how-to-create-a-multi-node-mysql-cluster-on-ubuntu-18-04
+
+```bash
+wget https://dev.mysql.com/get/Downloads/MySQL-Cluster-8.0/mysql-cluster-community-management-server_8.0.31-1ubuntu22.04_amd64.deb
+sudo dpkg -i mysql-cluster-community-management-server_7.6.6-1ubuntu18.04_amd64.deb
+```
 
 [4] Sysbench benchmark. http://www.jamescoyle.net/how-to/1131-benchmark-mysql-server-performancewith-sysbench
