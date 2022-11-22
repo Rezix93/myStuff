@@ -49,7 +49,7 @@ hostname= ip-172-31-84-235.ec2.internal # Hostname of the manager
 datadir=/var/lib/mysql-cluster 	# Directory for the log files
 
 [ndbd]
-hostname=ip-172-31-84-194.ec2.internal # Hostname/IP of the first data node
+hostname=ip-asd.ec2.internal # Hostname/IP of the first data node
 NodeId=2			# Node ID for this data node
 datadir=/usr/local/mysql/data	# Remote directory for the data files
 
@@ -66,13 +66,26 @@ hostname=ip-172-31-84-235.ec2.internal # In our case the MySQL server/client is 
 
 
 ```bash
-sudo ufw allow from ip-172-31-84-194.ec2.internal 
-sudo ufw allow from ip-172-31-95-48.ec2.internal
+
+sudo ufw allow from 172.31.84.235
+sudo ufw allow from 172.31.84.194
+sudo ufw allow from 172.31.95.48
+```
+A firewall like UFW is running at the OS level, while Amazon Security Groups are running at the instance level. Traffic coming into the EC2 would first pass through the SG, and then be evaluated by UFW. Take a scenario where traffic is explicitly allowed to pass through the SG but UFW denies it -- in this case UFW would sort of 'override' the settings in the SG.
+
+
+for slave1 and slave2:
+```bash
+wget https://dev.mysql.com/get/Downloads/MySQL-Cluster-8.0/mysql-cluster-community-data-node_8.0.31-1ubuntu22.04_amd64.deb
+
+[mysql_cluster]
+# Options for NDB Cluster processes:
+ndb-connectstring=ip-172-31-84-235.ec2.internal  # location of cluster manager
 
 ```
 
-
-
+ndb_mgmd >> master
+ndbd >>‌salve (data node)
 
 and I found this link: 
 3.1:‌ https://www.digitalocean.com/community/tutorials/how-to-create-a-multi-node-mysql-cluster-on-ubuntu-18-04
