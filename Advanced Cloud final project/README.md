@@ -29,15 +29,19 @@ SELECT COUNT(*) FROM film_text;
 
 [3] Installing mysql cluster. https://stansantiago.wordpress.com/2012/
 
+
 instead of [3] someone introduced this one : 
-
 [3.1] https://cloudinfrastructureservices.co.uk/how-to-create-a-multi-node-mysql-cluster-on-ubuntu-20-04/
-
-
+and I found this link: 
+3.1:‌ https://www.digitalocean.com/community/tutorials/how-to-create-a-multi-node-mysql-cluster-on-ubuntu-18-04
 
 ```bash
-
+hostname= ip-172-31-84-235.ec2.internal # Hostname of the manager 172.31.84.235
+hostname=ip-172-31-84-194.ec2.internal # Hostname/IP of the first data node 172.31.84.194
+hostname=ip-172-31-95-48.ec2.internal # Hostname/IP of the second data node 172.31.95.48
 ```
+
+
 ```bash
 [ndbd default]
 # Options affecting ndbd processes on all data nodes:
@@ -98,8 +102,7 @@ sudo dpkg -i mysql-client_8.0.31-1ubuntu22.04_amd64.deb
 sudo dpkg -i mysql-cluster-community-server_8.0.31-1ubuntu22.04_amd64.deb
 
 
-and I found this link: 
-3.1:‌ https://www.digitalocean.com/community/tutorials/how-to-create-a-multi-node-mysql-cluster-on-ubuntu-18-04
+
 
 ```bash
 wget https://dev.mysql.com/get/Downloads/MySQL-Cluster-8.0/mysql-cluster-community-management-server_8.0.31-1ubuntu22.04_amd64.deb
