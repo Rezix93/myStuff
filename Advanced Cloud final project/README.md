@@ -49,7 +49,7 @@ hostname= ip-172-31-84-235.ec2.internal # Hostname of the manager
 datadir=/var/lib/mysql-cluster 	# Directory for the log files
 
 [ndbd]
-hostname=ip-asd.ec2.internal # Hostname/IP of the first data node
+hostname=ip-172-31-84-194.ec2.internal # Hostname/IP of the first data node
 NodeId=2			# Node ID for this data node
 datadir=/usr/local/mysql/data	# Remote directory for the data files
 
@@ -85,7 +85,18 @@ ndb-connectstring=ip-172-31-84-235.ec2.internal  # location of cluster manager
 ```
 
 ndb_mgmd >> master
-ndbd >>‌salve (data node)
+ndbd >>‌ salve (data node)
+
+
+wget https://dev.mysql.com/get/Downloads/MySQL-Cluster-8.0/mysql-cluster_8.0.31-1ubuntu22.04_amd64.deb-bundle.tar
+
+tar -xvf mysql-cluster_7.6.6-1ubuntu18.04_amd64.deb-bundle.tar -C install/
+
+sudo dpkg -i mysql-common_8.0.31-1ubuntu22.04_amd64.deb
+sudo dpkg -i mysql-cluster-community-client_8.0.31-1ubuntu22.04_amd64.deb
+sudo dpkg -i mysql-client_8.0.31-1ubuntu22.04_amd64.deb   
+sudo dpkg -i mysql-cluster-community-server_8.0.31-1ubuntu22.04_amd64.deb
+
 
 and I found this link: 
 3.1:‌ https://www.digitalocean.com/community/tutorials/how-to-create-a-multi-node-mysql-cluster-on-ubuntu-18-04
