@@ -50,7 +50,7 @@ NoOfReplicas=2	# Number of replicas
 [ndb_mgmd]
 # Management process options:
 hostname= ip-172-31-84-235.ec2.internal # Hostname of the manager
-datadir=/var/lib/mysql-cluster 	# Directory for the log files
+datadir=/var/lib/mysql-cluster # Directory for the log files
 
 [ndbd]
 hostname=ip-172-31-84-194.ec2.internal # Hostname/IP of the first data node
@@ -67,7 +67,10 @@ datadir=/usr/local/mysql/data	# Remote directory for the data files
 hostname=ip-172-31-84-235.ec2.internal # In our case the MySQL server/client is on the same Droplet as the cluster manager
 ```
 
+killall ndb_mgmd
+sof -P | grep '1186' | awk '{print $2}' | xargs kill -9
 
+ ndb_mgmd -f /var/lib/mysql-cluster/config.ini --initial
 
 ```bash
 
@@ -102,11 +105,15 @@ sudo dpkg -i mysql-client_8.0.31-1ubuntu22.04_amd64.deb
 sudo dpkg -i mysql-cluster-community-server_8.0.31-1ubuntu22.04_amd64.deb
 
 
-
+https://dba.stackexchange.com/questions/23881/setting-up-mysql-cluster-on-two-systems
 
 ```bash
 wget https://dev.mysql.com/get/Downloads/MySQL-Cluster-8.0/mysql-cluster-community-management-server_8.0.31-1ubuntu22.04_amd64.deb
 sudo dpkg -i mysql-cluster-community-management-server_7.6.6-1ubuntu18.04_amd64.deb
 ```
 
+ndbd_mgm not connected, accepting connect from i
+ndbd_mgm not connected, accepting connect from i
+ndbd_mgm not connected, accepting connect from i
+ndbd_mgm not connected, accepting connect from indbd_mgm not connected, accepting connect from i
 [4] Sysbench benchmark. http://www.jamescoyle.net/how-to/1131-benchmark-mysql-server-performancewith-sysbench
