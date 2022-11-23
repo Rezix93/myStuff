@@ -36,7 +36,7 @@ and I found this link:
 3.1:‌ https://www.digitalocean.com/community/tutorials/how-to-create-a-multi-node-mysql-cluster-on-ubuntu-18-04
 
 ```bash
-hostname= ip-172-31-84-235.ec2.internal # Hostname of the manager 172.31.84.235
+hostname=ip-172-31-84-235.ec2.internal # Hostname of the manager 172.31.84.235
 hostname=ip-172-31-84-194.ec2.internal # Hostname/IP of the first data node 172.31.84.194
 hostname=ip-172-31-95-48.ec2.internal # Hostname/IP of the second data node 172.31.95.48
 ```
