@@ -24,6 +24,12 @@ SELECT COUNT(*) FROM film;
 SELECT COUNT(*) FROM film_text;
 ```
 
+sudo ndb_mgmd --initial --config-file=/your_config_directory/config.ini
+
+killall ndb_mgmd
+
+sudo ndb_mgmd --initial --config-file=/var/lib/mysql-cluster/config.ini
+
 
 [2] Installing mysql. https://www.linode.com/docs/databases/mysql/install-mysql-on-ubuntu-14-04/
 
@@ -66,11 +72,14 @@ datadir=/usr/local/mysql/data	# Remote directory for the data files
 # SQL node options:
 hostname=ip-172-31-84-235.ec2.internal # In our case the MySQL server/client is on the same Droplet as the cluster manager
 ```
-
+```bash
 killall ndb_mgmd
 sof -P | grep '1186' | awk '{print $2}' | xargs kill -9
-
- ndb_mgmd -f /var/lib/mysql-cluster/config.ini --initial
+ ndb_mgmd --initial --skip-config-cache -f /var/lib/mysql-cluster/config.ini  
+sudo service mysql restart
+sudo systemctl enable mysql
+ndb_mgm -e show
+```
 
 ```bash
 
