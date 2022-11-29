@@ -126,3 +126,6 @@ ndbd_mgm not connected, accepting connect from i
 ndbd_mgm not connected, accepting connect from i
 ndbd_mgm not connected, accepting connect from indbd_mgm not connected, accepting connect from i
 [4] Sysbench benchmark. http://www.jamescoyle.net/how-to/1131-benchmark-mysql-server-performancewith-sysbench
+
+
+
