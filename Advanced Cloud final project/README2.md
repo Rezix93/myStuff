@@ -47,23 +47,25 @@ Please report any problems at http://bugs.mysql.com/
 ---------------------------------------------------------------
 
 Create the Deployment Directory and Setup Config Files
+```bash
 mkdir -p /opt/mysqlcluster/deploy
 cd /opt/mysqlcluster/deploy
 mkdir conf
 mkdir mysqld_data
 mkdir ndb_data
 cd conf
-gedit my.cnf and enter the following
+nano my.cnf #and enter the following
 [mysqld]
 ndbcluster
 datadir=/opt/mysqlcluster/deploy/mysqld_data
 basedir=/opt/mysqlcluster/home/mysqlc
 port=3306
-
-gedit config.ini and enter the following
+```
+nano config.ini #and enter the following
 NOTE: REPLACE the hostname entries below with names of the SQL/MGMT Node and Data Nodes.
+```bash
 [ndb_mgmd]
-hostname=domU-12-31-39-04-D6-A3.compute-1.internal
+hostname=ip-172-31-22-215.ec2.internal
 datadir=/opt/mysqlcluster/deploy/ndb_data
 nodeid=1
 
@@ -72,13 +74,13 @@ noofreplicas=2
 datadir=/opt/mysqlcluster/deploy/ndb_data
 
 [ndbd]
-hostname=ip-10-72-50-247.ec2.internal
+hostname=ip-172-31-86-188.ec2.internal
 nodeid=3
 
 [ndbd]
-hostname=ip-10-194-139-246.ec2.internal
+hostname=ip-172-31-30-110.ec2.internal
 nodeid=4
 
 [mysqld]
 nodeid=50
- 
+ ```
