@@ -116,14 +116,30 @@ sudo /opt/mysqlcluster/home/mysqlc/bin/ndb_mgmd  -f /opt/mysqlcluster/deploy/con
 ```
 
  ```bash
-ndbd -c ip-172-31-83-188.ec2.internal
+sudo /opt/mysqlcluster/home/mysqlc/bin/ndbd -c ip-172-31-83-188.ec2.internal
 ```
 
  ```bash
-mkdir -p /opt/mysqlcluster/deploy
-cd /opt/mysqlcluster/deploy
-mkdir conf
-mkdir mysqld_data
-mkdir ndb_data
-cd conf
+
+```
+
+ ```bash
+
+```
+
+ ```bash
+
+```
+
+ ```bash
+
+```
+ ```bash
+
+```
+ ```bash
+
+```
+ ```bash
+
 ```
