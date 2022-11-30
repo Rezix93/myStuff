@@ -49,11 +49,15 @@ Please report any problems at http://bugs.mysql.com/
 Create the Deployment Directory and Setup Config Files
 ```bash
 sudo su 
-mkdir -p /opt/ndbapi
-cd /opt/ndbapi
-wget http://dev.mysql.com/get/Downloads/MySQL-Cluster-7.2/mysql-cluster-gpl-7.2.1-linux2.6-x86_64.tar.gz
-tar xvf mysql-cluster-gpl-7.2.1-linux2.6-x86_64.tar.gz 
 
+mkdir -p /opt/mysqlcluster/home
+cd /opt/mysqlcluster/home
+wget http://dev.mysql.com/get/Downloads/MySQL-Cluster-7.2/mysql-cluster-gpl-7.2.1-linux2.6-x86_64.tar.gz
+tar xvf mysql-cluster-gpl-7.2.1-linux2.6-x86_64.tar.gz
+ln -s mysql-cluster-gpl-7.2.1-linux2.6-x86_64/ mysqlc
+echo export MYSQLC_HOME=/opt/mysqlcluster/home/mysqlc’ > /etc/profile.d/mysqlc.sh
+echo export PATH=$MYSQLC_HOME/bin:$PATH’ >> /etc/profile.d/mysqlc.sh
+source /etc/profile.d/mysqlc.sh
 
 mkdir -p /opt/mysqlcluster/deploy
 cd /opt/mysqlcluster/deploy
@@ -90,8 +94,14 @@ nodeid=4
 
 [mysqld]
 nodeid=50
-
 ```
+```bash
+ cd /opt/mysqlcluster/home/mysqlc
+ scripts/mysql_install_db –no-defaults –datadir=/opt/mysqlcluster/deploy/mysqld_data
+ 
+ source /etc/profile.d/mysqlc.sh
+ sudo apt-get update && sudo apt-get -y install libncurses5
+ ```
  
  ```bash
 sudo /opt/mysqlcluster/home/mysqlc/bin/ndb_mgmd  -f /opt/mysqlcluster/deploy/conf/config.ini --initial --configdir=/opt/mysqlcluster/deploy/conf/
