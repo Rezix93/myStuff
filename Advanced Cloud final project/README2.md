@@ -103,13 +103,18 @@ nodeid=4
 [mysqld]
 nodeid=50
 ```
+
+Initialize the Database
 ```bash
  cd /opt/mysqlcluster/home/mysqlc
- scripts/mysql_install_db –no-defaults –datadir=/opt/mysqlcluster/deploy/mysqld_data
+ sudo scripts/mysql_install_db --no-defaults --datadir=/opt/mysqlcluster/deploy/mysqld_data
+ ```
  
+  ```bash
  source /etc/profile.d/mysqlc.sh
  sudo apt-get update && sudo apt-get -y install libncurses5
- ```
+```
+
  
  ```bash
 sudo /opt/mysqlcluster/home/mysqlc/bin/ndb_mgmd  -f /opt/mysqlcluster/deploy/conf/config.ini --initial --configdir=/opt/mysqlcluster/deploy/conf/
@@ -119,9 +124,7 @@ sudo /opt/mysqlcluster/home/mysqlc/bin/ndb_mgmd  -f /opt/mysqlcluster/deploy/con
 sudo /opt/mysqlcluster/home/mysqlc/bin/ndbd -c ip-172-31-83-188.ec2.internal
 ```
 
- ```bash
 
-```
 
  ```bash
 
