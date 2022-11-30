@@ -85,11 +85,11 @@ noofreplicas=2
 datadir=/opt/mysqlcluster/deploy/ndb_data
 
 [ndbd]
-hostname=ip-172-31-86-188.ec2.internal
+hostname=ip-172-31-24-0.ec2.internal
 nodeid=3
 
 [ndbd]
-hostname=ip-172-31-30-110.ec2.internal
+hostname=ip-172-31-20-208.ec2.internal
 nodeid=4
 
 [mysqld]
@@ -108,7 +108,7 @@ sudo /opt/mysqlcluster/home/mysqlc/bin/ndb_mgmd  -f /opt/mysqlcluster/deploy/con
 ```
 
  ```bash
-ndbd -c ip-172-31-22-215.ec2.internal:1186
+ndbd -c ip-172-31-83-188.ec2.internal
 ```
 
  ```bash
