@@ -48,6 +48,13 @@ Please report any problems at http://bugs.mysql.com/
 
 Create the Deployment Directory and Setup Config Files
 ```bash
+sudo su 
+mkdir -p /opt/ndbapi
+cd /opt/ndbapi
+wget http://dev.mysql.com/get/Downloads/MySQL-Cluster-7.2/mysql-cluster-gpl-7.2.1-linux2.6-x86_64.tar.gz
+tar xvf mysql-cluster-gpl-7.2.1-linux2.6-x86_64.tar.gz 
+
+
 mkdir -p /opt/mysqlcluster/deploy
 cd /opt/mysqlcluster/deploy
 mkdir conf
@@ -65,7 +72,7 @@ nano config.ini #and enter the following
 NOTE: REPLACE the hostname entries below with names of the SQL/MGMT Node and Data Nodes.
 ```bash
 [ndb_mgmd]
-hostname=ip-172-31-22-215.ec2.internal
+hostname=ip-172-31-83-188.ec2.internal
 datadir=/opt/mysqlcluster/deploy/ndb_data
 nodeid=1
 
@@ -83,4 +90,22 @@ nodeid=4
 
 [mysqld]
 nodeid=50
- ```
+
+```
+ 
+ ```bash
+sudo /opt/mysqlcluster/home/mysqlc/bin/ndb_mgmd  -f /opt/mysqlcluster/deploy/conf/config.ini --initial --configdir=/opt/mysqlcluster/deploy/conf/
+```
+
+ ```bash
+ndbd -c ip-172-31-22-215.ec2.internal:1186
+```
+
+ ```bash
+mkdir -p /opt/mysqlcluster/deploy
+cd /opt/mysqlcluster/deploy
+mkdir conf
+mkdir mysqld_data
+mkdir ndb_data
+cd conf
+```
