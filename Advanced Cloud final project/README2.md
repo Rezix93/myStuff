@@ -66,13 +66,21 @@ mkdir mysqld_data
 mkdir ndb_data
 cd conf
 nano my.cnf #and enter the following
+```
+
+```bash
 [mysqld]
 ndbcluster
 datadir=/opt/mysqlcluster/deploy/mysqld_data
 basedir=/opt/mysqlcluster/home/mysqlc
 port=3306
 ```
-nano config.ini #and enter the following
+
+```bash
+nano config.ini
+```
+
+and enter the following
 NOTE: REPLACE the hostname entries below with names of the SQL/MGMT Node and Data Nodes.
 ```bash
 [ndb_mgmd]
