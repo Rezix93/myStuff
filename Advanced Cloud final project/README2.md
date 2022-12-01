@@ -116,13 +116,19 @@ Initialize the Database
  source /etc/profile.d/mysqlc.sh
  sudo apt-get update && sudo apt-get -y install libncurses5
 ```
-sudo dpkg -i mysql-cluster-community-management-server_7.6.6-1ubuntu18.04_amd64.deb
-mysql-cluster-gpl-7.2.1-linux2.6-x86_64.tar.gz 
+
+** We can now start the manager by executing the ndb_mgmd binary and specifying its config file using the -f flag:
 
  ```bash
 sudo /opt/mysqlcluster/home/mysqlc/bin/ndb_mgmd -f /opt/mysqlcluster/deploy/conf/config.ini --initial --configdir=/opt/mysqlcluster/deploy/conf/
 ```
+Once inside the console enter the command SHOW and hit ENTER:
 
+```bash
+sudo /opt/mysqlcluster/home/mysqlc/bin/ndb_mgm -e show
+```
+
+Now we can start the data node using the following command:
 
  ```bash
 sudo /opt/mysqlcluster/home/mysqlc/bin/ndbd -c "ip-172-31-83-188.ec2.internal"
@@ -131,13 +137,13 @@ sudo /opt/mysqlcluster/home/mysqlc/bin/ndbd -c "ip-172-31-83-188.ec2.internal"
 
 
  ```bash
-sudo /opt/mysqlcluster/home/mysqlc/bin/ndb_mgmd -e show -f /opt/mysqlcluster/deploy/conf/config.ini --initial --configdir=/opt/mysqlcluster/deploy/conf/
+sudo /opt/mysqlcluster/home/mysqlc/bin/ndb_mgm -e show
 ```
 
  ```bash
 sudo /opt/mysqlcluster/home/mysqlc/bin/ndb_mgmd -f /opt/mysqlcluster/deploy/conf/config.ini --configdir=/opt/mysqlcluster/deploy/conf/
 
-sudo  /opt/mysqlcluster/home/mysqlc/bin/ndb_mgmd --skip-config-cache -f /opt/mysqlcluster/deploy/conf/config.ini --configdir=/opt/mysqlcluster/deploy/conf/
+
 ```
 
  ```bash
