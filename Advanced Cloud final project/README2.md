@@ -77,7 +77,7 @@ port=3306
 ```
 
 ```bash
-nano config.ini
+nano /opt/mysqlcluster/deploy/conf/config.ini
 ```
 
 and enter the following
@@ -86,22 +86,24 @@ NOTE: REPLACE the hostname entries below with names of the SQL/MGMT Node and Dat
 [ndb_mgmd]
 hostname=ip-172-31-83-188.ec2.internal
 datadir=/opt/mysqlcluster/deploy/ndb_data
-nodeid=1
+NodeId=1
 
 [ndbd default]
-noofreplicas=2
+NoOfReplicas=2  # Number of replicas
 datadir=/opt/mysqlcluster/deploy/ndb_data
 
 [ndbd]
 hostname=ip-172-31-24-0.ec2.internal
-nodeid=3
+NodeId=3
 
 [ndbd]
 hostname=ip-172-31-20-208.ec2.internal
-nodeid=4
+NodeId=4
 
 [mysqld]
 nodeid=50
+hostname=ip-172-31-83-188.ec2.internal
+
 ```
 
 Initialize the Database
@@ -114,24 +116,28 @@ Initialize the Database
  source /etc/profile.d/mysqlc.sh
  sudo apt-get update && sudo apt-get -y install libncurses5
 ```
-
- 
- ```bash
-sudo /opt/mysqlcluster/home/mysqlc/bin/ndb_mgmd  -f /opt/mysqlcluster/deploy/conf/config.ini --initial --configdir=/opt/mysqlcluster/deploy/conf/
-```
+sudo dpkg -i mysql-cluster-community-management-server_7.6.6-1ubuntu18.04_amd64.deb
+mysql-cluster-gpl-7.2.1-linux2.6-x86_64.tar.gz 
 
  ```bash
-sudo /opt/mysqlcluster/home/mysqlc/bin/ndbd -c ip-172-31-83-188.ec2.internal
+sudo /opt/mysqlcluster/home/mysqlc/bin/ndb_mgmd -f /opt/mysqlcluster/deploy/conf/config.ini --initial --configdir=/opt/mysqlcluster/deploy/conf/
 ```
 
 
+ ```bash
+sudo /opt/mysqlcluster/home/mysqlc/bin/ndbd -c "ip-172-31-83-188.ec2.internal"
+```
+
+
 
  ```bash
-
+sudo /opt/mysqlcluster/home/mysqlc/bin/ndb_mgmd -e show -f /opt/mysqlcluster/deploy/conf/config.ini --initial --configdir=/opt/mysqlcluster/deploy/conf/
 ```
 
  ```bash
+sudo /opt/mysqlcluster/home/mysqlc/bin/ndb_mgmd -f /opt/mysqlcluster/deploy/conf/config.ini --configdir=/opt/mysqlcluster/deploy/conf/
 
+sudo  /opt/mysqlcluster/home/mysqlc/bin/ndb_mgmd --skip-config-cache -f /opt/mysqlcluster/deploy/conf/config.ini --configdir=/opt/mysqlcluster/deploy/conf/
 ```
 
  ```bash
