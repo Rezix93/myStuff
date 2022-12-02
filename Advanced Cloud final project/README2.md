@@ -135,23 +135,30 @@ sudo /opt/mysqlcluster/home/mysqlc/bin/ndbd -c "ip-172-31-83-188.ec2.internal"
 ```
 
 
+ ```bash
+/opt/mysqlcluster/home/mysqlc/bin/mysqld --defaults-file=/opt/mysqlcluster/deploy/conf/my.cnf --user=root &
+```
+
+START SQL NODE
 
  ```bash
 sudo /opt/mysqlcluster/home/mysqlc/bin/ndb_mgm -e show
 ```
+It is finished when you see:‌ 111104 12:03:12 [Note] NDB Binlog: ndb tables writable
 
- ```bash
-sudo /opt/mysqlcluster/home/mysqlc/bin/ndb_mgmd -f /opt/mysqlcluster/deploy/conf/config.ini --configdir=/opt/mysqlcluster/deploy/conf/
 
-```
 
  ```bash
  cd  /opt/mysqlcluster/home/mysqlc/
 sudo /opt/mysqlcluster/home/mysqlc/bin/mysql_secure_installation
+
+--verbose --help | grep my.cnf
+
+/opt/mysqlcluster/home/mysqlc/bin/mysqladmin -u root password
 ```
  ```bash
 #sudo /opt/mysqlcluster/home/mysqlc/bin/mysql  -u root password 'reza1234' 
-sudo /opt/mysqlcluster/home/mysqlc/bin/mysql -h 127.0.0.1 -u root
+sudo /opt/mysqlcluster/home/mysqlc/bin/mysql -h 127.0.0.2 -u root
 ```
 
 In mysql: 
@@ -170,8 +177,10 @@ GRANT ALL PRIVILEGES ON * . * TO 'myapp'@'%' IDENTIFIED BY 'testpwd' WITH GRANT 
 
 
  ```bash
+  /opt/mysqlcluster/home/mysqlc/bin/mysql -h 127.0.0.1 -u myapp -p
 ```
 
 
  ```bash
+ /opt/mysqlcluster/home/mysqlc/bin/mysql/ndb_mgm -e shutdown
 ```
