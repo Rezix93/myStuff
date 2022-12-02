@@ -150,7 +150,8 @@ sudo /opt/mysqlcluster/home/mysqlc/bin/ndb_mgmd -f /opt/mysqlcluster/deploy/conf
 sudo /opt/mysqlcluster/home/mysqlc/bin/mysql_secure_installation
 ```
  ```bash
-sudo /opt/mysqlcluster/home/mysqlc/bin/mysql  -u root password 'reza1234' -h 127.0.0.1
+#sudo /opt/mysqlcluster/home/mysqlc/bin/mysql  -u root password 'reza1234' 
+sudo /opt/mysqlcluster/home/mysqlc/bin/mysql -h 127.0.0.1 -u root
 ```
  ```bash
 
