@@ -143,19 +143,35 @@ sudo /opt/mysqlcluster/home/mysqlc/bin/ndb_mgm -e show
  ```bash
 sudo /opt/mysqlcluster/home/mysqlc/bin/ndb_mgmd -f /opt/mysqlcluster/deploy/conf/config.ini --configdir=/opt/mysqlcluster/deploy/conf/
 
-
 ```
 
  ```bash
+ cd  /opt/mysqlcluster/home/mysqlc/
 sudo /opt/mysqlcluster/home/mysqlc/bin/mysql_secure_installation
 ```
  ```bash
 #sudo /opt/mysqlcluster/home/mysqlc/bin/mysql  -u root password 'reza1234' 
 sudo /opt/mysqlcluster/home/mysqlc/bin/mysql -h 127.0.0.1 -u root
 ```
+
+In mysql: 
  ```bash
+CREATE USER 'myapp'@'%' IDENTIFIED BY 'testpwd';
+```
+
+ ```bash
+GRANT ALL PRIVILEGES ON * . * TO 'myapp'@'%' IDENTIFIED BY 'testpwd' WITH GRANT OPTION MAX_QUERIES_PER_HOUR 0 MAX_CONNECTIONS_PER_HOUR 0 MAX_UPDATES_PER_HOUR 0 MAX_USER_CONNECTIONS 0 ;
+```
+
+ ```bash
+ mysql> create table simples (id int not null primary key) engine=ndb;
 
 ```
- ```bash
 
+
+ ```bash
+```
+
+
+ ```bash
 ```
