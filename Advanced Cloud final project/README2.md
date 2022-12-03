@@ -136,7 +136,7 @@ sudo /opt/mysqlcluster/home/mysqlc/bin/ndbd -c "ip-172-31-83-188.ec2.internal"
 
 
  ```bash
-/opt/mysqlcluster/home/mysqlc/bin/mysqld --defaults-file=/opt/mysqlcluster/deploy/conf/my.cnf --user=root &
+sudo /opt/mysqlcluster/home/mysqlc/bin/mysqld --defaults-file=/opt/mysqlcluster/deploy/conf/my.cnf --user=root &
 ```
 
 START SQL NODE
@@ -144,7 +144,7 @@ START SQL NODE
  ```bash
 sudo /opt/mysqlcluster/home/mysqlc/bin/ndb_mgm -e show
 ```
-It is finished when you see:‌ 111104 12:03:12 [Note] NDB Binlog: ndb tables writable
+It is finished when you see:‌ NDB Binlog: ndb tables writable
 
 
 
@@ -157,30 +157,39 @@ sudo /opt/mysqlcluster/home/mysqlc/bin/mysql_secure_installation
 /opt/mysqlcluster/home/mysqlc/bin/mysqladmin -u root password
 ```
  ```bash
-#sudo /opt/mysqlcluster/home/mysqlc/bin/mysql  -u root password 'reza1234' 
-sudo /opt/mysqlcluster/home/mysqlc/bin/mysql -h 127.0.0.2 -u root
+#sudo /opt/mysqlcluster/home/mysqlc/bin/mysql  -u root -p
+sudo /opt/mysqlcluster/home/mysqlc/bin/mysql -h 127.0.0.1 -u myapp -p
+ -u w -p
 ```
 
 In mysql: 
  ```bash
-CREATE USER 'myapp'@'%' IDENTIFIED BY 'testpwd';
+CREATE USER 'reza'@'%' IDENTIFIED BY 'reza';
 ```
 
  ```bash
-GRANT ALL PRIVILEGES ON * . * TO 'myapp'@'%' IDENTIFIED BY 'testpwd' WITH GRANT OPTION MAX_QUERIES_PER_HOUR 0 MAX_CONNECTIONS_PER_HOUR 0 MAX_UPDATES_PER_HOUR 0 MAX_USER_CONNECTIONS 0 ;
+GRANT ALL PRIVILEGES ON * . * TO 'reza'@'%' IDENTIFIED BY 'testpwd' WITH GRANT OPTION MAX_QUERIES_PER_HOUR 0 MAX_CONNECTIONS_PER_HOUR 0 MAX_UPDATES_PER_HOUR 0 MAX_USER_CONNECTIONS 0 ;
 ```
 
  ```bash
- mysql> create table simples (id int not null primary key) engine=ndb;
+ use clusterdb;
+ select * from simples;
 
-```
-
-
- ```bash
-  /opt/mysqlcluster/home/mysqlc/bin/mysql -h 127.0.0.1 -u myapp -p
 ```
 
 
  ```bash
- /opt/mysqlcluster/home/mysqlc/bin/mysql/ndb_mgm -e shutdown
+  /opt/mysqlcluster/home/mysqlc/bin/mysql -h ip-172-31-83-188.ec2.internal -u myapp -p
+
+```
+
+
+ ```bash
+UPDATE mysql.user SET Password=PASSWORD('testpwd') WHERE user='myapp';
+
+ /opt/mysqlcluster/home/mysqlc/bin/ndb_mgm -e shutdown
+  /opt/mysqlcluster/home/mysqlc/bin/mysqladmin -u root -h 127.0.0.1 -p shutdown
+  /opt/mysqlcluster/home/mysqlc/bin/mysqladmin -u myapp -h 127.0.0.1 -p shutdown
+
+
 ```
