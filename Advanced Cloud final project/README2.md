@@ -187,9 +187,46 @@ GRANT ALL PRIVILEGES ON * . * TO 'reza'@'%' IDENTIFIED BY 'testpwd' WITH GRANT O
  ```bash
 UPDATE mysql.user SET Password=PASSWORD('testpwd') WHERE user='myapp';
 
- /opt/mysqlcluster/home/mysqlc/bin/ndb_mgm -e shutdown
-  /opt/mysqlcluster/home/mysqlc/bin/mysqladmin -u root -h 127.0.0.1 -p shutdown
-  /opt/mysqlcluster/home/mysqlc/bin/mysqladmin -u myapp -h 127.0.0.1 -p shutdown
+/opt/mysqlcluster/home/mysqlc/bin/ndb_mgm -e shutdown
+/opt/mysqlcluster/home/mysqlc/bin/mysqladmin -u root -h 127.0.0.1 -p shutdown
+/opt/mysqlcluster/home/mysqlc/bin/mysqladmin -u myapp -h 127.0.0.1 -p shutdown
+```
 
+ ```bash
+CREATE USER 'reza'@'%' IDENTIFIED BY 'reza1234';
+GRANT ALL PRIVILEGES ON *.* TO 'reza'@'%' WITH GRANT OPTION;
+FLUSH PRIVILEGES;
 
+create database testdb;
+GRANT ALL PRIVILEGES ON testdb.* TO 'reza'@'%' WITH GRANT OPTION;
+
+mysql -u reza -p
+
+use testdb;
+create table customers (customer_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY, first_name TEXT, last_name TEXT);
+```
+
+ ```bash
+CREATE USER 'reza'@'%' IDENTIFIED BY 'reza1234';
+GRANT ALL PRIVILEGES ON *.* TO 'reza'@'%' WITH GRANT OPTION;
+FLUSH PRIVILEGES;
+
+create database testdb;
+GRANT ALL PRIVILEGES ON testdb.* TO 'reza'@'%' WITH GRANT OPTION;
+
+mysql -u reza -p
+
+use testdb;
+create table customers (customer_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY, first_name TEXT, last_name TEXT);
+```
+
+ ```bash
+```
+ ```bash
+```
+ ```bash
+```
+ ```bash
+```
+ ```bash
 ```
