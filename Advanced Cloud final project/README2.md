@@ -221,12 +221,26 @@ create table customers (customer_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY, fir
 ```
 
  ```bash
+apt-get install sysbench
 ```
  ```bash
+ sysbench --db-driver=mysql --mysql-user=root --mysql-password=reza1234   --mysql-db=dbtest --range_size=100   --table_size=10000 --tables=2 --threads=1 --events=0 --time=60   --rand-type=uniform /usr/share/sysbench/oltp_read_only.lua prepare
+
 ```
  ```bash
+ mysql -u root -p
+ use dbtest;
+ SELECT COUNT(*) FROM sbtest;
+```
+```bash
+ sysbench --db-driver=mysql --mysql-user=root --mysql-password=reza1234   --mysql-db=dbtest --range_size=100   --table_size=10000 --tables=2 --threads=1 --events=0 --time=60   --rand-type=uniform /usr/share/sysbench/oltp_read_only.lua prepare
+
 ```
  ```bash
+ sysbench --test=oltp --oltp-table-size=1000000 --oltp-test-mode=complex --oltp-read-only=off --num-threads=6 --max-time=60 --max-requests=0 --mysql-db=dbtest --mysql-user=[USER] --mysql-password=[PASSWORD] run
+
 ```
  ```bash
+ sysbench --test=oltp --oltp-table-size=1000000 --oltp-test-mode=complex --oltp-read-only=off --num-threads=6 --max-time=60 --max-requests=0 --mysql-db=dbtest --mysql-user=root --mysql-password=rezareza2 run
+
 ```
