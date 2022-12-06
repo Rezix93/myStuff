@@ -158,14 +158,15 @@ sudo /opt/mysqlcluster/home/mysqlc/bin/mysql_secure_installation
 /opt/mysqlcluster/home/mysqlc/bin/mysqladmin -u root password
 ```
  ```bash
-sudo /opt/mysqlcluster/home/mysqlc/bin/mysql  -u root -p
-sudo /opt/mysqlcluster/home/mysqlc/bin/mysql -h 127.0.0.1 -u root -p
-
-
- ```bash
-  /opt/mysqlcluster/home/mysqlc/bin/mysql -h ip-172-31-83-188.ec2.internal -u root -p
+sudo /opt/mysqlcluster/home/mysqlc/bin/mysql  -u root -preza1234
+sudo /opt/mysqlcluster/home/mysqlc/bin/mysql -h 127.0.0.1 -u root -preza1234
 
 ```
+
+ ```bash
+  /opt/mysqlcluster/home/mysqlc/bin/mysql -h ip-172-31-83-188.ec2.internal -u root -preza1234
+
+
 ```
 
 In mysql: 
@@ -189,8 +190,8 @@ GRANT ALL PRIVILEGES ON * . * TO 'reza'@'%' IDENTIFIED BY 'testpwd' WITH GRANT O
 UPDATE mysql.user SET Password=PASSWORD('testpwd') WHERE user='myapp';
 
 /opt/mysqlcluster/home/mysqlc/bin/ndb_mgm -e shutdown
-/opt/mysqlcluster/home/mysqlc/bin/mysqladmin -u root -h 127.0.0.1 -p shutdown
-/opt/mysqlcluster/home/mysqlc/bin/mysqladmin -u reza -h 127.0.0.1 -p shutdown
+/opt/mysqlcluster/home/mysqlc/bin/mysqladmin -u root -h 127.0.0.1 -preza1234 shutdown
+/opt/mysqlcluster/home/mysqlc/bin/mysqladmin -u reza -h 127.0.0.1 -p1234 shutdown
 ```
 
  ```bash
