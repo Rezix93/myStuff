@@ -65,7 +65,7 @@ mkdir conf
 mkdir mysqld_data
 mkdir ndb_data
 cd conf
-nano my.cnf #and enter the following
+nano /opt/mysqlcluster/deploy/conf/my.cnf #and enter the following
 ```
 
 ```bash
@@ -74,6 +74,8 @@ ndbcluster
 datadir=/opt/mysqlcluster/deploy/mysqld_data
 basedir=/opt/mysqlcluster/home/mysqlc
 port=3306
+# default IPv6，so change to ipv4 
+bind-address = 0.0.0.0
 ```
 
 ```bash
@@ -86,23 +88,22 @@ NOTE: REPLACE the hostname entries below with names of the SQL/MGMT Node and Dat
 [ndb_mgmd]
 hostname=ip-172-31-83-188.ec2.internal
 datadir=/opt/mysqlcluster/deploy/ndb_data
-NodeId=1
+nodeid=1
 
 [ndbd default]
-NoOfReplicas=2  # Number of replicas
+Noofreplicas=2  # Number of replicas
 datadir=/opt/mysqlcluster/deploy/ndb_data
 
 [ndbd]
 hostname=ip-172-31-24-0.ec2.internal
-NodeId=3
+nodeid=3
 
 [ndbd]
 hostname=ip-172-31-20-208.ec2.internal
-NodeId=4
+nodeid=4
 
 [mysqld]
 nodeid=50
-hostname=ip-172-31-83-188.ec2.internal
 
 ```
 
