@@ -239,18 +239,16 @@ create table customers (customer_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY, fir
 apt-get install sysbench
 ```
 
-
- 
- 
- ```bash
- sysbench --db-driver=mysql --mysql-user=root --mysql-password=reza1234   --mysql-db=dbtest --range_size=100   --table_size=10000 --tables=2 --threads=1 --events=0 --time=60   --rand-type=uniform /usr/share/sysbench/oltp_read_only.lua prepare
-
-```
  ```bash
  /opt/mysqlcluster/home/mysqlc/bin/mysql  -u root -preza1234
  mysql -u root -p
+ create database dbtest;
+
  use dbtest;
  SELECT COUNT(*) FROM sbtest;
+ show tables;
+ drop database dbtest;
+
  
  netstat -lnp | grep 3306
  #tcp        0      0 0.0.0.0:3306            0.0.0.0:*               LISTEN      1734/mysqld         
@@ -259,11 +257,7 @@ apt-get install sysbench
 netstat -a -n
 ```
 
-
-
-
-
-
+For cluster : 
 ```bash
  sysbench --db-driver=mysql --mysql-user=root --mysql-password=reza1234 \
   --mysql-socket=/tmp/mysql.sock --mysql-db=dbtest --range_size=100 \
@@ -274,6 +268,21 @@ netstat -a -n
  ```bash
 sysbench --db-driver=mysql --mysql-user=root --mysql-password=reza1234 \
   --mysql-socket=/tmp/mysql.sock --mysql-db=dbtest --range_size=100 \
+  --table_size=10000 --tables=2 --threads=1 --events=0 --time=60 \
+  --rand-type=uniform /usr/share/sysbench/oltp_read_only.lua run
+```
+
+For Standalone: 
+```bash
+ sysbench --db-driver=mysql --mysql-user=root --mysql-password=reza1234 \
+   --mysql-db=dbtest --range_size=100 \
+  --table_size=10000 --tables=2 --threads=1 --events=0 --time=60 \
+  --rand-type=uniform /usr/share/sysbench/oltp_read_only.lua prepare
+```
+
+ ```bash
+sysbench --db-driver=mysql --mysql-user=root --mysql-password=reza1234 \
+   --mysql-db=dbtest --range_size=100 \
   --table_size=10000 --tables=2 --threads=1 --events=0 --time=60 \
   --rand-type=uniform /usr/share/sysbench/oltp_read_only.lua run
 ```
