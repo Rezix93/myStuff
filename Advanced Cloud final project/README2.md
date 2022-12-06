@@ -157,9 +157,14 @@ sudo /opt/mysqlcluster/home/mysqlc/bin/mysql_secure_installation
 /opt/mysqlcluster/home/mysqlc/bin/mysqladmin -u root password
 ```
  ```bash
-#sudo /opt/mysqlcluster/home/mysqlc/bin/mysql  -u root -p
-sudo /opt/mysqlcluster/home/mysqlc/bin/mysql -h 127.0.0.1 -u myapp -p
- -u w -p
+sudo /opt/mysqlcluster/home/mysqlc/bin/mysql  -u root -p
+sudo /opt/mysqlcluster/home/mysqlc/bin/mysql -h 127.0.0.1 -u root -p
+
+
+ ```bash
+  /opt/mysqlcluster/home/mysqlc/bin/mysql -h ip-172-31-83-188.ec2.internal -u root -p
+
+```
 ```
 
 In mysql: 
@@ -178,18 +183,13 @@ GRANT ALL PRIVILEGES ON * . * TO 'reza'@'%' IDENTIFIED BY 'testpwd' WITH GRANT O
 ```
 
 
- ```bash
-  /opt/mysqlcluster/home/mysqlc/bin/mysql -h ip-172-31-83-188.ec2.internal -u myapp -p
-
-```
-
 
  ```bash
 UPDATE mysql.user SET Password=PASSWORD('testpwd') WHERE user='myapp';
 
 /opt/mysqlcluster/home/mysqlc/bin/ndb_mgm -e shutdown
 /opt/mysqlcluster/home/mysqlc/bin/mysqladmin -u root -h 127.0.0.1 -p shutdown
-/opt/mysqlcluster/home/mysqlc/bin/mysqladmin -u myapp -h 127.0.0.1 -p shutdown
+/opt/mysqlcluster/home/mysqlc/bin/mysqladmin -u reza -h 127.0.0.1 -p shutdown
 ```
 
  ```bash
@@ -213,6 +213,12 @@ FLUSH PRIVILEGES;
 
 create database testdb;
 GRANT ALL PRIVILEGES ON testdb.* TO 'reza'@'%' WITH GRANT OPTION;
+
+CREATE DATABASE sbtest;
+CREATE USER 'sbtest'@'localhost';
+GRANT ALL PRIVILEGES ON * . * TO 'sbtest'@'localhost';
+FLUSH PRIVILEGES;
+quit;
 
 mysql -u reza -p
 
@@ -223,23 +229,32 @@ create table customers (customer_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY, fir
  ```bash
 apt-get install sysbench
 ```
+
+
+ 
+ 
  ```bash
- sysbench --db-driver=mysql --mysql-user=root --mysql-password=reza1234   --mysql-db=dbtest --range_size=100   --table_size=10000 --tables=2 --threads=1 --events=0 --time=60   --rand-type=uniform /usr/share/sysbench/oltp_read_only.lua prepare
+ sysbench --db-driver=mysql --mysql-user=reza --mysql-password=1234   --mysql-db=dbtest --range_size=100   --table_size=10000 --tables=2 --threads=1 --events=0 --time=60   --rand-type=uniform /usr/share/sysbench/oltp_read_only.lua prepare
 
 ```
  ```bash
+ /opt/mysqlcluster/home/mysqlc/bin/mysql  -u root -preza1234
  mysql -u root -p
  use dbtest;
  SELECT COUNT(*) FROM sbtest;
+ 
+ netstat -lnp | grep 3306
+ #tcp        0      0 0.0.0.0:3306            0.0.0.0:*               LISTEN      1734/mysqld         
+  netstat -lnp | grep 1186
+  #tcp        0      0 0.0.0.0:1186            0.0.0.0:*               LISTEN      1356/ndb_mgmd       
+netstat -a -n
+
 ```
 ```bash
  sysbench --db-driver=mysql --mysql-user=root --mysql-password=reza1234   --mysql-db=dbtest --range_size=100   --table_size=10000 --tables=2 --threads=1 --events=0 --time=60   --rand-type=uniform /usr/share/sysbench/oltp_read_only.lua prepare
 
 ```
- ```bash
- sysbench --test=oltp --oltp-table-size=1000000 --oltp-test-mode=complex --oltp-read-only=off --num-threads=6 --max-time=60 --max-requests=0 --mysql-db=dbtest --mysql-user=[USER] --mysql-password=[PASSWORD] run
 
-```
  ```bash
  sysbench --test=oltp --oltp-table-size=1000000 --oltp-test-mode=complex --oltp-read-only=off --num-threads=6 --max-time=60 --max-requests=0 --mysql-db=dbtest --mysql-user=root --mysql-password=rezareza2 run
 
