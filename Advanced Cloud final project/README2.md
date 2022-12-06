@@ -158,13 +158,20 @@ sudo /opt/mysqlcluster/home/mysqlc/bin/mysql_secure_installation
 /opt/mysqlcluster/home/mysqlc/bin/mysqladmin -u root password
 ```
  ```bash
-sudo /opt/mysqlcluster/home/mysqlc/bin/mysql  -u root -preza1234
-sudo /opt/mysqlcluster/home/mysqlc/bin/mysql -h 127.0.0.1 -u root -preza1234
+sudo /opt/mysqlcluster/home/mysqlc/bin/mysql  -u root -preza1234 
+sudo /opt/mysqlcluster/home/mysqlc/bin/mysql -h 127.0.0.1 -u root 
 
+/opt/mysqlcluster/home/mysqlc/bin/mysql -u root -p -h 127.0.0.1 -e "select @@socket"
+/opt/mysqlcluster/home/mysqlc/bin/mysql -u root -p -S /tmp/mysql.sock
 ```
++-----------------+
+| @@socket        |
++-----------------+
+| /tmp/mysql.sock |
++-----------------+
 
  ```bash
-  /opt/mysqlcluster/home/mysqlc/bin/mysql -h ip-172-31-83-188.ec2.internal -u root -preza1234
+  /opt/mysqlcluster/home/mysqlc/bin/mysql -h ip-172-31-83-188.ec2.internal -u reza -p1234
 
 
 ```
@@ -236,7 +243,7 @@ apt-get install sysbench
  
  
  ```bash
- sysbench --db-driver=mysql --mysql-user=reza --mysql-password=1234   --mysql-db=dbtest --range_size=100   --table_size=10000 --tables=2 --threads=1 --events=0 --time=60   --rand-type=uniform /usr/share/sysbench/oltp_read_only.lua prepare
+ sysbench --db-driver=mysql --mysql-user=root --mysql-password=reza1234   --mysql-db=dbtest --range_size=100   --table_size=10000 --tables=2 --threads=1 --events=0 --time=60   --rand-type=uniform /usr/share/sysbench/oltp_read_only.lua prepare
 
 ```
  ```bash
@@ -250,14 +257,23 @@ apt-get install sysbench
   netstat -lnp | grep 1186
   #tcp        0      0 0.0.0.0:1186            0.0.0.0:*               LISTEN      1356/ndb_mgmd       
 netstat -a -n
-
 ```
-```bash
- sysbench --db-driver=mysql --mysql-user=root --mysql-password=reza1234   --mysql-db=dbtest --range_size=100   --table_size=10000 --tables=2 --threads=1 --events=0 --time=60   --rand-type=uniform /usr/share/sysbench/oltp_read_only.lua prepare
 
+
+
+
+
+
+```bash
+ sysbench --db-driver=mysql --mysql-user=root --mysql-password=reza1234 \
+  --mysql-socket=/tmp/mysql.sock --mysql-db=dbtest --range_size=100 \
+  --table_size=10000 --tables=2 --threads=1 --events=0 --time=60 \
+  --rand-type=uniform /usr/share/sysbench/oltp_read_only.lua prepare
 ```
 
  ```bash
- sysbench --test=oltp --oltp-table-size=1000000 --oltp-test-mode=complex --oltp-read-only=off --num-threads=6 --max-time=60 --max-requests=0 --mysql-db=dbtest --mysql-user=root --mysql-password=rezareza2 run
-
+sysbench --db-driver=mysql --mysql-user=root --mysql-password=reza1234 \
+  --mysql-socket=/tmp/mysql.sock --mysql-db=dbtest --range_size=100 \
+  --table_size=10000 --tables=2 --threads=1 --events=0 --time=60 \
+  --rand-type=uniform /usr/share/sysbench/oltp_read_only.lua run
 ```
