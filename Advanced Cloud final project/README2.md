@@ -1,4 +1,19 @@
 https://stansantiago.wordpress.com/2012/
+install MYSQL on instances:
+
+```bash
+sudo apt-get install mysql-server
+
+
+sudo mysql_secure_installation
+
+sudo mysql
+
+ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'reza1234';
+
+mysql -u root -p
+
+```
 
 ```bash
 wget https://downloads.mysql.com/archives/get/p/14/file/mysql-cluster-gpl-7.2.1-linux2.6-i686.tar.gz
