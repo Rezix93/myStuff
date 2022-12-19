@@ -11,7 +11,15 @@ sudo mysql
 
 ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'reza1234';
 
+wget https://downloads.mysql.com/docs/sakila-db.tar.gz
+tar zxvf 
 mysql -u root -p
+SOURCE sakila-schema.sql;
+SOURCE sakila-data.sql;
+USE sakila;
+SHOW FULL TABLES;
+SELECT COUNT(*) FROM film;
+SELECT COUNT(*) FROM film_text;
 
 ```
 
