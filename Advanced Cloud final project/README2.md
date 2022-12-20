@@ -196,6 +196,14 @@ sudo /opt/mysqlcluster/home/mysqlc/bin/ndb_mgm -e show
 It is finished when you see:‌ NDB Binlog: ndb tables writable
 
 
+ ```bash
+ /opt/mysqlcluster/home/mysqlc/bin/mysql -h 127.0.0.1 -u cuser -preza1234
+```
+ ```bash
+  /opt/mysqlcluster/home/mysqlc/bin/mysql -h ip-172-31-92-148.ec2.internal -u cuser -preza1234
+
+```
+
 
  ```bash
  cd  /opt/mysqlcluster/home/mysqlc/
@@ -207,8 +215,10 @@ sudo /opt/mysqlcluster/home/mysqlc/bin/mysql_secure_installation
 ```
 
  ```bash
-sudo /opt/mysqlcluster/home/mysqlc/bin/mysql  -u root -preza1234 
+sudo /opt/mysqlcluster/home/mysqlc/bin/drop   -u root -preza1234 
 sudo /opt/mysqlcluster/home/mysqlc/bin/mysql -h 127.0.0.1 -u root 
+
+sudo /opt/mysqlcluster/home/mysqlc/bin/mysql -h 127.0.0.1 -u cluser
 
 /opt/mysqlcluster/home/mysqlc/bin/mysql -u root -p -h 127.0.0.1 -e "select @@socket"
 /opt/mysqlcluster/home/mysqlc/bin/mysql -u root -p -S /tmp/mysql.sock
@@ -219,19 +229,30 @@ sudo /opt/mysqlcluster/home/mysqlc/bin/mysql -h 127.0.0.1 -u root
 | /tmp/mysql.sock |
 +-----------------+
 
- ```bash
-  /opt/mysqlcluster/home/mysqlc/bin/mysql -h ip-172-31-92-148.ec2.internal -u reza -p1234
 
-```
+
 
 In mysql: 
 
+UPDATE mysql.user SET password=password('reza1234')
+WHERE user='cluser' AND host='localhost';
+exit
  
  ```bash
  SET PASSWORD FOR 'root'@'localhost' = PASSWORD('reza1234');
+ SET PASSWORD FOR 'cuser'@'localhost' = PASSWORD('reza1234');
+ CREATE USER 'cuser'@'%' IDENTIFIED BY 'reza1234';
+ GRANT ALL PRIVILEGES ON *.* TO 'cuser'@'%' WITH GRANT OPTION;
+ 
+ CREATE USER 'cluser'@'%' IDENTIFIED BY 'reza1234';
+GRANT ALL PRIVILEGES ON *.* TO 'cluser'@'%' WITH GRANT OPTION;
+
+
 FLUSH PRIVILEGES;
- /opt/mysqlcluster/home/mysqlc/bin/mysql -u root -p
-CREATE USER 'reza'@'%' IDENTIFIED BY 'reza';
+/opt/mysqlcluster/home/mysqlc/bin/mysql -u root -p
+/opt/mysqlcluster/home/mysqlc/bin/mysql -u cuser -preza1234
+/opt/mysqlcluster/home/mysqlc/bin/mysql -u cluser -preza1234
+
 ```
 
  ```bash
@@ -249,9 +270,10 @@ GRANT ALL PRIVILEGES ON * . * TO 'reza'@'%' IDENTIFIED BY 'reza' WITH GRANT OPTI
  ```bash
 UPDATE mysql.user SET Password=PASSWORD('testpwd') WHERE user='myapp';
 
+telnet 127.0.0.1 3306
 /opt/mysqlcluster/home/mysqlc/bin/ndb_mgm -e shutdown
 /opt/mysqlcluster/home/mysqlc/bin/mysqladmin -u root -h 127.0.0.1 -preza1234 shutdown
-/opt/mysqlcluster/home/mysqlc/bin/mysqladmin -u reza -h 127.0.0.1 -p1234 shutdown
+/opt/mysqlcluster/home/mysqlc/bin/mysqladmin -u cluser -h 127.0.0.1 -preza1234 shutdown
 ```
 
  ```bash
