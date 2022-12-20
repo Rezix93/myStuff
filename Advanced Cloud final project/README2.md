@@ -10,10 +10,11 @@ sudo mysql_secure_installation
 sudo mysql
 
 ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'reza1234';
-
+```
+```bash
 wget https://downloads.mysql.com/docs/sakila-db.tar.gz
-tar zxvf 
-mysql -u root -p
+tar -xf  sakila-db.tar.gz
+/opt/mysqlcluster/home/mysqlc/bin/mysql -u root -preza1234
 SOURCE sakila-schema.sql;
 SOURCE sakila-data.sql;
 USE sakila;
