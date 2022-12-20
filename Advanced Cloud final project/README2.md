@@ -176,7 +176,8 @@ sudo /opt/mysqlcluster/home/mysqlc/bin/ndb_mgm -e show
 Now we can start the data node using the following command:
 
 ```bash
-mkdir -p /opt/mysqlcluster/deploy/ndb_data```
+mkdir -p /opt/mysqlcluster/deploy/ndb_data
+```
  
  ```bash
 sudo /opt/mysqlcluster/home/mysqlc/bin/ndbd -c "ip-172-31-92-148.ec2.internal"
