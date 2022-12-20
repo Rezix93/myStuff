@@ -222,11 +222,15 @@ sudo /opt/mysqlcluster/home/mysqlc/bin/mysql -h 127.0.0.1 -u root
  ```bash
   /opt/mysqlcluster/home/mysqlc/bin/mysql -h ip-172-31-92-148.ec2.internal -u reza -p1234
 
-
 ```
 
 In mysql: 
+
+ 
  ```bash
+ SET PASSWORD FOR 'root'@'localhost' = PASSWORD('reza1234');
+FLUSH PRIVILEGES;
+ /opt/mysqlcluster/home/mysqlc/bin/mysql -u root -p
 CREATE USER 'reza'@'%' IDENTIFIED BY 'reza';
 ```
 
@@ -253,12 +257,13 @@ UPDATE mysql.user SET Password=PASSWORD('testpwd') WHERE user='myapp';
  ```bash
 CREATE USER 'cuser'@'%' IDENTIFIED BY 'reza1234';
 GRANT ALL PRIVILEGES ON *.* TO 'cuser'@'%' WITH GRANT OPTION;
+GRANT ALL PRIVILEGES ON *.* TO 'cuser'@'%' WITH GRANT OPTION;
 FLUSH PRIVILEGES;
 
 create database testdb;
 GRANT ALL PRIVILEGES ON testdb.* TO 'reza'@'%' WITH GRANT OPTION;
 
-mysql -u reza -p
+mysql -u cuser -p
 
 use testdb;
 create table customers (customer_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY, first_name TEXT, last_name TEXT);
