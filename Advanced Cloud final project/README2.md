@@ -25,10 +25,10 @@ SELECT COUNT(*) FROM film_text;
 
 ```bash
 Private host name:  
-Master:  ip-172-31-93-9.ec2.internal
-Slave1:  ip-172-31-92-33.ec2.internal
-Slave2:  ip-172-31-92-66.ec2.internal
-Slave3:  ip-172-31-90-85.ec2.internal
+Master:  ip-172-31-92-148.ec2.internal
+Slave1:  ip-172-31-83-82.ec2.internal
+Slave2:  ip-172-31-91-1.ec2.internal
+Slave3:  ip-172-31-82-132.ec2.internal
 ```
 
 ```bash
@@ -112,12 +112,16 @@ bind-address = 0.0.0.0
 ```bash
 nano /opt/mysqlcluster/deploy/conf/config.ini
 ```
+Master:  ip-172-31-92-148.ec2.internal
+Slave1:  ip-172-31-83-82.ec2.internal
+Slave2:  ip-172-31-91-1.ec2.internal
+Slave3:  ip-172-31-82-132.ec2.internal
 
 and enter the following
 NOTE: REPLACE the hostname entries below with names of the SQL/MGMT Node and Data Nodes.
 ```bash
 [ndb_mgmd]
-hostname=ip-172-31-93-9.ec2.internal
+hostname=ip-172-31-92-148.ec2.internal
 datadir=/opt/mysqlcluster/deploy/ndb_data
 nodeid=1
 
@@ -126,16 +130,16 @@ Noofreplicas=2  # Number of replicas
 datadir=/opt/mysqlcluster/deploy/ndb_data
 
 [ndbd]
-hostname=ip-172-31-92-33.ec2.internal
+hostname=ip-172-31-83-82.ec2.internal
 nodeid=3
 
 [ndbd]
-hostname=ip-172-31-92-66.ec2.internal
+hostname=ip-172-31-91-1.ec2.internal
 nodeid=4
 
 [ndbd]
-hostname=ip-172-31-90-85.ec2.internal
-nodeid=4
+hostname=ip-172-31-82-132.ec2.internal
+nodeid=5
 
 [mysqld]
 nodeid=50
