@@ -24,6 +24,14 @@ SELECT COUNT(*) FROM film_text;
 ```
 
 ```bash
+Private host name:  
+Master:  ip-172-31-93-9.ec2.internal
+Slave1:  ip-172-31-92-33.ec2.internal
+Slave2:  ip-172-31-92-66.ec2.internal
+Slave3:  ip-172-31-90-85.ec2.internal
+```
+
+```bash
 wget https://downloads.mysql.com/archives/get/p/14/file/mysql-cluster-gpl-7.2.1-linux2.6-i686.tar.gz
 groupadd mysql
 useradd -r -g mysql mysql
@@ -109,7 +117,7 @@ and enter the following
 NOTE: REPLACE the hostname entries below with names of the SQL/MGMT Node and Data Nodes.
 ```bash
 [ndb_mgmd]
-hostname=ip-172-31-83-188.ec2.internal
+hostname=ip-172-31-93-9.ec2.internal
 datadir=/opt/mysqlcluster/deploy/ndb_data
 nodeid=1
 
@@ -118,11 +126,15 @@ Noofreplicas=2  # Number of replicas
 datadir=/opt/mysqlcluster/deploy/ndb_data
 
 [ndbd]
-hostname=ip-172-31-24-0.ec2.internal
+hostname=ip-172-31-92-33.ec2.internal
 nodeid=3
 
 [ndbd]
-hostname=ip-172-31-20-208.ec2.internal
+hostname=ip-172-31-92-66.ec2.internal
+nodeid=4
+
+[ndbd]
+hostname=ip-172-31-90-85.ec2.internal
 nodeid=4
 
 [mysqld]
@@ -154,8 +166,9 @@ sudo /opt/mysqlcluster/home/mysqlc/bin/ndb_mgm -e show
 
 Now we can start the data node using the following command:
 
+
  ```bash
-sudo /opt/mysqlcluster/home/mysqlc/bin/ndbd -c "ip-172-31-83-188.ec2.internal"
+sudo /opt/mysqlcluster/home/mysqlc/bin/ndbd -c "ip-172-31-93-9.ec2.internal"
 ```
 
 
@@ -180,6 +193,7 @@ sudo /opt/mysqlcluster/home/mysqlc/bin/mysql_secure_installation
 
 /opt/mysqlcluster/home/mysqlc/bin/mysqladmin -u root password
 ```
+
  ```bash
 sudo /opt/mysqlcluster/home/mysqlc/bin/mysql  -u root -preza1234 
 sudo /opt/mysqlcluster/home/mysqlc/bin/mysql -h 127.0.0.1 -u root 
@@ -194,7 +208,7 @@ sudo /opt/mysqlcluster/home/mysqlc/bin/mysql -h 127.0.0.1 -u root
 +-----------------+
 
  ```bash
-  /opt/mysqlcluster/home/mysqlc/bin/mysql -h ip-172-31-83-188.ec2.internal -u reza -p1234
+  /opt/mysqlcluster/home/mysqlc/bin/mysql -h ip-172-31-93-9.ec2.internal -u reza -p1234
 
 
 ```
