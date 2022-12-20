@@ -78,6 +78,8 @@ Please report any problems at http://bugs.mysql.com/
 ---------------------------------------------------------------
 
 Create the Deployment Directory and Setup Config Files
+**Common steps**
+
 ```bash
 sudo su 
 
@@ -156,6 +158,7 @@ Initialize the Database
  source /etc/profile.d/mysqlc.sh
  sudo apt-get update && sudo apt-get -y install libncurses5
 ```
+**MASTER**
 
 ** We can now start the manager by executing the ndb_mgmd binary and specifying its config file using the -f flag:
 
@@ -168,9 +171,13 @@ Once inside the console enter the command SHOW and hit ENTER:
 sudo /opt/mysqlcluster/home/mysqlc/bin/ndb_mgm -e show
 ```
 
+**On Data Nodes host:**
+
 Now we can start the data node using the following command:
 
-
+```bash
+mkdir -p /opt/mysqlcluster/deploy/ndb_data```
+ 
  ```bash
 sudo /opt/mysqlcluster/home/mysqlc/bin/ndbd -c "ip-172-31-92-148.ec2.internal"
 ```
