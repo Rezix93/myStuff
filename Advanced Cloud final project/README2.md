@@ -214,6 +214,10 @@ sudo /opt/mysqlcluster/home/mysqlc/bin/mysql_secure_installation
 /opt/mysqlcluster/home/mysqlc/bin/mysqladmin -u root password
 ```
 
+
+
+**ALL‌CHALENGES:**
+
  ```bash
 sudo /opt/mysqlcluster/home/mysqlc/bin/drop   -u root -preza1234 
 sudo /opt/mysqlcluster/home/mysqlc/bin/mysql -h 127.0.0.1 -u root 
