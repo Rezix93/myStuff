@@ -14,7 +14,12 @@ ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'reza1234
 ```bash
 wget https://downloads.mysql.com/docs/sakila-db.tar.gz
 tar -xf  sakila-db.tar.gz
-/opt/mysqlcluster/home/mysqlc/bin/mysql -u root -preza1234
+cd sakila-db/
+
+/opt/mysqlcluster/home/mysqlc/bin/mysql -h 127.0.0.1 -u root -preza1234
+
+/opt/mysqlcluster/home/mysqlc/bin/mysql -h ip-172-31-92-148.ec2.internal -u cuser -preza1234
+
 SOURCE sakila-schema.sql;
 SOURCE sakila-data.sql;
 USE sakila;
