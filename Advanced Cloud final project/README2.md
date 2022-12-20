@@ -203,7 +203,7 @@ It is finished when you see:‌ NDB Binlog: ndb tables writable
 
 
  ```bash
- /opt/mysqlcluster/home/mysqlc/bin/mysql -h 127.0.0.1 -u cuser -preza1234
+ /opt/mysqlcluster/home/mysqlc/bin/mysql -u cuser
 ```
  ```bash
   /opt/mysqlcluster/home/mysqlc/bin/mysql -h ip-172-31-92-148.ec2.internal -u cuser -preza1234
