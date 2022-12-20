@@ -220,7 +220,7 @@ sudo /opt/mysqlcluster/home/mysqlc/bin/mysql -h 127.0.0.1 -u root
 +-----------------+
 
  ```bash
-  /opt/mysqlcluster/home/mysqlc/bin/mysql -h ip-172-31-93-9.ec2.internal -u reza -p1234
+  /opt/mysqlcluster/home/mysqlc/bin/mysql -h ip-172-31-92-148.ec2.internal -u reza -p1234
 
 
 ```
@@ -231,7 +231,7 @@ CREATE USER 'reza'@'%' IDENTIFIED BY 'reza';
 ```
 
  ```bash
-GRANT ALL PRIVILEGES ON * . * TO 'reza'@'%' IDENTIFIED BY 'testpwd' WITH GRANT OPTION MAX_QUERIES_PER_HOUR 0 MAX_CONNECTIONS_PER_HOUR 0 MAX_UPDATES_PER_HOUR 0 MAX_USER_CONNECTIONS 0 ;
+GRANT ALL PRIVILEGES ON * . * TO 'reza'@'%' IDENTIFIED BY 'reza' WITH GRANT OPTION MAX_QUERIES_PER_HOUR 0 MAX_CONNECTIONS_PER_HOUR 0 MAX_UPDATES_PER_HOUR 0 MAX_USER_CONNECTIONS 0 ;
 ```
 
  ```bash
@@ -251,8 +251,8 @@ UPDATE mysql.user SET Password=PASSWORD('testpwd') WHERE user='myapp';
 ```
 
  ```bash
-CREATE USER 'reza'@'%' IDENTIFIED BY 'reza1234';
-GRANT ALL PRIVILEGES ON *.* TO 'reza'@'%' WITH GRANT OPTION;
+CREATE USER 'cuser'@'%' IDENTIFIED BY 'reza1234';
+GRANT ALL PRIVILEGES ON *.* TO 'cuser'@'%' WITH GRANT OPTION;
 FLUSH PRIVILEGES;
 
 create database testdb;
