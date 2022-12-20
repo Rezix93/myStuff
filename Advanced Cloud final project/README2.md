@@ -172,7 +172,7 @@ Now we can start the data node using the following command:
 
 
  ```bash
-sudo /opt/mysqlcluster/home/mysqlc/bin/ndbd -c "ip-172-31-93-9.ec2.internal"
+sudo /opt/mysqlcluster/home/mysqlc/bin/ndbd -c "ip-172-31-92-148.ec2.internal"
 ```
 
 
