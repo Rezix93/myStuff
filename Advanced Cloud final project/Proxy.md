@@ -5,10 +5,10 @@ PS1='\u:\W\$ '
 ```
 
 ```bash
-  
 sudo /opt/mysqlcluster/home/mysqlc/bin/ndb_mgmd -f /opt/mysqlcluster/deploy/conf/config.ini --initial --configdir=/opt/mysqlcluster/deploy/conf/
 sudo /opt/mysqlcluster/home/mysqlc/bin/mysqld --defaults-file=/opt/mysqlcluster/deploy/conf/my.cnf --user=root &
 sudo /opt/mysqlcluster/home/mysqlc/bin/ndb_mgm -e show
+/opt/mysqlcluster/home/mysqlc/bin/mysql -u cuser
 
 ```
  
@@ -21,6 +21,10 @@ sudo /opt/mysqlcluster/home/mysqlc/bin/ndb_mgm -e show
 
 pymysql.err.OperationalError: (2003, "Can't connect to MySQL server on 'ip-172-31-83-82.ec2.internal' ([Errno 111] Connection refused)"):
 SOLVED: 
+
+```bash
+ sudo /opt/mysqlcluster/home/mysqlc/bin/mysqladmin -u root -p variables | grep port
+```
 
 
 
