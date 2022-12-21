@@ -24,6 +24,10 @@ SOLVED:
 
 ```bash
  sudo /opt/mysqlcluster/home/mysqlc/bin/mysqladmin -u root -p variables | grep port
+ 
+ Otherwise, I added "sudo ufw allow from {private_ips}" from all my nodes and it worked !
+
+
 ```
 
 
