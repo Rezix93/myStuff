@@ -23,9 +23,27 @@ pymysql.err.OperationalError: (2003, "Can't connect to MySQL server on 'ip-172-3
 SOLVED: 
 
 ```bash
- sudo /opt/mysqlcluster/home/mysqlc/bin/mysqladmin -u root -p variables | grep port
+sudo /opt/mysqlcluster/home/mysqlc/bin/mysqladmin -u root -p variables | grep port
  
- Otherwise, I added "sudo ufw allow from {private_ips}" from all my nodes and it worked !
+Otherwise, I added "sudo ufw allow from {private_ips}" from all my nodes and it worked !
+
+If you are asking for tunnelling, I followed this stackoverflow link 
+
+https://stackoverflow.com/questions/21903411/enable-python-to-connect-to-mysql-via-ssh-tunnelling (edited) 
+
+
+To choose the data node, you can use the library random from python and for the customized I used the subprocess library to make a ping command
+
+The link is for tunnelling to the data node and get the API in the data node because you cannot connect to the data node directly
+
+You can't connect to the data nodes using pymysql alone since mysql isn't installed on them in the first place. First tunnel into the master with something like sshtunnelforwarder and then use pymysql to run the query on the data nodes.
+
+
+
+For those using sshtunnelforwarder, you must use the RSA key from the keypair you used to create your instances in the ssh_pkey field.
+
+you can get that key at creation
+
 
 
 ```
