@@ -45,6 +45,10 @@ For those using sshtunnelforwarder, you must use the RSA key from the keypair yo
 you can get that key at creation
 
 
+If the nodes still show the "starting" state, then they won't work because they have not finished to start. Look if the ports are open so they can communicate. As for mysqld idk
+
+
+
 
 ```
 
