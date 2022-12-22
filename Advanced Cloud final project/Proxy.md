@@ -63,13 +63,38 @@ If the nodes still show the "starting" state, then they won't work because they 
 
 
 Vahid Majdinasab
-You can't connect to the data nodes using pymysql alone since mysql isn't installed on them in the first place. First tunnel into the master with something like sshtunnelforwarder and then use pymysql to run the query on the data nodes.
+**You can't connect to the data nodes using pymysql alone since mysql isn't installed on them in the first place. First tunnel into the master with something like sshtunnelforwarder and then use pymysql to run the query on the data nodes.
 
 
+```bash
+try:
+    sshtunnel.SSH_TIMEOUT = 10.0
 
+    with sshtunnel.SSHTunnelForwarder(
+            ('ec2-**-**-***-***.eu-central-1.compute.amazonaws.com', 22),
+            ssh_host_key=None,
+            ssh_username='ubuntu',
+            ssh_password=None,
+            ssh_pkey='./XXXXXXXXX.pem',
+            remote_bind_address=('127.0.0.1', 3306)
+    ) as tunnel:
+        conn = mysql.connector.connect(
+                host='127.0.0.1',
+                port=tunnel.local_bind_port,
+                user='admin',
+                db='XXXXXX',
+                passwd='XXXXXX',
+                charset="utf8"
+        )
 
+        c = conn.cursor()
+        print(c)
+        c.execute("SELECT * FROM XXXXXX ORDER BY Rand() LIMIT 50")
 
+except Exception as e:
+    print(e)
 
+```
 
 
 
