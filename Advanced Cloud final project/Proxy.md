@@ -23,8 +23,22 @@ pymysql.err.OperationalError: (2003, "Can't connect to MySQL server on 'ip-172-3
 SOLVED: 
 
 ```bash
+
+from sshtunnel import SSHTunnelForwarder
+import pymysql
+import pandas as pd
+
+tunnel = SSHTunnelForwarder(('SSH_HOST', 22), ssh_password=SSH_PASS, ssh_username=SSH_UNAME,
+     remote_bind_address=(DB_HOST, 3306)) 
+tunnel.start()
+conn = pymysql.connect(host='127.0.0.1', user=DB_UNAME, passwd=DB_PASS, port=tunnel.local_bind_port)
+data = pd.read_sql_query("SHOW DATABASES;", conn)
+
+```
+
+```bash
 sudo /opt/mysqlcluster/home/mysqlc/bin/mysqladmin -u root -p variables | grep port
- 
+ ```
 Otherwise, I added "sudo ufw allow from {private_ips}" from all my nodes and it worked !
 
 If you are asking for tunnelling, I followed this stackoverflow link 
@@ -48,9 +62,12 @@ you can get that key at creation
 If the nodes still show the "starting" state, then they won't work because they have not finished to start. Look if the ports are open so they can communicate. As for mysqld idk
 
 
+Vahid Majdinasab
+You can't connect to the data nodes using pymysql alone since mysql isn't installed on them in the first place. First tunnel into the master with something like sshtunnelforwarder and then use pymysql to run the query on the data nodes.
 
 
-```
+
+
 
 
 
