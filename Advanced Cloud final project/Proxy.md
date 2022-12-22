@@ -8,7 +8,13 @@ PS1='\u:\W\$ '
 sudo /opt/mysqlcluster/home/mysqlc/bin/ndb_mgmd -f /opt/mysqlcluster/deploy/conf/config.ini --initial --configdir=/opt/mysqlcluster/deploy/conf/
 sudo /opt/mysqlcluster/home/mysqlc/bin/mysqld --defaults-file=/opt/mysqlcluster/deploy/conf/my.cnf --user=root &
 sudo /opt/mysqlcluster/home/mysqlc/bin/ndb_mgm -e show
+sudo /opt/mysqlcluster/home/mysqlc/bin/mysql -h 127.0.0.1 -uroot -preza1234 
 /opt/mysqlcluster/home/mysqlc/bin/mysql -u cuser
+
+ssh -i labsuser.pem ubuntu@ec2-54-227-117-122.compute-1.amazonaws.com
+
+sudo chmod 700 /home/ubuntu /home/ubuntu/.ssh
+sudo chmod 600 /home/ubuntu/.ssh/authorized_keys
 
 ```
  
