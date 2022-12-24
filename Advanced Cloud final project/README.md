@@ -147,7 +147,7 @@ It is finished when you see:‌ NDB Binlog: ndb tables writable
 
 
  ```bash
- /opt/mysqlcluster/home/mysqlc/bin/mysql -u reza
+ /opt/mysqlcluster/home/mysqlc/bin/mysql -u reza -preza1234
 ```
 
 On nodes just run this to ceonnect to database:
