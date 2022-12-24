@@ -48,10 +48,7 @@ bind-address = 0.0.0.0
 ```bash
 nano /opt/mysqlcluster/deploy/conf/config.ini
 ```
-Master:  ip-172-31-92-148.ec2.internal
-Slave1:  ip-172-31-83-82.ec2.internal
-Slave2:  ip-172-31-91-1.ec2.internal
-Slave3:  ip-172-31-82-132.ec2.internal
+
 
 ip-172-31-95-133.ec2.internal # Hostname of the manager 
 ip-172-31-88-0.ec2.internal # Hostname/IP of the first data node 
@@ -71,7 +68,7 @@ Noofreplicas=3  # Number of replicas
 datadir=/opt/mysqlcluster/deploy/ndb_data
 
 [ndbd]
-hostname=ip-172-31-83-82.ec2.internal
+hostname=ip-172-31-88-0.ec2.internal
 nodeid=3
 
 [ndbd]
@@ -102,7 +99,7 @@ Initialize the Database
 ** We can now start the manager by executing the ndb_mgmd binary and specifying its config file using the -f flag:
 
  ```bash
-sudo /opt/mysqlcluster/home/mysqlc/bin/ndb_mgmd -f /opt/mysqlcluster/deploy/conf/config.ini --initial --configdir=/opt/mysqlcluster/deploy/conf/
+sudo /opt/mysqlcluster/home/mysqlc/bin/ndb_mgmd -f /opt/mysqlcluster/deploy/conf/config.ini --reload --configdir=/opt/mysqlcluster/deploy/conf/
 ```
 Once inside the console enter the command SHOW and hit ENTER:
 
