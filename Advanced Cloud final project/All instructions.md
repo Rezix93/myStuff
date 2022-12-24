@@ -15,6 +15,8 @@ and cluster. To know more about Sakila and how to install it, please refer to [1
 
 
 ```bash
+scp -i LOG8415E2.pem LOG8415E2.pem ubuntu@ec2-52-91-162-51.compute-1.amazonaws.com:~/opt
+
 mysql -u root -p
 SOURCE sakila-schema.sql;
 SOURCE sakila-data.sql;```
