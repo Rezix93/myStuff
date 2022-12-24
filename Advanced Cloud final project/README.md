@@ -13,11 +13,10 @@ ec2-52-91-162-51.compute-1.amazonaws.com # Proxy public
 ```
 
 
-
-
 ```bash
 sudo su 
-
+```
+```bash
 mkdir -p /opt/mysqlcluster/home
 cd /opt/mysqlcluster/home
 wget http://dev.mysql.com/get/Downloads/MySQL-Cluster-7.2/mysql-cluster-gpl-7.2.1-linux2.6-x86_64.tar.gz
