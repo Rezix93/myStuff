@@ -194,7 +194,7 @@ mysql -ureza -preza1234
 **Sysbench:**
 
 ```bash
-apt-get install sysbench
+apt-get install sysbench -y
 ```
 
 For cluster : 
