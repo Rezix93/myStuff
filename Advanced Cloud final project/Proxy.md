@@ -29,6 +29,8 @@ sudo chmod 600 /home/ubuntu/.ssh/authorized_keys
  apt update;
 apt -y install python3-pip;
 pip3 install flask;
+sudo apt-get install python3-pymysql
+pip install sshtunnel
 ```
 
 
