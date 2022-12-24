@@ -178,7 +178,7 @@ SELECT COUNT(*) FROM film;
 SELECT COUNT(*) FROM film_text;
 ```
 
-**Stand alone: **
+**Stand alone:**
 
 ```bash
 sudo apt-get install mysql-server
