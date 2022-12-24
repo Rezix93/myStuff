@@ -110,6 +110,22 @@ sudo /opt/mysqlcluster/home/mysqlc/bin/ndb_mgm -e show
  ```bash
 sudo /opt/mysqlcluster/home/mysqlc/bin/mysqld --defaults-file=/opt/mysqlcluster/deploy/conf/my.cnf --user=root &
 ```
+
+ ```bash
+ cd  /opt/mysqlcluster/home/mysqlc/
+sudo /opt/mysqlcluster/home/mysqlc/bin/mysql_secure_installation
+
+sudo /opt/mysqlcluster/home/mysqlc/bin/mysql -h 127.0.0.1 -uroot -p reza1234 
+
+CREATE USER 'reza'@'%' IDENTIFIED BY 'reza1234';
+GRANT ALL PRIVILEGES ON *.* TO 'cuser'@'%' WITH GRANT OPTION;
+FLUSH PRIVILEGES;
+
+sudo /opt/mysqlcluster/home/mysqlc/bin/mysql -h 127.0.0.1 -ureza -preza1234 
+
+/opt/mysqlcluster/home/mysqlc/bin/mysqladmin -u root password
+
+```
 **On Data Nodes host:**
 
 Now we can start the data node using the following command:
@@ -131,33 +147,16 @@ It is finished when you see:‌ NDB Binlog: ndb tables writable
 
 
  ```bash
- /opt/mysqlcluster/home/mysqlc/bin/mysql -u cuser
+ /opt/mysqlcluster/home/mysqlc/bin/mysql -u reza
 ```
+
+On nodes just run this to ceonnect to database:
  ```bash
-  /opt/mysqlcluster/home/mysqlc/bin/mysql -h ip-172-31-95-133.ec2.internal -u cuser -preza1234
+  /opt/mysqlcluster/home/mysqlc/bin/mysql -h ip-172-31-95-133.ec2.internal -ureza -preza1234
 
 ```
 
 
- ```bash
- cd  /opt/mysqlcluster/home/mysqlc/
-sudo /opt/mysqlcluster/home/mysqlc/bin/mysql_secure_installation
-
-sudo /opt/mysqlcluster/home/mysqlc/bin/mysql -h 127.0.0.1 -uroot -p reza1234 
-
-CREATE USER 'reza'@'%' IDENTIFIED BY 'reza1234';
-GRANT ALL PRIVILEGES ON *.* TO 'cuser'@'%' WITH GRANT OPTION;
-
-CREATE USER 'reza'@'localhost';
-GRANT ALL PRIVILEGES ON *.* TO 'reza'@'localhost' WITH GRANT OPTION;
-FLUSH PRIVILEGES;
-
-
-
-sudo /opt/mysqlcluster/home/mysqlc/bin/mysql -h 127.0.0.1 -ureza -preza1234 
-
-/opt/mysqlcluster/home/mysqlc/bin/mysqladmin -u root password
-```
 
 **Download and install sakila**
 
