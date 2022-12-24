@@ -200,8 +200,9 @@ apt-get install sysbench -y
 For cluster : 
 ```bash
  sysbench --db-driver=mysql --mysql-user=reza --mysql-password=reza1234 \
+ --mysql-host=127.0.0.1 --mysql-port=3306 -max-requests=1000000 \
   --mysql-socket=/tmp/mysql.sock --mysql-db=sakila --range_size=100 \
-  --table_size=1000000 --tables=10 --events=0 --time=60 \
+  --table_size=1000000 --tables=100 --events=0 --time=60 \
   --rand-type=uniform /usr/share/sysbench/oltp_read_only.lua prepare
 ```
 
