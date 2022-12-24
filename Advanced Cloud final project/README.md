@@ -3,10 +3,16 @@
 **Common steps**
 
 ```bash
-hostname=ip-172-31-84-235.ec2.internal # Hostname of the manager 172.31.84.235
-hostname=ip-172-31-84-194.ec2.internal # Hostname/IP of the first data node 172.31.84.194
-hostname=ip-172-31-95-48.ec2.internal # Hostname/IP of the second data node 172.31.95.48
+ip-172-31-95-133.ec2.internal # Hostname of the manager 
+ip-172-31-88-0.ec2.internal # Hostname/IP of the first data node 
+ip-172-31-85-44.ec2.internal # Hostname/IP of the second data node
+ip-172-31-86-165.ec2.internal # Hostname/IP of the third data node
+
+ip-172-31-80-175.ec2.internal # Proxy private
+ec2-52-91-162-51.compute-1.amazonaws.com # Proxy public
 ```
+
+
 
 
 ```bash
@@ -48,11 +54,16 @@ Slave1:  ip-172-31-83-82.ec2.internal
 Slave2:  ip-172-31-91-1.ec2.internal
 Slave3:  ip-172-31-82-132.ec2.internal
 
+ip-172-31-95-133.ec2.internal # Hostname of the manager 
+ip-172-31-88-0.ec2.internal # Hostname/IP of the first data node 
+ip-172-31-85-44.ec2.internal # Hostname/IP of the second data node
+ip-172-31-86-165.ec2.internal # Hostname/IP of the third data node
+
 and enter the following
 NOTE: REPLACE the hostname entries below with names of the SQL/MGMT Node and Data Nodes.
 ```bash
 [ndb_mgmd]
-hostname=ip-172-31-92-148.ec2.internal
+hostname=ip-172-31-95-133.ec2.internal
 datadir=/opt/mysqlcluster/deploy/ndb_data
 nodeid=1
 
@@ -65,11 +76,11 @@ hostname=ip-172-31-83-82.ec2.internal
 nodeid=3
 
 [ndbd]
-hostname=ip-172-31-91-1.ec2.internal
+hostname=ip-172-31-85-44.ec2.internal
 nodeid=4
 
 [ndbd]
-hostname=ip-172-31-82-132.ec2.internal
+hostname=ip-172-31-86-165.ec2.internal
 nodeid=5
 
 [mysqld]
@@ -112,7 +123,7 @@ mkdir -p /opt/mysqlcluster/deploy/ndb_data
 ```
  
  ```bash
-sudo /opt/mysqlcluster/home/mysqlc/bin/ndbd -c "ip-172-31-92-148.ec2.internal"
+sudo /opt/mysqlcluster/home/mysqlc/bin/ndbd -c "ip-172-31-95-133.ec2.internal"
 ```
 
 START SQL NODE
@@ -127,7 +138,7 @@ It is finished when you see:‌ NDB Binlog: ndb tables writable
  /opt/mysqlcluster/home/mysqlc/bin/mysql -u cuser
 ```
  ```bash
-  /opt/mysqlcluster/home/mysqlc/bin/mysql -h ip-172-31-92-148.ec2.internal -u cuser -preza1234
+  /opt/mysqlcluster/home/mysqlc/bin/mysql -h ip-172-31-95-133.ec2.internal -u cuser -preza1234
 
 ```
 
