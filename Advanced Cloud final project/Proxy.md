@@ -25,6 +25,13 @@ sudo chmod 600 /home/ubuntu/.ssh/authorized_keys
  /opt/mysqlcluster/home/mysqlc/bin/mysql -h ip-172-31-95-133.ec2.internal -u reza -preza1234
 ```
 
+```bash
+ apt update;
+apt -y install python3-pip;
+pip3 install flask;
+```
+
+
 pymysql.err.OperationalError: (2003, "Can't connect to MySQL server on 'ip-172-31-83-82.ec2.internal' ([Errno 111] Connection refused)"):
 SOLVED: 
 
