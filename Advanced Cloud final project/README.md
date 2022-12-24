@@ -118,7 +118,7 @@ sudo /opt/mysqlcluster/home/mysqlc/bin/mysql_secure_installation
 sudo /opt/mysqlcluster/home/mysqlc/bin/mysql -h 127.0.0.1 -uroot -p reza1234 
 
 CREATE USER 'reza'@'%' IDENTIFIED BY 'reza1234';
-GRANT ALL PRIVILEGES ON *.* TO 'cuser'@'%' WITH GRANT OPTION;
+GRANT ALL PRIVILEGES ON *.* TO 'reza'@'%' WITH GRANT OPTION;
 FLUSH PRIVILEGES;
 
 sudo /opt/mysqlcluster/home/mysqlc/bin/mysql -h 127.0.0.1 -ureza -preza1234 
@@ -178,6 +178,19 @@ SELECT COUNT(*) FROM film;
 SELECT COUNT(*) FROM film_text;
 ```
 
+**Stand alone: **
+
+```bash
+sudo apt-get install mysql-server
+```
+
+```bash
+sudo mysql_secure_installation
+mysql -u root -p
+```
+
+
+
 **Sysbench:**
 
 ```bash
@@ -214,17 +227,6 @@ sysbench --db-driver=mysql --mysql-user=root --mysql-password=reza1234 \
   --rand-type=uniform /usr/share/sysbench/oltp_read_only.lua run
 ```
 
-
-**Stand alone: **
-
-```bash
-sudo apt-get install mysql-server
-```
-
-```bash
-sudo mysql_secure_installation
-mysql -u root -p
-```
 
 
 
