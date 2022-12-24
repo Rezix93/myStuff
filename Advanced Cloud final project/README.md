@@ -99,7 +99,7 @@ Initialize the Database
 ** We can now start the manager by executing the ndb_mgmd binary and specifying its config file using the -f flag:
 
  ```bash
-sudo /opt/mysqlcluster/home/mysqlc/bin/ndb_mgmd -f /opt/mysqlcluster/deploy/conf/config.ini --reload --configdir=/opt/mysqlcluster/deploy/conf/
+sudo /opt/mysqlcluster/home/mysqlc/bin/ndb_mgmd -f /opt/mysqlcluster/deploy/conf/config.ini --initial --configdir=/opt/mysqlcluster/deploy/conf/
 ```
 Once inside the console enter the command SHOW and hit ENTER:
 
@@ -143,7 +143,18 @@ It is finished when you see:‌ NDB Binlog: ndb tables writable
  cd  /opt/mysqlcluster/home/mysqlc/
 sudo /opt/mysqlcluster/home/mysqlc/bin/mysql_secure_installation
 
---verbose --help | grep my.cnf
+sudo /opt/mysqlcluster/home/mysqlc/bin/mysql -h 127.0.0.1 -uroot -p reza1234 
+
+CREATE USER 'reza'@'%' IDENTIFIED BY 'reza1234';
+GRANT ALL PRIVILEGES ON *.* TO 'cuser'@'%' WITH GRANT OPTION;
+
+CREATE USER 'reza'@'localhost';
+GRANT ALL PRIVILEGES ON *.* TO 'reza'@'localhost' WITH GRANT OPTION;
+FLUSH PRIVILEGES;
+
+
+
+sudo /opt/mysqlcluster/home/mysqlc/bin/mysql -h 127.0.0.1 -ureza -preza1234 
 
 /opt/mysqlcluster/home/mysqlc/bin/mysqladmin -u root password
 ```
@@ -156,10 +167,12 @@ sudo /opt/mysqlcluster/home/mysqlc/bin/mysql_secure_installation
 
 ```bash
 wget https://downloads.mysql.com/docs/sakila-db.tar.gz
-tar -xvzf 
-mysql -u root -p
+tar -xvzf sakila-db.tar.gz
+cd sakila-db 
+sudo /opt/mysqlcluster/home/mysqlc/bin/mysql -h 127.0.0.1 -uroot -p
+#mysql -u root 
 SOURCE sakila-schema.sql;
-SOURCE sakila-data.sql;```
+SOURCE sakila-data.sql;
 USE sakila;
 SHOW FULL TABLES;
 SELECT COUNT(*) FROM film;
