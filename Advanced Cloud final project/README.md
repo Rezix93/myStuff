@@ -201,14 +201,14 @@ For cluster :
 ```bash
  sysbench --db-driver=mysql --mysql-user=reza --mysql-password=reza1234 \
   --mysql-socket=/tmp/mysql.sock --mysql-db=dbtest --range_size=100 \
-  --table_size=10000 --tables=2 --threads=1 --events=0 --time=60 \
+  --table_size=1000000 --tables=10 --events=0 --time=60 \
   --rand-type=uniform /usr/share/sysbench/oltp_read_only.lua prepare
 ```
 
  ```bash
 sysbench --db-driver=mysql --mysql-user=reza --mysql-password=reza1234 \
   --mysql-socket=/tmp/mysql.sock --mysql-db=dbtest --range_size=100 \
-  --table_size=10000 --tables=2 --threads=1 --events=0 --time=60 \
+  --table_size=1000000 --tables=10 --events=0 --time=60 \
   --rand-type=uniform /usr/share/sysbench/oltp_read_only.lua run
 ```
 
@@ -216,14 +216,14 @@ For Standalone:
 ```bash
  sysbench --db-driver=mysql --mysql-user=reza --mysql-password=reza1234 \
    --mysql-db=dbtest --range_size=100 \
-  --table_size=10000 --tables=2 --threads=1 --events=0 --time=60 \
+  --table_size=1000000 --tables=10 --events=0 --time=60 \
   --rand-type=uniform /usr/share/sysbench/oltp_read_only.lua prepare
 ```
 
  ```bash
 sysbench --db-driver=mysql --mysql-user=reza --mysql-password=reza1234 \
    --mysql-db=dbtest --range_size=100 \
-  --table_size=10000 --tables=2 --threads=1 --events=0 --time=60 \
+  --table_size=1000000 --tables=10 --events=0 --time=60 \
   --rand-type=uniform /usr/share/sysbench/oltp_read_only.lua run
 ```
 
