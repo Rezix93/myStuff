@@ -9,7 +9,7 @@ sudo /opt/mysqlcluster/home/mysqlc/bin/ndb_mgmd -f /opt/mysqlcluster/deploy/conf
 sudo /opt/mysqlcluster/home/mysqlc/bin/mysqld --defaults-file=/opt/mysqlcluster/deploy/conf/my.cnf --user=root &
 sudo /opt/mysqlcluster/home/mysqlc/bin/ndb_mgm -e show
 sudo /opt/mysqlcluster/home/mysqlc/bin/mysql -h 127.0.0.1 -uroot -preza1234 
-/opt/mysqlcluster/home/mysqlc/bin/mysql -u cuser
+/opt/mysqlcluster/home/mysqlc/bin/mysql -u reza
 
 ssh -i labsuser.pem ubuntu@ec2-54-227-117-122.compute-1.amazonaws.com
 
@@ -21,8 +21,8 @@ sudo chmod 600 /home/ubuntu/.ssh/authorized_keys
  NODE‌S:‌
  
 ```bash
- sudo /opt/mysqlcluster/home/mysqlc/bin/ndbd -c "ip-172-31-92-148.ec2.internal"
- /opt/mysqlcluster/home/mysqlc/bin/mysql -h ip-172-31-92-148.ec2.internal -u cuser -preza1234
+ sudo /opt/mysqlcluster/home/mysqlc/bin/ndbd -c "ip-172-31-95-133.ec2.internal"
+ /opt/mysqlcluster/home/mysqlc/bin/mysql -h ip-172-31-95-133.ec2.internal -u reza -preza1234
 ```
 
 pymysql.err.OperationalError: (2003, "Can't connect to MySQL server on 'ip-172-31-83-82.ec2.internal' ([Errno 111] Connection refused)"):
