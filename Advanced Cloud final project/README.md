@@ -3,6 +3,13 @@
 **Common steps**
 
 ```bash
+hostname=ip-172-31-84-235.ec2.internal # Hostname of the manager 172.31.84.235
+hostname=ip-172-31-84-194.ec2.internal # Hostname/IP of the first data node 172.31.84.194
+hostname=ip-172-31-95-48.ec2.internal # Hostname/IP of the second data node 172.31.95.48
+```
+
+
+```bash
 sudo su 
 
 mkdir -p /opt/mysqlcluster/home
@@ -134,6 +141,72 @@ sudo /opt/mysqlcluster/home/mysqlc/bin/mysql_secure_installation
 /opt/mysqlcluster/home/mysqlc/bin/mysqladmin -u root password
 ```
 
+**Download and install sakila**
+
+[1] Install sakila database. C
+
+
+
+```bash
+wget https://downloads.mysql.com/docs/sakila-db.tar.gz
+tar -xvzf 
+mysql -u root -p
+SOURCE sakila-schema.sql;
+SOURCE sakila-data.sql;```
+USE sakila;
+SHOW FULL TABLES;
+SELECT COUNT(*) FROM film;
+SELECT COUNT(*) FROM film_text;
+```
+
+**Sysbench:**
+
+```bash
+apt-get install sysbench
+```
+
+For cluster : 
+```bash
+ sysbench --db-driver=mysql --mysql-user=root --mysql-password=reza1234 \
+  --mysql-socket=/tmp/mysql.sock --mysql-db=dbtest --range_size=100 \
+  --table_size=10000 --tables=2 --threads=1 --events=0 --time=60 \
+  --rand-type=uniform /usr/share/sysbench/oltp_read_only.lua prepare
+```
+
+ ```bash
+sysbench --db-driver=mysql --mysql-user=root --mysql-password=reza1234 \
+  --mysql-socket=/tmp/mysql.sock --mysql-db=dbtest --range_size=100 \
+  --table_size=10000 --tables=2 --threads=1 --events=0 --time=60 \
+  --rand-type=uniform /usr/share/sysbench/oltp_read_only.lua run
+```
+
+For Standalone: 
+```bash
+ sysbench --db-driver=mysql --mysql-user=root --mysql-password=reza1234 \
+   --mysql-db=dbtest --range_size=100 \
+  --table_size=10000 --tables=2 --threads=1 --events=0 --time=60 \
+  --rand-type=uniform /usr/share/sysbench/oltp_read_only.lua prepare
+```
+
+ ```bash
+sysbench --db-driver=mysql --mysql-user=root --mysql-password=reza1234 \
+   --mysql-db=dbtest --range_size=100 \
+  --table_size=10000 --tables=2 --threads=1 --events=0 --time=60 \
+  --rand-type=uniform /usr/share/sysbench/oltp_read_only.lua run
+```
+
+
+**Stand alone: **
+
+```bash
+sudo apt-get install mysql-server
+```
+
+```bash
+sudo mysql_secure_installation
+mysql -u root -p
+```
+
 
 
 **ALL‌CHALENGES:**
@@ -146,12 +219,9 @@ sudo /opt/mysqlcluster/home/mysqlc/bin/mysql -h 127.0.0.1 -u cluser
 
 /opt/mysqlcluster/home/mysqlc/bin/mysql -u root -p -h 127.0.0.1 -e "select @@socket"
 /opt/mysqlcluster/home/mysqlc/bin/mysql -u root -p -S /tmp/mysql.sock
+
 ```
-+-----------------+
-| @@socket        |
-+-----------------+
-| /tmp/mysql.sock |
-+-----------------+
+socket adress: /tmp/mysql.sock 
 
 
 
