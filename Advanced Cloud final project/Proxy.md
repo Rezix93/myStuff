@@ -2,6 +2,8 @@ Master:
 
 ```bash
 PS1='\u:\W\$ '
+/opt/mysqlcluster/home/mysqlc/bin/ndb_mgm -e shutdown
+
 ```
 
 ```bash
