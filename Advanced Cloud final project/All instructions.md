@@ -101,7 +101,10 @@ wget https://dev.mysql.com/get/Downloads/MySQL-Cluster-8.0/mysql-cluster-communi
 ndb-connectstring=ip-172-31-84-235.ec2.internal  # location of cluster manager
 
 ```
+netstat -ntl | grep 80
+Now you got the process name and kill the process with the killall command:
 
+killall -9 process name
 ndb_mgmd >> master
 ndbd >>‌ salve (data node)
 
