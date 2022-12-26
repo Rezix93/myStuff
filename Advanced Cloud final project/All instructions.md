@@ -11,7 +11,7 @@ and cluster. To know more about Sakila and how to install it, please refer to [1
 **References**
 
 [1] Install sakila database. https://dev.mysql.com/doc/sakila/en/sakila-installation.html
-
+netstat -ntupl | grep :80
 
 
 ```bash
