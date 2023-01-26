@@ -35,7 +35,17 @@ This is the documentation to start writing tracepoints in java source code
 
 
 
+After installing brew: 
 
 
+```bash
+ echo '# Set PATH, MANPATH, etc., for Homebrew.' >> /home/rezghool/.profile
+ echo 'eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"' >> /home/rezghool/.profile
+ eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+```
 
+```bash
+javac -cp /usr/share/java/jarpath/lttng-ust-agent-common.jar:/usr/share/java/jarpath/lttng-ust-agent-jul.jar Test.java
+ ./configure --enable-java-agent-log4j CLASSPATH:/usr/local/apache-log4j-2.19.0-bin/log4j-1.2-api-2.19
 
+```
