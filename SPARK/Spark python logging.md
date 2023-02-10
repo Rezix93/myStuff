@@ -125,7 +125,7 @@ DEBUG: Information interesting for Developers, when trying to debug a problem.
 INFO: Information interesting for Support staff trying to figure out the context of a given error
 WARN to FATAL: Problems and Errors depending on level of damage.
 
-- ![#f03c15](https://placehold.co/15x15/f03c15/f03c15.png) `#f03c15`
+- ![#f03c15]REza `#f03c15`
 - 
 ```bash
 ```
