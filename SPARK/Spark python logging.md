@@ -91,29 +91,7 @@ lttng view
 
 In the resulting trace, an event record which a Python application generated is named lttng_python:event and has the following fields:
 
-asctime
-Logging time (string).
 
-msg
-Log record message.
-
-logger_name
-Logger name.
-
-funcName
-Name of the function in which the log statement was executed.
-
-lineno
-Line number at which the log statement was executed.
-
-int_loglevel
-Log level integer value.
-
-thread
-ID of the Python thread in which the log statement was executed.
-
-threadName
-Name of the Python thread in which the log statement was executed.
 
 
 
@@ -125,12 +103,31 @@ DEBUG: Information interesting for Developers, when trying to debug a problem.
 INFO: Information interesting for Support staff trying to figure out the context of a given error
 WARN to FATAL: Problems and Errors depending on level of damage.
 
-+ C +
-- O -
-! L !
-@@ O @@
-# R #
-S- 
+```diff
++asctime
+Logging time (string).
+
++msg
+Log record message.
+
++logger_name
+Logger name.
+
++funcName
+Name of the function in which the log statement was executed.
+
++lineno
+Line number at which the log statement was executed.
+
++int_loglevel
+Log level integer value.
+
++thread
+ID of the Python thread in which the log statement was executed.
+
++threadName
+Name of the Python thread in which the log statement was executed.
+```
 ```bash
 ```
 ```bash
