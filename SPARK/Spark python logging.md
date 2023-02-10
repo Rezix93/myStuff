@@ -125,8 +125,12 @@ DEBUG: Information interesting for Developers, when trying to debug a problem.
 INFO: Information interesting for Support staff trying to figure out the context of a given error
 WARN to FATAL: Problems and Errors depending on level of damage.
 
-- ![#f03c15]REza `#f03c15`
-- 
++ C +
+- O -
+! L !
+@@ O @@
+# R #
+S- 
 ```bash
 ```
 ```bash
