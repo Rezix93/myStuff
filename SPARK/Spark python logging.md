@@ -127,9 +127,15 @@ ID of the Python thread in which the log statement was executed.
 
 +threadName
 Name of the Python thread in which the log statement was executed.
+
+
+**spark
+
+
+```bash
+/opt/spark/bin/pyspark 
 ```
 ```bash
-```
-```bash
+
 ```
 
