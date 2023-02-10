@@ -136,6 +136,6 @@ Name of the Python thread in which the log statement was executed.
 /opt/spark/bin/pyspark 
 ```
 ```bash
-
+/opt/spark/bin/spark-submit  --master local[4]   SimpleApp.py
 ```
 
