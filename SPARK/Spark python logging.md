@@ -120,6 +120,11 @@ Name of the Python thread in which the log statement was executed.
 **When an application imports the LTTng-UST Python agent, the agent tries to register to a session daemon. Note that you must start the session daemon before you run the Python application.
 
 
+diffrent between error info and ...
+DEBUG: Information interesting for Developers, when trying to debug a problem.
+INFO: Information interesting for Support staff trying to figure out the context of a given error
+WARN to FATAL: Problems and Errors depending on level of damage.
+
 ```bash
 ```
 ```bash
