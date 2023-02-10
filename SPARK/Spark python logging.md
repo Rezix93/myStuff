@@ -115,6 +115,11 @@ ID of the Python thread in which the log statement was executed.
 threadName
 Name of the Python thread in which the log statement was executed.
 
+
+
+**When an application imports the LTTng-UST Python agent, the agent tries to register to a session daemon. Note that you must start the session daemon before you run the Python application.
+
+
 ```bash
 ```
 ```bash
