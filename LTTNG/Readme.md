@@ -28,7 +28,7 @@ lttng create
 lttng enable-event --jul --all
 lttng start
 
-java -classpath /usr/local/share/java/*:. -Djava.library.path=/usr/local/lib Hello
+java -classpath /usr/local/share/java/*:. -Djava.library.path=/usr/local/lib Test
 
 lttng stop
 lttng view
