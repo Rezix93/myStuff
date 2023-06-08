@@ -12,7 +12,25 @@ java.util.logging (JUL) works by defining Logger and Handler objects. Loggers ar
 
 
 ```bash
-apt-get update
-apt-get install python3-pip 
-pip install pyspark
+javac -cp /usr/lcoal/share/java/lttng-ust-agent-common.jar:/usr/lcoal/share/java/lttng-ust-agent-jul.jar:/usr/local/share/java/liblttng-ust-agent.jar Test.java
+```
+
+
+```bash
+java -classpath /usr/local/share/java/*:. -Djava.library.path=/usr/local/lib Hello
+```
+
+
+This is nice, but not sufficient for us: we want the results in an LTTng trace! Let's create a tracing session, enable LTTng events targetting the JUL (--jul) domain, and start it:
+
+```bash
+lttng create
+lttng enable-event --jul --all
+lttng start
+
+java -classpath /usr/local/share/java/*:. -Djava.library.path=/usr/local/lib Hello
+
+lttng stop
+lttng view
+lttng destroy
 ```
