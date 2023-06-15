@@ -34,3 +34,12 @@ lttng stop
 lttng view
 lttng destroy
 ```
+
+
+Task 3: Understanding the Critical Path
+The OS Execution Graph analysis that is the base of the critical path computes the dependencies between the threads only from the kernel events. It will try to explain the causes of a thread being blocked by following what triggered the wakeup of the thread. For example, the reception of a network packet will cause a wakeup event for the thread that was waiting for this packet. So we can infer that the thread was blocked waiting for network.
+
+The Critical Path analysis starts from the end of the thread and moves back through the dependency chain to get the longest path of waiting for resources. It would find out if a process was waiting for a semaphore owned by another thread or if it was waiting on disk, etc.
+
+In the case of the wget critical path, there is no dependency with any other thread on the machine, as should be expected from such an application, so it looks like the line of the process of the Control Flow view, only that the blocked states are replaced by the reasons of the blocking. The following screenshot shows the legend of the Critical Path view.
+
