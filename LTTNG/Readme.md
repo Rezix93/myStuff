@@ -37,7 +37,7 @@ lttng destroy
 
 
 Task 3: Understanding the Critical Path
-The OS Execution Graph analysis that is the base of the critical path computes the dependencies between the threads only from the kernel events. It will try to explain the causes of a thread being blocked by following what triggered the wakeup of the thread. For example, the reception of a network packet will cause a wakeup event for the thread that was waiting for this packet. So we can infer that the thread was blocked waiting for network.
+The OS Execution Graph analysis that is the base of the critical path computes the dependencies between the threads only from the kernel events. It will try to explain the causes of a thread being blocked by following what triggered the wakeup of the thread. For example, the reception of a network packet will cause a wake-up event for the thread that was waiting for this packet. So we can infer that the thread was blocked waiting for the network.
 
 The Critical Path analysis starts from the end of the thread and moves back through the dependency chain to get the longest path of waiting for resources. It would find out if a process was waiting for a semaphore owned by another thread or if it was waiting on disk, etc.
 
@@ -46,17 +46,16 @@ In the case of the wget critical path, there is no dependency with any other thr
 
 **SPARK
 https://linuxhint.com/install-apache-spark-ubuntu/
-For runnnig spark just do this
+For running spark just do this
 
 ```bash
 start-master.sh
 ```
-Once you have started; run the address (https://localhost:8080) and you will notice that there is one worker added in “Workers” section. It is noticed that worker is using “1” core of processor and 3.3GB of RAM by default:
+Once you have started; run the address (https://localhost:8080) and you will notice that there is one worker added in “Workers” section. It is noticed that the worker is using “1” core of processor and 3.3GB of RAM by default:
 
 ```bash
 ./sbin/start-worker.sh --cores 4 --memory 4g spark://localhost:7077
 ```
-
 
 
 org.apache.spark.deploy.worker.Worker running as process 17129.  Stop it first.
