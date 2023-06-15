@@ -43,3 +43,27 @@ The Critical Path analysis starts from the end of the thread and moves back thro
 
 In the case of the wget critical path, there is no dependency with any other thread on the machine, as should be expected from such an application, so it looks like the line of the process of the Control Flow view, only that the blocked states are replaced by the reasons of the blocking. The following screenshot shows the legend of the Critical Path view.
 
+
+**SPARK
+https://linuxhint.com/install-apache-spark-ubuntu/
+For runnnig spark just do this
+
+```bash
+start-master.sh
+```
+Once you have started; run the address (https://localhost:8080) and you will notice that there is one worker added in “Workers” section. It is noticed that worker is using “1” core of processor and 3.3GB of RAM by default:
+
+```bash
+./sbin/start-worker.sh --cores 4 --memory 4g spark://localhost:7077
+```
+
+
+
+org.apache.spark.deploy.worker.Worker running as process 17129.  Stop it first.
+
+```bash
+stop-worker.sh
+```
+
+
+and open http://localhost:8080/
