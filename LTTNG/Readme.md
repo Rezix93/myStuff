@@ -69,5 +69,14 @@ stop-worker.sh
 stop-all.sh
 ```
 
+```bash
+echo $SPARK_HOME
+export SPARK_HOME=/opt/spark
+```
+
+
+
+
+
 
 and open http://localhost:8080/
