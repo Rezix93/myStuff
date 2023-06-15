@@ -61,6 +61,7 @@ Once you have started; run the address (https://localhost:8080) and you will not
 org.apache.spark.deploy.worker.Worker running as process 17129.  Stop it first.
 
 ```bash
+stop-master.sh
 stop-worker.sh
 ```
 
