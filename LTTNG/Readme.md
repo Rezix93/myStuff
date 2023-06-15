@@ -17,7 +17,7 @@ javac -cp /usr/lcoal/share/java/lttng-ust-agent-common.jar:/usr/lcoal/share/java
 
 
 ```bash
-java -classpath /usr/local/share/java/*:. -Djava.library.path=/usr/local/lib Hello
+java -classpath /usr/local/share/java/*:. -Djava.library.path=/usr/local/lib Test
 ```
 
 
