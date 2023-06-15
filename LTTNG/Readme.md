@@ -74,7 +74,16 @@ echo $SPARK_HOME
 export SPARK_HOME=/opt/spark
 ```
 
+
+```bash
 javac -cp /opt/spark/core/target/spark-core_2.12-3.4.0.jar:/opt/spark/build/scala-2.12.17/lib/scala-library.jar:/opt/spark/core/target/jars/guava-14.0.1.jar:/opt/spark/sql/core/target/spark-sql_2.12-3.4.0.jar JavaPageRank.java
+
+jar cf JavaPageRank.jar JavaPageRank.class
+
+spark-submit --class JavaPageRank --master <spark-master-url> JavaPageRank.jar <input-file> <output-file>
+
+```
+
 
 
 
