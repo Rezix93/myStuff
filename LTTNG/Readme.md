@@ -85,7 +85,10 @@ spark-submit --class JavaPageRank --master <spark-master-url> JavaPageRank.jar <
 ```
 
 
+```bash
+run-example JavaWordCount /opt/spark/examples/src/main/java/org/apache/spark/examples/dataset/wordcount.txt
 
+```
 
 
 
