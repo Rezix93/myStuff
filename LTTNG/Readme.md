@@ -54,9 +54,12 @@ start-master.sh
 Once you have started; run the address (https://localhost:8080) and you will notice that there is one worker added in “Workers” section. It is noticed that the worker is using “1” core of processor and 3.3GB of RAM by default:
 
 ```bash
-./sbin/start-worker.sh --cores 4 --memory 4g spark://localhost:7077
+spark-class org.apache.spark.deploy.worker.Worker  spark://localhost:7077 -c 1 -m 512M
 ```
 
+```bash
+spark-submit  --class org.apache.spark.examples.SparkPi   --master spark://localhost:7077  lib/spark-examples-1.2.1-hadoop2.4.0.jar 
+```
 
 org.apache.spark.deploy.worker.Worker running as process 17129.  Stop it first.
 
