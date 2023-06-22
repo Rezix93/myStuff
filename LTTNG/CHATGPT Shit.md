@@ -9,17 +9,21 @@ Install LTTng: Start by installing LTTng on your Linux system. LTTng consists of
 Instrument Apache Spark: To trace Apache Spark with LTTng, you need to instrument the Spark processes to emit trace events. Spark provides an option to use the LTTng tracer for tracing internal events. You can enable LTTng tracing in Spark by setting the following configuration property:
 
 bash
-Copy code
+```bash
 export SPARK_DAEMON_JAVA_OPTS="-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=5005 -Dspark.tracing.enabled=true"
+```
+
 This setting enables LTTng tracing for Spark daemons and workers. Adjust the configuration based on your specific Spark deployment.
 
 Start LTTng Tracing Session: Launch an LTTng tracing session to capture the system-level events during the execution of the Spark application. You can use the LTTng command-line tools or graphical interfaces (such as Babeltrace) to start, stop, and manage the tracing session.
 
 bash
-Copy code
-lttng create spark_trace_session
+```
+bashlttng create spark_trace_session
 lttng enable-event --userspace "spark:*"
 lttng start
+```
+
 The above commands create a new LTTng tracing session, enable tracing for Spark user-space events using the wildcard pattern, and start the tracing session.
 
 Execute Spark Application: Run your Spark application as usual, and LTTng will capture the specified trace events during its execution.
