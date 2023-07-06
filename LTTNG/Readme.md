@@ -84,11 +84,24 @@ spark-submit --class JavaPageRank --master <spark-master-url> JavaPageRank.jar <
 
 ```
 
-
 ```bash
 run-example JavaWordCount /opt/spark/examples/src/main/java/org/apache/spark/examples/dataset/wordcount.txt
+```
+
+
+
+**Use the LTTng-UST Java agent for Apache log4j
+
+```bash
+javac -cp /usr/share/java/jarpath/lttng-ust-agent-common.jar:/usr/share/java/jarpath/lttng-ust-agent-log4j.jar:$LOG4JPATH Test.java
 
 ```
+
+
+
+
+
+
 
 
 
