@@ -90,10 +90,14 @@ run-example JavaWordCount /opt/spark/examples/src/main/java/org/apache/spark/exa
 
 
 
+
+
 **Use the LTTng-UST Java agent for Apache log4j
 
 ```bash
 javac -cp /usr/share/java/jarpath/lttng-ust-agent-common.jar:/usr/share/java/jarpath/lttng-ust-agent-log4j.jar:$LOG4JPATH Test.java
+
+javac -cp /usr/lcoal/share/java/lttng-ust-agent-common.jar:/usr/lcoal/share/java/lttng-ust-agent-jul.jar:/usr/local/share/java/liblttng-ust-agent.jar:$LOG4JPATH Test.java
 
 ```
 
