@@ -102,7 +102,7 @@ javac -cp /usr/lcoal/share/java/lttng-ust-agent-common.jar:/usr/lcoal/share/java
 ```
 
 
-
+./configure --enable-java-agent-log4j CLASSPATH="/usr/share/java/log4j.jar"
 
 
 
