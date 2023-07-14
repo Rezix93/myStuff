@@ -28,7 +28,16 @@ make
 sudo make install
 sudo ldconfig
 
-
-java -cp .:/usr/share/java/log4j.jar:lttng-ust-agent-jul-2.13.1.jar:/usr/share/java/lttng-ust-agent-jul.jar:/usr/share/java/lttng-ust-agent-log4j.jar:/usr/share/java/lttng-ust-agent-jul-2.13.1.jar HelloLog4j
 ```
+
+**example HelloLog4j.java 
+```bash
+lttng create test1
+lttng enable-event -u -a
+lttng start
+java -cp .:/usr/share/java/log4j.jar:lttng-ust-agent-jul-2.13.1.jar:/usr/share/java/lttng-ust-agent-jul.jar:/usr/share/java/lttng-ust-agent-log4j.jar:/usr/share/java/lttng-ust-agent-jul-2.13.1.jar HelloLog4j
+lttng stop
+lttng view
+```
+
 
