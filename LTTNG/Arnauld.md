@@ -6,3 +6,23 @@ spark uses log4j as a logging facility. So this week I was trying to use the LTT
 
 Arnaud:
 It should be very easy to do. You need to change the Log configuration and it should work with lttng
+
+
+
+```bash
+./configure --enable-java-agent-log4j CLASSPATH="/usr/share/java/log4j.jar"
+
+make
+sudo make install
+sudo ldconfig
+```
+
+```bash
+./configure --enable-java-agent-log4j2 CLASSPATH="/usr/share/java/log4j.jar"
+./configure --enable-java-agent-log4j2 CLASSPATH="/usr/share/java/log4j-core.jar:/usr/share/java/log4j-api.jar"
+
+make
+sudo make install
+sudo ldconfig
+```
+
