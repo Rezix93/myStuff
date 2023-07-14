@@ -41,3 +41,7 @@ lttng view
 ```
 
 
+java -cp "java-log4j2-basic-1.jar:/usr/share/java/lttng-ust-agent-jul.jar:/usr/share/java/lttng-ust-agent-log4j.jar:/usr/share/java/lttng-ust-agent-jul-2.13.1.jar:/path/to/log4j-core.jar:/path/to/log4j-api.jar" HelloLog4j2
+
+
+
