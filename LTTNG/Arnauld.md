@@ -32,6 +32,7 @@ sudo ldconfig
 
 **example HelloLog4j.java 
 ```bash
+cd ~/research/lttng-ust/lttng-ust/doc/examples/java-log4
 lttng create test1
 lttng enable-event -u -a
 lttng start
