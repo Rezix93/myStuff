@@ -42,7 +42,7 @@ export CLASSPATH="/usr/share/java/log4j-core.jar:/usr/share/java/log4j-api.jar"
 
 after make log4j1:
 
-Making all in lttng-ust-agent-log4j
+###Making all in lttng-ust-agent-log4j
 make[5]: Entering directory '/home/rezghool/research/lttng-ust/lttng-ust/src/lib/lttng-ust-java-agent/java/lttng-ust-agent-log4j'
 CLASSPATH=.:./.${CLASSPATH:+":$CLASSPATH"} javac -d . -classpath /usr/share/java/*:.:./../lttng-ust-agent-common/lttng-ust-agent-common.jar    org/lttng/ust/agent/log4j/LttngLog4jAgent.java org/lttng/ust/agent/log4j/LttngLog4jApi.java org/lttng/ust/agent/log4j/LttngLogAppender.java
 echo timestamp > classnoinst.stamp
@@ -50,7 +50,12 @@ jar cfm  lttng-ust-agent-log4j-1.0.0.jar ./Manifest.txt org/lttng/ust/agent/log4
 /usr/bin/javah -classpath /usr/share/java/*:.:. -d ../../jni/log4j  org.lttng.ust.agent.log4j.LttngLog4jApi && \
 echo "Log4j JNI header generated" > log4j-jni-header.stamp
 make[5]: Leaving directory '/home/rezghool/research/lttng-ust/lttng-ust/src/lib/lttng-ust-java-agent/java/lttng-ust-agent-log4j'
-Making all in lttng-ust-agent-log4j2
+
+####Making all in lttng-ust-agent-log4j2:
+make[5]: Entering directory '/home/rezghool/research/lttng-ust/lttng-ust/src/lib/lttng-ust-java-agent/java/lttng-ust-agent-log4j2'
+/usr/bin/javah -classpath /usr/share/java/*:.:. -d ../../jni/log4j  org.lttng.ust.agent.log4j2.LttngLog4j2Api && \
+echo "Log4j JNI header generated" > log4j-jni-header.stamp
+Error: Could not find class file for 'org.lttng.ust.agent.log4j2.LttngLog4j2Api'.
 
 
 
