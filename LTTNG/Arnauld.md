@@ -37,7 +37,7 @@ export CLASSPATH="/usr/share/java/log4j-core.jar:/usr/share/java/log4j-api.jar"
 ./configure --enable-java-agent-log4j2 CLASSPATH="/usr/share/java/*:."
 
 
-./configure --enable-java-agent-log4j --enable-java-agent-log4j2 CLASSPATH="~/research/lttng-ust/lttng-ust/src/lib/lttng-ust-java-agent/java/lttng-ust-agent-log4j2/org/lttng/ust/agent/log4j2/*:/usr/share/java/*:."
+./configure --enable-java-agent-log4j --enable-java-agent-log4j2 CLASSPATH="/usr/share/java/*:."
 
 
 after make log4j1:
@@ -56,6 +56,18 @@ make[5]: Entering directory '/home/rezghool/research/lttng-ust/lttng-ust/src/lib
 /usr/bin/javah -classpath /usr/share/java/*:.:. -d ../../jni/log4j  org.lttng.ust.agent.log4j2.LttngLog4j2Api && \
 echo "Log4j JNI header generated" > log4j-jni-header.stamp
 Error: Could not find class file for 'org.lttng.ust.agent.log4j2.LttngLog4j2Api'.
+
+org/lttng/ust/agent/log4j2/LttngLog4j2Agent.java:46: error: cannot find symbol
+			log4j2_instance = new LttngLog4j2Agent(Domain.LOG4J2);
+			                                             ^
+  symbol:   variable LOG4J2
+  location: class Domain
+org/lttng/ust/agent/log4j2/LttngLogAppender.java:96: error: cannot find symbol
+		} else if (domain == LttngLog4j2Agent.Domain.LOG4J2) {
+		                                            ^
+  symbol:   variable LOG4J2
+  location: class Domain
+2 errors
 
 
 
