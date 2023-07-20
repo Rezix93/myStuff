@@ -19,11 +19,42 @@ sudo ldconfig
 
 ```bash
 -classpath /usr/local/share/java/*:. -Djava.library.path=/usr/local/lib Test
-jar tf /path/to/log4j-core-x.x.x.jar | grep org/lttng/ust/agent/log4j2/LttngLog4j2Api
+java -cp /usr/share/java/jarpath/lttng-ust-agent-common.jar:/usr/share/java/jarpath/lttng-ust-agent-log4j.jar:$LOG4JPATH:. Test
+
+export CLASSPATH="/usr/share/java/log4j-core.jar:/usr/share/java/log4j-api.jar:/usr/share/java/log4j.jar"
+
+find . -name "*.jar" -exec jar tf {} \; | grep "org.lttng.ust.agent.log4j*\.class"
+
+
+jar tf /usr/share/java/log4j-core.jar | grep org/lttng/ust/agent/log4j/LttngLog4j2Api
+jar tf /usr/share/java/log4j-api.jar | grep org/lttng/ust/agent/log4j2/LttngLog4j2Api
 
 export CLASSPATH="/usr/share/java/log4j-core.jar:/usr/share/java/log4j-api.jar"
 
-./configure --enable-java-agent-log4j CLASSPATH="/usr/share/java/log4j.jar"
+~/research/lttng-ust/lttng-ust/src/lib/lttng-ust-java-agent/java/lttng-ust-agent-log4j2/org/lttng/ust/agent/log4j2
+
+./configure --enable-java-agent-log4j CLASSPATH="/usr/share/java/*:."
+./configure --enable-java-agent-log4j2 CLASSPATH="/usr/share/java/*:."
+
+
+./configure --enable-java-agent-log4j --enable-java-agent-log4j2 CLASSPATH="~/research/lttng-ust/lttng-ust/src/lib/lttng-ust-java-agent/java/lttng-ust-agent-log4j2/org/lttng/ust/agent/log4j2/*:/usr/share/java/*:."
+
+
+after make log4j1:
+
+CLASSPATH=.:./.${CLASSPATH:+":$CLASSPATH"} javac -d . -classpath /usr/share/java/*:.:./../lttng-ust-agent-common/lttng-ust-agent-common.jar    org/lttng/ust/agent/log4j/LttngLog4jAgent.java org/lttng/ust/agent/log4j/LttngLog4jApi.java org/lttng/ust/agent/log4j/LttngLogAppender.java
+echo timestamp > classnoinst.stamp
+jar cfm  lttng-ust-agent-log4j-1.0.0.jar ./Manifest.txt org/lttng/ust/agent/log4j/*.class && rm -f lttng-ust-agent-log4j.jar && ln -s lttng-ust-agent-log4j-1.0.0.jar lttng-ust-agent-log4j.jar
+/usr/bin/javah -classpath /usr/share/java/*:.:. -d ../../jni/log4j  org.lttng.ust.agent.log4j.LttngLog4jApi && \
+echo "Log4j JNI header generated" > log4j-jni-header.stamp
+make[5]: Leaving directory '/home/rezghool/research/lttng-ust/lttng-ust/src/lib/lttng-ust-java-agent/java/lttng-ust-agent-log4j'
+
+
+
+
+./configure --enable-java-agent-log4j --enable-java-agent-log4j2 CLASSPATH="/usr/share/java/*:."
+
+
 ./configure --enable-java-agent-log4j2 CLASSPATH="/usr/share/java/log4j-core.jar:/usr/share/java/log4j-api.jar"
 
 ./configure --enable-java-agent-log4j2 CLASSPATH="/usr/share/java/log4j-core.jar:/usr/share/java/log4j-api.jar:/usr/local/share/java/*:."
@@ -40,7 +71,7 @@ sudo ldconfig
 ```bash
 cd ~/research/lttng-ust/lttng-ust/doc/examples/java-log4
 lttng create test1
-lttng enable-event -u -a
+lttng enable-event -l -a
 lttng start
 java -cp .:/usr/share/java/log4j.jar:lttng-ust-agent-jul-2.13.1.jar:/usr/share/java/lttng-ust-agent-jul.jar:/usr/share/java/lttng-ust-agent-log4j.jar:/usr/share/java/lttng-ust-agent-jul-2.13.1.jar HelloLog4j
 lttng stop
