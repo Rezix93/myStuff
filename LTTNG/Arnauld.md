@@ -10,12 +10,24 @@ It should be very easy to do. You need to change the Log configuration and it sh
 
 
 ```bash
-./configure --enable-java-agent-log4j CLASSPATH="/usr/share/java/log4j.jar"
+ export CLASSPATH="/home/rezghool/Downloads/apache-log4j-2.20.0-bin/log4j-core-2.20.0.jar:/home/rezghool/Downloads/apache-log4j-2.20.0-bin/og4j-api-2.20.0.jar"
 
+./configure --enable-java-agent-log4j2
 make
 sudo make install
 sudo ldconfig
 ```
+
+
+
+
+
+
+
+
+
+
+
 
 ```bash
 -classpath /usr/local/share/java/*:. -Djava.library.path=/usr/local/lib Test
@@ -36,8 +48,11 @@ export CLASSPATH="/usr/share/java/log4j-core.jar:/usr/share/java/log4j-api.jar"
 ./configure --enable-java-agent-log4j CLASSPATH="/usr/share/java/*:."
 ./configure --enable-java-agent-log4j2 CLASSPATH="/usr/share/java/*:."
 
+./configure --enable-java-agent-log4j2 CLASSPATH="/usr/share/java/log4j-core.jar:/usr/share/java/log4j-api.jar"
 
-./configure --enable-java-agent-log4j --enable-java-agent-log4j2 CLASSPATH="/usr/share/java/*:."
+
+./configure --enable-java-agent-log4j --enable-java-agent-log4j2 CLASSPATH="/usr/share/java/log4j-core.jar:/usr/share/java/log4j-api.jar"
+ CLASSPATH="/usr/share/java/*:."
 
 
 after make log4j1:
@@ -49,13 +64,32 @@ echo timestamp > classnoinst.stamp
 jar cfm  lttng-ust-agent-log4j-1.0.0.jar ./Manifest.txt org/lttng/ust/agent/log4j/*.class && rm -f lttng-ust-agent-log4j.jar && ln -s lttng-ust-agent-log4j-1.0.0.jar lttng-ust-agent-log4j.jar
 /usr/bin/javah -classpath /usr/share/java/*:.:. -d ../../jni/log4j  org.lttng.ust.agent.log4j.LttngLog4jApi && \
 echo "Log4j JNI header generated" > log4j-jni-header.stamp
+
+
 make[5]: Leaving directory '/home/rezghool/research/lttng-ust/lttng-ust/src/lib/lttng-ust-java-agent/java/lttng-ust-agent-log4j'
 
 ####Making all in lttng-ust-agent-log4j2:
 make[5]: Entering directory '/home/rezghool/research/lttng-ust/lttng-ust/src/lib/lttng-ust-java-agent/java/lttng-ust-agent-log4j2'
 /usr/bin/javah -classpath /usr/share/java/*:.:. -d ../../jni/log4j  org.lttng.ust.agent.log4j2.LttngLog4j2Api && \
 echo "Log4j JNI header generated" > log4j-jni-header.stamp
+
+
 Error: Could not find class file for 'org.lttng.ust.agent.log4j2.LttngLog4j2Api'.
+
+
+log4j.core.config.plugins.processor.PluginProcessor    org/lttng/ust/agent/log4j2/LttngLog4j2Agent.java org/lttng/ust/agent/log4j2/LttngLog4j2Api.java org/lttng/ust/agent/log4j2/LttngLogAppender.java
+Note: Processing Log4j annotations
+Note: Annotations processed
+Note: Processing Log4j annotations
+Note: No elements to process
+echo timestamp > classnoinst.stamp
+jar cfm  lttng-ust-agent-log4j2-1.0.0.jar ./Manifest.txt META-INF org/lttng/ust/agent/log4j2/*.class && rm -f lttng-ust-agent-log4j2.jar && ln -s lttng-ust-agent-log4j2-1.0.0.jar lttng-ust-agent-log4j2.jar
+/usr/bin/javah -classpath /usr/share/java/log4j-core.jar:/usr/share/java/log4j-api.jar:. -d ../../jni/log4j  org.lttng.ust.agent.log4j2.LttngLog4j2Api && \
+echo "Log4j JNI header generated" > log4j-jni-header.stamp
+Error: Could not find class file for 'org.lttng.ust.agent.log4j2.LttngLog4j2Api'.
+
+
+
 
 org/lttng/ust/agent/log4j2/LttngLog4j2Agent.java:46: error: cannot find symbol
 			log4j2_instance = new LttngLog4j2Agent(Domain.LOG4J2);
