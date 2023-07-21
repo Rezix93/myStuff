@@ -11,7 +11,8 @@ java -cp /opt/spark/build/scala-2.12.17/lib/scala-library.jar:/opt/spark/example
 ```
 
 
-
+export JAVA_HOME=/usr/lib/jvm/java-17-openjdk-amd64
+export PATH=$JAVA_HOME/bin:$PATH
 
 
 
