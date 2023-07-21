@@ -11,6 +11,11 @@ javac  -classpath  /home/rezghool/Downloads/hadoop-3.3.6/share/hadoop/common/had
 
 
 
+
+
+
+
+
 java -classpath  /home/rezghool/Downloads/hadoop-3.3.6/share/hadoop/common/hadoop-common-3.3.6.jar:/home/rezghool/Downloads/apache-log4j-2.20.0-bin/log4j-core-2.20.0.jar:/opt/spark/assembly/target/scala-2.12/jars/spark-core_2.12-3.4.0.jar:/opt/spark/assembly/target/scala-2.12/jars/scala-library-2.12.17.jar:path/to/log4j-core-2.x.jar:path/to/hadoop-common-x.x.x.jar:./ JavaWordCount
 
 javac  -classpath  /home/rezghool/Downloads/hadoop-3.3.6/share/hadoop/common/hadoop-common-3.3.6.jar:/home/rezghool/Downloads/apache-log4j-2.20.0-bin/log4j-core-2.20.0.jar:/opt/spark/assembly/target/scala-2.12/jars/spark-core_2.12-3.4.0.jar:/opt/spark/assembly/target/scala-2.12/jars/scala-library-2.12.17.jar:path/to/log4j-core-2.x.jar:path/to/hadoop-common-x.x.x.jar: JavaWordCount
