@@ -10,6 +10,7 @@ It should be very easy to do. You need to change the Log configuration and it sh
 
 
 ```bash
+cd ~/research/lttng-ust/lttng-ust
  export CLASSPATH="/home/rezghool/Downloads/apache-log4j-2.20.0-bin/log4j-core-2.20.0.jar:/home/rezghool/Downloads/apache-log4j-2.20.0-bin/og4j-api-2.20.0.jar"
 
 ./configure --enable-java-agent-log4j2
