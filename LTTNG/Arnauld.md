@@ -8,10 +8,19 @@ Arnaud:
 It should be very easy to do. You need to change the Log configuration and it should work with lttng
 
 
+```bash
+cd ~/research/lttng-ust/lttng-ust/doc/examples/java-log4j2-basic
+lttng create test1
+lttng enable-event -l -a
+lttng start
+./run
+lttng stop
+lttng view
+```
 
 ```bash
 cd ~/research/lttng-ust/lttng-ust
- export CLASSPATH="/home/rezghool/Downloads/apache-log4j-2.20.0-bin/log4j-core-2.20.0.jar:/home/rezghool/Downloads/apache-log4j-2.20.0-bin/og4j-api-2.20.0.jar"
+ export CLASSPATH="/home/rezghool/Downloads/apache-log4j-2.20.0-bin/log4j-core-2.20.0.jar:/home/rezghool/Downloads/apache-log4j-2.20.0-bin/log4j-api-2.20.0.jar"
 
 ./configure --enable-java-agent-log4j2
 make
