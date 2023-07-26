@@ -64,3 +64,20 @@ export HADOOP_OPTS="-Djava.library.path=$HADOOP_HOME/lib/native"
 source ~/.bashrc
 source ~/.profile
 ```
+
+
+if did not link the libaray logs not appear
+if change name of xml file , logs did not appaer
+```bash
+
+javac -classpath /usr/local/share/java/log4j.jar:/usr/share/java/log4j.jar:/usr/local/share/java/lttng-ust-agent-log4j2.jar:/usr/share/java/lttng-ust-agent-log4j2.jar:/usr/local/share/java/lttng-ust-agent-common.jar:/usr/share/java/lttng-ust-agent-common.jar test.java
+
+javac -classpath '/usr/local/share/java/log4j-core.jar:/usr/share/java/log4j-core.jar:/usr/local/share/java/log4j-api.jar:/usr/share/java/log4j-api.jar:../../../src/lib/lttng-ust-java-agent/java/lttng-ust-agent-common/lttng-ust-agent-common.jar:../../../src/lib/lttng-ust-java-agent/java/lttng-ust-agent-log4j2/lttng-ust-agent-log4j2.jar:/opt/spark/assembly/target/scala-2.12/jars/*:' -Djava.library.path=../../../src/lib/lttng-ust-java-agent/jni/log4j/.libs test.java
+
+java -classpath '/usr/local/share/java/log4j-core.jar:/usr/share/java/log4j-core.jar:/usr/local/share/java/log4j-api.jar:/usr/share/java/log4j-api.jar:../../../src/lib/lttng-ust-java-agent/java/lttng-ust-agent-common/lttng-ust-agent-common.jar:../../../src/lib/lttng-ust-java-agent/java/lttng-ust-agent-log4j2/lttng-ust-agent-log4j2.jar:/opt/spark/assembly/target/scala-2.12/jars/*:' -Djava.library.path=../../../src/lib/lttng-ust-java-agent/jni/log4j/.libs test
+
+java -classpath '../../../src/lib/lttng-ust-java-agent/java/lttng-ust-agent-log4j2/lttng-ust-agent-log4j2.jar:/opt/spark/assembly/target/scala-2.12/jars/*:' HelloLog4j2
+
+
+
+```
