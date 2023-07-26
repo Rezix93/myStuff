@@ -65,7 +65,7 @@ source ~/.bashrc
 source ~/.profile
 ```
 
-
+set -x in run file print somthing
 if did not link the libaray logs not appear
 if change name of xml file , logs did not appaer
 ```bash
