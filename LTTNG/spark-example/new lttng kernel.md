@@ -28,3 +28,22 @@ lttng start
 lttng stop
 lttng view
 ```
+
+Error: Events: Tracing the kernel requires a root lttng-sessiond daemon, as well as "tracing" group membership or root user ID for the lttng client (channel channel0, session auto-20230803-151404)
+
+```bash
+sudo lttng-sessiond --daemonize
+```bash
+
+
+
+```bash
+git clone https://github.com/lttng/lttng-modules.git
+cd lttng-modules
+make
+sudo make modules_install
+```
+
+
+
+
