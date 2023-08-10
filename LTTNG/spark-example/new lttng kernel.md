@@ -21,8 +21,17 @@ pgrep -a lttng-sessiond
 
 ```bash
 cd ~/research/lttng-ust/lttng-ust/doc/examples/java-log4j2-basic
-lttng create test1
+lttng create
+```
+
+
+
+```bash
 lttng enable-event -l -a
+```
+
+
+```bash
 lttng start
 ./run
 lttng stop
