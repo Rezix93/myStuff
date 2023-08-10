@@ -43,6 +43,9 @@ lttng enable-event -l -a
 lttng enable-event -j -a
 ```
 
+```bash
+lttng enable-channel  --subbuf-size 2000M
+```
 
 ```bash
 lttng start
