@@ -31,6 +31,8 @@ timer_hrtimer_start,timer_hrtimer_cancel,timer_hrtimer_expire_entry,timer_hrtime
 ```bash
 lttng enable-event -l -a
 ```
+
+```bash
 lttng start
 ./run
 lttng stop
