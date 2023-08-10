@@ -17,6 +17,7 @@ source ~/.bashrc   # or source ~/.profile or source ~/.bash_profile
 
 ```bash
 pgrep -a lttng-sessiond
+kill xxx
 ```
 
 ```bash
