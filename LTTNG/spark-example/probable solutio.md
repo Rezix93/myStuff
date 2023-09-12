@@ -165,7 +165,7 @@ By systematically analyzing and correlating the traces, you can derive meaningfu
 
 
 ####################3
-How find abnormal after running apache examples:
+# How find abnormal after running apache examples:
 
 To diagnose problems or issues after running Apache Spark examples by leveraging the LTTng traces (both UST and kernel) you've collected, follow this structured approach:
 
