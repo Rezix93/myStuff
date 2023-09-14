@@ -280,6 +280,57 @@ Automation & Monitoring: Consider tooling or scripts that can automatically dete
 By categorizing and understanding the nuances of each problem type, you'll be better equipped to diagnose and address issues as they arise in various Spark examples.
 
 ################
+# Second category 
+If you want to categorize Spark applications based on their abnormal behavior in comparison to a set of normal data or baseline behavior, you can consider these broad categories of issues:
+
+## 1. Resource Utilization Issues:
+Description: Applications that consume an unusual amount of resources like CPU, memory, or I/O compared to the baseline.
+
+Indicators: Elevated CPU usage, memory overflow errors, frequent garbage collection, high disk I/O or network I/O.
+
+Logs to Look For: "OutOfMemoryError", excessive garbage collection logs, or unusually high task durations.
+
+## 2. Data Processing Issues:
+Description: Applications that have inconsistencies or failures in data processing, leading to erroneous outputs or failed jobs.
+
+Indicators: Data skew, high shuffle spill, dropped records, or transformations taking significantly longer than the baseline.
+
+Logs to Look For: "Data skew detected", "Shuffle spill" metrics, "Task failed" due to data issues, or errors in data serialization/deserialization.
+
+## 3. Concurrency & Synchronization Issues:
+Description: Applications facing challenges with concurrent execution, leading to race conditions, deadlocks, or resource contention.
+
+Indicators: Stalled tasks, tasks waiting for resources, or multiple tasks contending for the same resource.
+
+Logs to Look For: "Task stalled", "Waiting for resources", synchronization errors, or repeated retries of the same task.
+
+## 4. Configuration & Setup Issues:
+Description: Applications that suffer from misconfigurations, incompatible setups, or missing dependencies.
+
+Indicators: Failed jobs due to incorrect configurations, missing libraries, or version mismatches.
+
+Logs to Look For: Warnings or errors related to configurations, "ClassNotFoundException", or version incompatibility warnings.
+
+## 5. Networking & Connectivity Issues:
+Description: Applications experiencing difficulties in connecting to external systems, databases, or facing internal communication challenges.
+
+Indicators: Failed tasks due to connectivity errors, timeouts, or high network latencies.
+
+Logs to Look For: "Connection timeout", "Failed to connect", network-related exceptions, or "Data fetch failures".
+
+To Detect and Categorize Abnormal Behavior:
+Define Baseline Metrics: For each category, define a set of metrics from your "normal" data that gives you a clear benchmark. For instance, average CPU utilization, average task duration, average network latency, etc.
+
+Log Analysis: Scan the logs of the Spark applications for the specific indicators mentioned above. Use tools or scripts to automate this process and flag any deviations from the baseline.
+
+Visual Analysis: Use visualization tools to compare the behavior of the Spark application with the baseline visually. This can help in spotting anomalies quickly.
+
+Feedback and Iteration: As you categorize more applications, refine your baseline and anomaly detection processes based on the learnings.
+
+With these categories and a clear understanding of your normal data, you should be able to effectively identify and categorize Spark applications that exhibit abnormal behavior.
+
+
+################################################################################################3
 # How related them to this category: 
 
 ## 3. Pattern Recognition:
