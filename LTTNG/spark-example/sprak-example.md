@@ -24,8 +24,8 @@ source ~/.bashrc   # or source ~/.profile or source ~/.bash_profile
 
 
 ```bash
-javac -cp "/opt/spark/assembly/target/scala-2.12/jars/*:." JavaWordCount.java
-java -cp "/opt/spark/assembly/target/scala-2.12/jars/*:." JavaWordCount
+javac -cp "/opt/spark/assembly/target/scala-2.12/jars/*:." HelloLog4j2.java
+java -cp "/opt/spark/assembly/target/scala-2.12/jars/*:." HelloLog4j2
 ```
 
 
