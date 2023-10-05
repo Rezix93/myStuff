@@ -58,8 +58,21 @@ lttng stop
 lttng view
 ```
 
-## Now I need a java example using apache spark and also  LTTng-UST Java agent
 
+
+
+
+
+./bin/run-example \
+--driver-java-options "-Dlog4j.configuration=file:/opt/spark/conf/log4j.properties" \
+--conf "spark.executor.extraJavaOptions=-Dlog4j.configuration=file:/opt/spark/confnflog4j.properties" \
+SparkPi 10
+
+
+
+
+
+## Now I need a java example using apache spark and also  LTTng-UST Java agent
 
 ```bash
 cd ~/research/lttng-ust/lttng-ust/doc/examples/java-log4j2-basic
