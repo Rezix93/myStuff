@@ -20,9 +20,19 @@ java -classpath ".:/home/rezghool/Downloads/apache-log4j-2.20.0-bin/log4j-core-2
 make
 then .run the file 
 
-```bash
+/opt/spark/assembly/target/scala-2.12/jars/spark-core_2.12-3.4.0.jar:
 
-ajc -source 1.8 -classpath "/home/rezghool/.m2/repository/org/scala-lang/scala-library/scala-library-2.13.8.jar:/usr/local/share/java/log4j.jar:/home/rezghool/Downloads/apache-log4j-2.20.0-bin/log4j-core-2.20.0.jar:/usr/local/share/java/lttng-ust-agent-log4j2.jar:/usr/local/share/java/lttng-ust-agent-common.jar:/usr/share/java/lttng-ust-agent-common.jar:/home/rezghool/Downloads/apache-log4j-2.20.0-bin/log4j-api-2.20.0.jar:/usr/share/java/aspectjrt.jar:/opt/spark/assembly/target/scala-2.12/jars/*" -g HelloLog4j2.java LoggingAspect.java
+```bash
+ajc -source 1.8 -classpath "/opt/spark/assembly/target/scala-2.12/jars/spark-core_2.12-3.4.0.jar:
+:/opt/spark/assembly/target/scala-2.12/jars/scala-library-2.12.17.jar:/opt/spark/assembly/target/scala-2.12/jars/spark-core_2.12-3.4.0.jar 
+:/opt/spark/assembly/target/scala-2.12/jars/log4j-api-2.19.0.jar:/home/rezghool/.m2/repository/org/scala-lang/scala-library/scala-library-2.13.8.jar:/usr/local/share/java/log4j.jar:/home/rezghool/Downloads/apache-log4j-2.20.0-bin/log4j-core-2.20.0.jar:/usr/local/share/java/lttng-ust-agent-log4j2.jar:/usr/local/share/java/lttng-ust-agent-common.jar:/usr/share/java/lttng-ust-agent-common.jar:/home/rezghool/Downloads/apache-log4j-2.20.0-bin/log4j-api-2.20.0.jar:/usr/share/java/aspectjrt.jar:/opt/spark/assembly/target/scala-2.12/jars/*" -g HelloLog4j2.java LoggingAspect.java
+```
+
+***for spark example:
+```bash
+java -classpath "/opt/spark/assembly/target/scala-2.12/jars/spark-core_2.12-3.4.0.jar:
+:/opt/spark/assembly/target/scala-2.12/jars/scala-library-2.12.17.jar:/opt/spark/assembly/target/scala-2.12/jars/spark-core_2.12-3.4.0.jar 
+:/opt/spark/assembly/target/scala-2.12/jars/log4j-api-2.19.0.jar:/home/rezghool/.m2/repository/org/scala-lang/scala-library/scala-library-2.13.8.jar:/usr/local/share/java/log4j.jar:/home/rezghool/Downloads/apache-log4j-2.20.0-bin/log4j-core-2.20.0.jar:/usr/local/share/java/lttng-ust-agent-log4j2.jar:/usr/local/share/java/lttng-ust-agent-common.jar:/usr/share/java/lttng-ust-agent-common.jar:/home/rezghool/Downloads/apache-log4j-2.20.0-bin/log4j-api-2.20.0.jar:/usr/share/java/aspectjrt.jar:/opt/spark/assembly/target/scala-2.12/jars/*" HelloLog4j2
 
 ```
 
