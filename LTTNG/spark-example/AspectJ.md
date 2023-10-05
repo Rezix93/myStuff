@@ -1,4 +1,9 @@
 
+Use aspect-oriented programming (AOP) extension
+Because Scala, the
+Because Scala, the native program language used by Spark, is a JVM language. So we can AspectJ to intercept Spark code. In this way, we can modify the Spark APIs without modifying Spark source code directly.
+
+For those not familiar with AspectJ, here is a brief introduction. AspectJ is an aspect-oriented programming (AOP) extension created at PARC for the Java programming language. AspectJ has become a widely used de facto standard for AOP by emphasizing simplicity and usability for end users.
 
 ```bash
 
