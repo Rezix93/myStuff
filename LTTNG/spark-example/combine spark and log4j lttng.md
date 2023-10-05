@@ -14,6 +14,11 @@ sudo update-alternatives --set java /usr/lib/jvm/java-11-openjdk-amd64/bin/java
 source ~/.bashrc   # or source ~/.profile or source ~/.bash_profile
 ```
 
+```bash
+pgrep -a lttng-sessiond
+sudo kill xxx
+```
+
 ## Run spark java example
 
 ```bash
