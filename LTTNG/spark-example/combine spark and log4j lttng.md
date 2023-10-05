@@ -62,11 +62,11 @@ lttng view
 
 
 
-
 ./bin/run-example \
---driver-java-options "-Dlog4j.configuration=file:/opt/spark/conf/log4j.properties" \
---conf "spark.executor.extraJavaOptions=-Dlog4j.configuration=file:/opt/spark/confnflog4j.properties" \
+--driver-java-options "-javaagent:/usr/share/java/lttng-ust-agent-log4j.jar -Dlog4j.configuration=file:/opt/spark/conf/log4j.properties" \
+--conf "spark.executor.extraJavaOptions=-Dlog4j.configuration=file:/opt/spark/conf/log4j.properties" \
 SparkPi 10
+
 
 
 
