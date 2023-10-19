@@ -7,17 +7,20 @@
 ```
 
 
-
+```bash
 find . -name "*.jar" -exec grep -Hls 'SparkConf' {} \;
+```
 
-
+```bash
+cd /opt/spark/
 ./build/mvn -DskipTests clean package
+```
 
 
-
+```bash
 after check 
 /opt/spark/assembly/target/scala-2.12/jars/spark-core_2.12-3.4.0.jar
 /opt/spark/core/target/spark-core_2.12-3.4.0.jar
-
+```
 
 sparkconf
