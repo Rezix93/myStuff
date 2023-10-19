@@ -9,3 +9,14 @@
 
 
 find . -name "*.jar" -exec grep -Hls 'SparkConf' {} \;
+
+
+./build/mvn -DskipTests clean package
+
+
+
+after check 
+/opt/spark/assembly/target/scala-2.12/jars/spark-core_2.12-3.4.0.jar
+
+
+sparkconf
