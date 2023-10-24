@@ -24,3 +24,23 @@ after check
 ```
 
 sparkconf
+
+```bash
+lttng-convert -i /home/rezghool/lttng-traces/auto-20231024-010206/ust/uid/1000 -o /home/rezghool/lttng-traces/auto-20231024-010206/ust/uid/1000/ctf
+```
+```bash
+
+babeltrace /home/rezghool/lttng-traces/auto-20231024-010206
+
+babeltrace2-text /home/rezghool/lttng-traces/auto-20231024-010206
+
+babeltrace2 /home/rezghool/lttng-traces/auto-20231024-010206 --input-format text
+babeltrace2 /path/to/ctf-output --component text --filter 'event.name == "my_event" && field_name == "message"'
+
+--component auto-disc-source-ctf-fs:source.ctf.fs --params 'trace-name="ust/uid/1000/64-bit"' --params 'inputs=["/home/rezghool/lttng-traces/auto-20231024-010206/ust/uid/1000/64-bit"]' --component pretty:sink.text.pretty --component muxer:filter.utils.muxer --component debug-info:filter.lttng-utils.debug-info --connect auto-disc-source-ctf-fs:muxer --connect muxer:debug-info --connect debug-info:prettyrezghool@Rezghool:~/lttng-traces/auto-20231024-010206/ust/uid/1000/64-bit$ 
+
+| grep 'reza'
+```
+
+slf4j slf4j
+
