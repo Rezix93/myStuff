@@ -42,5 +42,9 @@ babeltrace2 /path/to/ctf-output --component text --filter 'event.name == "my_eve
 | grep 'reza'
 ```
 
-slf4j slf4j
+```bash
+export CLASSPATH=$CLASSPATH:/usr/share/java/liblttng-ust-agent.jar
+ /home/rezghool/research/lttng-ust/lttng-ust/bin
 
+javac -cp "/opt/spark/assembly/target/scala-2.12/jars/*:/usr/local/share/java/*:/usr/local/lib/:." HelloLog4j2.java
+```
