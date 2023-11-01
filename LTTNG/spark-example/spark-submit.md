@@ -43,7 +43,7 @@ babeltrace2 /path/to/ctf-output --component text --filter 'event.name == "my_eve
 
 --component auto-disc-source-ctf-fs:source.ctf.fs --params 'trace-name="ust/uid/1000/64-bit"' --params 'inputs=["/home/rezghool/lttng-traces/auto-20231024-010206/ust/uid/1000/64-bit"]' --component pretty:sink.text.pretty --component muxer:filter.utils.muxer --component debug-info:filter.lttng-utils.debug-info --connect auto-disc-source-ctf-fs:muxer --connect muxer:debug-info --connect debug-info:prettyrezghool@Rezghool:~/lttng-traces/auto-20231024-010206/ust/uid/1000/64-bit$ 
 
-| grep 'reza'
+
 ```
 
 ```bash
@@ -61,6 +61,8 @@ bash: :/usr/share/java/liblttng-ust-agent.jar::/home/rezghool/research/lttng-ust
 
 
 ```bash
+
+lttng view | grep 'reza'
 javac -classpath "/usr/local/share/java/liblttng-ust-agent.jar" MyApp.java
 java -classpath "/usr/local/share/java/liblttng-ust-agent.jar" MyApp.java
 
