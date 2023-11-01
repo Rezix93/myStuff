@@ -44,6 +44,11 @@ babeltrace2 /path/to/ctf-output --component text --filter 'event.name == "my_eve
 
 ```bash
 export CLASSPATH=/usr/local/share/java/liblttng-ust-agent.jar
+javac -classpath "/usr/local/share/java/liblttng-ust-agent.jar" MyApp.java
+java -classpath "/usr/local/share/java/liblttng-ust-agent.jar" MyApp.java
+```
+
+```bash
 
 javac -cp "/opt/spark/assembly/target/scala-2.12/jars/*:/usr/local/share/java/*:/usr/local/lib/:." HelloLog4j2.java
 
