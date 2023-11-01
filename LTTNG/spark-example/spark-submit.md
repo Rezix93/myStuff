@@ -59,8 +59,10 @@ bash: :/usr/share/java/liblttng-ust-agent.jar::/home/rezghool/research/lttng-ust
 ```bash
 javac -classpath "/usr/local/share/java/liblttng-ust-agent.jar" MyApp.java
 java -classpath "/usr/local/share/java/liblttng-ust-agent.jar" MyApp.java
-```
 
 lttng enable-event -a -j
 lttng enable-event -a -l
+```
+
+
 
