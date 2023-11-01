@@ -16,6 +16,10 @@ cd /opt/spark/
 ./build/mvn -DskipTests clean package
 ```
 
+```bash
+pgrep -a lttng-sessiond
+sudo kill xxx
+```
 
 ```bash
 after check 
