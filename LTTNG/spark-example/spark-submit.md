@@ -43,8 +43,10 @@ babeltrace2 /path/to/ctf-output --component text --filter 'event.name == "my_eve
 ```
 
 ```bash
-export CLASSPATH=$CLASSPATH:/usr/share/java/liblttng-ust-agent.jar
- /home/rezghool/research/lttng-ust/lttng-ust/bin
+export CLASSPATH=/usr/local/share/java/liblttng-ust-agent.jar
 
 javac -cp "/opt/spark/assembly/target/scala-2.12/jars/*:/usr/local/share/java/*:/usr/local/lib/:." HelloLog4j2.java
+
+
+bash: :/usr/share/java/liblttng-ust-agent.jar::/home/rezghool/research/lttng-ust/lttng-ust/bin/liblttng-ust-agent.jar:/usr/local/share/java/liblttng-ust-agent.jar: No such file or directory
 ```
