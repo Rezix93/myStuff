@@ -43,7 +43,6 @@ babeltrace2 /path/to/ctf-output --component text --filter 'event.name == "my_eve
 ```
 
 ```bash
-export CLASSPATH=/usr/local/share/java/liblttng-ust-agent.jar
 javac -classpath "/usr/local/share/java/liblttng-ust-agent.jar" MyApp.java
 java -classpath "/usr/local/share/java/liblttng-ust-agent.jar" MyApp.java
 ```
@@ -55,3 +54,13 @@ javac -cp "/opt/spark/assembly/target/scala-2.12/jars/*:/usr/local/share/java/*:
 
 bash: :/usr/share/java/liblttng-ust-agent.jar::/home/rezghool/research/lttng-ust/lttng-ust/bin/liblttng-ust-agent.jar:/usr/local/share/java/liblttng-ust-agent.jar: No such file or directory
 ```
+
+
+```bash
+javac -classpath "/usr/local/share/java/liblttng-ust-agent.jar" MyApp.java
+java -classpath "/usr/local/share/java/liblttng-ust-agent.jar" MyApp.java
+```
+
+lttng enable-event -a -j
+lttng enable-event -a -l
+
