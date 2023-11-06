@@ -85,5 +85,23 @@ Instrumenting the Apache Spark source code requires a deep understanding of Spar
 
 11. **Custom Spark Extensions**:
     - If you have custom extensions or components integrated into Spark (e.g., custom schedulers, data sources, or plugins), add instrumentation to these custom components based on their specific functionality.
+    - 
+    Running a Spark application using `javac` and `spark-submit` are two different approaches, and they serve different purposes in the context of running Spark applications:
+
+1. **Compiling with `javac`**:
+
+   - When you use `javac`, you are compiling your Spark application's source code into Java bytecode (`.class` files).
+   - This approach is typically used during development to ensure that your code compiles without errors.
+   - You can run your compiled Java classes directly using the `java` command, but this doesn't take advantage of Spark's cluster computing capabilities. Instead, it runs your code as a standard Java application on a single machine.
+   - It's suitable for local testing and debugging but not for distributed processing.
+
+2. **Running with `spark-submit`**:
+
+   - `spark-submit` is a command-line script provided by Apache Spark that's used to submit Spark applications to a Spark cluster. It's the recommended way to run Spark applications.
+   - When you use `spark-submit`, you package your application code, along with dependencies, into a JAR file or submit it as a Python script.
+   - `spark-submit` takes care of launching your Spark application on the cluster, managing resources, and distributing the tasks across the cluster nodes. It also handles configuration and cluster-specific settings.
+   - It's the preferred method for deploying Spark applications in a production environment and making use of Spark's distributed computing capabilities.
+
+In summary, the key difference is that `javac` is used for compiling Java code into bytecode, while `spark-submit` is used for submitting Spark applications to a Spark cluster for distributed processing. To leverage Spark's distributed processing capabilities and to run your application on a cluster, it's recommended to use `spark-submit`. During development and testing, you might use `javac` and local execution to verify that your code is functioning correctly.
 
 Please note that instrumenting Spark source code is a complex task, and it requires a deep understanding of Spark's internals. Be sure to follow best practices for debugging and tracing to avoid overwhelming the logs with excessive trace information. Additionally, consider using log levels and configurations to control the amount of information captured during different stages of Spark execution.
