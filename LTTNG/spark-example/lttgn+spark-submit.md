@@ -15,6 +15,34 @@ java -classpath  "HelloLog4j2.jar:/opt/spark/assembly/target/scala-2.12/jars/slf
 ```
 
 ```bash
-pgrep -a lttng-sessiond
-sudo kill xxx
+
+/opt/spark/bin/spark-submit \
+--class org.apache.spark.examples.SparkPi \
+--master local[2] \
+--conf "spark.driver.extraJavaOptions=-Dlog4j.configuration=file:/home/rezghool/research/lttng-ust/lttng-ust/doc/examples/java-log4j2-basic/properties/log4j2.properties" \
+/opt/spark/examples/target/scala-2.12/jars/spark-examples_2.12-3.4.0.jar 100
+
+
+/opt/spark/bin/spark-submit \
+--class org.apache.spark.examples.SparkPi \
+--master local[*] --files  ~/log4j.properties \
+--conf spark.sql.catalogImplementation=hive \
+--conf spark.driver.extraJavaOptions=-Dlog4j.configuration=file:///home/rezghool/research/lttng-ust/lttng-ust/doc/examples/java-log4j2-basic/properties/log4j2.properties \ /opt/spark/examples/target/scala-2.12/jars/spark-examples_2.12-3.4.0.jar 100
+
+
+
+/home/rezghool/research/lttng-ust/lttng-ust/doc/examples/java-log4j2-basic/log4j2.properties
+
+/home/rezghool/research/lttng-ust/lttng-ust/doc/examples/java-log4j2-basic/properties
+
+
+
+/opt/spark/bin/spark-submit \
+--class org.apache.spark.examples.SparkPi \
+--master local[2] --files log4j2.properties \
+--conf spark.driver.extraJavaOptions=-Dlog4j.configuration=file:///home/rezghool/research/lttng-ust/lttng-us/doc/examples/java-log4j2-basic/properties/log4j2.properties \
+/opt/spark/examples/target/scala-2.12/jars/spark-examples_2.12-3.4.0.jar 100
+
+
+
 ```
