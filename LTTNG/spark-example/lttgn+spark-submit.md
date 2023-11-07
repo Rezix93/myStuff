@@ -80,8 +80,20 @@ ${SPARK_HOME}/bin/spark-submit \
 --conf spark.executor.extraJavaOptions="-Dlog4j.configurationFile=log4j2.xml" \
 --conf spark.driver.extraJavaOptions="-Dlog4j.configurationFile=log4j2.xml" \
 /opt/spark/examples/target/scala-2.12/jars/spark-examples_2.12-3.4.0.jar 100
+```
 
 
+javac -classpath "/usr/local/share/java/*:/usr/local/share/java/log4j.jar:/usr/share/java/log4j.jar:/usr/local/share/java/lttng-ust-agent-log4j2.jar:/usr/share/java/lttng-ust-agent-log4j2.jar:/usr/local/share/java/lttng-ust-agent-common.jar:/usr/share/java/lttng-ust-agent-common.jar:/opt/spark/assembly/target/scala-2.12/jars/*" -g HelloLog4j2.java
+
+
+Classpath: /usr/local/share/java/log4j-api.jar:../../../src/lib/lttng-ust-java-agent/java/lttng-ust-agent-common/lttng-ust-agent-common.jar:../../../src/lib/lttng-ust-java-agent/java/lttng-ust-agent-log4j2/lttng-ust-agent-log4j2.jar
+
+library needed for lttng appeneder:
+/home/rezghool/research/lltn-ust2/lttng-ust-master/src/lib/lttng-ust-java-agent/java/lttng-ust-agent-common/lttng-ust-agent-common.jar:/home/rezghool/research/lttng-ust/lttng-ust/src/lib/lttng-ust-java-agent/java/lttng-ust-agent-log4j2/lttng-ust-agent-log4j2.jar
+```
+
+
+```bash
 
 ${SPARK_HOME}/bin/spark-submit \
 --class org.apache.spark.examples.SparkPi \
@@ -95,23 +107,4 @@ spark.driver.extraClassPath /home/rezghool/research/lltn-ust2/lttng-ust-master/s
 spark.executor.extraClassPath /home/rezghool/research/lltn-ust2/lttng-ust-master/src/lib/lttng-ust-java-agent/java/lttng-ust-agent-common/lttng-ust-agent-common.jar:/home/rezghool/research/lttng-ust/lttng-ust/src/lib/lttng-ust-java-agent/java/lttng-ust-agent-log4j2/lttng-ust-agent-log4j2.jar \
 /opt/spark/examples/target/scala-2.12/jars/spark-examples_2.12-3.4.0.jar 100
 
-
-
 ```
-
-
-
-javac -classpath "/usr/local/share/java/*:/usr/local/share/java/log4j.jar:/usr/share/java/log4j.jar:/usr/local/share/java/lttng-ust-agent-log4j2.jar:/usr/share/java/lttng-ust-agent-log4j2.jar:/usr/local/share/java/lttng-ust-agent-common.jar:/usr/share/java/lttng-ust-agent-common.jar:/opt/spark/assembly/target/scala-2.12/jars/*" -g HelloLog4j2.java
-
-
-
-Classpath: /usr/local/share/java/log4j-api.jar:../../../src/lib/lttng-ust-java-agent/java/lttng-ust-agent-common/lttng-ust-agent-common.jar:../../../src/lib/lttng-ust-java-agent/java/lttng-ust-agent-log4j2/lttng-ust-agent-log4j2.jar
-
-
-
-library needed for lttng appeneder:
-/home/rezghool/research/lltn-ust2/lttng-ust-master/src/lib/lttng-ust-java-agent/java/lttng-ust-agent-common/lttng-ust-agent-common.jar:/home/rezghool/research/lttng-ust/lttng-ust/src/lib/lttng-ust-java-agent/java/lttng-ust-agent-log4j2/lttng-ust-agent-log4j2.jar
-
-
-
-
