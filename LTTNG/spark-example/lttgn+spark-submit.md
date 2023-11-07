@@ -76,9 +76,27 @@ ${SPARK_HOME}/bin/spark-submit \
 --verbose \
 --master 'local[*]' \
 --files "log4j2.xml" \
+--jars "/home/rezghool/research/lltn-ust2/lttng-ust-master/src/lib/lttng-ust-java-agent/java/lttng-ust-agent-common/lttng-ust-agent-common.jar,/home/rezghool/research/lttng-ust/lttng-ust/src/lib/lttng-ust-java-agent/java/lttng-ust-agent-log4j2/lttng-ust-agent-log4j2.jar" \
 --conf spark.executor.extraJavaOptions="-Dlog4j.configurationFile=log4j2.xml" \
 --conf spark.driver.extraJavaOptions="-Dlog4j.configurationFile=log4j2.xml" \
 /opt/spark/examples/target/scala-2.12/jars/spark-examples_2.12-3.4.0.jar 100
+
+
+
+${SPARK_HOME}/bin/spark-submit \
+--class org.apache.spark.examples.SparkPi \
+--verbose \
+--master 'local[*]' \
+--files "log4j2.xml" \
+--jars "/home/rezghool/research/lltn-ust2/lttng-ust-master/src/lib/lttng-ust-java-agent/java/lttng-ust-agent-common/lttng-ust-agent-common.jar,/home/rezghool/research/lttng-ust/lttng-ust/src/lib/lttng-ust-java-agent/java/lttng-ust-agent-log4j2/lttng-ust-agent-log4j2.jar" \
+--conf spark.executor.extraJavaOptions="-Dlog4j.configurationFile=log4j2.xml" \
+--conf spark.driver.extraJavaOptions="-Dlog4j.configurationFile=log4j2.xml" \
+spark.driver.extraClassPath /home/rezghool/research/lltn-ust2/lttng-ust-master/src/lib/lttng-ust-java-agent/java/lttng-ust-agent-common/lttng-ust-agent-common.jar:/home/rezghool/research/lttng-ust/lttng-ust/src/lib/lttng-ust-java-agent/java/lttng-ust-agent-log4j2/lttng-ust-agent-log4j2.jar \
+spark.executor.extraClassPath /home/rezghool/research/lltn-ust2/lttng-ust-master/src/lib/lttng-ust-java-agent/java/lttng-ust-agent-common/lttng-ust-agent-common.jar:/home/rezghool/research/lttng-ust/lttng-ust/src/lib/lttng-ust-java-agent/java/lttng-ust-agent-log4j2/lttng-ust-agent-log4j2.jar \
+/opt/spark/examples/target/scala-2.12/jars/spark-examples_2.12-3.4.0.jar 100
+
+
+
 ```
 
 
@@ -93,5 +111,7 @@ Classpath: /usr/local/share/java/log4j-api.jar:../../../src/lib/lttng-ust-java-a
 
 library needed for lttng appeneder:
 /home/rezghool/research/lltn-ust2/lttng-ust-master/src/lib/lttng-ust-java-agent/java/lttng-ust-agent-common/lttng-ust-agent-common.jar:/home/rezghool/research/lttng-ust/lttng-ust/src/lib/lttng-ust-java-agent/java/lttng-ust-agent-log4j2/lttng-ust-agent-log4j2.jar
+
+
 
 
