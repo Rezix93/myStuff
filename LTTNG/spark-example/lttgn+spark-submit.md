@@ -56,8 +56,11 @@ file:/home/rezghool/research/lttng-ust/lttng-us/doc/examples/java-log4j2-basic/p
 --class org.apache.spark.examples.SparkPi \
 --master local[2] \
 --files /home/rezghool/research/lttng-ust/lttng-ust/doc/examples/java-log4j2-basic/properties/log4j2.properties \
---conf spark.driver.extraJavaOptions=-Dlog4j.configurationFile=file:/home/rezghool/research/lttng-ust/lttng-us/doc/examples/java-log4j2-basic/properties/log4j2.properties \
---conf spark.executor.extraJavaOptions=-Dlog4j.configurationFile=file:/home/rezghool/research/lttng-ust/lttng-us/doc/examples/java-log4j2-basic/properties/log4j2.properties \
+--conf "spark.executor.extraJavaOptions=-Dlog4j.configuration=log4j2.xml" \
+--driver-java-options "-Dlog4j.configuration=file:/home/rezghool/research/lttng-ust/lttng-us/doc/examples/java-log4j2-basic/log4j2.xml" \
+--driver-java-options "-Dlog4j.configurationFile=file:/home/rezghool/research/lttng-ust/lttng-us/doc/examples/java-log4j2-basic/log4j2.xml" \
+--conf spark.driver.extraJavaOptions="-Dlog4j.configurationFile=file:/home/rezghool/research/lttng-ust/lttng-us/doc/examples/java-log4j2-basic/properties/log4j2.properties2" \
+--conf spark.executor.extraJavaOptions="-Dlog4j.configurationFile=file:/home/rezghool/research/lttng-ust/lttng-us/doc/examples/java-log4j2-basic/properties/log4j2.properties2" \--conf 
 /opt/spark/examples/target/scala-2.12/jars/spark-examples_2.12-3.4.0.jar 100
 
 
