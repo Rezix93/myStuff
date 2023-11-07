@@ -44,5 +44,28 @@ java -classpath  "HelloLog4j2.jar:/opt/spark/assembly/target/scala-2.12/jars/slf
 /opt/spark/examples/target/scala-2.12/jars/spark-examples_2.12-3.4.0.jar 100
 
 
+/home/rezghool/research/lttng-ust/lttng-us/doc/examples/java-log4j2-basic/properties/log4j2.properties
+/home/rezghool/research/lttng-ust/lttng-ust/doc/examples/java-log4j2-basic/properties
+
+
+
+file:/home/rezghool/research/lttng-ust/lttng-us/doc/examples/java-log4j2-basic/properties/log4j2.properties
+
+
+/opt/spark/bin/spark-submit \
+--class org.apache.spark.examples.SparkPi \
+--master local[2] \
+--files /home/rezghool/research/lttng-ust/lttng-ust/doc/examples/java-log4j2-basic/properties/log4j2.properties \
+--conf spark.driver.extraJavaOptions=-Dlog4j.configurationFile=file:/home/rezghool/research/lttng-ust/lttng-us/doc/examples/java-log4j2-basic/properties/log4j2.properties \
+--conf spark.executor.extraJavaOptions=-Dlog4j.configurationFile=file:/home/rezghool/research/lttng-ust/lttng-us/doc/examples/java-log4j2-basic/properties/log4j2.properties \
+/opt/spark/examples/target/scala-2.12/jars/spark-examples_2.12-3.4.0.jar 100
+
+
+--conf "spark.driver.extraJavaOptions=-Dlog4j.configuration=log4j-spark.properties" 
+--conf "spark.executor.extraJavaOptions=-Dlog4j.configuration=log4j-spark.properties"
+
+
+javac -classpath "/usr/local/share/java/*:/usr/local/share/java/log4j.jar:/usr/share/java/log4j.jar:/usr/local/share/java/lttng-ust-agent-log4j2.jar:/usr/share/java/lttng-ust-agent-log4j2.jar:/usr/local/share/java/lttng-ust-agent-common.jar:/usr/share/java/lttng-ust-agent-common.jar:/opt/spark/assembly/target/scala-2.12/jars/*" -g HelloLog4j2.java
+
 
 ```
