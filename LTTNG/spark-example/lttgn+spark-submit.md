@@ -71,4 +71,13 @@ file:/home/rezghool/research/lttng-ust/lttng-us/doc/examples/java-log4j2-basic/p
 javac -classpath "/usr/local/share/java/*:/usr/local/share/java/log4j.jar:/usr/share/java/log4j.jar:/usr/local/share/java/lttng-ust-agent-log4j2.jar:/usr/share/java/lttng-ust-agent-log4j2.jar:/usr/local/share/java/lttng-ust-agent-common.jar:/usr/share/java/lttng-ust-agent-common.jar:/opt/spark/assembly/target/scala-2.12/jars/*" -g HelloLog4j2.java
 
 
+${SPARK_HOME}/bin/spark-submit \
+--class org.apache.spark.examples.SparkPi \
+--verbose \
+--master 'local[*]' \
+--files "log4j2.xml" \
+--conf spark.executor.extraJavaOptions="-Dlog4j.configurationFile=log4j2.xml" \
+--conf spark.driver.extraJavaOptions="-Dlog4j.configurationFile=log4j2.xml" \
+/opt/spark/examples/target/scala-2.12/jars/spark-examples_2.12-3.4.0.jar 100
+
 ```
