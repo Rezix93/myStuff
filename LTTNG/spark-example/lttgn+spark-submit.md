@@ -91,6 +91,10 @@ Classpath: /usr/local/share/java/log4j-api.jar:../../../src/lib/lttng-ust-java-a
 library needed for lttng appeneder:
 /home/rezghool/research/lltn-ust2/lttng-ust-master/src/lib/lttng-ust-java-agent/java/lttng-ust-agent-common/lttng-ust-agent-common.jar:/home/rezghool/research/lttng-ust/lttng-ust/src/lib/lttng-ust-java-agent/java/lttng-ust-agent-log4j2/lttng-ust-agent-log4j2.jar
 ```
+```bash
+/usr/local/share/java/log4j-api.jar:
+/home/rezghool/research/lttng-ust/lttng-ust/src/lib/lttng-ust-java-agent/java/lttng-ust-agent-common/lttng-ust-agent-common.jar:/home/rezghool/research/lttng-ust/lttng-ust/src/lib/lttng-ust-java-agent/java/lttng-ust-agent-log4j2/lttng-ust-agent-log4j2.jar
+```
 
 
 ```bash
@@ -98,24 +102,36 @@ library needed for lttng appeneder:
 ${SPARK_HOME}/bin/spark-submit \
 --class org.apache.spark.examples.SparkPi \
 --verbose \
---master 'local[*]' \
---files "log4j2.xml" \
---jars "/usr/local/share/java/log4j-api.jar,/home/rezghool/research/lttng-ust/lttng-ust/src/lib/lttng-ust-java-agent/java/lttng-ust-agent-common/lttng-ust-agent-common.jar,/home/rezghool/research/lttng-ust/lttng-ust/src/lib/lttng-ust-java-agent/java/lttng-ust-agent-log4j2/lttng-ust-agent-log4j2.jar,/opt/spark/assembly/target/scala-2.12/jars/* " \
---conf spark.executor.extraJavaOptions="-Dlog4j.configurationFile=log4j2.xml" \
---conf spark.driver.extraJavaOptions="-Dlog4j.configurationFile=log4j2.xml" \
-spark.driver.extraClassPath /usr/local/share/java/log4j-api.jar,/usr/local/share/java/log4j-api.jar:/home/rezghool/research/lttng-ust/lttng-ust/src/lib/lttng-ust-java-agent/java/lttng-ust-agent-common/lttng-ust-agent-common.jar:/home/rezghool/research/lttng-ust/lttng-ust/src/lib/lttng-ust-java-agent/java/lttng-ust-agent-log4j2/lttng-ust-agent-log4j2.jar:/opt/spark/assembly/target/scala-2.12/jars/* \
 /opt/spark/examples/target/scala-2.12/jars/spark-examples_2.12-3.4.0.jar 100
+```
+
+```bash
+${SPARK_HOME}/bin/spark-submit \
+--class org.apache.spark.examples.sql.SparkSQLExample \
+--master local[*] \
+/opt/spark/examples/target/scala-2.12/jars/spark-examples_2.12-3.4.0.jar
 
 ```
+The SparkSQLExample is an example application included with Apache Spark that demonstrates how to use Spark's SQL capabilities. When you run this example with spark-submit, it performs the following tasks:
+
+Initializes a Spark session: It sets up a Spark SQL session that allows you to interact with structured data using SQL queries.
+
+Loads a sample dataset: The example typically loads a sample dataset, such as a Parquet file, into a DataFrame. DataFrames are a fundamental abstraction in Spark SQL that allow you to work with structured data.
+
+Performs SQL queries: You can execute SQL queries against the loaded DataFrame. The example may demonstrate simple SQL queries, filtering, aggregation, and more.
+
+Displays or saves results: Depending on the specific example, it may display the query results in the console or save them to an output location, such as a Parquet file.
+
+Overall, running the SparkSQLExample with spark-submit is a way to demonstrate how to use Spark SQL to perform data manipulation and analysis tasks using SQL-like syntax within your Spark applications.
+
+For the specific details of what this example does, you can refer to the Spark documentation or the source code of the example provided with your Spark distribution.
+
 
 
 ```bash
-/usr/local/share/java/log4j-api.jar:
-/home/rezghool/research/lttng-ust/lttng-ust/src/lib/lttng-ust-java-agent/java/lttng-ust-agent-common/lttng-ust-agent-common.jar:\
-/home/rezghool/research/lttng-ust/lttng-ust/src/lib/lttng-ust-java-agent/java/lttng-ust-agent-log4j2/lttng-ust-agent-log4j2.jar
-
-
-
-
+${SPARK_HOME}/bin/spark-submit \
+--class org.apache.spark.examples.extensions.AgeExample \
+--master local[*] \
+/opt/spark/examples/target/scala-2.12/jars/spark-examples_2.12-3.4.0.jar
 
 ```
