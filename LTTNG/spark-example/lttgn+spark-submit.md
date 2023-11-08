@@ -1,5 +1,8 @@
 ```bash
 pgrep -a lttng-sessiond
+
+cd /opt/spark/
+./build/mvn -DskipTests clean package
 ```
 
 ```bash
