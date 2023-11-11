@@ -136,5 +136,10 @@ ${SPARK_HOME}/bin/spark-submit \
 --class org.apache.spark.examples.extensions.AgeExample \
 --master local[*] \
 /opt/spark/examples/target/scala-2.12/jars/spark-examples_2.12-3.4.0.jar
+```
+
+
+```bash
+ ${SPARK_HOME}/bin/spark-submit --class org.apache.spark.examples.JavaHdfsLR --master local[*] /opt/spark/examples/target/scala-2.12/jars/spark-examples_2.12-3.4.0.jar /home/rezghool/research/spark_example/input2.txt 3
 
 ```
