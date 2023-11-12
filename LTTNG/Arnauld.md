@@ -22,8 +22,10 @@ lttng view
 cd ~/research/lttng-ust/lttng-ust
  export CLASSPATH="/home/rezghool/Downloads/apache-log4j-2.20.0-bin/log4j-core-2.20.0.jar:/home/rezghool/Downloads/apache-log4j-2.20.0-bin/log4j-api-2.20.0.jar"
 
-./configure --enable-java-agent-log4j2
-make
+
+export CLASSPATH="/home/rezghool/Downloads/apache-log4j-2.20.0-bin/log4j-core-2.20.0.jar:/home/rezghool/Downloads/apache-log4j-2.20.0-bin/log4j-api-2.20.0.jar:/home/rezghool/Downloads/apache-log4j-1.2.17/log4j-1.2.17.jar"
+./configure  --enable-java-agent-log4j --enable-java-agent-log4j2 --enable-java-agent-jul --enable-java-agent-all
+sudo make
 sudo make install
 sudo ldconfig
 ```
