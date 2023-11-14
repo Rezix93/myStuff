@@ -37,3 +37,18 @@ Frequent logging by Executor and TaskSetManager indicates active task execution 
 Jetty server logs suggest that a web server (likely for Spark's UI) is also running and being monitored.
 
 
+https://www.ibm.com/docs/en/zpas/1.1.0?topic=spark-enabling-history-service
+
+```bash
+http://10.200.1.183:18080/jobs/
+http://localhost:18080/
+
+spark.eventLog.enabled         true
+spark.eventLog.dir             /var/spark/events
+spark.history.fs.logDirectory /var/spark/events
+
+
+/sbin/start-history-server.sh/
+```
+
+
