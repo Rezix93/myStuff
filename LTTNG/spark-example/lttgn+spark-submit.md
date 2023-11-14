@@ -141,5 +141,35 @@ ${SPARK_HOME}/bin/spark-submit \
 
 ```bash
  ${SPARK_HOME}/bin/spark-submit --class org.apache.spark.examples.JavaHdfsLR --master local[*] /opt/spark/examples/target/scala-2.12/jars/spark-examples_2.12-3.4.0.jar /home/rezghool/research/spark_example/input2.txt 3
-
 ```
+
+
+
+
+
+```bash
+nc -lk 9999
+```
+
+```bash
+ ${SPARK_HOME}/bin/spark-submit --class org.apache.spark.examples.streaming.JavaSqlNetworkWordCount  \
+/opt/spark/examples/target/scala-2.12/jars/spark-examples_2.12-3.4.0.jar  localhost 9999
+```
+
+
+```bash
+ ${SPARK_HOME}/bin/spark-submit --class org.apache.spark.examples.streaming.JavaQueueStream  \
+/opt/spark/examples/target/scala-2.12/jars/spark-examples_2.12-3.4.0.jar
+```
+
+
+i have to look at : 
+
+
+> output-spark.log 2>&1
+lttng view > output-lttng.log 2>&1
+
+
+
+
+
