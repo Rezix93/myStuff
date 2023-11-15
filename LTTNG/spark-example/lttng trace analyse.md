@@ -111,8 +111,18 @@ ${SPARK_HOME}/bin/spark-submit \
 --total-executor-cores 1 \
 /opt/spark/examples/target/scala-2.12/jars/spark-examples_2.12-3.4.0.jar 1000
 
-
-
-
 lttng view > output-lttng.log 2>&1
+
+
+${SPARK_HOME}/bin/spark-submit \
+--class org.apache.spark.examples.streaming.JavaStatefulNetworkWordCount \
+--master local[2] \
+/opt/spark/examples/target/scala-2.12/jars/spark-examples_2.12-3.4.0.jar \
+localhost 9999
+
+
+${SPARK_HOME}/bin/spark-submit \
+--class org.apache.spark.examples.JavaPageRank \
+--master local[2] \
+/opt/spark/examples/target/scala-2.12/jars/spark-examples_2.12-3.4.0.jar 
 ```
