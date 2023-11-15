@@ -46,7 +46,7 @@ http://localhost:18080/
 spark.eventLog.enabled         true
 spark.eventLog.dir             /var/spark/events
 spark.history.fs.logDirectory /var/spark/events
-/sbin/start-history-server.sh/
+/sbin/start-history-server.sh
 ```
 
 * InternalAccumulator.scala
@@ -90,5 +90,29 @@ Understanding the distinction between Drivers and Executors is crucial in optimi
 Spark Unable to load native-hadoop library for your platform
 
 
+## Normal run
 
 
+```bash
+
+${SPARK_HOME}/bin/spark-submit \
+--class org.apache.spark.examples.SparkPi \
+--verbose \
+--master local[*] \
+/opt/spark/examples/target/scala-2.12/jars/spark-examples_2.12-3.4.0.jar 1000
+
+
+
+${SPARK_HOME}/bin/spark-submit \
+--class org.apache.spark.examples.SparkPi \
+--verbose \
+--master local[*] \
+--executor-memory 512m \
+--total-executor-cores 1 \
+/opt/spark/examples/target/scala-2.12/jars/spark-examples_2.12-3.4.0.jar 1000
+
+
+
+
+lttng view > output-lttng.log 2>&1
+```
