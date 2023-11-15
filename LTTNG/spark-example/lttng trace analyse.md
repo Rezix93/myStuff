@@ -124,5 +124,19 @@ localhost 9999
 ${SPARK_HOME}/bin/spark-submit \
 --class org.apache.spark.examples.JavaPageRank \
 --master local[2] \
+/opt/spark/examples/target/scala-2.12/jars/spark-examples_2.12-3.4.0.jar
+
+
+
+${SPARK_HOME}/bin/spark-submit \
+--class org.apache.spark.examples.JavaPageRank \
+--master local[2] \
 /opt/spark/examples/target/scala-2.12/jars/spark-examples_2.12-3.4.0.jar 
+
+
+${SPARK_HOME}/bin/spark-submit \
+  --class org.apache.spark.examples.graphx.AggregateMessagesExample \
+  --master local[4] \
+/opt/spark/examples/target/original-spark-examples_2.12-3.4.0.jar
+
 ```
