@@ -87,4 +87,8 @@ In Apache Spark, the architecture includes both Drivers and Executors, which pla
 Understanding the distinction between Drivers and Executors is crucial in optimizing and debugging Spark applications, as it affects how tasks are distributed and executed across the cluster.
 
 
+Spark Unable to load native-hadoop library for your platform
+
+
+
 
