@@ -46,9 +46,16 @@ http://localhost:18080/
 spark.eventLog.enabled         true
 spark.eventLog.dir             /var/spark/events
 spark.history.fs.logDirectory /var/spark/events
-
-
 /sbin/start-history-server.sh/
 ```
+
+* InternalAccumulator.scala
+
+* log4j for spark streaming application: continuously generating logs. usually run for long  periods of time before facing issues that may cause them  to be showt down.
+  size of these logs will keep growing over time and making it really difficult to analyze when they start growing past gigabytes.
+  spark uses log4j as a logging facility that can leverage and make it work according to our needs.
+*   to get logs from both executors and drivers
+
+
 
 
