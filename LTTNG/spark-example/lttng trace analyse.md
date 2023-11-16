@@ -46,7 +46,7 @@ http://localhost:18080/
 spark.eventLog.enabled         true
 spark.eventLog.dir             /var/spark/events
 spark.history.fs.logDirectory /var/spark/events
-/sbin/start-history-server.sh
+./sbin/start-history-server.sh
 ```
 
 * InternalAccumulator.scala
