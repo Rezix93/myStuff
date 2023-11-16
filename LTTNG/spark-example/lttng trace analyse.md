@@ -131,7 +131,9 @@ ${SPARK_HOME}/bin/spark-submit \
 ${SPARK_HOME}/bin/spark-submit \
 --class org.apache.spark.examples.JavaPageRank \
 --master local[2] \
-/opt/spark/examples/target/scala-2.12/jars/spark-examples_2.12-3.4.0.jar 
+/opt/spark/examples/target/scala-2.12/jars/spark-examples_2.12-3.4.0.jar \
+/home/rezghool/research/spark_example/input2.txt 3
+
 
 
 ${SPARK_HOME}/bin/spark-submit \
