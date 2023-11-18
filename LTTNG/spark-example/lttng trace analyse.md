@@ -1,4 +1,5 @@
 ```bash
+pgrep -a lttng-sessiond
 
 ${SPARK_HOME}/bin/spark-submit \
 --class org.apache.spark.examples.SparkPi \
