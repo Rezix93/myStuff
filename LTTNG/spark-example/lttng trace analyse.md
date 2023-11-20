@@ -7,6 +7,8 @@ ${SPARK_HOME}/bin/spark-submit \
 /opt/spark/examples/target/scala-2.12/jars/spark-examples_2.12-3.4.0.jar 100
 
 lttng view > output-lttng.log 2>&1
+
+./build/mvn -DskipTests clean package -rf :spark-examples_2.12
 ```
 
 then look at logs: 
