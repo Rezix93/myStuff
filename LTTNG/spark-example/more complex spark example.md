@@ -60,12 +60,14 @@ public final class JavaPageRank {
 2. **Run with Limited Resources**: When running the application with `spark-submit`, you can specify limited resources to exacerbate potential issues. For example, use a small amount of memory for the executor:
 
    ```bash
-   spark-submit \
-     --class org.apache.spark.examples.JavaPageRank \
-     --master local[2] \
-     --executor-memory 512m \
-     /path/to/your-app.jar /path/to/input/file
+     ${SPARK_HOME}/bin/spark-submit \
+   --verbose \
+   --class org.apache.spark.examples.JavaPageRank2 \
+   --master local[2] \
+   /opt/spark/examples/target/scala-2.12/jars/spark-examples_2.12-3.4.0.jar \
+   1000 10
    ```
+
 
 3. **Monitor in Spark UI**: Once running, open the Spark UI (usually at `http://localhost:4040`). Look for signs of resource bottlenecks, such as task failures, executor loss, or excessive garbage collection time.
 
