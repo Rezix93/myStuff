@@ -1,3 +1,24 @@
+
+   ```bash
+     ${SPARK_HOME}/bin/spark-submit \
+   --verbose \
+   --class org.apache.spark.examples.JavaPageRank2 \
+   --master local[2] \
+   /opt/spark/examples/target/scala-2.12/jars/spark-examples_2.12-3.4.0.jar \
+   1000 10
+   ```
+```bash
+./sbin/start-history-server.sh
+
+pgrep -a lttng-sessiond
+
+cd /opt/spark/
+./build/mvn -DskipTests clean package
+  ```
+
+
+
+
 To make the `JavaPageRank` example more complex and potentially introduce an issue that can be observed in the Spark UI, we can modify the code to process a larger dataset or perform more computationally intensive operations. One common way to induce issues in Spark applications is to increase the amount of data being shuffled or to perform operations that are memory-intensive.
 
 Here's a modified version of the `JavaPageRank` example with changes that are likely to make it more complex and resource-intensive:
@@ -58,23 +79,6 @@ public final class JavaPageRank {
 1. **Compile and Package**: After modifying the code, recompile and package your Spark application.
 
 2. **Run with Limited Resources**: When running the application with `spark-submit`, you can specify limited resources to exacerbate potential issues. For example, use a small amount of memory for the executor:
-
-   ```bash
-     ${SPARK_HOME}/bin/spark-submit \
-   --verbose \
-   --class org.apache.spark.examples.JavaPageRank2 \
-   --master local[2] \
-   /opt/spark/examples/target/scala-2.12/jars/spark-examples_2.12-3.4.0.jar \
-   1000 10
-   ```
-```bash
-./sbin/start-history-server.sh
-
-pgrep -a lttng-sessiond
-
-cd /opt/spark/
-./build/mvn -DskipTests clean package
-  ```
 
 
 3. **Monitor in Spark UI**: Once running, open the Spark UI (usually at `http://localhost:4040`). Look for signs of resource bottlenecks, such as task failures, executor loss, or excessive garbage collection time.
