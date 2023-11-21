@@ -67,6 +67,14 @@ public final class JavaPageRank {
    /opt/spark/examples/target/scala-2.12/jars/spark-examples_2.12-3.4.0.jar \
    1000 10
    ```
+```bash
+./sbin/start-history-server.sh
+
+pgrep -a lttng-sessiond
+
+cd /opt/spark/
+./build/mvn -DskipTests clean package
+  ```
 
 
 3. **Monitor in Spark UI**: Once running, open the Spark UI (usually at `http://localhost:4040`). Look for signs of resource bottlenecks, such as task failures, executor loss, or excessive garbage collection time.
