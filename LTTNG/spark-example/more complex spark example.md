@@ -13,8 +13,9 @@ ${SPARK_HOME}/bin/spark-submit \
 
 spark-submit --deploy-mode client --class org.apache.spark.examples.SparkPi /opt/spark/examples/target/scala-2.12/jars/spark-examples_2.12-3.4.0.jar 10
 
+https://sparkbyexamples.com/spark/spark-setup-on-hadoop-yarn/
 
-
+https://sparkbyexamples.com/spark/spark-web-ui-understanding/
 
 
 ${SPARK_HOME}/bin/spark-submit \
