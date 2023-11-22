@@ -11,6 +11,11 @@ Spark JobTracker: http://localhost:8088/
 
 Node Specific Info: http://localhost:8042/
 
+What I understand from this is that both strategies use the cluster to distribute tasks; the difference is where the "driver program" runs: locally with spark-submit, or, also in the cluster.
+
+
+
+
 . The map function iterates over the elements of a collection and applies a transformation function on each element. The reduce function converts the input array into an array of a different dimension or single value. The combination of these functions proved to be a very powerful programming model.
 
 
