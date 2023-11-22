@@ -2,6 +2,8 @@ https://medium.com/@MarinAgli1/setting-up-hadoop-yarn-to-run-spark-applications-
 
 https://sujithjay.com/spark/with-yarn
 
+
+
 Spark yarn cluster vs client - how to choose which one to use?
 
 https://stackoverflow.com/questions/41124428/spark-yarn-cluster-vs-client-how-to-choose-which-one-to-use\
