@@ -19,7 +19,42 @@ Node Specific Info: http://localhost:8042/
 What I understand from this is that both strategies use the cluster to distribute tasks; the difference is where the "driver program" runs: locally with spark-submit, or, also in the cluster.
 
 
+Apache Spark can be run with various cluster managers, and YARN (Yet Another Resource Negotiator) is one of the most commonly used ones. Running Spark "with YARN" versus "without YARN" (i.e., using another cluster manager or in standalone mode) can significantly impact how Spark integrates with your cluster, manages resources, and interacts with other applications. Here's an overview of the differences:
 
+### Spark with YARN
+
+YARN is a cluster management technology that is part of the Hadoop ecosystem. When running Spark on YARN:
+
+1. **Integration with Hadoop**: Spark integrates seamlessly with the Hadoop ecosystem and can read from/write to HDFS, HBase, and other Hadoop-supported systems.
+
+2. **Resource Management**: YARN manages the allocation of compute resources to Spark applications. It efficiently shares resources between multiple applications running on the same cluster.
+
+3. **Scalability and Efficiency**: YARN allows Spark to scale dynamically by acquiring and releasing resources as needed, which can lead to better utilization of cluster resources.
+
+4. **Multi-Tenancy Support**: YARN supports multi-tenancy, enabling multiple users and applications to share the same cluster, with resource isolation and management.
+
+5. **Job Scheduling**: Spark jobs are scheduled alongside other Hadoop ecosystem jobs, and YARN handles the prioritization and queuing of these jobs.
+
+### Spark without YARN
+
+Running Spark without YARN means using either Spark's standalone cluster manager or another external cluster manager like Apache Mesos or Kubernetes. In standalone mode or with non-YARN managers:
+
+1. **Simplified Setup**: Spark’s standalone mode is easy to set up and is a good choice for learning and testing Spark applications.
+
+2. **Dedicated Spark Cluster**: In standalone mode, the Spark cluster is dedicated to running Spark applications only. This can lead to simpler resource allocation and management but might not be as efficient as YARN in a multi-tenant environment.
+
+3. **Resource Allocation**: Resource allocation in standalone mode is static. Each Spark application reserves a fixed amount of resources, and they are not released until the application completes.
+
+4. **No Hadoop Integration Required**: Running Spark without YARN does not require a Hadoop environment. This can be beneficial if you don't need Hadoop or are running Spark in a non-Hadoop environment.
+
+5. **Flexibility with Other Resource Managers**: Using Kubernetes or Mesos can offer additional features like containerized deployment and dynamic scaling, which are particularly useful in certain cloud environments or with complex workflows.
+
+### Summary
+
+- **Spark with YARN** is ideal for environments where Spark is part of a larger Hadoop ecosystem, and there is a need for efficient resource sharing and management across different applications.
+- **Spark without YARN** (in standalone mode, or with Mesos or Kubernetes) is suitable for dedicated Spark clusters, simpler setups, or specific environments where features of Kubernetes or Mesos are desired.
+
+Your choice will depend on your specific requirements, existing infrastructure, and the goals of your Spark deployment.
 
 . The map function iterates over the elements of a collection and applies a transformation function on each element. The reduce function converts the input array into an array of a different dimension or single value. The combination of these functions proved to be a very powerful programming model.
 
