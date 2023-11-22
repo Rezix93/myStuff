@@ -1,4 +1,26 @@
 
+  ```bash
+
+3.3.6
+
+build/mvn -Pyarn -Phadoop-3.3 -Dhadoop.version=3.3.6 -DskipTests clean package
+
+
+${SPARK_HOME}/bin/spark-submit \
+--class org.apache.spark.examples.SparkPi \
+--verbose \
+--deploy-mode cluster \
+/opt/spark/examples/target/scala-2.12/jars/spark-examples_2.12-3.4.0.jar 1000
+
+
+
+${SPARK_HOME}/bin/spark-submit \
+--class org.apache.spark.examples.JavaPageRank \
+--master yarn \
+--deploy-mode cluster \
+/opt/spark/examples/target/scala-2.12/jars/spark-examples_2.12-3.4.0.jar \
+/home/rezghool/research/spark_example/input2.txt 3
+   ``` 
    ```bash
      ${SPARK_HOME}/bin/spark-submit \
    --verbose \
@@ -16,9 +38,23 @@ cd /opt/spark/
 ./build/mvn -DskipTests clean package
   ```
 
+## Which cluster type should I choose for Spark?
+Standalone - meaning Spark will manage its own cluster
+YARN - using Hadoop's YARN resource manager
+Mesos - Apache's dedicated resource manager project
+I think I should try Standalone first. In the future, I need to build a large cluster (hundreds of instances).
 
+```bash
+Start with a standalone cluster if this is a new deployment. Standalone mode is the easiest to set up and will provide almost all the same features as the other cluster managers if you are only running Spark.
 
+If you would like to run Spark alongside other applications, or to use richer resource scheduling capabilities (e.g. queues), both YARN and Mesos provide these features. Of these, YARN will likely be preinstalled in many Hadoop distributions.
 
+One advantage of Mesos over both YARN and standalone mode is its fine-grained sharing option, which lets interactive applications such as the Spark shell scale down their CPU allocation between commands. This makes it attractive in environments where multiple users are running interactive shells.
+
+In all cases, it is best to run Spark on the same nodes as HDFS for fast access to storage. You can install Mesos or the standalone cluster manager on the same nodes manually, or most Hadoop distributions already install YARN and HDFS together.
+  ```
+
+## Example more complecated
 To make the `JavaPageRank` example more complex and potentially introduce an issue that can be observed in the Spark UI, we can modify the code to process a larger dataset or perform more computationally intensive operations. One common way to induce issues in Spark applications is to increase the amount of data being shuffled or to perform operations that are memory-intensive.
 
 Here's a modified version of the `JavaPageRank` example with changes that are likely to make it more complex and resource-intensive:
