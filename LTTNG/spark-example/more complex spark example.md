@@ -1,14 +1,41 @@
 
   ```bash
+PATH=$PATH:/usr/local/hadoop/sbin
+start-all.sh
+bash start-dfs.sh
+bash start-yarn.sh
+
+
+export HDFS_NAMENODE_USER="hadoop"
+export HDFS_DATANODE_USER="hadoop"
+export HDFS_SECONDARYNAMENODE_USER="hadoop"
+export YARN_RESOURCEMANAGER_USER="hadoop"
+export YARN_NODEMANAGER_USER="hadoop"
+
 
 build/mvn -Pyarn -Phadoop-3.3 -Dhadoop.version=3.3.6 -DskipTests clean package
+
+ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQC9W6rd58oEaCxE4bgJRpBpEVPoXQhw973FS2/KmYSAr4jA6tOTUvMT5BPlWpul>
+
+cat ~/.ssh/id_rsa.pub >> ~/.ssh/authorized_keys
 
 
 ${SPARK_HOME}/bin/spark-submit \
 --class org.apache.spark.examples.SparkPi \
 --verbose \
 --deploy-mode cluster \
-/opt/spark/examples/target/scala-2.12/jars/spark-examples_2.12-3.4.0.jar 1000
+/opt/spark/examples/target/scala-2.12/jars/spark-examples_2.12-3.4.0.jar 1
+
+
+spark-submit \
+--class org.apache.spark.examples.SparkPi \
+--master yarn \
+--deploy-mode cluster \
+--driver-memory 4g \
+--executor-memory 2g \
+--executor-cores 1 \
+/opt/spark/examples/target/scala-2.12/jars/spark-examples_2.12-3.4.0.jar 1
+
 
 
 spark-submit --deploy-mode client --class org.apache.spark.examples.SparkPi /opt/spark/examples/target/scala-2.12/jars/spark-examples_2.12-3.4.0.jar 10
@@ -24,6 +51,20 @@ ${SPARK_HOME}/bin/spark-submit \
 --deploy-mode cluster \
 /opt/spark/examples/target/scala-2.12/jars/spark-examples_2.12-3.4.0.jar \
 /home/rezghool/research/spark_example/input2.txt 3
+
+     ${SPARK_HOME}/bin/spark-submit \
+  --class org.apache.spark.examples.SparkPi \
+    --master yarn \
+    --deploy-mode client \
+    --driver-memory 4g \
+    --executor-memory 2g \
+    --executor-cores 1 \
+    --queue thequeue \
+  /opt/spark/examples/target/scala-2.12/jars/spark-examples_2.12-3.4.0.jar 10
+
+curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add - and echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
+
+
    ```
 
    ```bash
