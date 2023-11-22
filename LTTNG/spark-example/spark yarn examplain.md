@@ -1,7 +1,7 @@
 https://medium.com/@MarinAgli1/setting-up-hadoop-yarn-to-run-spark-applications-6ea1158287af
 
 https://sujithjay.com/spark/with-yarn
-
+https://stackoverflow.com/questions/41124428/spark-yarn-cluster-vs-client-how-to-choose-which-one-to-use\
 
 Spark Application UI: http://localhost:4040/
 
