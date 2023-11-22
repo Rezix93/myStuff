@@ -1,5 +1,9 @@
 
   ```bash
+
+pgrep -a lttng-sessiond
+
+
 PATH=$PATH:/usr/local/hadoop/sbin
 start-all.sh
 bash start-dfs.sh
