@@ -45,13 +45,17 @@ Mesos - Apache's dedicated resource manager project
 I think I should try Standalone first. In the future, I need to build a large cluster (hundreds of instances).
 
 ```bash
-Start with a standalone cluster if this is a new deployment. Standalone mode is the easiest to set up and will provide almost all the same features as the other cluster managers if you are only running Spark.
+Start with a standalone cluster if this is a new deployment.
+Standalone mode is the easiest to set up and will provide almost all the same features as the other cluster managers if you are only running Spark.
 
-If you would like to run Spark alongside other applications, or to use richer resource scheduling capabilities (e.g. queues), both YARN and Mesos provide these features. Of these, YARN will likely be preinstalled in many Hadoop distributions.
+If you would like to run Spark alongside other applications, or to use richer resource scheduling capabilities (e.g. queues), both YARN and Mesos provide these features.
+Of these, YARN will likely be preinstalled in many Hadoop distributions.
 
-One advantage of Mesos over both YARN and standalone mode is its fine-grained sharing option, which lets interactive applications such as the Spark shell scale down their CPU allocation between commands. This makes it attractive in environments where multiple users are running interactive shells.
+One advantage of Mesos over both YARN and standalone mode is its fine-grained sharing option, which lets interactive applications such as the Spark shell scale down their CPU allocation between commands.
+This makes it attractive in environments where multiple users are running interactive shells.
 
-In all cases, it is best to run Spark on the same nodes as HDFS for fast access to storage. You can install Mesos or the standalone cluster manager on the same nodes manually, or most Hadoop distributions already install YARN and HDFS together.
+In all cases, it is best to run Spark on the same nodes as HDFS for fast access to storage.
+You can install Mesos or the standalone cluster manager on the same nodes manually, or most Hadoop distributions already install YARN and HDFS together.
   ```
 
 ## Example more complecated
