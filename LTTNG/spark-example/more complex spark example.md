@@ -6,7 +6,7 @@
    --class org.apache.spark.examples.JavaPageRank2 \
    --master local[2] \
    /opt/spark/examples/target/scala-2.12/jars/spark-examples_2.12-3.4.0.jar \
-   1000 10
+   10000 1000 100
    ```
 
 
@@ -16,7 +16,7 @@
    --class org.apache.spark.examples.JavaPageRank2 \
 	--deploy-mode client \
    /opt/spark/examples/target/scala-2.12/jars/spark-examples_2.12-3.4.0.jar \
-   1000 10
+   10000 1000 100
 
    ```
 
