@@ -1,7 +1,11 @@
 https://medium.com/@MarinAgli1/setting-up-hadoop-yarn-to-run-spark-applications-6ea1158287af
-![Screenshot from 2023-11-23 10-46-46](https://github.com/Rezix93/MyStuff/assets/80580733/9a20fb8b-ce72-495c-9e00-f9a0b4f2b88b)
 
 https://sujithjay.com/spark/with-yarn
+
+
+
+![Screenshot from 2023-11-23 10-46-46](https://github.com/Rezix93/MyStuff/assets/80580733/9a20fb8b-ce72-495c-9e00-f9a0b4f2b88b)
+
 
 
 The ApplicationMaster, which is a non-executor container, requires CPU that must
