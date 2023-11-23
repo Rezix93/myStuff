@@ -24,6 +24,11 @@ ber of cores per executor can lead to bad HDFS I/O throughput.
 
 
 
+http://localhost:18080/history/application_1700756792875_0002/jobs/
+errors in apche sapark
+
+
+
 
 Spark yarn cluster vs client - how to choose which one to use?
 
@@ -120,3 +125,5 @@ In **client** mode, the Spark driver runs on the machine where the `spark-submit
 - Use **client mode** for interactive and debugging purposes, or when you need to directly monitor the output of your application.
 
 In both modes, the executors that run the actual tasks are always distributed across the cluster nodes. The primary difference lies in where the driver program, which coordinates the Spark job, runs.
+
+
