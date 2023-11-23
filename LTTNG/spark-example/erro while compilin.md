@@ -1,3 +1,11 @@
+  ```bash
+ ${SPARK_HOME}/bin/spark-submit \
+   --verbose \
+   --class org.apache.spark.examples.JavaPageRank2 \
+	--deploy-mode client \
+   /opt/spark/examples/target/scala-2.12/jars/spark-examples_2.12-3.4.0.jar \
+   500 400 100
+```
 Exception in thread "main" java.lang.StackOverflowError
 why i can not see in the spark UI?
 
@@ -5,6 +13,7 @@ http://localhost:18080/history/application_1700702951711_0014/jobs/
 
 
 
+No Error in Spark UI: Spark UI might not show the error because the StackOverflowError is likely happening on the driver after the main computation tasks have finished. The Spark UI mainly shows errors related to task execution on the cluster nodes. If the error occurs post-task completion (like during the final data collection or processing on the driver), it may not be reflected in the UI.
 
 
 
@@ -14,38 +23,11 @@ http://localhost:18080/history/application_1700702951711_0014/jobs/
 
 
 
+and in console  I get this error but in spark UI there is no error. why?
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+p] [Caller: org.apache.spark.scheduler.cluster.YarnScheduleraller] [Class: org.apache.spark.internal.Logging] [Method: logInfo] [File: Logging.scala] [Line: 60]
+00:51:25.971 [spark-listener-group-shared] INFO org.apache.spark.examples.MyCustomSparkListener - Job ended with Job ID: 0, Result: JobSucceeded [] [ThreadID: 76] [ThreadName: spark-listener-group-shared] [Caller: org.apache.spark.examples.MyCustomSparkListeneraller] [Class: org.apache.spark.examples.MyCustomSparkListener] [Method: onJobEnd] [File: MyCustomSparkListener.java] [Line: 28]
+00:51:25.973 [main] INFO org.apache.spark.scheduler.DAGScheduler - Job 0 finished: collect at JavaPageRank2.java:187, took 279.557205 s [] [ThreadID: 1] [ThreadName: main] [Caller: org.apache.spark.scheduler.DAGScheduleraller] [Class: org.apache.spark.internal.Logging] [Method: logInfo] [File: Logging.scala] [Line: 60]
 
 
 Exception in thread "main" java.lang.StackOverflowError
