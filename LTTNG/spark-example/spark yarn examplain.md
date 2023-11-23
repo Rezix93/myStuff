@@ -3,6 +3,19 @@ https://medium.com/@MarinAgli1/setting-up-hadoop-yarn-to-run-spark-applications-
 https://sujithjay.com/spark/with-yarn
 
 
+The ApplicationMaster, which is a non-executor container, requires CPU that must
+be accounted for.
+• When we run spark application, there will be several daemons that will run in the
+background (Hadoop and YARN daemons). So, we must leave at least 1 core per
+node for these daemons.
+• When the number of cores is too high, the spark application spends more time and
+this is because of switching between threads, consequently, it required more com-
+puting and eventually more processing time.
+• The HDFS client has difficulty processing many concurrent threads. Increasing num-
+ber of cores per executor can lead to bad HDFS I/O throughput.
+
+
+
 
 Spark yarn cluster vs client - how to choose which one to use?
 
