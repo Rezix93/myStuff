@@ -1,4 +1,15 @@
 
+```bash
+./build/mvn -DskipTests clean package -rf :spark-examples_2.12
+
+./sbin/start-history-server.sh
+
+pgrep -a lttng-sessiond
+
+cd /opt/spark/
+./build/mvn -DskipTests clean package
+  ```
+
 
    ```bash
      ${SPARK_HOME}/bin/spark-submit \
@@ -6,7 +17,7 @@
    --class org.apache.spark.examples.JavaPageRank2 \
    --master local[2] \
    /opt/spark/examples/target/scala-2.12/jars/spark-examples_2.12-3.4.0.jar \
-   10000 1000 100
+   500 400 100
    ```
 
 
@@ -16,7 +27,7 @@
    --class org.apache.spark.examples.JavaPageRank2 \
 	--deploy-mode client \
    /opt/spark/examples/target/scala-2.12/jars/spark-examples_2.12-3.4.0.jar \
-   10000 1000 100
+   500 400 1000
 
    ```
 
@@ -117,14 +128,7 @@ curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add - and echo 
    /opt/spark/examples/target/scala-2.12/jars/spark-examples_2.12-3.4.0.jar \
    1000 10
    ```
-```bash
-./sbin/start-history-server.sh
 
-pgrep -a lttng-sessiond
-
-cd /opt/spark/
-./build/mvn -DskipTests clean package
-  ```
 
 ## Which cluster type should I choose for Spark?
 Standalone - meaning Spark will manage its own cluster
