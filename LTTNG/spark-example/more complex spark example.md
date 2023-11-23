@@ -11,11 +11,12 @@
 
 
    ```bash
-  ${SPARK_HOME}/bin/spark-submit \
---class org.apache.spark.examples.SparkPi \
---verbose \
---deploy-mode cluster \
-/opt/spark/examples/target/scala-2.12/jars/spark-examples_2.12-3.4.0.jar 1
+    ${SPARK_HOME}/bin/spark-submit \
+   --verbose \
+   --class org.apache.spark.examples.JavaPageRank2 \
+	--deploy-mode client \
+   /opt/spark/examples/target/scala-2.12/jars/spark-examples_2.12-3.4.0.jar \
+   1000 10
 
    ```
 
