@@ -1,4 +1,24 @@
 
+
+   ```bash
+     ${SPARK_HOME}/bin/spark-submit \
+   --verbose \
+   --class org.apache.spark.examples.JavaPageRank2 \
+   --master local[2] \
+   /opt/spark/examples/target/scala-2.12/jars/spark-examples_2.12-3.4.0.jar \
+   1000 10
+   ```
+
+
+   ```bash
+  ${SPARK_HOME}/bin/spark-submit \
+--class org.apache.spark.examples.SparkPi \
+--verbose \
+--deploy-mode cluster \
+/opt/spark/examples/target/scala-2.12/jars/spark-examples_2.12-3.4.0.jar 1
+
+   ```
+
   ```bash
 
 pgrep -a lttng-sessiond
@@ -24,11 +44,28 @@ ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQC9W6rd58oEaCxE4bgJRpBpEVPoXQhw973FS2/KmYSA
 cat ~/.ssh/id_rsa.pub >> ~/.ssh/authorized_keys
 
 
-${SPARK_HOME}/bin/spark-submit \
---class org.apache.spark.examples.SparkPi \
---verbose \
+
+
+ ${SPARK_HOME}/bin/spark-submit \
+   --verbose \
+   --class org.apache.spark.examples.JavaPageRank2 \
 --deploy-mode cluster \
-/opt/spark/examples/target/scala-2.12/jars/spark-examples_2.12-3.4.0.jar 1
+   /opt/spark/examples/target/scala-2.12/jars/spark-examples_2.12-3.4.0.jar \
+   1000 10
+
+
+message from yarn:
+ client token: N/A
+	 diagnostics: AM container is launched, waiting for AM container to Register with RM
+	 ApplicationMaster host: N/A
+	 ApplicationMaster RPC port: -1
+	 queue: default
+	 start time: 1700702961969
+	 final status: UNDEFINED
+	 tracking URL: http://Rezghool:8088/proxy/application_1700702951711_0001/
+
+	 user: rezghool [] [ThreadID: 1] [ThreadName: main] [Caller: org.apache.spark.deploy.yarn.Clientaller] [Class: org.apache.spark.internal.Logging] [Method: logInfo] [File: Logging.scala] [Line: 60]
+20:29:24.079 [main] INFO org.apache.spark.deploy.yarn.Client - Application report for application_1700702951711_0001 (state: ACCEPTED) [] [ThreadID: 1] [ThreadName: main] [Caller: org.apache.spark.deploy.yarn.Clientaller] [Class: or
 
 
 spark-submit \
