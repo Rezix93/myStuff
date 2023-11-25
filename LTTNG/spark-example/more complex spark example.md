@@ -256,8 +256,50 @@ Good for underatanding exceture
 https://stackoverflow.com/questions/32621990/what-are-workers-executors-cores-in-spark-standalone-cluster?rq=2
 
 
+![image](https://github.com/Rezix93/MyStuff/assets/80580733/53092463-8d7e-49b9-9bc0-97a8601d8bdd)
 
+Spark uses a master/slave architecture. As you can see in the figure, it has one central coordinator (Driver) that communicates with many distributed workers (executors). The driver and each of the executors run in their own Java processes.
 
+DRIVER
+
+The driver is the process where the main method runs. First it converts the user program into tasks and after that it schedules the tasks on the executors.
+
+EXECUTORS
+
+Executors are worker nodes' processes in charge of running individual tasks in a given Spark job. They are launched at the beginning of a Spark application and typically run for the entire lifetime of an application. Once they have run the task they send the results to the driver. They also provide in-memory storage for RDDs that are cached by user programs through Block Manager.
+
+APPLICATION EXECUTION FLOW
+
+With this in mind, when you submit an application to the cluster with spark-submit this is what happens internally:
+
+A standalone application starts and instantiates a SparkContext instance (and it is only then when you can call the application a driver).
+The driver program ask for resources to the cluster manager to launch executors.
+The cluster manager launches executors.
+The driver process runs through the user application. Depending on the actions and transformations over RDDs task are sent to executors.
+Executors run the tasks and save the results.
+If any worker crashes, its tasks will be sent to different executors to be processed again. In the book "Learning Spark: Lightning-Fast Big Data Analysis" they talk about Spark and Fault Tolerance:
+Spark automatically deals with failed or slow machines by re-executing failed or slow tasks. For example, if the node running a partition of a map() operation crashes, Spark will rerun it on another node; and even if the node does not crash but is simply much slower than other nodes, Spark can preemptively launch a “speculative” copy of the task on another node, and take its result if that finishes.
+
+With SparkContext.stop() from the driver or if the main method exits/crashes all the executors will be terminated and the cluster resources will be released by the cluster manager.
+YOUR QUESTIONS
+
+When executors are started they register themselves with the driver and from so on they communicate directly. The workers are in charge of communicating the cluster manager the availability of their resources.
+
+In a YARN cluster you can do that with --num-executors. In a standalone cluster you will get one executor per worker unless you play with spark.executor.cores and a worker has enough cores to hold more than one executor. (As @JacekLaskowski pointed out, --num-executors is no longer in use in YARN https://github.com/apache/spark/commit/16b6d18613e150c7038c613992d80a7828413e66)
+
+You can assign the number of cores per executor with --executor-cores
+
+--total-executor-cores is the max number of executor cores per application
+
+As Sean Owen said in this thread: "there's not a good reason to run more than one worker per machine". You would have many JVM sitting in one machine for instance.
+
+UPDATE
+
+I haven't been able to test this scenarios, but according to documentation:
+
+EXAMPLE 1: Spark will greedily acquire as many cores and executors as are offered by the scheduler. So in the end you will get 5 executors with 8 cores each.
+
+EXAMPLE 2 to 5: Spark won't be able to allocate as many cores as requested in a single worker, hence no executors will be launch.
 
 
 
