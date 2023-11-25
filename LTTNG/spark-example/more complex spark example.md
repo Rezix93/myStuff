@@ -1,4 +1,6 @@
 
+
+
 ```bash
 ./build/mvn -DskipTests clean package -rf :spark-examples_2.12
 
@@ -8,6 +10,9 @@ pgrep -a lttng-sessiond
 
 cd /opt/spark/
 ./build/mvn -DskipTests clean package
+
+
+lttng view > output-lttng.log 2>&1
   ```
 
 
@@ -221,3 +226,34 @@ public final class JavaPageRank {
 - Check the event timeline and executor tabs for insights into resource usage and potential causes of any observed problems.
 
 By making these changes, the `JavaPageRank` application will be more likely to encounter issues such as running out of memory, especially if run with constrained resources. Monitoring the application in the Spark UI will provide valuable insights into how Spark behaves under stress and how resource-related issues manifest.
+
+
+
+https://community.cloudera.com/t5/Community-Articles/Configuring-spark-task-maxFailures-amp-spark-blacklist-task/ta-p/335235
+
+
+Spark uses the blacklist mechanism to enhance the scheduler’s ability to track failures. When a task fails on an executor, the blacklist module tracks the executor and host which has failed to execute the task. Beyond a threshold, the scheduler won't be able to schedule any more tasks on that node. If spark.blacklist.enabled is set to true, we need to always set the value of spark.blacklist.task.maxTaskAttemptsPerNode to greater than spark.task.maxFailures, else the Spark job will fail with the following error message:
+
+ERROR util.Utils: Uncaught exception in thread main
+java.lang.IllegalArgumentException: spark.blacklist.task.maxTaskAttemptsPerNode ( = 2) was >= spark.task.maxFailures ( = 2 ). Though blacklisting is enabled, with this configuration, Spark will not be robust to one bad node. Decrease spark.blacklist.task.maxTaskAttemptsPerNode, increase spark.task.maxFailures, or disable blacklisting with spark.blacklist.enabled.
+
+
+
+
+spark-submit --class org.apache.spark.examples.SparkPi \
+--master yarn --deploy-mode client --conf spark.blacklist.enabled=true \
+--conf spark.task.maxFailures=3 \
+--conf spark.blacklist.task.maxTaskAttemptsPerNode=2 \
+   /opt/spark/examples/target/scala-2.12/jars/spark-examples_2.12-3.4.0.jar 10
+
+
+
+In example above, if set mater to some master of standalone (or yarn) cluster, make jar-file, and run it via spark-submit, behavior will be as expected: some tasks will be failed, but re-submited. If the application has some singleton (object in Scala), it will be keep own state across failed tasks.
+
+
+
+
+
+
+
+
