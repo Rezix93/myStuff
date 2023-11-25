@@ -302,4 +302,8 @@ EXAMPLE 1: Spark will greedily acquire as many cores and executors as are offere
 EXAMPLE 2 to 5: Spark won't be able to allocate as many cores as requested in a single worker, hence no executors will be launch.
 
 
+![image](https://github.com/Rezix93/MyStuff/assets/80580733/977547c7-c185-4321-9c8b-84519e02884c)
+
+
+
 
