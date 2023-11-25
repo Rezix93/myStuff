@@ -251,6 +251,10 @@ spark-submit --class org.apache.spark.examples.SparkPi \
 In example above, if set mater to some master of standalone (or yarn) cluster, make jar-file, and run it via spark-submit, behavior will be as expected: some tasks will be failed, but re-submited. If the application has some singleton (object in Scala), it will be keep own state across failed tasks.
 
 
+Good for underatanding exceture
+
+https://stackoverflow.com/questions/32621990/what-are-workers-executors-cores-in-spark-standalone-cluster?rq=2
+
 
 
 
