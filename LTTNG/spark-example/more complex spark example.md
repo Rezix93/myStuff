@@ -17,12 +17,40 @@ lttng view > output-lttng.log 2>&1
 
 
    ```bash
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ${SPARK_HOME}/bin/spark-submit \
+   --verbose \
+   --class org.apache.spark.examples.ml.JavaPowerIterationClusteringExample \
+   --deploy-mode client \
+   /opt/spark/examples/target/scala-2.12/jars/spark-examples_2.12-3.4.0.jar
+
+   ```
+
+
+   ```bash
      ${SPARK_HOME}/bin/spark-submit \
    --verbose \
    --class org.apache.spark.examples.JavaPageRank2 \
+  --conf spark.task.maxFailures=2 \
+spark.blacklist.enabled=true \
    --master local[2] \
    /opt/spark/examples/target/scala-2.12/jars/spark-examples_2.12-3.4.0.jar \
-   500 400 100
+   500 100 10
    ```
 
 
@@ -31,8 +59,9 @@ lttng view > output-lttng.log 2>&1
    --verbose \
    --class org.apache.spark.examples.JavaPageRank2 \
 	--deploy-mode client \
+  --conf spark.blacklist.enabled=true \
    /opt/spark/examples/target/scala-2.12/jars/spark-examples_2.12-3.4.0.jar \
-   500 400 1000
+   500 40 100
 
    ```
 
