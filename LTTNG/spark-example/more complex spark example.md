@@ -18,16 +18,11 @@ lttng view > output-lttng.log 2>&1
 
    ```bash
 
-
-
-
-
-
-
-
-
-
-
+${SPARK_HOME}/bin/spark-submit \
+   --verbose \
+   --class org.apache.spark.examples.ml.JavaPowerIterationClusteringExample \
+   --deploy-mode client \
+   /opt/spark/examples/target/scala-2.12/jars/spark-examples_2.12-3.4.0.jar
 
 
 
@@ -332,6 +327,18 @@ EXAMPLE 2 to 5: Spark won't be able to allocate as many cores as requested in a 
 
 
 ![image](https://github.com/Rezix93/MyStuff/assets/80580733/977547c7-c185-4321-9c8b-84519e02884c)
+
+
+Why should we consider using Hadoop and Spark together?
+Most people think of Spark as a replacement for Hadoop, but instead of replacing Hadoop, we can consider Spark as a binding technology for Hadoop. However, Spark can run separately from Hadoop, where it can run on a standalone cluster. Meanwhile, Spark used on top of Hadoop can leverage its storage and cluster management.
+
+Though Spark does not provide its own storage system, it can take advantage of Hadoop for that. Through this, we can make a powerful production environment using Hadoop capabilities. Spark can also use YARN Resource Manager for easy resource management. Spark can easily handle task scheduling across a cluster.
+
+Apache Spark can use the disaster recovery capabilities of Hadoop as well. We can leverage Hadoop with Spark to receive better cluster administration and data management. Spark together with Hadoop provides better data security.
+
+Spark Machine Learning provides capabilities that are not properly utilized in Hadoop MapReduce. Using a fast computation engine like Spark, these Machine Learning algorithms can now execute faster since they can be executed in memory. In MapReduce programs, on the other hand, the data gets moved in and out of the disks between different stages of the processing pipeline.
+
+Next, in this Spark tutorial, we will check out some market leaders who have implemented Spark and Hadoop together.
 
 
 
