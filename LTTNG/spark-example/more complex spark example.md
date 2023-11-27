@@ -2,11 +2,18 @@
 
 
 ```bash
-./build/mvn -DskipTests clean package -rf :spark-examples_2.12
+pgrep -a lttng-sessiond
 
+cd /opt/spark/
+ 
 ./sbin/start-history-server.sh
 
-pgrep -a lttng-sessiond
+PATH=$PATH:/usr/local/hadoop/sbin
+bash start-dfs.sh
+bash start-yarn.sh
+
+
+./build/mvn -DskipTests clean package -rf :spark-examples_2.12
 
 cd /opt/spark/
 ./build/mvn -DskipTests clean package
