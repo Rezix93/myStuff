@@ -25,6 +25,17 @@ lttng view > output-lttng.log 2>&1
 
    ```bash
 
+https://sparkbyexamples.com/spark/different-types-of-issues-while-running-spark-projects/#out-of-memory-exceptions
+
+${SPARK_HOME}/bin/spark-submit \
+   --verbose \
+   --class org.apache.spark.examples.SparkFailedJobExample \
+   --deploy-mode client \
+   /opt/spark/examples/target/scala-2.12/jars/spark-examples_2.12-3.4.0.jar
+
+
+
+
 ${SPARK_HOME}/bin/spark-submit \
    --verbose \
    --class org.apache.spark.examples.ml.JavaModelSelectionViaCrossValidationExample \
