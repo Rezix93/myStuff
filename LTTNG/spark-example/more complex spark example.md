@@ -22,10 +22,11 @@ cd /opt/spark/
 lttng view > output-lttng.log 2>&1
   ```
 
+https://sparkbyexamples.com/spark/different-types-of-issues-while-running-spark-projects/#out-of-memory-exceptions
+
 
    ```bash
 
-https://sparkbyexamples.com/spark/different-types-of-issues-while-running-spark-projects/#out-of-memory-exceptions
 
 ${SPARK_HOME}/bin/spark-submit \
    --verbose \
