@@ -224,3 +224,6 @@ Dataset<Row> transformedDataset = dataset.map((MapFunction<Row, Row>) row -> {
     }, Encoders.bean(Row.class));
 
     
+-----------------------------
+new 6,7 : no error 
+------------------
