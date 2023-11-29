@@ -1,5 +1,5 @@
 
-
+Why does Spark job fail with "Exit code: 52"
 
 ```bash
 pgrep -a lttng-sessiond
@@ -30,9 +30,34 @@ https://sparkbyexamples.com/spark/different-types-of-issues-while-running-spark-
 
 ${SPARK_HOME}/bin/spark-submit \
    --verbose \
-   --class org.apache.spark.examples.SparkFailedJobExample \
+   --class org.apache.spark.examples.ml.JavaKMeansExample \
    --deploy-mode client \
    /opt/spark/examples/target/scala-2.12/jars/spark-examples_2.12-3.4.0.jar
+
+
+${SPARK_HOME}/bin/spark-submit \
+   --verbose \
+   --class org.apache.spark.examples.ml.JavaKMeansExample \
+   --master local[2] \
+   /opt/spark/examples/target/scala-2.12/jars/spark-examples_2.12-3.4.0.jar
+
+
+
+  bin/run-example --files ${jaas_path}/kafka_jaas.conf,${keytab_path}/kafka.service.keytab \
+       --driver-java-options "-Djava.security.auth.login.config=${path}/kafka_driver_jaas.conf" \
+       --conf \
+       "spark.executor.extraJavaOptions=-Djava.security.auth.login.config=./kafka_jaas.conf" \
+       --master yarn
+       streaming.JavaDirectKerberizedKafkaWordCount broker1-host:port,broker2-host:port \
+       consumer-group topic1,topic2
+
+
+${SPARK_HOME}/bin/spark-submit \
+   --verbose \
+   --class org.apache.spark.examples.streaming.JavaNetworkWordCount \
+   --master local[2] \
+   /opt/spark/examples/target/scala-2.12/jars/spark-examples_2.12-3.4.0.jar \
+localhost 9999
 
 
 
