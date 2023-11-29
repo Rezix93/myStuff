@@ -9,6 +9,9 @@ cd /opt/spark/
 PATH=$PATH:/usr/local/hadoop/sbin
 bash start-dfs.sh
 bash start-yarn.sh
+
+lttng view > output-lttng.log 2>&1
+
 ```
 
 ## Enable everything
