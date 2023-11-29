@@ -1,3 +1,4 @@
+   ```bash
 ${SPARK_HOME}/bin/spark-submit \
    --verbose \
    --class org.apache.spark.examples.ml.JavaKMeansExample \
@@ -10,7 +11,7 @@ ${SPARK_HOME}/bin/spark-submit \
    --class org.apache.spark.examples.ml.JavaKMeansExample \
    --master local[2] \
    /opt/spark/examples/target/scala-2.12/jars/spark-examples_2.12-3.4.0.jar 4
-   
+     ```
 
 1: 
 Exception in thread "main" java.lang.OutOfMemoryError: Java heap space
