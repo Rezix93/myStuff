@@ -176,3 +176,51 @@ Caused by: org.apache.spark.SparkException: Intentional failure in stage
 	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
 	at java.base/java.lang.Thread.run(Thread.java:829)
 02:09:33.907 [shutdown-hook-0] INFO org.apache.spark.SparkContext - Invoking stop() from shutdown hook [] [ThreadID: 277] [ThreadName: shutdown-hook-0] [Caller: org.apache.spark.SparkContextaller] [Class: org.apache.spark.internal.Logging] [Method: logInfo] [File: Logging.scala] [Line: 60]
+
+
+
+
+-------------------
+6: Exception in thread "main" java.lang.IllegalArgumentException: features does not exist. Available: 
+	at org.apache.spark.sql.types.StructType.$anonfun$apply$1(StructType.scala:285)
+	at scala.collection.immutable.Map$EmptyMap$.getOrElse(Map.scala:110)
+	at org.apache.spark.sql.types.StructType.apply(StructType.scala:284)
+	at org.apache.spark.ml.util.SchemaUtils$.checkColumnTypes(SchemaUtils.scala:59)
+	at org.apache.spark.ml.util.SchemaUtils$.validateVectorCompatibleColumn(SchemaUtils.scala:205)
+	at org.apache.spark.ml.clustering.KMeansParams.validateAndTransformSchema(KMeans.scala:121)
+	at org.apache.spark.ml.clustering.KMeansParams.validateAndTransformSchema$(KMeans.scala:120)
+	at org.apache.spark.ml.clustering.KMeansModel.validateAndTransformSchema(KMeans.scala:132)
+	at org.apache.spark.ml.clustering.KMeansModel.transformSchema(KMeans.scala:168)
+	at org.apache.spark.ml.PipelineStage.transformSchema(Pipeline.scala:71)
+	at org.apache.spark.ml.clustering.KMeansModel.transform(KMeans.scala:157)
+	at org.apache.spark.examples.ml.JavaKMeansExample.main(JavaKMeansExample.java:133)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+	at org.apache.spark.deploy.JavaMainApplication.start(SparkApplication.scala:52)
+	at org.apache.spark.deploy.SparkSubmit.org$apache$spark$deploy$SparkSubmit$$runMain(SparkSubmit.scala:1020)
+	at org.apache.spark.deploy.SparkSubmit.doRunMain$1(SparkSubmit.scala:192)
+	at org.apache.spark.deploy.SparkSubmit.submit(SparkSubmit.scala:215)
+	at org.apache.spark.deploy.SparkSubmit.doSubmit(SparkSubmit.scala:91)
+	at org.apache.spark.deploy.SparkSubmit$$anon$2.doSubmit(SparkSubmit.scala:1111)
+	at org.apache.spark.deploy.SparkSubmit$.main(SparkSubmit.scala:1120)
+	at org.apache.spark.deploy.SparkSubmit.main(SparkSubmit.scala)
+02:25:38.194 [shutdown-hook-0] INFO org.apache.spark.SparkContext - Invoking stop() from shutdown hook [] [ThreadID: 276] [ThreadName: shutdown-hook-0] [Caller: org.apache.spark.SparkContextaller] [Class: org.apache.spark.internal.Logging] [Method: logInfo] [File: Logging.scala] [Line: 60]
+
+-----------------------------------------
+change 6 and 7 : 
+
+The error you're encountering (java.lang.IllegalArgumentException: features does not exist) is due to the transformation applied to the dataset after the KMeans model fitting. The map transformation in the code is altering the structure of the dataset, which is causing an issue when the transform method of the KMeans model is called later.
+
+In Spark MLlib, when you fit a model (like KMeans), the model expects the input dataset for prediction (or transformation) to have the same schema as the dataset used for training. The map operation in your code is changing the schema of the dataset, leading to this error.
+
+To fix this, you need to ensure that the schema of the dataset remains consistent after any transformation. Here's a revised version of the code that addresses this issue:
+
+Dataset<Row> transformedDataset = dataset.map((MapFunction<Row, Row>) row -> {
+        // Allocate a large amount of memory (this could lead to OutOfMemoryError)
+        byte[] largeArray = new byte[1000 * 1000 * 1000]; // 1GB
+        return row;
+    }, Encoders.bean(Row.class));
+
+    
