@@ -75,4 +75,5 @@ sudo update-alternatives --set java  /usr/lib/jvm/java-18-openjdk-amd64/bin/java
 source ~/.bashrc   # or source ~/.profile or source ~/.bash_profile
 java -version
 
+
 ```
