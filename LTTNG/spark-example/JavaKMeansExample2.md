@@ -55,6 +55,7 @@ ${SPARK_HOME}/bin/spark-submit \
 
 
 
+## Change java version 11
 ```bash
 
 export JAVA_HOME=/usr/lib/jvm/java-1.11.0-openjdk-amd64
@@ -65,6 +66,7 @@ source ~/.bashrc   # or source ~/.profile or source ~/.bash_profile
 java -version
 ```
 
+## Change java version 18
 
 ```bash
 
