@@ -1,3 +1,4 @@
+
 ## Before start
 ```bash
 pgrep -a lttng-sessiond
@@ -50,8 +51,38 @@ ${SPARK_HOME}/bin/spark-submit \
 --class org.apache.spark.examples.ml.JavaKMeansExample \
 --master local[2] \
 /opt/spark/examples/target/scala-2.12/jars/spark-examples_2.12-3.4.0.jar 5
+```
+
+```bash
+export JAVA_HOME=/usr/lib/jvm/java-11-openjdk-amd64/jre/
+export PATH=$JAVA_HOME/bin:$PATH
+
+
+sudo update-java-alternatives --list
+export JAVA_HOME=/usr/lib/jvm/java-1.11.0-openjdk-amd64
+export PATH=$JAVA_HOME/bin:$PATH
+java -version
+
+
+sudo update-alternatives --config java
+sudo update-alternatives --set java /usr/lib/jvm/java-11-openjdk-amd64/bin/java
+source ~/.bashrc   # or source ~/.profile or source ~/.bash_profile
 
 ```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 ```bash
 
