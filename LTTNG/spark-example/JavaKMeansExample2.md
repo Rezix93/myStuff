@@ -77,5 +77,18 @@ sudo update-alternatives --set java  /usr/lib/jvm/java-18-openjdk-amd64/bin/java
 source ~/.bashrc   # or source ~/.profile or source ~/.bash_profile
 java -version
 
-
 ```
+# Trace Compass
+
+press the / key. It will open a small dialog with a looking glass at the bottom of the view.
+
+wget|lttng will highligh threads containing wget or lttng
+
+TID contains 56 will highlight all threads whose TID contains 56
+
+TID matches 5628 will highlight the thread with ID 5628
+
+System_call matches .* will highlight all state with system calls (they are visible only when zoomed)
+
+@octocat :+1: This PR looks great - it's ready to merge! :shipit:
+
