@@ -1,6 +1,8 @@
 
 ## Before start
 ```bash
+./build/mvn -DskipTests clean package -rf :spark-examples_2.12
+
 sudo lttng-sessiond --daemonize
 
 pgrep -a lttng-sessiond
