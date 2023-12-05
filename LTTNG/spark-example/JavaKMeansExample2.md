@@ -1,6 +1,8 @@
 
 ## Before start
 ```bash
+sudo lttng-sessiond --daemonize
+
 pgrep -a lttng-sessiond
 
 cd /opt/spark/
