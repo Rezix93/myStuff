@@ -3,9 +3,9 @@
 ```bash
 ./build/mvn -DskipTests clean package -rf :spark-examples_2.12
 
-sudo lttng-sessiond --daemonize
 
 pgrep -a lttng-sessiond
+sudo lttng-sessiond --daemonize
 
 cd /opt/spark/
  
@@ -23,7 +23,7 @@ lttng view > output-lttng.log 2>&1
 
 ```bash
 
-lttng create
+lttng create kmenas_8
 
 lttng enable-event -l -a
 
@@ -37,6 +37,16 @@ timer_hrtimer_start,timer_hrtimer_cancel,timer_hrtimer_expire_entry,timer_hrtime
 
 lttng enable-event -k --syscall --all
 
+lttng start
+
+${SPARK_HOME}/bin/spark-submit \
+--verbose \
+--class org.apache.spark.examples.ml.JavaKMeansExample \
+--master local[2] \
+/opt/spark/examples/target/scala-2.12/jars/spark-examples_2.12-3.4.0.jar 8
+
+lttng stop
+
 ```
 
 
@@ -47,24 +57,18 @@ ${SPARK_HOME}/bin/spark-submit \
 --verbose \
 --class org.apache.spark.examples.ml.JavaKMeansExample \
 --deploy-mode client \
-/opt/spark/examples/target/scala-2.12/jars/spark-examples_2.12-3.4.0.jar 5
+/opt/spark/examples/target/scala-2.12/jars/spark-examples_2.12-3.4.0.jar 1
 
 
 ${SPARK_HOME}/bin/spark-submit \
 --verbose \
 --class org.apache.spark.examples.ml.JavaKMeansExample \
 --master local[2] \
-/opt/spark/examples/target/scala-2.12/jars/spark-examples_2.12-3.4.0.jar 5
+/opt/spark/examples/target/scala-2.12/jars/spark-examples_2.12-3.4.0.jar 3
 
 
 
 
-${SPARK_HOME}/bin/spark-submit \
---verbose \
---conf "spark.extraListeners=org.apache.spark.examples.MyCustomSparkListener" \
---class org.apache.spark.examples.ml.JavaKMeansExample \
---master local[2] \
-/opt/spark/examples/target/scala-2.12/jars/spark-examples_2.12-3.4.0.jar 5
 
 
 ```
