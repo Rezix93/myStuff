@@ -55,6 +55,18 @@ ${SPARK_HOME}/bin/spark-submit \
 --class org.apache.spark.examples.ml.JavaKMeansExample \
 --master local[2] \
 /opt/spark/examples/target/scala-2.12/jars/spark-examples_2.12-3.4.0.jar 5
+
+
+
+
+${SPARK_HOME}/bin/spark-submit \
+--verbose \
+--conf "spark.extraListeners=org.apache.spark.examples.MyCustomSparkListener" \
+--class org.apache.spark.examples.ml.JavaKMeansExample \
+--master local[2] \
+/opt/spark/examples/target/scala-2.12/jars/spark-examples_2.12-3.4.0.jar 5
+
+
 ```
 
 
