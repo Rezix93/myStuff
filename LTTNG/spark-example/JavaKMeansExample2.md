@@ -99,3 +99,65 @@ System_call matches .* will highlight all state with system calls (they are visi
 
 > [!IMPORTANT]
 > Crucial information necessary for users to succeed.
+
+## different states in kmenas example
+
+### state 1: 
+
+```bash
+for (int i = 0; i < 10000; i++) {
+  leakyList.add(new int[1000000]);  // Allocate large arrays
+}
+ ```             
+Exception in thread "main" java.lang.OutOfMemoryError: Java heap space
+
+
+### state 3:
+
+Exception in thread "main" java.lang.ArithmeticException: / by zero
+
+
+### state 5:
+
+```bash
+if (Math.random() < 0.4){ // 50% chance to fail for each partition
+              throw new SparkException("Intentional failure in stage");
+            }
+  ```             
+            
+org.apache.spark.SparkException: Intentional failure in stage
+
+
+### state 8:
+
+```bash
+if (Math.random() < 0.4){ // 50% chance to fail for each partition
+              throw new SparkException("Intentional failure in stage");
+            }
+ ```  
+java.lang.NegativeArraySizeException: -727379968
+
+
+
+
+### state 10:
+```bash
+// Use MapFunction to introduce a memory-intensive operation
+                  Dataset<Row> mappedPredictions = predictions.map(new MapFunction<Row, Row>() {
+                    @Override
+                    public Row call(Row row) throws Exception {
+                        // Memory-intensive operation
+                        byte[] largeArray = new byte[10000 * 10000 * 10000]; // Allocate 1GB
+                        return row;
+                    }
+                }, Encoders.bean(Row.class));
+
+                // Trigger an action to execute the map transformation
+                mappedPredictions.collect(); // or any other action like count(), show(), et
+``` 
+java.lang.NegativeArraySizeException: -727379968
+
+
+
+
+
