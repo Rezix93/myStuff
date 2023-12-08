@@ -8,14 +8,16 @@ Using the Log4j2 API, a call to atTrace() will return a real log builder if you 
 
 You can keep using SLF4J, but you need to replace:
 ```bash
-log.atTrace().addMarker(marker).log("This is logged using fluent api");
+log.atTrace().addMarker(marker).log("This is logged using fluent API");
+```
 with
-
+```bash
 log.makeLoggingEventBuilder(Level.TRACE)
    .addMarker(marker)
    .log("This is logged using fluent api");
-(cf. SLF4J-560). This solution will incur in a performance penalty for disabled loggers (whether you use global filters or not) and will always create a temporary object (that need to be GC-ed).
 ```
+(cf. SLF4J-560). This solution will incur in a performance penalty for disabled loggers (whether you use global filters or not) and will always create a temporary object (that need to be GC-ed).
+
 
 
 ## Before start
