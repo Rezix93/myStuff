@@ -13,7 +13,9 @@ log.makeLoggingEventBuilder(Level.TRACE)
    .addMarker(marker)
    .log("This is logged using fluent api");
 ```
+
 (cf. SLF4J-560). This solution will incur in a performance penalty for disabled loggers (whether you use global filters or not) and will always create a temporary object (that need to be GC-ed).
+
 ---------------------------------------------
 Description
 Piotr P. Karwasz created this issue on 25/Jan/23 9:02 PM
@@ -24,6 +26,8 @@ These two calls should always have the same result:
   logger.atInfo().addMarker(marker).log("Hello Logback!");
   
 Messages at a DEBUG level are treated differently by the two calls if turbo filters are involved:
+
+
 
 the first call passes all the parameters to the turbo filter. If the filter returns ACCEPT the message is logged,
 the second call only checks the level of the message (DEBUG) and discards the message.
