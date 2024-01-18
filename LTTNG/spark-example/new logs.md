@@ -24,9 +24,10 @@ lttng view > output-lttng.log 2>&1
 
 ```bash
 
+
 lttng create
 
-lttng enable-event -l -a
+lttng enable-event -l -a  --filter 'logger_name == "org.apache.spark.examples.MyCustomSparkListener"'
 
 lttng start
 
@@ -34,7 +35,7 @@ ${SPARK_HOME}/bin/spark-submit \
 --verbose \
 --class org.apache.spark.examples.ml.JavaKMeansExample \
 --master local[2] \
-/opt/spark/examples/target/scala-2.12/jars/spark-examples_2.12-3.4.0.jar 
+/opt/spark/examples/target/scala-2.12/jars/spark-examples_2.12-3.4.0.jar 2
 
 lttng stop
 
