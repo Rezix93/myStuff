@@ -59,9 +59,7 @@ Creating a detailed guide for accessing specific data within each Spark Listener
 | stageId         | Integer   | Identifier for the stage               | `stageSubmitted.stageInfo().stageId()` or `stageCompleted.stageInfo().stageId()` |
 | submissionTime  | Timestamp | Submission time of the stage (Submitted event only) | `new Timestamp(stageSubmitted.stageInfo().submissionTime())` |
 | completionTime  | Timestamp | Completion time of the stage (Completed event only) | `new Timestamp(stageCompleted.stageInfo().completionTime())` |
-| stageAttemptId  | Integer   | Attempt identifier for the stage       | `stageSubmitted.stageInfo().attemptNumber()` or `stageCompleted.stage
-
-Info().attemptNumber()` |
+| stageAttemptId  | Integer   | Attempt identifier for the stage       | `stageSubmitted.stageInfo().attemptNumber()` or `stageCompleted.stageInfo().attemptNumber()` |
 | numTasks        | Integer   | Number of tasks in the stage           | `stageSubmitted.stageInfo().numTasks()` or `stageCompleted.stageInfo().numTasks()` |
 
 ### Storing and Accessing Data
