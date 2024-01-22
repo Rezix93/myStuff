@@ -73,3 +73,48 @@ Creating a detailed guide for accessing specific data within each Spark Listener
 - Ensure your storage solution can handle the volume and frequency of data.
 - Be aware of the performance impact of data extraction and storage on your Spark application.
 - Adapt the schema and data extraction methods according to your specific requirements and Spark version.
+- 
+In the context of Apache Spark's listener interface, the events `onExecutorAdded` and `onExecutorRemoved` provide specific information about the executors as they are added to or removed from the Spark cluster. Here's the kind of information you can capture and log for these events:
+
+### 1. `onExecutorAdded`:
+When an executor is added to the Spark application, you can capture the following details:
+
+- **Executor ID**: A unique identifier for the executor.
+- **Added Time**: The timestamp when the executor was added.
+- **Executor Info**: Contains various details about the executor, such as:
+  - Hostname where the executor is running.
+  - Number of cores allocated to the executor.
+  - Total amount of memory allocated to the executor.
+  - Other executor-specific metrics or configuration details.
+
+Example structure for logging data in `onExecutorAdded`:
+```java
+Map<String, Object> data = new HashMap<>();
+data.put("executorId", executorAdded.executorId());
+data.put("addedTime", new Timestamp(executorAdded.time()));
+data.put("host", executorAdded.executorInfo().executorHost());
+data.put("totalCores", executorAdded.executorInfo().totalCores());
+data.put("maxMemory", executorAdded.executorInfo().maxMemory());
+```
+
+### 2. `onExecutorRemoved`:
+When an executor is removed from the Spark application, you can capture the following details:
+
+- **Executor ID**: The unique identifier of the executor that was removed.
+- **Removed Time**: The timestamp when the executor was removed.
+- **Reason**: The reason for the executor's removal, which can provide insights into whether the removal was part of normal operation or due to an error.
+
+Example structure for logging data in `onExecutorRemoved`:
+```java
+Map<String, Object> data = new HashMap<>();
+data.put("executorId", executorRemoved.executorId());
+data.put("removedTime", new Timestamp(executorRemoved.time()));
+data.put("reason", executorRemoved.reason());
+```
+
+### Additional Considerations:
+- **Logging Strategy**: Make sure your logging strategy, including the format and level of detail, aligns with your monitoring and debugging needs.
+- **Performance Impact**: Ensure that the logging does not adversely affect the performance of your Spark application.
+- **Data Analysis**: The collected data can be useful for analyzing the performance, scalability, and reliability of your Spark application. It can help you understand executor lifecycle, diagnose issues related to executor failures, or optimize resource allocation.
+
+By capturing these details, you can gain valuable insights into the resource management aspect of your Spark application, which is crucial for tuning and optimizing Spark applications, especially in dynamic and distributed environments.
