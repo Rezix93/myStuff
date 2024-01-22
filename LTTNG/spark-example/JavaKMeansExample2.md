@@ -103,6 +103,20 @@ source ~/.bashrc   # or source ~/.profile or source ~/.bash_profile
 java -version
 
 ```
+
+## Change java version 17
+
+```bash
+
+export JAVA_HOME=/usr/lib/jvm/java-1.17.0-openjdk-amd64
+export PATH=$JAVA_HOME/bin:$PATH
+
+sudo update-alternatives --set java  /usr/lib/jvm/java-17-openjdk-amd64/bin/java 
+source ~/.bashrc   # or source ~/.profile or source ~/.bash_profile
+java -version
+```
+
+
 # Trace Compass
 
 press the / key. It will open a small dialog with a looking glass at the bottom of the view.
