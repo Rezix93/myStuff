@@ -41,6 +41,7 @@ ${SPARK_HOME}/bin/spark-submit \
 --verbose \
 --class org.apache.spark.examples.ml.JavaKMeansExample \
 --deploy-mode client \
+--num-executors 8 \
 /opt/spark/examples/target/scala-2.12/jars/spark-examples_2.12-3.4.0.jar 0
 
 lttng stop
@@ -49,7 +50,7 @@ lttng stop
  ${SPARK_HOME}/bin/spark-submit \
    --verbose \
    --class org.apache.spark.examples.JavaPageRank2 \
-	--deploy-mode client \
+    --deploy-mode client \
    /opt/spark/examples/target/scala-2.12/jars/spark-examples_2.12-3.4.0.jar \
    500 400 100
 
