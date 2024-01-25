@@ -26,6 +26,7 @@ lttng view > output-lttng.log 2>&1
 /usr/local/hadoop/bin/hdfs dfsadmin -report
 ```
 
+
 ## Enable everything
 
 ```bash
@@ -41,21 +42,65 @@ ${SPARK_HOME}/bin/spark-submit \
 --verbose \
 --class org.apache.spark.examples.ml.JavaKMeansExample \
 --deploy-mode client \
---num-executors 16 \
---conf spark.executor.cores=8 \
+--num-executors 4 \
+--conf spark.executor.cores=4 \
 /opt/spark/examples/target/scala-2.12/jars/spark-examples_2.12-3.4.0.jar 0
 
 lttng stop
 
 
- ${SPARK_HOME}/bin/spark-submit \
-   --verbose \
-   --class org.apache.spark.examples.JavaPageRank2 \
-    --deploy-mode client \
-   /opt/spark/examples/target/scala-2.12/jars/spark-examples_2.12-3.4.0.jar \
-   500 400 100
+
+${SPARK_HOME}/bin/spark-submit \
+--verbose \
+  --class org.apache.spark.examples.SparkPi \
+--deploy-mode client \
+--num-executors 16 \
+--conf spark.executor.cores=4 \
+/opt/spark/examples/target/scala-2.12/jars/spark-examples_2.12-3.4.0.jar 1000
+
+
+${SPARK_HOME}/bin/spark-submit \
+  --class org.apache.spark.examples.graphx.AggregateMessagesExample \
+--deploy-mode client \
+--num-executors 16 \
+--conf spark.executor.cores=4 \
+/opt/spark/examples/target/original-spark-examples_2.12-3.4.0.jar
+
+
+${SPARK_HOME}/bin/spark-submit \
+--verbose \
+--class org.apache.spark.examples.ml.JavaKMeansExample \
+--deploy-mode client \
+--num-executors 16 \
+--conf spark.executor.cores=4 \
+/opt/spark/examples/target/scala-2.12/jars/spark-examples_2.12-3.4.0.jar 1
 
 ```
+
+
+
+
+
+Result: Successed
+--num-executors 16 \
+--conf spark.executor.cores=4 \
+
+Result: failed
+--num-executors 16 \
+--conf spark.executor.cores=8 \
+
+
+
+Result: failed
+--num-executors 8 \
+--conf spark.executor.cores=8 \
+
+
+Result: failed
+--num-executors 2 \
+--conf spark.executor.cores=8 \
+
+
 
 Cluster Manager allocates resources across the other applications. I think the issue is with bad optimized configuration. You need to configure Spark on the Dynamic Allocation. In this case Spark will analyze cluster resources and add changes to optimize work.
 
