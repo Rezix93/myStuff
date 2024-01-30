@@ -114,6 +114,23 @@ change java verison to 11 for spark
 The error message you're encountering from the YARN application state monitor indicates that the resource request for your Spark application exceeds the maximum allowed allocation in your YARN cluster. Specifically, the request for 8 virtual cores (vCores) per container is beyond the maximum allowed allocation of 4 vCores. The maximum allocation is determined by the YARN scheduler based on the resources of registered NodeManagers, which might be less than or equal to the configured maximum allocation.
 
 
+## For adding a new graph to Trace compass:
+### Core
+/org.eclipse.tracecompass.incubator.spark_test1.core
 
+/org.eclipse.tracecompass.incubator.spark_test1.core/src/org/eclipse/tracecompass/incubator/internal/spark_test1/core/analysis/SparkAnalysisModule.java
+/org.eclipse.tracecompass.incubator.spark_test1.core/src/org/eclipse/tracecompass/incubator/internal/spark_test1/core/analysis/TaskXYDataProviderFactory.java
+
+
+
+
+### Ui
+
+/org.eclipse.tracecompass.incubator.spark_test1.ui
+
+here add a new class for view and import the data provider from core
+
+ in /org.eclipse.tracecompass.incubator.spark_test1.ui/META-INF/MANIFEST.MF add veiws then brows class org.eclipse.tracecompass.incubator.internal.spark_test1.ui.views.TaskPerExecutorView
+ 
 
 
