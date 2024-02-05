@@ -138,3 +138,6 @@ The shuffleReadFetchWaitTime parameter in Spark measures the total time spent wa
 
 ### broadcast
 In Spark, a "broadcast" refers to the process of distributing a read-only variable to all nodes in the cluster to optimize the efficiency of joins and data processing. The log message indicates that a broadcast variable (identified by "broadcast 61") was created, likely to share data across tasks without requiring shuffle operations, thus reducing network I/O and improving job execution time. This operation is managed by Spark's DAGScheduler and is a key optimization technique for distributed computing in Spark.
+
+### Shuffle data
+Shuffle data in Apache Spark refers to the data that needs to be transferred across different nodes in a cluster for completing operations that involve grouping or aggregating data across partitions. This happens, for example, during operations like reduceByKey or groupBy. The shuffle process is a key phase in distributed computations, where data is redistributed across the cluster so that each node can work on the data it needs to process. The efficiency of shuffling can significantly affect the performance of Spark applications due to network and disk I/O involved.
