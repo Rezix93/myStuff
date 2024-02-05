@@ -133,4 +133,6 @@ here add a new class for view and import the data provider from core
  in /org.eclipse.tracecompass.incubator.spark_test1.ui/META-INF/MANIFEST.MF add veiws then brows class org.eclipse.tracecompass.incubator.internal.spark_test1.ui.views.TaskPerExecutorView
  
 
+### shuffleReadFetchWaitTime
+The shuffleReadFetchWaitTime parameter in Spark measures the total time spent waiting for shuffle data to be fetched from remote locations. It is a critical metric for understanding the performance of shuffling operations in Spark applications, as longer wait times can indicate bottlenecks in network communication or issues with data distribution across the cluster. Optimizing this metric can lead to more efficient data processing by reducing idle time waiting for data.
 
