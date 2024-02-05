@@ -136,3 +136,5 @@ here add a new class for view and import the data provider from core
 ### shuffleReadFetchWaitTime
 The shuffleReadFetchWaitTime parameter in Spark measures the total time spent waiting for shuffle data to be fetched from remote locations. It is a critical metric for understanding the performance of shuffling operations in Spark applications, as longer wait times can indicate bottlenecks in network communication or issues with data distribution across the cluster. Optimizing this metric can lead to more efficient data processing by reducing idle time waiting for data.
 
+### broadcast
+In Spark, a "broadcast" refers to the process of distributing a read-only variable to all nodes in the cluster to optimize the efficiency of joins and data processing. The log message indicates that a broadcast variable (identified by "broadcast 61") was created, likely to share data across tasks without requiring shuffle operations, thus reducing network I/O and improving job execution time. This operation is managed by Spark's DAGScheduler and is a key optimization technique for distributed computing in Spark.
