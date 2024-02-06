@@ -141,3 +141,13 @@ In Spark, a "broadcast" refers to the process of distributing a read-only variab
 
 ### Shuffle data
 Shuffle data in Apache Spark refers to the data that needs to be transferred across different nodes in a cluster for completing operations that involve grouping or aggregating data across partitions. This happens, for example, during operations like reduceByKey or groupBy. The shuffle process is a key phase in distributed computations, where data is redistributed across the cluster so that each node can work on the data it needs to process. The efficiency of shuffling can significantly affect the performance of Spark applications due to network and disk I/O involved.
+
+### executorRunTime vs taskDuration
+executorRunTime measures the total time the executor spent running the task, including both computation time and reading from/writing to HDFS or other storage systems. taskDuration, on the other hand, is the total time from when the task was launched until it completed, which includes not only the executorRunTime but also time spent scheduling the task, fetching shuffle data if necessary, and any other overhead before and after execution. Essentially, taskDuration encompasses executorRunTime along with all other overheads involved in task execution.
+
+### executorDeserializeCPU
+`executorDeserializeCPU` measures the CPU time taken specifically for deserializing task data on the executor before the task can actually start running its computation. It's a part of the overhead before the actual execution (`executorRunTime`) begins and is not included in the `executorRunTime`. Therefore, `executorDeserializeCPU` contributes to the `taskDuration` by adding to the pre-execution overhead. In summary, `taskDuration` includes all phases of a task's lifecycle, including deserialization (`executorDeserializeCPU`), execution (`executorRunTime`), and any other overheads, making it a comprehensive measure of task time.
+
+
+### General
+executorRunTime measures the total time a task spends running on the executor, including computation and reading from or writing to HDFS or other storage systems. executorDeserializeTime, on the other hand, measures the time taken to deserialize the task data sent from the driver to the executor before the task can begin execution. While executorRunTime encompasses the core computation and I/O time, executorDeserializeTime is specifically about the overhead before the actual computation starts.
