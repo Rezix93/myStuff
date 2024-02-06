@@ -168,18 +168,31 @@ jvmGCTime refers to the amount of time the Java Virtual Machine (JVM) spent perf
 
 
 #### Example: 
-shuffleReadFetchWaitTime=0; 
-shuffleWriteBytesWrtietime=0; 
-gettingResultTime=0;
+
+#### From task metric
+shuffleReadFetchWaitTime=0;
+
+shuffleWriteBytesWrtietime=0;
+
 jvmGCTime=249; 
+
 executorDeserializeCPUTime=709177696;
+
 executorDeserializeTime=1844;
-executorCPUTime=3060031425; 
+
+executorCPUTime=3060031425;
+
 executorRunTime=7172; 
+
+resultSerializationTime=1;
+
+
+#### From task Info           
+gettingResultTime=0;
+
 taskDuration=9227;
-launchTime=1707173081509;
-resultSerializationTime=1; 
-taskEndTime=1707173090736;
+
+
 
 These metrics provide detailed insights into the performance and behavior of a Spark task:
 
