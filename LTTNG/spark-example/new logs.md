@@ -167,5 +167,32 @@ executorRunTime measures the total time a task spends running on the executor, i
 jvmGCTime refers to the amount of time the Java Virtual Machine (JVM) spent performing garbage collection (GC) during the execution of a task. Garbage collection is the process of identifying and disposing of objects that are no longer needed by the application, which helps in managing memory more efficiently. High jvmGCTime values can indicate that the task involved heavy object creation and disposal, potentially impacting performance by increasing overall task execution time.
 
 
+#### Example: 
+shuffleReadFetchWaitTime=0; 
+shuffleWriteBytesWrtietime=0; 
+gettingResultTime=0;
+jvmGCTime=249; 
+executorDeserializeCPUTime=709177696;
+executorDeserializeTime=1844;
+executorCPUTime=3060031425; 
+executorRunTime=7172; 
+taskDuration=9227;
+launchTime=1707173081509;
+resultSerializationTime=1; 
+taskEndTime=1707173090736;
+
+These metrics provide detailed insights into the performance and behavior of a Spark task:
+
+- `shuffleReadFetchWaitTime`: Time spent waiting for shuffle data, indicative of network or IO bottlenecks in shuffle operations. Here, no time was spent waiting, suggesting efficient shuffle data retrieval.
+- `shuffleWriteBytesWrtietime` & `gettingResultTime`: These show the time to write shuffle data and retrieve results, respectively. Both are zero, indicating no significant shuffle write time or delay in getting results.
+- `jvmGCTime`: Time the JVM spent in garbage collection during this task, which can impact task performance.
+- `executorDeserializeTime` & `executorDeserializeCPUTime`: These represent the time and CPU time spent on deserializing task data on the executor, impacting task startup time.
+- `executorCPUTime`: Total CPU time consumed by the task, reflecting the actual CPU resources used.
+- `executorRunTime`: The execution time of the task within the executor, excluding JVM GC time or any overhead introduced by Spark's execution engine.
+- `taskDuration`: Total duration of the task from start to end, including all overheads and processing time.
+- `launchTime` & `taskEndTime`: Timestamps marking the start and end of the task execution.
+- `resultSerializationTime`: Time taken to serialize the task's result before sending it back to the driver.
+
+`taskDuration` is the overall time from the task's start to its completion, potentially including time spent waiting for resources or other overheads not directly related to computation. It's usually the broadest measure of task time, encompassing all other time metrics.
 
 
