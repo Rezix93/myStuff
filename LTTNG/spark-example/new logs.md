@@ -209,3 +209,9 @@ These metrics provide detailed insights into the performance and behavior of a S
 `taskDuration` is the overall time from the task's start to its completion, potentially including time spent waiting for resources or other overheads not directly related to computation. It's usually the broadest measure of task time, encompassing all other time metrics.
 
 
+cpuRate = executorCpuTime / executorRunTime
+serRate = resultSerializationTime / executorRunTime
+gcRate = jvmGCTime / executorRunTime
+shuffleFetchRate = shuffleReadFetchWaitTime / executorRunTime
+shuffleWriteRate = shufflesWrtietime / executorRunTime
+
