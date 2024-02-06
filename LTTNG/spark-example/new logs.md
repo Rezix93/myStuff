@@ -156,6 +156,12 @@ jvmGCTime refers to the amount of time the Java Virtual Machine (JVM) spent perf
 ### executorCPUTime
 `executorCPUTime` measures the total CPU time consumed by the executor for running the task. This includes the time spent on executing the task's code and any other CPU-bound operations it performs. It's a measure of the actual CPU resources consumed by the task, distinct from wall-clock time (`executorRunTime`), which includes idle waits. Monitoring `executorCPUTime` can help in understanding the computational complexity of the tasks and optimizing resource utilization.
 
+
+
+### executorRunTime vs executorCPUTime
+`executorRunTime` measures the total time taken by a task from start to finish, including both computation time and waiting time for resources or data. It's the wall-clock time for task execution. `executorCPUTime`, on the other hand, measures only the CPU time consumed by the task for computation, excluding any I/O waiting time, data shuffle time, or time spent waiting for other resources. It provides a measure of how much CPU work the task did, offering insights into the task's computational efficiency.
+
+
 ### General
 executorRunTime measures the total time a task spends running on the executor, including computation and reading from or writing to HDFS or other storage systems. executorDeserializeTime, on the other hand, measures the time taken to deserialize the task data sent from the driver to the executor before the task can begin execution. While executorRunTime encompasses the core computation and I/O time, executorDeserializeTime is specifically about the overhead before the actual computation starts.
 jvmGCTime refers to the amount of time the Java Virtual Machine (JVM) spent performing garbage collection (GC) during the execution of a task. Garbage collection is the process of identifying and disposing of objects that are no longer needed by the application, which helps in managing memory more efficiently. High jvmGCTime values can indicate that the task involved heavy object creation and disposal, potentially impacting performance by increasing overall task execution time.
