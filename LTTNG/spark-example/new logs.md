@@ -44,7 +44,7 @@ ${SPARK_HOME}/bin/spark-submit \
 --deploy-mode client \
 --num-executors 4 \
 --conf spark.executor.cores=4 \
-/opt/spark/examples/target/scala-2.12/jars/spark-examples_2.12-3.4.0.jar 0
+/opt/spark/examples/target/scala-2.12/jars/spark-examples_2.12-3.4.0.jar 8
 
 lttng stop
 
@@ -160,6 +160,11 @@ jvmGCTime refers to the amount of time the Java Virtual Machine (JVM) spent perf
 
 ### executorRunTime vs executorCPUTime
 `executorRunTime` measures the total time taken by a task from start to finish, including both computation time and waiting time for resources or data. It's the wall-clock time for task execution. `executorCPUTime`, on the other hand, measures only the CPU time consumed by the task for computation, excluding any I/O waiting time, data shuffle time, or time spent waiting for other resources. It provides a measure of how much CPU work the task did, offering insights into the task's computational efficiency.
+
+
+### resultSerializationTime vs executorDeserializeTime
+
+`resultSerializationTime` measures the time taken to serialize the result of a task before sending it back to the driver, indicating how long it takes to prepare the result for transmission over the network. `executorDeserializeTime`, in contrast, tracks the time spent to deserialize the task data at the executor side before the task execution begins. Essentially, `resultSerializationTime` is about converting task output to a network-transmittable form, while `executorDeserializeTime` is about converting received data into a form that the executor can process for task execution.
 
 
 ### General
