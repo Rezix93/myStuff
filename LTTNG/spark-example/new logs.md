@@ -227,8 +227,9 @@ shuffleFetchRate = shuffleReadFetchWaitTime / executorRunTime
 shuffleWriteRate = shufflesWrtietime / executorRunTime
 
 
+### TASK STATUS:
 
-
+Each task in Spark represents a unit of work sent to the executor. Spark tasks themselves do not inherently have states like "map," "reduce," or "group by" because these are transformations or actions applied on RDDs (Resilient Distributed Datasets) or DataFrames
 
 # New challenge: 
 ## Waitng time for tasks
@@ -237,6 +238,16 @@ shuffleWriteRate = shufflesWrtietime / executorRunTime
 
 
 #### Complex example: 
+
+
+
+
+
+
+
+
+
+
 As an example, the Alternating Least Squares (ALS) implementation in MLlib computes an approximate product of two factor matrices iteratively. This involves a series of map, join, groupByKey operations under the hood.
 
 
