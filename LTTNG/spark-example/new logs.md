@@ -223,7 +223,13 @@ shuffleWriteRate = shufflesWrtietime / executorRunTime
 
 
 
+
+
 # New challenge: 
 ## Waitng time for tasks
 ## Pending time for tasks
 ## Diffrent state of task in running (map, reduce, groupby)
+
+
+#### Complex example: 
+As an example, the Alternating Least Squares (ALS) implementation in MLlib computes an approximate product of two factor matrices iteratively. This involves a series of map, join, groupByKey operations under the hood.
