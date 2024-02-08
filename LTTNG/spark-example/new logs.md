@@ -168,6 +168,11 @@ jvmGCTime refers to the amount of time the Java Virtual Machine (JVM) spent perf
 
 ### so executorDeserializeTime is not part of executorRunTime?
 Yes, `executorDeserializeTime` is a separate metric that measures the time taken to deserialize task data before execution can begin on the executor. It does not directly contribute to `executorRunTime`, which measures the actual running time of the task execution itself. The deserialization time is part of the overhead incurred before the task's computation starts, while the execution time is focused solely on the computation part of the task.
+
+### Why taskDuration > executorRunTime
+The `executorRunTime` from Spark metrics and the task duration reported by the Spark listener may differ due to various factors involved in task execution. The `executorRunTime` specifically measures the time spent executing the task code on the executor, excluding overheads like scheduling delays, data serialization/deserialization, and network I/O. In contrast, task duration from the Spark listener includes all overheads, from the moment the task was scheduled to its completion, hence offering a more comprehensive view of the task's lifecycle. This broader scope is why task duration can be longer than `executorRunTime`.
+
+
 ### General
 executorRunTime measures the total time a task spends running on the executor, including computation and reading from or writing to HDFS or other storage systems. executorDeserializeTime, on the other hand, measures the time taken to deserialize the task data sent from the driver to the executor before the task can begin execution. While executorRunTime encompasses the core computation and I/O time, executorDeserializeTime is specifically about the overhead before the actual computation starts.
 jvmGCTime refers to the amount of time the Java Virtual Machine (JVM) spent performing garbage collection (GC) during the execution of a task. Garbage collection is the process of identifying and disposing of objects that are no longer needed by the application, which helps in managing memory more efficiently. High jvmGCTime values can indicate that the task involved heavy object creation and disposal, potentially impacting performance by increasing overall task execution time.
