@@ -271,6 +271,34 @@ A job is triggered by an action. It represents the entire computation required t
 A task is a unit of work that is sent to an executor. Each stage is composed of tasks, where each task corresponds to a combination of data and computation on that data. A task is Spark's smallest unit of work and is executed on a single executor.
 In summary, transformations define a set of instructions to be applied to data, which are organized into stages for efficiency. Stages are grouped into jobs when an action is called, and jobs are broken down into tasks that are distributed across the Spark cluster for execution.
 
+Apache Spark actions are operations that trigger computation over RDDs, DataFrames, and Datasets to return results to the driver program or write to storage. Actions are the point at which Spark starts executing the code in a cluster to return results or save data. Here's a list of commonly used actions in Spark:
+
+### RDD Actions
+- **collect()**: Returns all the elements of the dataset as an array at the driver program.
+- **count()**: Returns the number of elements in the dataset.
+- **first()**: Returns the first element of the dataset.
+- **take(n)**: Returns an array with the first n elements of the dataset.
+- **reduce(func)**: Aggregates the elements of the dataset using a function `func` (which takes two arguments and returns one).
+- **aggregate(zerovalue, seqOp, combOp)**: Returns a more general form of aggregation than `reduce()`. The zero value is used for initialization, `seqOp` for aggregation within a partition, and `combOp` to combine the results from different partitions.
+- **foreach(func)**: Applies a function `func` to all elements of the dataset.
+- **saveAsTextFile(path)**: Writes the dataset to a text file at the specified path.
+- **countByKey()**: (For RDDs of type `(K, V)`) Returns a hashmap of keys and their counts.
+- **collectAsMap()**: (For RDDs of type `(K, V)`) Returns the dataset as a map.
+
+### DataFrame and Dataset Actions
+- **show()**: Displays the top rows of the DataFrame in a tabular form.
+- **count()**: Returns the number of rows in the DataFrame or Dataset.
+- **collect()**: Collects the rows of the DataFrame or Dataset and returns them as an array of Rows to the driver program.
+- **take(n)**: Returns the first n rows as an array.
+- **first()** and **head()**: Return the first row.
+- **save()**: Saves the content of the DataFrame to a data source.
+- **write()**: Returns a `DataFrameWriter` object for configuring and executing write operations supported by the format.
+- **foreach(func)**: Applies a function `func` to each Row.
+- **reduce(func)**: Reduces the elements of this Dataset using the specified binary function. (Available in Datasets)
+- **agg(exprs)**: Aggregates on the entire DataFrame without groups. (Available in DataFrames)
+
+Spark's transformations and actions are lazy and eager, respectively. Transformations define a new computation and are not executed until an action is called. Actions trigger the execution of the computation defined by a series of transformations and return results or write to storage.
+
 # New challenge: 
 ## Waitng time for tasks
 ## Pending time for tasks
@@ -278,15 +306,6 @@ In summary, transformations define a set of instructions to be applied to data, 
 
 
 #### Complex example: 
-
-
-
-
-
-
-
-
-
 
 As an example, the Alternating Least Squares (ALS) implementation in MLlib computes an approximate product of two factor matrices iteratively. This involves a series of map, join, groupByKey operations under the hood.
 
