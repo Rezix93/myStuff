@@ -221,3 +221,9 @@ gcRate = jvmGCTime / executorRunTime
 shuffleFetchRate = shuffleReadFetchWaitTime / executorRunTime
 shuffleWriteRate = shufflesWrtietime / executorRunTime
 
+
+
+# New challenge: 
+## Waitng time for tasks
+## Pending time for tasks
+## Diffrent state of task in running (map, reduce, groupby)
