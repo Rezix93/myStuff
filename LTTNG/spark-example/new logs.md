@@ -231,6 +231,46 @@ shuffleWriteRate = shufflesWrtietime / executorRunTime
 
 Each task in Spark represents a unit of work sent to the executor. Spark tasks themselves do not inherently have states like "map," "reduce," or "group by" because these are transformations or actions applied on RDDs (Resilient Distributed Datasets) or DataFrames
 
+
+Apache Spark provides a rich set of transformations, which are operations on RDDs (Resilient Distributed Datasets) that return a new RDD. These transformations are lazily evaluated, meaning they are not executed immediately but rather wait until an action is performed. Here's a comprehensive list of the core transformations available in Spark:
+
+### Narrow Transformations (No Shuffle Required)
+- **`map(func)`**: Returns a new RDD by applying a function to each element.
+- **`filter(func)`**: Returns a new RDD containing only the elements that satisfy a predicate.
+- **`flatMap(func)`**: Similar to `map`, but each input item can be mapped to 0 or more output items.
+- **`mapPartitions(func)`**: Similar to `map`, but runs separately on each partition (block) of the RDD.
+- **`mapPartitionsWithIndex(func)`**: Similar to `mapPartitions`, but also provides a function with an index of the partition.
+- **`sample(withReplacement, fraction, seed)`**: Sample a fraction of the data, with or without replacement.
+- **`union(otherDataset)`**: Returns a new RDD containing elements from the source dataset and the other dataset.
+- **`takeSample(withReplacement, num, seed)`**: Return an array with a random sample of `num` elements of the dataset.
+
+### Wide Transformations (Shuffle Required)
+- **`groupBy(func)`**: Groups the elements of the RDD according to a specified function.
+- **`reduceByKey(func)`**: When called on a dataset of `(K, V)` pairs, returns a dataset of `(K, V)` pairs where the values for each key are aggregated using the given reduce function.
+- **`aggregateByKey(zeroValue)(seqOp, combOp)`**: Aggregate the values of each key, using given combine functions and a neutral "zero value".
+- **`sortByKey(ascending=True)`**: When called on an RDD of `(K, V)` pairs, returns an RDD sorted by the keys.
+- **`join(otherDataset)`**: When called on datasets of `(K, V)` and `(K, W)` pairs, returns a dataset of `(K, (V, W))` pairs with all pairs of elements for each key.
+- **`cogroup(otherDataset)`**: When called on datasets of `(K, V)` and `(K, W)`, groups data from both datasets by key.
+- **`cartesian(otherDataset)`**: When called on datasets of types T and U, returns a dataset of `(T, U)` pairs (all pairs of elements).
+- **`distinct()`**: Returns a new dataset that contains the distinct elements of the source dataset.
+- **`repartition(numPartitions)`**: Reshuffle the data in the RDD randomly to create either more or fewer partitions and balance it across them.
+- **`coalesce(numPartitions)`**: Decrease the number of partitions in the RDD to a specified number.
+- **`flatMapValues(func)`**: Pass each value in the key-value pair RDD through a `flatMap` function without changing the keys; this also similarly applies for `mapValues`.
+
+This list covers the core transformations. Spark also provides additional transformations for specialized use cases, including operations on pair RDDs (key-value pairs) and double RDDs (RDDs with numerical data), as well as transformations specific to DataFrames and Datasets in Spark SQL.
+
+
+### Stages:
+A stage represents a group of tasks that can be executed together without shuffling data across the partitions. Stages are the result of shuffling operations. Each stage contains a sequence of transformations that can be performed on partitions without needing data from other partitions.
+Stages are separated by transformations that require a shuffle of data, such as groupBy or reduceByKey.
+
+### Jobs:
+A job is triggered by an action. It represents the entire computation required to produce the result for the action. A job consists of one or more stages.
+
+### Tasks:
+A task is a unit of work that is sent to an executor. Each stage is composed of tasks, where each task corresponds to a combination of data and computation on that data. A task is Spark's smallest unit of work and is executed on a single executor.
+In summary, transformations define a set of instructions to be applied to data, which are organized into stages for efficiency. Stages are grouped into jobs when an action is called, and jobs are broken down into tasks that are distributed across the Spark cluster for execution.
+
 # New challenge: 
 ## Waitng time for tasks
 ## Pending time for tasks
