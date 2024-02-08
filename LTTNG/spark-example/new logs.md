@@ -298,6 +298,20 @@ Apache Spark actions are operations that trigger computation over RDDs, DataFram
 - **agg(exprs)**: Aggregates on the entire DataFrame without groups. (Available in DataFrames)
 
 Spark's transformations and actions are lazy and eager, respectively. Transformations define a new computation and are not executed until an action is called. Actions trigger the execution of the computation defined by a series of transformations and return results or write to storage.
+#### Capturing Actions
+Actions in Spark trigger the computation of RDDs, DataFrames, or Datasets. These actions are easier to capture because they result in a job submission to the cluster. You can log details about actions using the following event listeners in your custom Spark listener:
+
+#### onJobStart: This method is called when a job starts. An action triggers a job in Spark. By implementing this method, you can log the action that initiated the job. The SparkListenerJobStart event provides details such as the job ID, stage info, and submission time, which can indirectly give you information about the action.
+
+#### onJobEnd: This method is called when a job ends. It provides information such as the job result, which can help you determine the outcome of the action.
+
+### Capturing Transformations
+Since transformations are lazy and do not cause any computation by themselves, they are not directly observable through Spark listeners. However, you can infer the presence of certain transformations indirectly through stage and task submissions:
+
+##### onStageSubmitted and onStageCompleted: These methods are called when stages are submitted and completed, respectively. Each stage in Spark corresponds to a set of transformations that are grouped together for execution. By logging these events, you can infer that a series of transformations were executed as part of a stage. However, the specific transformations are not directly provided.
+
+##### onTaskStart and onTaskEnd: Tasks are the smallest units of work in Spark, executed within stages. By logging task start and end events, you can get details at a finer granularity about the computation performed as part of a stage. The task info might give clues about the transformations, especially if you customize the task description to include transformation details programmatically.
+
 
 # New challenge: 
 ## Waitng time for tasks
