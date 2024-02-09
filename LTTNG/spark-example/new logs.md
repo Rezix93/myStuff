@@ -495,8 +495,13 @@ list_rdd = sparkContext.parallelize(["Dog", "Cat", "Rabbit"])
 pair_rdd = list_rdd.map(lambda a: (a, len(a)))
 ```
 
+## Determine the actions
+To determine the actions and transformations directly from Spark listener logs, you generally need to look at the stage's purpose (often indicated by the stage name or the terminal operation like reduce, collect, count, etc.) and the lineage of RDDs involved in that stage, which tells you the transformations applied.
+
+
 These methods form the basis of RDD creation in Spark, providing a flexible approach to distribute and manipulate data across a cluster for parallel processing.
 Understanding RDDs is crucial for effective programming with Apache Spark, as they are the backbone of Spark's distributed data processing capabilities.
+
 # New challenge: 
 ## Waitng time for tasks
 ## Pending time for tasks
