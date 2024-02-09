@@ -509,7 +509,25 @@ Understanding RDDs is crucial for effective programming with Apache Spark, as th
 
 
 
+# DEscribe Dagsceduler graph: 
+https://stackoverflow.com/questions/40590028/what-do-the-blue-blocks-in-spark-stage-dag-visualisation-ui-mean
+Each blue box is the steps of Apache Spark job.
 
+You are asking about the WholeStageCodegen this stuff is:
+
+Whole-Stage Code Generation (aka WholeStageCodegen or WholeStageCodegenExec) fuses multiple operators (as a subtree of plans that support codegen) together into a single Java function that is aimed at improving execution performance. It collapses a query into a single optimized function that eliminates virtual function calls and leverages CPU registers for intermediate data.
+
+You can see details here SPARK-12795
+
+The exchange means the Shuffle Exchange between jobs in more details:
+
+ShuffleExchange is a unary physical operator. It corresponds to Repartition (with shuffle enabled) and RepartitionByExpression logical operators (as translated in BasicOperators strategy).
+
+All this information you can get in your code using the explain command
+
+Each step shows you what your dataframe is going to do, this is good to find if your logic is right. If you want more details about Spark UI I suggest you to see this presentation of Spark Summit and read this article about the execution planning.
+
+These information will show you much more about your doubt.
 
 
 #### Complex example: 
