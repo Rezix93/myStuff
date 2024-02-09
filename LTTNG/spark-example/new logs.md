@@ -301,16 +301,62 @@ Spark's transformations and actions are lazy and eager, respectively. Transforma
 #### Capturing Actions
 Actions in Spark trigger the computation of RDDs, DataFrames, or Datasets. These actions are easier to capture because they result in a job submission to the cluster. You can log details about actions using the following event listeners in your custom Spark listener:
 
-#### onJobStart: This method is called when a job starts. An action triggers a job in Spark. By implementing this method, you can log the action that initiated the job. The SparkListenerJobStart event provides details such as the job ID, stage info, and submission time, which can indirectly give you information about the action.
+#### onJobStart: 
+This method is called when a job starts. An action triggers a job in Spark. By implementing this method, you can log the action that initiated the job. The SparkListenerJobStart event provides details such as the job ID, stage info, and submission time, which can indirectly give you information about the action.
 
-#### onJobEnd: This method is called when a job ends. It provides information such as the job result, which can help you determine the outcome of the action.
+#### onJobEnd: 
+This method is called when a job ends. It provides information such as the job result, which can help you determine the outcome of the action.
 
 ### Capturing Transformations
 Since transformations are lazy and do not cause any computation by themselves, they are not directly observable through Spark listeners. However, you can infer the presence of certain transformations indirectly through stage and task submissions:
 
-##### onStageSubmitted and onStageCompleted: These methods are called when stages are submitted and completed, respectively. Each stage in Spark corresponds to a set of transformations that are grouped together for execution. By logging these events, you can infer that a series of transformations were executed as part of a stage. However, the specific transformations are not directly provided.
+##### onStageSubmitted and onStageCompleted:
+These methods are called when stages are submitted and completed, respectively. Each stage in Spark corresponds to a set of transformations that are grouped together for execution. By logging these events, you can infer that a series of transformations were executed as part of a stage. However, the specific transformations are not directly provided.
 
-##### onTaskStart and onTaskEnd: Tasks are the smallest units of work in Spark, executed within stages. By logging task start and end events, you can get details at a finer granularity about the computation performed as part of a stage. The task info might give clues about the transformations, especially if you customize the task description to include transformation details programmatically.
+##### onTaskStart and onTaskEnd:
+Tasks are the smallest units of work in Spark, executed within stages. By logging task start and end events, you can get details at a finer granularity about the computation performed as part of a stage. The task info might give clues about the transformations, especially if you customize the task description to include transformation details programmatically.
+
+
+This JSON snippet represents the completion event of a Spark stage, as recorded by Spark's event logging mechanism. It provides a wealth of information about the stage, including its ID, name, the tasks it comprised, and performance metrics. Here's a breakdown of some key components and what you can infer regarding the different states of a Spark task:
+
+1. **Stage Info**: Contains details about the stage, such as:
+   - **Stage ID** and **Stage Attempt ID**: Unique identifiers for the stage and its attempt number, respectively.
+   - **Stage Name**: The operation leading to this stage's creation, often indicative of the RDD action or transformation that triggered it (e.g., "reduce at MLUtils.scala:94").
+   - **Number of Tasks**: The total tasks in this stage, which directly relates to the parallelism level of this stage.
+
+2. **RDD Info**: Provides details on the RDDs involved in this stage, including their lineage (parent IDs), storage levels, and partitioning info. Each RDD's name and scope can hint at the transformations applied (e.g., map, Scan text, DeserializeToObject).
+
+3. **Parent IDs**: Lists the parent stages of this stage, if any, indicating the DAG (Directed Acyclic Graph) dependencies among stages.
+
+4. **Details**: A stack trace of the method calls leading to this stage's execution, offering a detailed view of the operations performed.
+
+5. **Submission Time** and **Completion Time**: Timestamps marking the start and end of the stage, useful for performance analysis and identifying bottlenecks.
+
+6. **Accumulables**: Key performance metrics gathered during stage execution, such as:
+   - Executor de/serialization times and CPU times, offering insight into the computational overhead.
+   - JVM GC time, indicating the impact of garbage collection on stage execution.
+   - Input metrics (bytes and records read), showing data processing volumes.
+   
+### Inferring Task States
+
+From the information available in such a log snippet, you can infer several states of Spark tasks within the stage:
+
+- **Pending**: Before the stage's "Submission Time", tasks are in the queue waiting to be scheduled.
+- **Running**: Between "Submission Time" and "Completion Time", tasks are being executed.
+- **Completed**: After the "Completion Time", tasks have finished execution.
+
+However, this specific log snippet doesn't directly provide task-level states like "map", "reduce", "group by", etc., as these are part of the stage's broader computation context. To link tasks to such states, you'd typically refer to the stage name, RDD lineage, and operations listed in "Details" and "RDD Info".
+
+### Analyzing Task Operations
+
+To analyze what operations (transformations and actions) are running within your custom Spark listener logs, you would:
+
+1. **Parse the Stage Name**: It often contains the operation triggering the stage.
+2. **Examine RDD Info**: The "Name" and "Scope" can provide clues about the transformations applied.
+3. **Look at "Details"**: The stack trace might reveal higher-level actions or transformations not evident from the stage name or RDD info alone.
+
+This approach helps in identifying the computational work being performed and linking it to task and stage metrics for performance analysis.
+
 
 
 # New challenge: 
