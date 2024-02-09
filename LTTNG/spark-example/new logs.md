@@ -345,6 +345,7 @@ From the information available in such a log snippet, you can infer several stat
 - **Running**: Between "Submission Time" and "Completion Time", tasks are being executed.
 - **Completed**: After the "Completion Time", tasks have finished execution.
 
+
 However, this specific log snippet doesn't directly provide task-level states like "map", "reduce", "group by", etc., as these are part of the stage's broader computation context. To link tasks to such states, you'd typically refer to the stage name, RDD lineage, and operations listed in "Details" and "RDD Info".
 
 ### Analyzing Task Operations
