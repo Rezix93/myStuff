@@ -173,6 +173,20 @@ Yes, `executorDeserializeTime` is a separate metric that measures the time taken
 The `executorRunTime` from Spark metrics and the task duration reported by the Spark listener may differ due to various factors involved in task execution. The `executorRunTime` specifically measures the time spent executing the task code on the executor, excluding overheads like scheduling delays, data serialization/deserialization, and network I/O. In contrast, task duration from the Spark listener includes all overheads, from the moment the task was scheduled to its completion, hence offering a more comprehensive view of the task's lifecycle. This broader scope is why task duration can be longer than `executorRunTime`.
 
 
+#### noted: 
+In your 1 stage DAG you are simply creating the RDD with the collection and in the second RDD, you shuffle the RDD using partitionBy so your data is shuffled over the cluster. So due to shuffling the data your process is slow for the 2nd stage.
+
+Difference between ShuffledRDD, MapPartitionsRDD and ParallelCollectionRDD:
+
+#### ShuffledRDD : 
+ShuffledRDD is created while the data is shuffled over the cluster. If you use any transformation(e.g. join,groupBy,repartition, etc.) which shuffles your data it will create a shuffledRDD.
+
+#### MapPartitionsRDD :
+MapPartitionsRDD will be created when you use mapPartition transformation.
+
+#### ParallelCollectionRDD :
+ParallelCollectionRDD is created when you create the RDD with the collection object.
+
 ### General
 executorRunTime measures the total time a task spends running on the executor, including computation and reading from or writing to HDFS or other storage systems. executorDeserializeTime, on the other hand, measures the time taken to deserialize the task data sent from the driver to the executor before the task can begin execution. While executorRunTime encompasses the core computation and I/O time, executorDeserializeTime is specifically about the overhead before the actual computation starts.
 jvmGCTime refers to the amount of time the Java Virtual Machine (JVM) spent performing garbage collection (GC) during the execution of a task. Garbage collection is the process of identifying and disposing of objects that are no longer needed by the application, which helps in managing memory more efficiently. High jvmGCTime values can indicate that the task involved heavy object creation and disposal, potentially impacting performance by increasing overall task execution time.
