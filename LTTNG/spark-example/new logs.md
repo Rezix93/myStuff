@@ -24,7 +24,8 @@ lttng view > output-lttng.log 2>&1
 
 
 /usr/local/hadoop/bin/hdfs dfsadmin -report
-```
+
+^.*(SparkListenerTaskStart|SparkListenerTaskEnd|word3).*```
 
 
 ## Enable everything
