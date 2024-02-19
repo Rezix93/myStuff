@@ -307,6 +307,8 @@ Apache Spark actions are operations that trigger computation over RDDs, DataFram
 - **fold(zeroValue)(func)**: Aggregate the elements of each partition and then the results for all partitions.
 - **top(n)**: Returns the top n elements from an RDD.
 - **count()**: Returns the number of rows in the DataFrame.
+ - **foreachPartition**: is an action because it causes the execution of the RDD transformations that have been defined up to that point in the program. It does not return a new RDD (like transformations do) but instead applies a function to each partition of the RDD to perform side effects (e.g., writing to external storage).
+
 
 ### DataFrame and Dataset Actions
 - **show()**: Displays the top rows of the DataFrame in a tabular form.
