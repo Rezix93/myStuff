@@ -285,6 +285,10 @@ A job is triggered by an action. It represents the entire computation required t
 A task is a unit of work that is sent to an executor. Each stage is composed of tasks, where each task corresponds to a combination of data and computation on that data. A task is Spark's smallest unit of work and is executed on a single executor.
 In summary, transformations define a set of instructions to be applied to data, which are organized into stages for efficiency. Stages are grouped into jobs when an action is called, and jobs are broken down into tasks that are distributed across the Spark cluster for execution.
 
+### Categorization
+RDD Actions: More low-level operations for working directly with distributed data. These actions are fundamental for RDD manipulation.
+DataFrame Actions: Higher-level operations that allow for more complex computations and aggregations, often with optimized execution plans.
+
 Apache Spark actions are operations that trigger computation over RDDs, DataFrames, and Datasets to return results to the driver program or write to storage. Actions are the point at which Spark starts executing the code in a cluster to return results or save data. Here's a list of commonly used actions in Spark:
 
 ### RDD Actions
@@ -298,6 +302,11 @@ Apache Spark actions are operations that trigger computation over RDDs, DataFram
 - **saveAsTextFile(path)**: Writes the dataset to a text file at the specified path.
 - **countByKey()**: (For RDDs of type `(K, V)`) Returns a hashmap of keys and their counts.
 - **collectAsMap()**: (For RDDs of type `(K, V)`) Returns the dataset as a map.
+- **takeSample(withReplacement, num, seed)**: Return an array with a random sample of `num` elements of the dataset.
+- **countByValue()**: Returns the count of each unique value in the RDD as a map of (value, count).
+- **fold(zeroValue)(func)**: Aggregate the elements of each partition and then the results for all partitions.
+- **top(n)**: Returns the top n elements from an RDD.
+- **count()**: Returns the number of rows in the DataFrame.
 
 ### DataFrame and Dataset Actions
 - **show()**: Displays the top rows of the DataFrame in a tabular form.
@@ -310,11 +319,16 @@ Apache Spark actions are operations that trigger computation over RDDs, DataFram
 - **foreach(func)**: Applies a function `func` to each Row.
 - **reduce(func)**: Reduces the elements of this Dataset using the specified binary function. (Available in Datasets)
 - **agg(exprs)**: Aggregates on the entire DataFrame without groups. (Available in DataFrames)
+- **write()**: Actions that output data to storage systems like DFS, HDFS, etc.
+- **agg()**: Aggregates on the entire DataFrame with a collection of aggregation functions like count(), sum(), etc.
 
 
-- **`takeSample(withReplacement, num, seed)`**: Return an array with a random sample of `num` elements of the dataset.
+### Actions Common to Both
+Some actions like count() and collect() are common to both RDDs and DataFrames but are executed differently under the hood due to the different nature of RDDs and DataFrames. DataFrames have optimizations through Catalyst optimizer and Tungsten execution engine.
 
 Spark's transformations and actions are lazy and eager, respectively. Transformations define a new computation and are not executed until an action is called. Actions trigger the execution of the computation defined by a series of transformations and return results or write to storage.
+
+
 #### Capturing Actions
 Actions in Spark trigger the computation of RDDs, DataFrames, or Datasets. These actions are easier to capture because they result in a job submission to the cluster. You can log details about actions using the following event listeners in your custom Spark listener:
 
