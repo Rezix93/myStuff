@@ -257,7 +257,6 @@ Apache Spark provides a rich set of transformations, which are operations on RDD
 - **`mapPartitionsWithIndex(func)`**: Similar to `mapPartitions`, but also provides a function with an index of the partition.
 - **`sample(withReplacement, fraction, seed)`**: Sample a fraction of the data, with or without replacement.
 - **`union(otherDataset)`**: Returns a new RDD containing elements from the source dataset and the other dataset.
-- **`takeSample(withReplacement, num, seed)`**: Return an array with a random sample of `num` elements of the dataset.
 
 ### Wide Transformations (Shuffle Required)
 - **`groupBy(func)`**: Groups the elements of the RDD according to a specified function.
@@ -311,6 +310,9 @@ Apache Spark actions are operations that trigger computation over RDDs, DataFram
 - **foreach(func)**: Applies a function `func` to each Row.
 - **reduce(func)**: Reduces the elements of this Dataset using the specified binary function. (Available in Datasets)
 - **agg(exprs)**: Aggregates on the entire DataFrame without groups. (Available in DataFrames)
+
+
+- **`takeSample(withReplacement, num, seed)`**: Return an array with a random sample of `num` elements of the dataset.
 
 Spark's transformations and actions are lazy and eager, respectively. Transformations define a new computation and are not executed until an action is called. Actions trigger the execution of the computation defined by a series of transformations and return results or write to storage.
 #### Capturing Actions
