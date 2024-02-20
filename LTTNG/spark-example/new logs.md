@@ -257,7 +257,8 @@ Apache Spark provides a rich set of transformations, which are operations on RDD
 - **`mapPartitionsWithIndex(func)`**: Similar to `mapPartitions`, but also provides a function with an index of the partition.
 - **`sample(withReplacement, fraction, seed)`**: Sample a fraction of the data, with or without replacement.
 - **`union(otherDataset)`**: Returns a new RDD containing elements from the source dataset and the other dataset.
-
+- **`intersection(otherDataset)`**	Return a new RDD that contains the intersection of elements in the source dataset and the argument.
+- 
 ### Wide Transformations (Shuffle Required)
 - **`groupBy(func)`**: Groups the elements of the RDD according to a specified function.
 - **`reduceByKey(func)`**: When called on a dataset of `(K, V)` pairs, returns a dataset of `(K, V)` pairs where the values for each key are aggregated using the given reduce function.
