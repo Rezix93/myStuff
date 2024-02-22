@@ -45,7 +45,7 @@ ${SPARK_HOME}/bin/spark-submit \
 --deploy-mode client \
 --num-executors 4 \
 --conf spark.executor.cores=4 \
-/opt/spark/examples/target/scala-2.12/jars/spark-examples_2.12-3.4.0.jar 8
+/opt/spark/examples/target/scala-2.12/jars/spark-examples_2.12-3.4.0.jar 6
 
 lttng stop
 
