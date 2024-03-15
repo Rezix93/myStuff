@@ -32,6 +32,8 @@ lttng view > output-lttng.log 2>&1
 
 ```bash
 
+--deploy-mode client \
+--master local[*] \
 
 lttng create
 
@@ -42,8 +44,8 @@ lttng start
 ${SPARK_HOME}/bin/spark-submit \
 --verbose \
 --class org.apache.spark.examples.ml.JavaKMeansExample \
---deploy-mode client \
 --num-executors 4 \
+--deploy-mode client \
 --conf spark.executor.cores=4 \
 /opt/spark/examples/target/scala-2.12/jars/spark-examples_2.12-3.4.0.jar 6
 
@@ -655,3 +657,15 @@ If you want to be able to run multiple jobs on the Standalone Spark cluster, you
 
 spark-submit <other parameters> --conf="spark.cores.max=16" <other parameters>
 So, if your Standalone Spark Cluster allows 64 cores in total, and you give only 16 cores to your program, other Spark jobs could use the remaining 48 cores.
+
+Here's a brief overview:
+
+Local Mode (--master local): Spark runs both the driver and executors in the same JVM process. This mode is intended for development and testing, allowing you to run Spark jobs quickly without needing a cluster. You can optionally specify the number of threads for Spark to use by specifying local[N], where N is the number of threads. local[*] uses as many threads as the number of processors available to the JVM.
+
+Deploy Mode (--deploy-mode): This setting determines where the Spark driver program runs when you're using a cluster manager. It has two options:
+
+Client Mode (--deploy-mode client): The driver runs on the machine that was used to submit the application. In client mode, the output of the application is sent to the console. It's useful for interactive and debugging purposes.
+Cluster Mode (--deploy-mode cluster): The driver runs on a node in the cluster. In cluster mode, the cluster manager is responsible for the allocation of system resources.
+So, when you specify --master local and also use --deploy-mode client, the --deploy-mode option is essentially ignored because local mode does not involve a cluster manager to negotiate resources. Your application just runs in a single JVM on your local machine. The concept of client vs. cluster mode is relevant only when you are using a cluster manager like YARN, Mesos, Standalone, or Kubernetes to manage the allocation of resources across the cluster.
+
+In summary, specifying --master local is sufficient for running Spark in local mode, and the application will run on your local machine with resources (CPU, memory) determined by your local machine's capacity and any specific configurations you provide.
