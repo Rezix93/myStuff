@@ -80,6 +80,93 @@ ${SPARK_HOME}/bin/spark-submit \
 
 
 
+To install Yarn in a cluster, you typically need to have Hadoop installed, as Yarn (Yet Another Resource Negotiator) is part of the Hadoop ecosystem and serves as its cluster management component. Here’s a general guide to get you started with installing a Hadoop cluster with Yarn. This guide assumes you're working with Ubuntu or a similar Debian-based distribution.
+
+### Step 1: Install Java
+
+Yarn requires Java to be installed. You can install Java with the following command:
+
+```bash
+sudo apt-get update
+sudo apt-get install openjdk-8-jdk
+```
+
+Check the Java installation by running:
+
+```bash
+java -version
+```
+
+### Step 2: Download and Install Hadoop
+
+1. Download Hadoop from the official site: http://hadoop.apache.org/releases.html
+2. Extract the Hadoop archive:
+
+```bash
+tar -xzvf hadoop-x.y.z.tar.gz
+```
+
+3. Move the extracted Hadoop directory to a suitable location:
+
+```bash
+sudo mv hadoop-x.y.z /usr/local/hadoop
+```
+
+### Step 3: Configure Hadoop and Yarn
+
+You need to edit several configuration files in your Hadoop directory to set up Hadoop and Yarn. The main files are:
+
+- `etc/hadoop/hadoop-env.sh`
+- `etc/hadoop/core-site.xml`
+- `etc/hadoop/hdfs-site.xml`
+- `etc/hadoop/mapred-site.xml`
+- `etc/hadoop/yarn-site.xml`
+
+The specific configurations will depend on your cluster setup, network, and requirements. The Hadoop documentation provides detailed instructions for configuring these files: https://hadoop.apache.org/docs/stable/hadoop-project-dist/hadoop-common/ClusterSetup.html
+
+### Step 4: Format the NameNode
+
+Before starting your Hadoop cluster for the first time, you need to format the HDFS filesystem:
+
+```bash
+/usr/local/hadoop/bin/hdfs namenode -format
+```
+
+### Step 5: Start Hadoop and Yarn
+
+You can start the Hadoop daemons with the following command:
+
+```bash
+/usr/local/hadoop/sbin/start-dfs.sh
+/usr/local/hadoop/sbin/start-yarn.sh
+```
+
+### Step 6: Verify the Installation
+
+Check if the Hadoop and Yarn daemons are running:
+
+```bash
+jps
+```
+
+You should see the NameNode, DataNode, ResourceManager, and NodeManager among the listed processes.
+
+### Step 7: Access the Yarn and Hadoop Web UIs
+
+- Yarn ResourceManager UI is usually available at http://your_master_node:8088
+- Hadoop NameNode UI is usually available at http://your_master_node:9870
+
+### Getting Yarn Nodes
+
+To get the list of nodes managed by Yarn, use the following command:
+
+```bash
+/usr/local/hadoop/bin/yarn node -list
+```
+
+This guide provides a high-level overview of setting up a Hadoop cluster with Yarn. For a production environment, you'll need to carefully plan your cluster, considering factors like hardware specifications, network configurations, security, and backup strategies. Additionally, for multi-node setups, you would need to replicate some of the configuration steps on each node and ensure proper network connectivity between them.
+
+
 
 
 Result: Successed
