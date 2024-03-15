@@ -643,4 +643,15 @@ As an example, the Alternating Least Squares (ALS) implementation in MLlib compu
 
 
 
+So, I experimented with the Spark Standalone cluster myself a bit, and this is what I noticed.
 
+My intuition that muliple executors can be run inside a worker, by tuning executor cores was indeed correct. Let us say, your worker has 16 cores. Now if you specify 8 cores for executors, Spark would run 2 executors per worker.
+
+How many executors run inside a worker also depend upon the executor memory you specify. For example, if worker memory is 24 GB, and you want to run 2 executors per worker, you cannot specify executor memory to be more than 12 GB.
+
+A worker's memory can be limited when starting a slave by specifing the value for optional parameter--memory or by changing the value of SPARK_WORKER_MEMORY. Same with the number of cores (--cores/SPARK_WORKER_CORES).
+
+If you want to be able to run multiple jobs on the Standalone Spark cluster, you could use the spark.cores.max configuration property while doing spark-submit. For example, like this.
+
+spark-submit <other parameters> --conf="spark.cores.max=16" <other parameters>
+So, if your Standalone Spark Cluster allows 64 cores in total, and you give only 16 cores to your program, other Spark jobs could use the remaining 48 cores.
