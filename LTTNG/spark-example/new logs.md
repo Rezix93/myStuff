@@ -27,8 +27,7 @@ standalone:
 http://localhost:8080/
 ./sbin/start-master.sh
 
-./sbin/start-worker.sh spark://Rezghool:7077
-SPARK_WORKER_WEBUI_PORT=8082 SPARK_WORKER_DIR=/path/to/unique/worker2/dir ./sbin/start-worker.sh spark://Rezghool:7077
+./sbin/start-worker.sh --cores 4 --memory 4g spark://Rezghool:7077
 
 
 /usr/local/hadoop/bin/hdfs dfsadmin -report
@@ -38,17 +37,34 @@ SPARK_WORKER_WEBUI_PORT=8082 SPARK_WORKER_DIR=/path/to/unique/worker2/dir ./sbin
 
 ## Enable everything
 
+setting SPARK_WORKER_INSTANCES=2 means you want to run two Spark worker nodes (instances) on that particular machine.
+
+in spark-env.sh
+export HADOOP_CONF_DIR=$HADOOP_HOME/etc/hadoop
+export YARN_CONF_DIR=$HADOOP_HOME/etc/hadoop
+SPARK_WORKER_CORES=2
+SPARK_WORKER_INSTANCES=3
+      .set("spark.executor.instances", "4")
+
+SPARK_WORKER_MEMORY=2g
+
+
+
 ```bash
 
 --deploy-mode client \
 --master local[*] \
 --deploy-mode client \
 
-./sbin/start-worker.sh  --webui-port 8081 spark://Rezghool:7077
-./sbin/start-worker.sh  --webui-port 8082 spark://Rezghool:7077
+
 
 ./sbin/start-worker.sh spark://Rezghool:7077 --cores 2 --memory 4g
 commmand jps : Use jps on master to see the instances given they all run on the same machine, e.g. localhost).
+./sbin/stop-all.sh
+--num-executors 7 \
+--conf spark.executor.cores=4 \
+  --conf spark.executor.instances=10 \
+
 
 lttng create
 
@@ -59,9 +75,9 @@ lttng start
 ${SPARK_HOME}/bin/spark-submit \
 --verbose \
 --class org.apache.spark.examples.ml.JavaKMeansExample \
---num-executors 4 \
 --master spark://Rezghool:7077 \
---conf spark.executor.cores=4 \
+ --conf spark.dynamicAllocation.enabled=true \
+  --conf spark.shuffle.service.enabled=true \
 /opt/spark/examples/target/scala-2.12/jars/spark-examples_2.12-3.4.0.jar 6
 
 lttng stop
