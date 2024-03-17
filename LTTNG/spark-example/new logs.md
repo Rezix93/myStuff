@@ -22,6 +22,14 @@ bash stop-yarn.sh
 lttng view > output-lttng.log 2>&1
 /usr/local/hadoop/bin/yarn node -list
 
+standalone:
+
+http://localhost:8080/
+./sbin/start-master.sh
+
+./sbin/start-worker.sh spark://Rezghool:7077
+SPARK_WORKER_WEBUI_PORT=8082 SPARK_WORKER_DIR=/path/to/unique/worker2/dir ./sbin/start-worker.sh spark://Rezghool:7077
+
 
 /usr/local/hadoop/bin/hdfs dfsadmin -report
 
@@ -34,6 +42,13 @@ lttng view > output-lttng.log 2>&1
 
 --deploy-mode client \
 --master local[*] \
+--deploy-mode client \
+
+./sbin/start-worker.sh  --webui-port 8081 spark://Rezghool:7077
+./sbin/start-worker.sh  --webui-port 8082 spark://Rezghool:7077
+
+./sbin/start-worker.sh spark://Rezghool:7077 --cores 2 --memory 4g
+commmand jps : Use jps on master to see the instances given they all run on the same machine, e.g. localhost).
 
 lttng create
 
@@ -45,7 +60,7 @@ ${SPARK_HOME}/bin/spark-submit \
 --verbose \
 --class org.apache.spark.examples.ml.JavaKMeansExample \
 --num-executors 4 \
---deploy-mode client \
+--master spark://Rezghool:7077 \
 --conf spark.executor.cores=4 \
 /opt/spark/examples/target/scala-2.12/jars/spark-examples_2.12-3.4.0.jar 6
 
