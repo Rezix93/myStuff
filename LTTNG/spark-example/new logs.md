@@ -110,7 +110,16 @@ ${SPARK_HOME}/bin/spark-submit \
 /opt/spark/examples/target/scala-2.12/jars/spark-examples_2.12-3.4.0.jar 1
 
 ```
+The --conf spark.dynamicAllocation.enabled=true option in the spark-submit command enables Spark's dynamic allocation feature when running your application. Dynamic allocation allows Spark to automatically adjust the number of executors allocated for an application based on the workload, so it can scale up or down the executors dynamically to improve resource utilization and handle varying workloads more efficiently.
 
+When dynamic allocation is enabled, Spark can add executors when there is a backlog of pending tasks and remove executors when they have been idle for a specified amount of time. This feature is particularly useful in shared Spark clusters where resource optimization is crucial.
+
+To make dynamic allocation work effectively, you typically also need to enable the external shuffle service by setting spark.shuffle.service.enabled to true. This service keeps track of the shuffle files of executor tasks so that the data is not lost when executors are dynamically removed, allowing future executors to still access those shuffle files.
+
+Here's a brief explanation of what these configurations do:
+
+spark.dynamicAllocation.enabled=true: Enables dynamic allocation of executors.
+spark.shuffle.service.enabled=true: Enables the external shuffle service, which is required for dynamic allocation to work properly because it allows shuffle data to persist beyond the lifespan of individual executors.
 
 
 To install Yarn in a cluster, you typically need to have Hadoop installed, as Yarn (Yet Another Resource Negotiator) is part of the Hadoop ecosystem and serves as its cluster management component. Here’s a general guide to get you started with installing a Hadoop cluster with Yarn. This guide assumes you're working with Ubuntu or a similar Debian-based distribution.
