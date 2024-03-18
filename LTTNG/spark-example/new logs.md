@@ -34,8 +34,65 @@ http://localhost:8080/
 
 ^.*(SparkListenerTaskStart|SparkListenerTaskEnd|word3).*```
 
+spark://4ae8a1ed6d6a:7077
+
+docker run -d --name spark-worker-3 \
+-e SPARK_MODE=worker \
+-e SPARK_MASTER_URL=spark://4ae8a1ed6d6a:7077\
+-e SPARK_WORKER_CORES=1 \
+-e SPARK_WORKER_MEMORY=1G \
+-p 8083:8081 \
+bitnami/spark
+
+
+
+docker run -d --name spark-master \
+  -e SPARK_MODE=master \
+  -e SPARK_RPC_AUTHENTICATION_ENABLED=no \
+  -e SPARK_RPC_ENCRYPTION_ENABLED=no \
+  -e SPARK_LOCAL_STORAGE_ENCRYPTION_ENABLED=no \
+  -e SPARK_SSL_ENABLED=no \
+  -p 8081:8080 -p 7077:7077 \
+  bitnami/spark
+
+docker run -d --name spark-worker-2 \
+  -e SPARK_MODE=worker \
+  -e SPARK_MASTER_URL=spark://b29b2018092e:7077 \
+  -e SPARK_WORKER_CORES=1 \
+  -e SPARK_WORKER_MEMORY=1G \
+  -p 8083:8081 \
+  bitnami/spark
+
+docker run -d --name spark-worker-3 \
+  -e SPARK_MODE=worker \
+  -e SPARK_MASTER_URL=spark://4ae8a1ed6d6a:7077\
+  -e SPARK_WORKER_CORES=1 \
+  -e SPARK_WORKER_MEMORY=1G \
+  -p 8083:8081 \
+  bitnami/spark
+
+docker run -d --name spark-worker-4 \
+-e SPARK_MODE=worker \
+-e SPARK_MASTER_URL=spark://4ae8a1ed6d6a:7077 \
+-e SPARK_WORKER_CORES=1 \
+-e SPARK_WORKER_MEMORY=1g \
+-e SPARK_RPC_AUTHENTICATION_ENABLED=no \
+-e SPARK_RPC_ENCRYPTION_ENABLED=no \
+-e SPARK_LOCAL_STORAGE_ENCRYPTION_ENABLED=no \
+-e SPARK_SSL_ENABLED=no \
+-p 8084:8081 \
+bitnami/spark
+
+
+docker run -d --name spark-worker-1 \
+-e SPARK_MASTER_URL=spark://172.17.0.2:7077 \
+-e SPARK_WORKER_WEBUI_PORT=8082 \
+-p 8082:8081 \
+bitnami/spark
+
 
 ## Enable everything
+
 
 setting SPARK_WORKER_INSTANCES=2 means you want to run two Spark worker nodes (instances) on that particular machine.
 
