@@ -1,3 +1,9 @@
+
+    ```
+```
+docker cp -L your_program.py spark_spark-master_1:/opt/bitnami/spark/anyfilename.py
+
+
 To run Docker with the provided `docker-compose.yml` configuration, you'll first need to make sure Docker and Docker Compose are installed on your system. Then, follow these steps:
 
 1. **Save the Configuration**: Copy the configuration you've posted into a file named `docker-compose.yml`. Ensure you correct any syntax errors or misalignments, especially with the dashes and indentation, which are crucial for YAML files. Here's a corrected version of your configuration for clarity:
