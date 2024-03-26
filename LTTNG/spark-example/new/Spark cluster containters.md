@@ -91,3 +91,60 @@ To run Docker with the provided `docker-compose.yml` configuration, you'll first
     This command stops and removes the containers created by Docker Compose, based on the services defined in your `docker-compose.yml` file. If you want to also remove the volumes and networks, you can add the `-v` option.
 
 Remember, each service in your Docker Compose file is a separate container, and by using Docker Compose, you're orchestrating these containers to work together as a unified system.
+
+
+
+
+docker run -d --name spark-worker-3 \
+-e SPARK_MODE=worker \
+-e SPARK_MASTER_URL=spark://4ae8a1ed6d6a:7077\
+-e SPARK_WORKER_CORES=1 \
+-e SPARK_WORKER_MEMORY=1G \
+-p 8083:8081 \
+bitnami/spark
+
+
+
+docker run -d --name spark-master \
+  -e SPARK_MODE=master \
+  -e SPARK_RPC_AUTHENTICATION_ENABLED=no \
+  -e SPARK_RPC_ENCRYPTION_ENABLED=no \
+  -e SPARK_LOCAL_STORAGE_ENCRYPTION_ENABLED=no \
+  -e SPARK_SSL_ENABLED=no \
+  -p 8081:8080 -p 7077:7077 \
+  bitnami/spark
+
+docker run -d --name spark-worker-2 \
+  -e SPARK_MODE=worker \
+  -e SPARK_MASTER_URL=spark://b29b2018092e:7077 \
+  -e SPARK_WORKER_CORES=1 \
+  -e SPARK_WORKER_MEMORY=1G \
+  -p 8083:8081 \
+  bitnami/spark
+
+docker run -d --name spark-worker-3 \
+  -e SPARK_MODE=worker \
+  -e SPARK_MASTER_URL=spark://4ae8a1ed6d6a:7077\
+  -e SPARK_WORKER_CORES=1 \
+  -e SPARK_WORKER_MEMORY=1G \
+  -p 8083:8081 \
+  bitnami/spark
+
+docker run -d --name spark-worker-4 \
+-e SPARK_MODE=worker \
+-e SPARK_MASTER_URL=spark://4ae8a1ed6d6a:7077 \
+-e SPARK_WORKER_CORES=1 \
+-e SPARK_WORKER_MEMORY=1g \
+-e SPARK_RPC_AUTHENTICATION_ENABLED=no \
+-e SPARK_RPC_ENCRYPTION_ENABLED=no \
+-e SPARK_LOCAL_STORAGE_ENCRYPTION_ENABLED=no \
+-e SPARK_SSL_ENABLED=no \
+-p 8084:8081 \
+bitnami/spark
+
+
+docker run -d --name spark-worker-1 \
+-e SPARK_MASTER_URL=spark://172.17.0.2:7077 \
+-e SPARK_WORKER_WEBUI_PORT=8082 \
+-p 8082:8081 \
+bitnami/spark
