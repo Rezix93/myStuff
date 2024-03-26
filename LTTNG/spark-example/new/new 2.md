@@ -1,3 +1,12 @@
+
+
+```
+docker rmi -f my-custom-spark-image:latest
+
+
+```
+
+
 Considering the issues you've encountered, let's create a simplified and new version of the Dockerfile that assumes your local Spark directory (`/opt/spark`) can be successfully copied into the Docker image. This version will include basic instructions and assumes that you're building the Docker image from a directory where you have the appropriate permissions to access and copy `/opt/spark`.
 
 **Important Note:** Before proceeding, ensure that you have a copy of your Spark directory accessible in the same directory as your Dockerfile or adjust the paths accordingly if you're using a different setup.
