@@ -1,8 +1,11 @@
 
 
 ```
-docker rmi -f my-custom-spark-image:latest
+docker rmi my-custom-spark-image:latest
 
+docker build -t my-custom-spark-image .
+
+docker run -it --name spark-container -p 8080:8080 spark-custom-image:latest
 
 ```
 
