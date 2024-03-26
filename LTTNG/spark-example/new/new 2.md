@@ -9,7 +9,34 @@ http://localhost:8080/
 
 ps -ef | grep spark
 
+
+docker run --network="host" spark-custom-image:latest
+
+
 ```
+
+```
+${SPARK_HOME}/bin/spark-submit \
+--verbose \
+--class org.apache.spark.examples.ml.JavaKMeansExample \
+--master spark://Rezghool:7077 \
+ --conf spark.dynamicAllocation.enabled=true \
+  --conf spark.shuffle.service.enabled=true \
+/opt/spark/examples/target/scala-2.12/jars/spark-examples_2.12-3.4.0.jar 6
+
+
+
+docker build -t spark-custom-image .
+docker build -t spark-custom-image:latest .
+
+
+docker run -it --network="host" spark-custom-image:latest /bin/bash
+
+
+docker run spark-custom-image:latest
+
+```
+
 
 ```
 docker system df
@@ -27,6 +54,7 @@ docker run --add-host=Rezghool:192.168.X.X spark-custom-image:latest
 
 docker run --add-host=Rezghool:10.200.27.70 spark-custom-image:latest
 
+docker run spark-custom-image:latest
 
 
 docker stop spark-container
