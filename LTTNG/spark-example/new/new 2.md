@@ -43,7 +43,7 @@ CMD ["/opt/spark/bin/spark-shell"]
    After successfully building the image, you can run a container based on your new image:
 
    ```bash
-docker run -it --name spark-container -p 8080:8080 spark-custom-image:latest
+   docker run -it --name spark-container -p 8080:8080 spark-custom-image:latest
    ```
 
    This command starts a container named `my-spark-container` in interactive mode, maps port 8080 from the container to port 8080 on your host (allowing you to access the Spark web UI), and uses the image `my-custom-spark-image`.
