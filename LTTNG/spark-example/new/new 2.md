@@ -1,11 +1,37 @@
+```
+sudo chown -R rezghool:rezghool /media/rezghool/7dde372b-b2c9-4ba8-b9f5-18f32a3685ec
 
+./sbin/start-master.sh
+
+./sbin/start-worker.sh --cores 4 --memory 4g spark://Rezghool:7077
+
+http://localhost:8080/
 
 ```
-docker rmi spark-custom-image:latest
+
+```
+docker system df
+docker builder prune
+
+
+docker rmi -f spark-custom-image:latest
 
 docker build -t spark-custom-image .
 
 docker run -it --name spark-container -p 8080:8080 spark-custom-image:latest
+
+
+docker stop spark-container
+
+docker rm spark-container
+
+docker rmi a1b2c3d4e5f6
+
+docker start spark-container-new
+
+docker attach spark-container-new
+
+docker logs spark-container-new
 
 ```
 
