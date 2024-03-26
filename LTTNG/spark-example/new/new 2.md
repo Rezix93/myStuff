@@ -7,6 +7,8 @@ sudo chown -R rezghool:rezghool /media/rezghool/7dde372b-b2c9-4ba8-b9f5-18f32a36
 
 http://localhost:8080/
 
+ps -ef | grep spark
+
 ```
 
 ```
