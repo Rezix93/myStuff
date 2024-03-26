@@ -22,6 +22,12 @@ docker build -t spark-custom-image .
 
 docker run -it --name spark-container -p 8080:8080 spark-custom-image:latest
 
+docker run --add-host=Rezghool:<Your_Ubuntu_Host_IP> spark-custom-image:latest
+docker run --add-host=Rezghool:192.168.X.X spark-custom-image:latest
+
+docker run --add-host=Rezghool:10.200.27.70 spark-custom-image:latest
+
+
 
 docker stop spark-container
 
