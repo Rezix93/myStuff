@@ -14,7 +14,9 @@ http://localhost:8080/
 ps -ef | grep spark
 
 
-root@Rezghool:/opt/spark# docker run --network="host" -v /home/rezghool/research/spark_example:/data/mllib spark-custom-image:latest
+docker build -t spark-custom-image:latest .
+
+docker run --network="host" -v /home/rezghool/research/spark_example:/data/mllib spark-custom-image:latest
 
 
 ```
@@ -24,9 +26,10 @@ ${SPARK_HOME}/bin/spark-submit \
 --verbose \
 --class org.apache.spark.examples.ml.JavaKMeansExample \
 --master spark://Rezghool:7077 \
- --conf spark.dynamicAllocation.enabled=true \
-  --conf spark.shuffle.service.enabled=true \
+--conf spark.executor.memory=4G \
 /opt/spark/examples/target/scala-2.12/jars/spark-examples_2.12-3.4.0.jar 6
+
+--master yarn-client --executor-memory 4G --executor-cores 2 --num-executors 12 (less core, more executor)
 
 
 
