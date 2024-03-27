@@ -11,6 +11,11 @@ sudo chown -R rezghool:rezghool /media/rezghool/7dde372b-b2c9-4ba8-b9f5-18f32a36
 http://localhost:8080/
 
 
+
+sudo mv /var/lib/docker/* /media/rezghool/7dde372b-b2c9-4ba8-b9f5-18f32a3685ec/docker
+
+
+
 ps -ef | grep spark
 docker system df
 docker builder prune
@@ -23,6 +28,10 @@ docker build -t spark-custom-image:latest .
 
 docker run --network="host" -v /home/rezghool/research/spark_example:/data/mllib spark-custom-image:latest 4G 2 6
 
+
+docker run -it --name spark-master spark-custom-image /opt/spark/sbin/start-master.sh
+
+
 if [ $# -eq 3 ]; then
     EXECUTOR_MEMORY=$1 # total excutor memory
     EXECUTOR_CORES=$2 # number of core for each core
@@ -31,6 +40,13 @@ fi
 
 
 ```
+
+
+Check Docker Logs: View the Docker service logs to see if there are any specific error messages or clues about what caused the failure. You can view the logs using the following command:
+
+bash
+Copy code
+journalctl -xeu docker
 
 ```
 ${SPARK_HOME}/bin/spark-submit \
@@ -50,6 +66,8 @@ ${SPARK_HOME}/bin/spark-submit \
 
 
 --master yarn-client --executor-memory 4G --executor-cores 2 --num-executors 12 (less core, more executor)
+
+
 
 
 
