@@ -5,12 +5,16 @@ sudo chown -R rezghool:rezghool /media/rezghool/7dde372b-b2c9-4ba8-b9f5-18f32a36
 
 ./sbin/start-worker.sh --cores 4 --memory 4g spark://Rezghool:7077
 
+
+./sbin/start-worker.sh --cores 8 --memory 16g spark://Rezghool:7077
+
 http://localhost:8080/
+
 
 ps -ef | grep spark
 
 
-docker run --network="host" spark-custom-image:latest
+root@Rezghool:/opt/spark# docker run --network="host" -v /home/rezghool/research/spark_example:/data/mllib spark-custom-image:latest
 
 
 ```
