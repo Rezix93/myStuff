@@ -12,11 +12,19 @@ http://localhost:8080/
 
 
 ps -ef | grep spark
+docker system df
+docker builder prune
 
 
 docker build -t spark-custom-image:latest .
 
-docker run --network="host" -v /home/rezghool/research/spark_example:/data/mllib spark-custom-image:latest
+docker run --network="host" -v /home/rezghool/research/spark_example:/data/mllib spark-custom-image:latest 4G 2 6
+
+if [ $# -eq 3 ]; then
+    EXECUTOR_MEMORY=$1 # total excutor memory
+    EXECUTOR_CORES=$2 # number of core for each core
+    INPUT=$3 $ # input of my example 
+fi
 
 
 ```
@@ -28,6 +36,15 @@ ${SPARK_HOME}/bin/spark-submit \
 --master spark://Rezghool:7077 \
 --conf spark.executor.memory=4G \
 /opt/spark/examples/target/scala-2.12/jars/spark-examples_2.12-3.4.0.jar 6
+
+${SPARK_HOME}/bin/spark-submit \
+--verbose \
+--class org.apache.spark.examples.ml.JavaKMeansExample \
+--master spark://Rezghool:7077 \
+--conf spark.executor.memory="4G" \
+--conf spark.executor.cores=12 \
+/opt/spark/examples/target/scala-2.12/jars/spark-examples_2.12-3.4.0.jar 6
+
 
 --master yarn-client --executor-memory 4G --executor-cores 2 --num-executors 12 (less core, more executor)
 
