@@ -14,6 +14,9 @@ http://localhost:8080/
 ps -ef | grep spark
 docker system df
 docker builder prune
+docker container prune -f
+docker image prune -a -f
+docker volume prune -f
 
 
 docker build -t spark-custom-image:latest .
