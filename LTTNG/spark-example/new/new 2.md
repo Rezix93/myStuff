@@ -1,4 +1,13 @@
 ```
+Setting up lttng-modules-dkms (2.14~pre-0+git1901+202403260133~ubuntu22.04.1) ...
+Removing old lttng-modules-2.14~pre DKMS files...
+Deleting module lttng-modules-2.14~pre completely from the DKMS tree.
+Loading new lttng-modules-2.14~pre DKMS files...
+Building for 6.5.0-26-generic
+Building initial module for 6.5.0-26-generic
+```
+
+```
 sudo chown -R rezghool:rezghool /media/rezghool/7dde372b-b2c9-4ba8-b9f5-18f32a3685ec
 
 ./sbin/start-master.sh
