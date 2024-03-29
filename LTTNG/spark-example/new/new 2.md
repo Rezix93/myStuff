@@ -68,10 +68,6 @@ opt/spark/bin/spark-submit \
 /opt/spark/examples/target/scala-2.12/jars/spark-examples_2.12-3.4.0.jar 6
 
 
-
-docker run --network="host" -v /home/rezghool/research/spark_example:/data/mllib spark-custom-image:latest 4G 2 6
-
-
 ${SPARK_HOME}/bin/spark-submit \
 --verbose \
 --class org.apache.spark.examples.ml.JavaKMeansExample \
@@ -81,6 +77,9 @@ ${SPARK_HOME}/bin/spark-submit \
 --conf spark.executor.memory="4G" \
 --conf spark.executor.cores=3 \
 /opt/spark/examples/target/scala-2.12/jars/spark-examples_2.12-3.4.0.jar 6
+
+
+docker exec 58b5f3d53b82 ls /opt/spark/core/target/jars/lttng-agent/lttng-ust-agent-log4j.jar
 
 
 --master yarn-client --executor-memory 4G --executor-cores 2 --num-executors 12 (less core, more executor)
