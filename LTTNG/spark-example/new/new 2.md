@@ -58,19 +58,28 @@ Copy code
 journalctl -xeu docker
 
 ```
-${SPARK_HOME}/bin/spark-submit \
+
+docker exec da-spark-master \
+opt/spark/bin/spark-submit \
 --verbose \
 --class org.apache.spark.examples.ml.JavaKMeansExample \
---master spark://Rezghool:7077 \
---conf spark.executor.memory=4G \
+--master spark://spark-master:7077 \
+--deploy-mode client \
 /opt/spark/examples/target/scala-2.12/jars/spark-examples_2.12-3.4.0.jar 6
+
+
+
+docker run --network="host" -v /home/rezghool/research/spark_example:/data/mllib spark-custom-image:latest 4G 2 6
+
 
 ${SPARK_HOME}/bin/spark-submit \
 --verbose \
 --class org.apache.spark.examples.ml.JavaKMeansExample \
 --master spark://Rezghool:7077 \
+/opt/spark/examples/target/scala-2.12/jars/spark-examples_2.12-3.4.0.jar 6
+
 --conf spark.executor.memory="4G" \
---conf spark.executor.cores=12 \
+--conf spark.executor.cores=3 \
 /opt/spark/examples/target/scala-2.12/jars/spark-examples_2.12-3.4.0.jar 6
 
 
