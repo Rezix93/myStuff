@@ -49,7 +49,13 @@ fi
 
 
 ```
-docker exec da-spark-master lttng create \
+export JAVA_LIBRARY_PATH=$JAVA_LIBRARY_PATH:/usr/lib/hadoop/lib/native
+export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/lib/hadoop/lib/native
+
+-Djava.library.path=/usr/local/lib
+
+
+	docker exec da-spark-master lttng create \
 	docker exec da-spark-master lttng enable-event -l -a  --filter 'logger_name == "org.apache.spark.examples.MyCustomSparkListener"' \
 	docker exec da-spark-master lttng start \
 	docker exec da-spark-master \
@@ -60,6 +66,7 @@ docker exec da-spark-master lttng create \
 	--conf "spark.executor.extraJavaOptions=-Djava.library.path=/usr/lib/x86_64-linux-gnu/jni" \
     --conf "spark.driver.extraJavaOptions=-Djava.library.path=/usr/lib/x86_64-linux-gnu/jni" \
 	--conf spark.driver.extraClassPath=/opt/spark/core/target/jars/lttng-agent/lttng-ust-agent-common.jar:/opt/spark/core/target/jars/lttng-agent/lttng-ust-agent-log4j2.jar:/opt/spark/core/target/jars/lttng-agent/lttng-ust-agent-log4j.jar \
+	--conf spark.executor.extraClassPath=/opt/spark/core/target/jars/lttng-agent/lttng-ust-agent-common.jar:/opt/spark/core/target/jars/lttng-agent/lttng-ust-agent-log4j2.jar:/opt/spark/core/target/jars/lttng-agent/lttng-ust-agent-log4j.jar \
 	/opt/spark/examples/target/scala-2.12/jars/spark-examples_2.12-3.4.0.jar 6 \
 	docker exec da-spark-master lttng stop \
 	docker exec da-spark-master lttng view \
