@@ -49,6 +49,23 @@ fi
 
 
 ```
+docker exec da-spark-master lttng create \
+	docker exec da-spark-master lttng enable-event -l -a  --filter 'logger_name == "org.apache.spark.examples.MyCustomSparkListener"' \
+	docker exec da-spark-master lttng start \
+	docker exec da-spark-master \
+	opt/spark/bin/spark-submit \
+	--verbose \
+	--class org.apache.spark.examples.ml.JavaKMeansExample \
+	--master spark://spark-master:7077 \
+	--conf "spark.executor.extraJavaOptions=-Djava.library.path=/usr/lib/x86_64-linux-gnu/jni" \
+    --conf "spark.driver.extraJavaOptions=-Djava.library.path=/usr/lib/x86_64-linux-gnu/jni" \
+	--conf spark.driver.extraClassPath=/opt/spark/core/target/jars/lttng-agent/lttng-ust-agent-common.jar:/opt/spark/core/target/jars/lttng-agent/lttng-ust-agent-log4j2.jar:/opt/spark/core/target/jars/lttng-agent/lttng-ust-agent-log4j.jar \
+	/opt/spark/examples/target/scala-2.12/jars/spark-examples_2.12-3.4.0.jar 6 \
+	docker exec da-spark-master lttng stop \
+	docker exec da-spark-master lttng view \
+	docker exec da-spark-master lttng destroy 
+
+
 
 
 Check Docker Logs: View the Docker service logs to see if there are any specific error messages or clues about what caused the failure. You can view the logs using the following command:
@@ -57,6 +74,9 @@ bash
 Copy code
 journalctl -xeu docker
 
+
+--jars /opt/spark/core/target/jars/lttng-agent/lttng-ust-agent-common.jar,/opt/spark/core/target/jars/lttng-agent/lttng-ust-agent-log4j2.jar,/opt/spark/core/target/jars/lttng-agent/lttng-ust-agent-log4j.jar \
+
 ```
 
 docker exec da-spark-master \
@@ -64,8 +84,19 @@ opt/spark/bin/spark-submit \
 --verbose \
 --class org.apache.spark.examples.ml.JavaKMeansExample \
 --master spark://spark-master:7077 \
+--jars /opt/spark/core/target/jars/lttng-agent/lttng-ust-agent-common.jar,/opt/spark/core/target/jars/lttng-agent/lttng-ust-agent-log4j2.jar,/opt/spark/core/target/jars/lttng-agent/lttng-ust-agent-log4j.jar \
 --deploy-mode client \
 /opt/spark/examples/target/scala-2.12/jars/spark-examples_2.12-3.4.0.jar 6
+
+
+${SPARK_HOME}/bin/spark-submit \
+--verbose \
+--class org.apache.spark.examples.ml.JavaKMeansExample \
+--master spark://Rezghool:7077 \
+--conf spark.driver.extraClassPath=/opt/spark/core/target/jars/lttng-agent/lttng-ust-agent-common.jar:/opt/spark/core/target/jars/lttng-agent/lttng-ust-agent-log4j2.jar:/opt/spark/core/target/jars/lttng-agent/lttng-ust-agent-log4j.jar \
+/opt/spark/examples/target/scala-2.12/jars/spark-examples_2.12-3.4.0.jar 6
+
+docker exec -it da-spark-master /bin/sh -c "cd /usr/usr/lib/x86_64-linux-gnu/ && ls"
 
 
 ${SPARK_HOME}/bin/spark-submit \
@@ -79,7 +110,7 @@ ${SPARK_HOME}/bin/spark-submit \
 /opt/spark/examples/target/scala-2.12/jars/spark-examples_2.12-3.4.0.jar 6
 
 
-docker exec 58b5f3d53b82 ls /opt/spark/core/target/jars/lttng-agent/lttng-ust-agent-log4j.jar
+docker exec 230621b82c3b ls /opt/spark/core/target/jars/lttng-agent/lttng-ust-agent-log4j.jar
 
 
 --master yarn-client --executor-memory 4G --executor-cores 2 --num-executors 12 (less core, more executor)
