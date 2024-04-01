@@ -10,6 +10,10 @@ ls /lib/modules/6.5.0-26-generic/updates/
 git checktout stable-2.13
 ```
 
+
+for undestand which container is this from : 
+lttng add-context --userspace  --type=pid_ns
+
 ```
 Setting up lttng-modules-dkms (2.14~pre-0+git1901+202403260133~ubuntu22.04.1) ...
 Removing old lttng-modules-2.14~pre DKMS files...
