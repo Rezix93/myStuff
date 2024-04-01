@@ -3,7 +3,11 @@
 git clone https://github.com/lttng/lttng-modules.git
 cd lttng-modules/
 make -j4
+ make modules_install
 
+ls /lib/modules/6.5.0-26-generic/updates/
+
+git checktout stable-2.13
 ```
 
 ```
