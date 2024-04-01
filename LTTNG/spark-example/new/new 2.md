@@ -1,4 +1,12 @@
 ```
+
+git clone https://github.com/lttng/lttng-modules.git
+cd lttng-modules/
+make -j4
+
+```
+
+```
 Setting up lttng-modules-dkms (2.14~pre-0+git1901+202403260133~ubuntu22.04.1) ...
 Removing old lttng-modules-2.14~pre DKMS files...
 Deleting module lttng-modules-2.14~pre completely from the DKMS tree.
