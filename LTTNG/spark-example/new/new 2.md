@@ -1,5 +1,7 @@
 
 lttng session: 
+lttng-ust-log4j-jni.so
+
 
 ```
 sudo lttng-sessiond
