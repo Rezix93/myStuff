@@ -3,6 +3,7 @@ Question:
 you said liblttng-ust-fork.so but there is no in containers.
  docker exec -it opt-spark-worker-1 /bin/sh -c "locate liblttng-ust-fork.so"
 
+liblttng-ust-log4j-jni.so inam vase sspark conf
 ```
 
 
