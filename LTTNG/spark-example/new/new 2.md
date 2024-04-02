@@ -1,4 +1,13 @@
 
+Question: 
+you said liblttng-ust-fork.so but there is no in containers.
+ docker exec -it opt-spark-worker-1 /bin/sh -c "locate liblttng-ust-fork.so"
+
+
+
+
+/usr/lib/x86_64-linux-gnu/jni
+
 lttng session: 
 lttng-ust-log4j-jni.so
 
