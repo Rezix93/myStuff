@@ -1,4 +1,8 @@
+
 ```
+sudo lttng-sessiond
+
+
 netstat -patune|grep 7077
 git clone https://github.com/lttng/lttng-modules.git
 cd lttng-modules/
