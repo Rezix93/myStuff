@@ -1,4 +1,6 @@
 
+lttng session: 
+
 ```
 sudo lttng-sessiond
 
