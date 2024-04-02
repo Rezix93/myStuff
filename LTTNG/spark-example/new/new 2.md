@@ -89,7 +89,7 @@ export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/lib/hadoop/lib/native
 	docker exec da-spark-master lttng enable-event -l -a  --filter 'logger_name == "org.apache.spark.examples.MyCustomSparkListener"' \
 	docker exec da-spark-master lttng start \
 	docker exec da-spark-master \
-	opt/spark/bin/spark-submit \
+	/bin/spark-submit \
 	--verbose \
 	--class org.apache.spark.examples.ml.JavaKMeansExample \
 	--master spark://spark-master:7077 \
