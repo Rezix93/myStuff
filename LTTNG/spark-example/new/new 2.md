@@ -1,5 +1,5 @@
 ```
-
+netstat -patune|grep 7077
 git clone https://github.com/lttng/lttng-modules.git
 cd lttng-modules/
 make -j4
@@ -9,6 +9,14 @@ ls /lib/modules/6.5.0-26-generic/updates/
 
 git checktout stable-2.13
 ```
+-Djava.library.path=.:/usr/local/lib/
+
+${SPARK_HOME}/bin/spark-submit \ \
+--verbose \
+--class org.apache.spark.examples.ml.JavaKMeansExample \
+--master spark://Rezghool:7077 \
+--conf spark.driver.extraClassPath=/opt/spark/core/target/jars/lttng-agent/lttng-ust-agent-common.jar:/opt/spark/core/target/jars/lttng-agent/lttng-ust-agent-log4j2.jar:/opt/spark/core/target/jars/lttng-agent/lttng-ust-agent-log4j.jar \
+/op
 
 
 for undestand which container is this from : 
