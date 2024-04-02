@@ -4,6 +4,15 @@ you said liblttng-ust-fork.so but there is no in containers.
  docker exec -it opt-spark-worker-1 /bin/sh -c "locate liblttng-ust-fork.so"
 
 liblttng-ust-log4j-jni.so inam vase sspark conf
+
+
+./bin/spark-submit --verbose --class org.apache.spark.examples.ml.JavaKMeansExample --master spark://spark-master:7077    /opt/spark/examples/target/scala-2.12/jars/spark-examples_2.12-3.4.0.jar 6
+
+
+
+
+
+
 ```
 
 
