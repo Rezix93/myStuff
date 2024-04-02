@@ -1,3 +1,7 @@
+spark.executor.extraJavaOptions:   liblttng-ust-log4j-jni.so
+spark.driver.extraClassPath        lttng-ust-agent-common.jar lttng-ust-agent-log4j2.jar lttng-ust-agent-log4j.jar
+
+
 ```
 Question: 
 you said liblttng-ust-fork.so but there is no in containers.
@@ -6,11 +10,13 @@ you said liblttng-ust-fork.so but there is no in containers.
 liblttng-ust-log4j-jni.so inam vase sspark conf
 
 
-./bin/spark-submit --verbose --class org.apache.spark.examples.ml.JavaKMeansExample --master spark://spark-master:7077    /opt/spark/examples/target/scala-2.12/jars/spark-examples_2.12-3.4.0.jar 6
+./bin/spark-submit --class org.apache.spark.examples.ml.JavaKMeansExample --master spark://Rezghool:7078    /opt/spark/examples/target/scala-2.12/jars/spark-examples_2.12-3.4.0.jar 6
 
 
 
+where is :  lttng-ust-agent-log4j.jar
 
+ docker exec -it opt-spark-worker-1 /bin/sh -c "locate lttng-ust-agent-log4j.jar"
 
 
 ```
