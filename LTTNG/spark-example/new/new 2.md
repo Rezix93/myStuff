@@ -1,5 +1,6 @@
+
 spark.executor.extraJavaOptions:   liblttng-ust-log4j-jni.so
-spark.driver.extraClassPath        lttng-ust-agent-common.jar lttng-ust-agent-log4j2.jar lttng-ust-agent-log4j.jar
+spark.driver.extraClassPath        lttng-ust-agent-common.jar :: lttng-ust-agent-log4j2.jar :: lttng-ust-agent-log4j.jar
 
 
 ```
