@@ -3,6 +3,11 @@
 2. spark.driver.extraClassPath        lttng-ust-agent-common.jar :: lttng-ust-agent-log4j2.jar :: lttng-ust-agent-log4j.jar
 3. LD_PRELOAD=liblttng-ust-fork
 
+
+LD_PRELOAD="/usr/lib/x86_64-linux-gnu/liblttng-ust-fork.so:/usr/lib/x86_64-linux-gnu/jni/liblttng-ust-log4j-jni.so" exec /usr/lib/jvm/java-11-openjdk-amd64/bin/java -Djava.library.path=.:/usr/lib/x86_64-linux-gnu/jni -cp "/opt/spark/conf/:/opt/spark/assembly/target/scala-2.12/jars/*:/etc/hadoop:/opt/spark/core/target/jars/lttng-agent/*" -Xmx1g org.apache.spark.deploy.master.Master --host Rezghool --port 7077 --webui-port 8080 -p 7077
+
+export JAVA_TOOL_OPTIONS "-Djava.library.path=.:/usr/lib/x86_64-linux-gnu/jni"
+
 local system: 
 1. .:/usr/local/lib/  -> container: :/usr/lib/x86_64-linux-gnu/jni/
 
