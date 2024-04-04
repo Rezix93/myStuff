@@ -1,0 +1,70 @@
+version: '3.8'
+
+services:
+  spark-master:
+    container_name: da-spark-master
+    image: spark-custom-image:latest
+    entrypoint: ['./entrypoint.sh', 'master']
+    healthcheck:
+      test: [ "CMD", "curl", "-f", "http://127.0.1.1:8080" ]
+      interval: 5s
+      timeout: 3s
+      retries: 3
+    volumes:
+      - /home/rezghool/research/spark_example:/opt/spark/data
+      - ./spark_apps:/opt/spark/apps
+      - spark-logs:/opt/spark/spark-events
+      - /home/rezghool/research/spark_example:/data/mllib
+      - /var/run/lttng:/var/run/lttng # Mirror LTTng session directory
+      - /dev/shm:/dev/shm
+    #ports:
+      #- '9090:8080'
+      #- '7077:7077'
+    environment:
+      - SPARK_WORKLOAD=master
+      - SPARK_NO_DAEMONIZE=true
+      - LD_PRELOAD=liblttng-ust-fork.so
+    network_mode: host
+
+  spark-history-server:
+    container_name: da-spark-history
+    image: spark-custom-image:latest
+    entrypoint: ['./entrypoint.sh', 'history']
+    depends_on:
+      - spark-master
+    volumes:
+      - spark-logs:/opt/spark/spark-events
+      - /dev/shm:/dev/shm
+    #ports:
+    #  - '18080:18080'
+    environment:
+      - SPARK_WORKLOAD=history
+      - SPARK_NO_DAEMONIZE=true
+    network_mode: host
+
+
+  spark-worker:
+    image: spark-custom-image:latest
+    entrypoint: ['./entrypoint.sh', 'worker']
+    depends_on:
+      - spark-master
+    volumes:
+      - /home/rezghool/research/spark_example:/opt/spark/data
+      - ./spark_apps:/opt/spark/apps
+      - spark-logs:/opt/spark/spark-events
+      - /home/rezghool/research/spark_example:/data/mllib
+      - /var/run/lttng:/var/run/lttng # Mirror LTTng session directory
+      - /dev/shm:/dev/shm
+    environment:
+      - SPARK_WORKLOAD=worker
+      - SPARK_NO_DAEMONIZE=true
+      - LD_PRELOAD=liblttng-ust-fork
+    network_mode: host
+
+
+networks:
+  spark-network:
+    driver: bridge
+
+volumes:
+  spark-logs:
