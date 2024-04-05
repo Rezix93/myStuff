@@ -1,3 +1,4 @@
+cat /opt/spark/conf/spark-defaults.conf
 
 1. spark.executor.extraJavaOptions:   liblttng-ust-log4j-jni.so
 2. spark.driver.extraClassPath        lttng-ust-agent-common.jar :: lttng-ust-agent-log4j2.jar :: lttng-ust-agent-log4j.jar
