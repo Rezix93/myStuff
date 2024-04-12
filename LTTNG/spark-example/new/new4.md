@@ -2,7 +2,9 @@
 % for example if memory and cpu of woker is 4
 % and you set 1 for cpu and memory of each executor you will 4 executor per worker
 
+mvn clean compile
 
+	lttng enable-event --log4j jello && \
 
 mvn install:install-file \
     -Dfile=/usr/local/share/java/lttng-ust-agent-log4j-1.0.0.jar \
