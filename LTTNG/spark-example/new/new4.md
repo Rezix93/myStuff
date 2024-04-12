@@ -7,7 +7,10 @@
 -rf :spark-examples_2.12
 
 ./build/mvn -DskipTests clean package \
--Dmaven.compiler.classpath=/usr/share/java/lttng-ust-agent-jul.jar -rf :spark-examples_2.12
+-DargLine=-Djava.library.path=/usr/share/java/ \
+-Dlog4j-jar-location=/usr/share/java/lttng-ust-agent-log4j.jar \
+-Dmaven.compiler.classpath=/usr/share/java/lttng-ust-agent-jul.jar \
+-rf :spark-examples_2.12
 
 ```
 %FROM openjdk:11-jdk
