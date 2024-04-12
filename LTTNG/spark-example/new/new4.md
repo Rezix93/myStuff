@@ -3,6 +3,11 @@
 % and you set 1 for cpu and memory of each executor you will 4 executor per worker
 
 
+./build/mvn -DskipTests clean package 
+-rf :spark-examples_2.12
+
+./build/mvn -DskipTests clean package \
+-Dmaven.compiler.classpath=/usr/share/java/lttng-ust-agent-jul.jar -rf :spark-examples_2.12
 
 ```
 %FROM openjdk:11-jdk
