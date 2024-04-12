@@ -3,14 +3,15 @@
 % and you set 1 for cpu and memory of each executor you will 4 executor per worker
 
 
-./build/mvn -DskipTests clean package 
--rf :spark-examples_2.12
 
-./build/mvn -DskipTests clean package \
--DargLine=-Djava.library.path=/usr/share/java/ \
--Dlog4j-jar-location=/usr/share/java/lttng-ust-agent-log4j.jar \
--Dmaven.compiler.classpath=/usr/share/java/lttng-ust-agent-jul.jar \
--rf :spark-examples_2.12
+mvn install:install-file \
+    -Dfile=/usr/local/share/java/lttng-ust-agent-log4j-1.0.0.jar \
+    -DgroupId=org.lttng.ust.agent \
+    -DartifactId=lttng-ust-agent-log4j \
+    -Dversion=1.0.0 \
+    -Dpackaging=jar
+
+  ./build/mvn -DskipTests clean package -rf :spark-examples_2.12
 
 ```
 %FROM openjdk:11-jdk
