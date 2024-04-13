@@ -6,12 +6,20 @@ mvn clean compile
 
 	lttng enable-event --log4j jello && \
 
-mvn install:install-file \
-    -Dfile=/usr/local/share/java/lttng-ust-agent-log4j-1.0.0.jar \
+	mvn install:install-file \
+	    -Dfile=/usr/local/share/java/lttng-ust-agent-log4j-1.0.0.jar \
+	    -DgroupId=org.lttng.ust.agent \
+	    -DartifactId=lttng-ust-agent-log4j \
+	    -Dversion=1.0.0 \
+	    -Dpackaging=jar
+
+    mvn install:install-file \
+    -Dfile=/usr/local/share/java/lttng-ust-agent-log4j2-1.0.0.jar \
     -DgroupId=org.lttng.ust.agent \
-    -DartifactId=lttng-ust-agent-log4j \
-    -Dversion=1.0.0 \
+    -DartifactId=lttng-ust-agent-log4j2 \
+    -Dversion=2.1.0 \
     -Dpackaging=jar
+    
 
   ./build/mvn -DskipTests clean package -rf :spark-examples_2.12
 
