@@ -23,6 +23,10 @@ mvn install:install-file \
 
 ./build/mvn -Pyarn -Phadoop-3 -Dhadoop.version=3.3.4 -DskipTests clean package -rf :spark-examples_2.12
 
+PATH=$PATH:/usr/local/hadoop/sbin
+start-all.sh
+bash start-dfs.sh
+bash start-yarn.sh
 
 
  ``` 
