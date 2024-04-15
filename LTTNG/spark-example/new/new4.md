@@ -4,24 +4,28 @@
 
 mvn clean compile
 
-	lttng enable-event --log4j jello && \
+lttng enable-event --log4j jello && \
 
-	mvn install:install-file \
-	    -Dfile=/usr/local/share/java/lttng-ust-agent-log4j-1.0.0.jar \
-	    -DgroupId=org.lttng.ust.agent \
-	    -DartifactId=lttng-ust-agent-log4j \
-	    -Dversion=1.0.0 \
-	    -Dpackaging=jar
+```
+mvn install:install-file \
+-Dfile=/usr/local/share/java/lttng-ust-agent-log4j-1.0.0.jar \
+-DgroupId=org.lttng.ust.agent \
+-DartifactId=lttng-ust-agent-log4j \
+-Dversion=1.0.0 \
+-Dpackaging=jar
 
-    mvn install:install-file \
-    -Dfile=/usr/local/share/java/lttng-ust-agent-log4j2-1.0.0.jar \
-    -DgroupId=org.lttng.ust.agent \
-    -DartifactId=lttng-ust-agent-log4j2 \
-    -Dversion=2.1.0 \
-    -Dpackaging=jar
-    
+mvn install:install-file \
+-Dfile=/usr/local/share/java/lttng-ust-agent-log4j2-1.0.0.jar \
+-DgroupId=org.lttng.ust.agent \
+-DartifactId=lttng-ust-agent-log4j2 \
+-Dversion=2.1.0 \
+-Dpackaging=jar
 
-  ./build/mvn -DskipTests clean package -rf :spark-examples_2.12
+build/mvn -Pyarn -Phadoop-3.4 -Dhadoop.version=3.4.0 -DskipTests clean package
+
+ ``` 
+
+./build/mvn -DskipTests clean package -rf :spark-examples_2.12
 
 ```
 %FROM openjdk:11-jdk
