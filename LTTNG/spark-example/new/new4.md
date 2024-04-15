@@ -21,11 +21,12 @@ mvn install:install-file \
 -Dversion=2.1.0 \
 -Dpackaging=jar
 
-build/mvn -Pyarn -Phadoop-3.4 -Dhadoop.version=3.4.0 -DskipTests clean package
+./build/mvn -Pyarn -Phadoop-3 -Dhadoop.version=3.3.4 -DskipTests clean package -rf :spark-examples_2.12
+
+
 
  ``` 
 
-./build/mvn -DskipTests clean package -rf :spark-examples_2.12
 
 ```
 %FROM openjdk:11-jdk
