@@ -8,6 +8,9 @@ lttng enable-event --log4j jello && \
 
 ```
 http://localhost:9870/dfshealth.html#tab-datanode
+http://localhost:8088/cluster
+
+
 
 mvn install:install-file \
 -Dfile=/usr/local/share/java/lttng-ust-agent-log4j-1.0.0.jar \
