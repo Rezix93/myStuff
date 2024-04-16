@@ -9,7 +9,7 @@ lttng enable-event --log4j jello && \
 ```
 http://localhost:9870/dfshealth.html#tab-datanode
 http://localhost:8088/cluster
-
+http://localhost:8042/node
 
 
 mvn install:install-file \
