@@ -12,6 +12,7 @@ http://localhost:8088/cluster
 http://localhost:8042/node
 
 
+
 mvn install:install-file \
 -Dfile=/usr/local/share/java/lttng-ust-agent-log4j-1.0.0.jar \
 -DgroupId=org.lttng.ust.agent \
