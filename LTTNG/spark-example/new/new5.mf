@@ -1,0 +1,43 @@
+To get the thread ID in the `launchTask` method of the Executor class in Apache Spark, you can use the `Thread.currentThread().getId()` method. This will retrieve the ID of the current thread that is executing this part of the code.
+
+Here’s how you can modify the `launchTask` method to include logging of the thread ID:
+
+```scala
+def launchTask(context: ExecutorBackend, taskDescription: TaskDescription): Unit = {
+  val taskId = taskDescription.taskId
+  val tr = createTaskRunner(context, taskDescription)
+  runningTasks.put(taskId, tr)
+  val killMark = killMarks.get(taskId)
+  if (killMark != null) {
+    tr.kill(killMark._1, killMark._2)
+    killMarks.remove(taskId)
+  }
+  val threadId = Thread.currentThread().getId  // Get the current thread ID
+  threadPool.execute(tr)
+  if (decommissioned) {
+    log.error(s"Launching a task while in decommissioned state.")
+  }
+  // Logging the thread ID
+  log.info(s"Launching task $taskId from thread $threadId")
+}
+```
+
+### Key Points:
+- **Thread ID Retrieval**: The `Thread.currentThread().getId()` method is called before the task is executed in the thread pool. This gives you the ID of the thread handling the task launching but not necessarily the thread that will execute the task since tasks are run by threads managed by the thread pool.
+- **Logging**: The thread ID is logged alongside the task ID, which can help in debugging and understanding which thread handled the task submission. This can be particularly useful for diagnosing issues related to thread management and task execution.
+
+If you need the thread ID of the specific thread that executes the task (not just submits it to the thread pool), you would need to incorporate logging directly within the `TaskRunner`'s `run` method, as that method will be executed by the thread pool's threads. Here's how you might adjust the `TaskRunner`:
+
+```scala
+class TaskRunner(execBackend: ExecutorBackend, taskDescription: TaskDescription, plugins: Option[PluginContainer]) extends Runnable {
+  val taskId = taskDescription.taskId
+  val taskName = taskDescription.name
+  override def run(): Unit = {
+    val threadId = Thread.currentThread().getId  // Thread executing the task
+    log.info(s"Running task $taskId on thread $threadId")
+    // Task execution logic here
+  }
+}
+```
+
+This addition will ensure that you log the thread ID of the actual execution thread, which is crucial for in-depth performance monitoring and troubleshooting.
