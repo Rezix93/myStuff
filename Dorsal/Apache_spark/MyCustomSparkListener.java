@@ -258,27 +258,28 @@ public class MyCustomSparkListener extends SparkListener {
     private void logData(String eventType, Map<String, Object> data) {
         String logMessage = formatLogMessage(eventType, data);
         boolean lttngUstLogAppendercheck = Boolean.parseBoolean(System.getProperty("lttngUstLogAppender.enabled", "false"));
-
-        if (lttngUstLogAppendercheck){
-            //try {
+        logger_log4j.info(logMessage);
+        
+        /* if (lttngUstLogAppendercheck){
+            try {
                 Logger logger_lttng = Logger.getLogger("lttngUstLogAppender");
-                //Appender lttngUstLogAppender = new LttngLogAppender();
-                // Add the LTTng-UST log appender to our logger
-                //logger_lttng.addAppender(lttngUstLogAppender);
-                // Log at will!
-                //logger_lttng.info(logMessage);
-                // Not mandatory, but cleaner
-                //logger_lttng.removeAppender(lttngUstLogAppender);
-                //lttngUstLogAppender.close();
-                   // } catch (IOException e) {
-                        //data.put("lttngUstLogAppender", "exeption");
-                        //logData("Jello", data);
-                // Handle exception here
-            //}
+                Appender lttngUstLogAppender = new LttngLogAppender();
+                 //Add the LTTng-UST log appender to our logger
+                logger_lttng.addAppender(lttngUstLogAppender);
+                //Log at will!
+                logger_lttng.info(logMessage);
+                 //Not mandatory, but cleaner
+                logger_lttng.removeAppender(lttngUstLogAppender);
+                lttngUstLogAppender.close();
+                    } catch (IOException e) {
+                        data.put("lttngUstLogAppender", "exeption");
+                        logData("Jello", data);
+                 Handle exception here
+            }
         }
         else {
             logger_log4j.info(logMessage);
-        }
+        }*/
         
     }
 
