@@ -257,7 +257,7 @@ public class MyCustomSparkListener extends SparkListener {
 
     private void logData(String eventType, Map<String, Object> data) {
         String logMessage = formatLogMessage(eventType, data);
-        boolean lttngUstLogAppendercheck = Boolean.parseBoolean(System.getProperty("lttngUstLogAppender.enabled", "false"));
+        //boolean lttngUstLogAppendercheck = Boolean.parseBoolean(System.getProperty("lttngUstLogAppender.enabled", "false"));
         logger_log4j.info(logMessage);
         
         /* if (lttngUstLogAppendercheck){
