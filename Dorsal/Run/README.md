@@ -1,5 +1,5 @@
 docker exec da-spark-master lttng create \
-docker exec da-spark-master lttng enable-event -l -a  --filter 'logger_name == "org.apache.spark.examples.MyCustomSparkListener"' \
+lttng enable-event -a --filter 'logger_name == "org.apache.spark.examples.MyCustomSparkListener" || logger_name == "org.apache.spark.executor"' \
 docker exec da-spark-master lttng enable-event -k -a \
 docker exec da-spark-master lttng start \
 docker exec da-spark-master \
