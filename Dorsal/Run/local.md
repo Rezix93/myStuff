@@ -6,12 +6,11 @@
 	lttng enable-event -k -a  && \
 	lttng start && \
 	/opt/spark/bin/spark-submit --verbose \
-	--class org.apache.spark.examples.mllib.JavaALS  --master spark://Rezghool:7077 \
-	--conf spark.executor.cores=1 \
+   	--class org.apache.spark.examples.SparkPi --master spark://Rezghool:7077 \
 	--conf spark.executor.memory=1g \
 	--conf spark.driver.cores=1 \
 	--conf spark.driver.memory=1g \
-	/opt/spark/examples/target/scala-2.12/jars/spark-examples_2.12-3.4.0.jar && \
+       /opt/spark/examples/target/scala-2.12/jars/spark-examples_2.12-3.4.0.jar 10 && \
 	lttng stop && \
 	lttng view 
 ```
