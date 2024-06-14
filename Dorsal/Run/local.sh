@@ -1,4 +1,4 @@
-  ```bash
+ ```
   	cd /opt/spark && \
 	./sbin/start-all.sh && \
   	lttng create && \
