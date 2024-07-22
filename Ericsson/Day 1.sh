@@ -1,6 +1,7 @@
 
 change jdk version 
--```bash
+
+```bash
 export JAVA_HOME=/usr/lib/jvm/java-11-openjdk-amd64/jre/
 export PATH=$JAVA_HOME/bin:$PATH
 
