@@ -37,3 +37,23 @@
 ```diff
 + Remove Print
 ```
+19. Replace remove -> update null
+20. 
+```diff
++ Make XY graph easier
+```
+21. Important!
+```diff
+@@ VisualVM
+```
+22. 
+```diff
+- Sampling vs Instrumening
+```
+23. Automatically Launch your analysis????
+24. Schedluing the analysis
+25. VisualVM:
+setting: check tick
+```diff
+- How works!
+```
