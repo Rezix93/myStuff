@@ -9,13 +9,16 @@
    6.2 Eifel
    6.3 scass
    6.4 Arm Automated Repository Manager (ARM) 
-7. SRE -> Gerrit vs Github
-8. Get traces in VM for memory managing
-9. One dataprover -> one veiw
-10. for that 500m -> FIX
-11. Control + T => All function overrided
-12. XML Vs java
-13.
+8. ```diff
+-  SRE -> Gerrit vs Github
+```
+
+9. Get traces in VM for memory managing
+10. One dataprover -> one veiw
+11. for that 500m -> FIX
+12. Control + T => All function overrided
+13. XML Vs java
+14.
 ```diff
 - XML Vs java
 ```
