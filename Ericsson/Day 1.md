@@ -43,8 +43,8 @@
 ```
 19. Replace remove -> update null
 ```diff
-+    ss.removeAttribute(ts, quarkKernelThread_task);
-                    ss.modifyAttribute(ts, null, quarkKernelThread_task);
+-    ss.removeAttribute(ts, quarkKernelThread_task);
++    ss.modifyAttribute(ts, null, quarkKernelThread_task);
 ```
 20. 
 ```diff
