@@ -9,7 +9,8 @@
    6.2 Eifel
    6.3 scass
    6.4 Arm Automated Repository Manager (ARM) 
-8. ```diff
+7.
+```diff
 -  SRE -> Gerrit vs Github
 ```
 
