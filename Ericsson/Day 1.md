@@ -15,7 +15,8 @@
 10. for that 500m -> FIX
 11. Control + T => All function overrided
 12. XML Vs java
-13. ![Important Notice](https://path-to-your-image/important-notice.png)
+13. <p style="color:red;">This is red text using HTML.</p>
+
 
 
 
