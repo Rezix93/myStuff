@@ -17,5 +17,11 @@
 12. XML Vs java
 13. <p style="color:red;">This is red text using HTML.</p>
 - ![#f03c15](https://placehold.co/15x15/f03c15/f03c15.png) `#f03c15`
-
+```diff
+- text in red
++ text in green
+! text in orange
+# text in gray
+@@ text in purple (and bold)@@
+```
 
