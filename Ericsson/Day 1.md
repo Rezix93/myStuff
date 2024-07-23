@@ -24,7 +24,11 @@
 - XML Vs java
 ```
 15. Mr. Marc is someone from SRE
-16. 
+16. Create function shortcut: 
+```diff
++ Alt + shift + m
+```
+17. 
 ```diff
 - Beans Veiwer -> java
 ```
