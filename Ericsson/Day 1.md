@@ -57,3 +57,6 @@ setting: check tick
 ```diff
 - How works!
 ```
+26. VisualVM -> setting profile only classes: sampling frequency 50 ms -> org.eclipse.tracecompass.**
+![image](https://github.com/user-attachments/assets/d8a2ba5f-70b8-4b1e-a5d7-d4dd60926c84)
+
