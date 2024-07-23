@@ -72,3 +72,10 @@ setting: check tick
 
 ![image](https://github.com/user-attachments/assets/d8a2ba5f-70b8-4b1e-a5d7-d4dd60926c84)
 
+27. Tracing:
+```diff
+- Is there any problem?
+- Where is it ?
+- how can be solved?
+``` 
+    
