@@ -1,21 +1,21 @@
 
-change jdk version 
-
-```bash
-export JAVA_HOME=/usr/lib/jvm/java-11-openjdk-amd64/jre/
-export PATH=$JAVA_HOME/bin:$PATH
-
-
-sudo update-java-alternatives --list
-export JAVA_HOME=/usr/lib/jvm/java-1.11.0-openjdk-amd64
-export PATH=$JAVA_HOME/bin:$PATH
-java -version
-
-
-sudo update-alternatives --config java
-sudo update-alternatives --set java /usr/lib/jvm/java-11-openjdk-amd64/bin/java
-source ~/.bashrc   # or source ~/.profile or source ~/.bash_profile
-```
+1. Change jdk version to fix crashes
+2. WEBKIT_DISABLE_DMABUF_RENDERER=1 ./eclipse
+3. Colors for graph
+4. tooltip? how
+5. 35hxc8bg password of something (Teams I guess)
+6. Next projects
+   6.1 Gerrit (software)
+   6.2 Eifel
+   6.3 scass
+   6.4 Arm Automated Repository Manager (ARM) 
+7. SRE -> Gerrit vs Github
+8. Get traces in VM for memory managing
+9. One dataprover -> one veiw
+10. for that 500m -> FIX
+11. Control + T => All function overrided
+12. XML Vs java
+13. ![Important Notice](https://path-to-your-image/important-notice.png)
 
 
 
