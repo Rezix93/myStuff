@@ -15,10 +15,9 @@
 10. for that 500m -> FIX
 11. Control + T => All function overrided
 12. XML Vs java
-13. <p style="color:red;">This is red text using HTML.</p>
-- ![#f03c15](https://placehold.co/15x15/f03c15/f03c15.png) `#f03c15`
+13. 
 ```diff
-- text in red
+- XML Vs java
 + text in green
 ! text in orange
 # text in gray
