@@ -1,6 +1,10 @@
 
 1. Change jdk version to fix crashes
-2. WEBKIT_DISABLE_DMABUF_RENDERER=1 ~/research/eclipse/eclipse
+2. 
+```
+ WEBKIT_DISABLE_DMABUF_RENDERER=1
+ ~/research/eclipse/eclipse
+```
 3. Colors for graph
 4. tooltip? how
 5. 35hxc8bg password of something (Teams I guess)
