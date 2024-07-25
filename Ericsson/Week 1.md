@@ -81,5 +81,18 @@ setting: check tick
 - Is there any problem?
 - Where is it ?
 - how can be solved?
-``` 
+```
+28. ust tarces:
+```
+   Collection<ITmfTrace> traces = TmfTraceManager.getTraceSet(trace).stream().filter(tr-> tr instanceof LttngUstTrace).toList();
+        List<ITmfTrace> filteredTraces = new ArrayList<>();
+        //Filter UST events
+        for (ITmfTrace t : traces) {
+                if (t instanceof LttngUstTrace) {
+                    filteredTraces.add(t);
+                    //break;  // Exit the loop once the first LttngUstTrace is found and added
+            }
+        }
+```
+    
     
