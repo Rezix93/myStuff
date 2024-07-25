@@ -94,5 +94,46 @@ setting: check tick
             }
         }
 ```
+ 29. ITmfCounterAspect vs CounterAspect
+30. SparkTrace line 71 -> cheat ?
+31. Spark Trace -> line 69 -> Create a function and draw it for all variables
+32. list.of().toAaray Learn
+33. casting<> in java learrn
+```
+ITmfTreeXYDataProvider<@NonNull ITmfTreeDataModel> provider = DataDrivenXYProviderFactory.create(trace, Collections.singletonList(stateSystem), Collections.singletonList(entry), ID + ":" + secondaryId);
+```
+34. A stack trace is a report of the active stack frames at a certain point in time during the execution of a program. It provides a snapshot of the call stack, which is a data structure that stores information about the active subroutines or function calls in a program.
+
+35. For import all nessecary: 
+```diff
+- Control + shift + O
+```
+36. what is DPDK?
+37. How trace compass works:
     
-    
+![5843825472255935601](https://github.com/user-attachments/assets/e9fabf41-ea5f-43c8-af30-64aee0bc164b)
+
+38. By using the Counter we can bypas it and just parse and show it vitout analysis and statesytems
+39. Counter.cores?
+40. Application Meld?
+41. For debugging: using F7 F8
+42. Extend vs implement
+43. in after cretinga package in tarcecompass -> plugin.xml -> new Type -> Spark Trace -> screenshot: 
+Package -> new class -> Spark Trace
+
+write and show the process here
+"org.eclipse.linuxtools.tmf.core.analysis" spark kounter:
+![image](https://github.com/user-attachments/assets/9c59ee63-5c4c-445c-a6b9-8bc9a8b34040)
+
+tracetype: SparkTrace (module):
+![image](https://github.com/user-attachments/assets/7391bfd6-9ff1-4fe0-8af7-7c76a3a5d90b)
+
+  point="org.eclipse.linuxtools.tmf.core.tracetype" : Spark Trace (Type)
+![image](https://github.com/user-attachments/assets/a771ec92-86b7-40c1-b2f2-78ddf0b53710)
+
+
+In pluin.xml: 
+![image](https://github.com/user-attachments/assets/b8994008-f2f3-4bf4-9852-d788320fe584)
+
+45. aspects -> culumn
+46. 
