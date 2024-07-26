@@ -162,14 +162,14 @@ or
 
 
 2. we also need dataprovider:
-```
+
 <dataProviderFactory
       class="org.eclipse.tracecompass.incubator.internal.spark_test1.core.analysis.TaskXYDataProviderFactory"
       id="org.eclipse.tracecompass.incubator.spark.taskxy.dataprovider">
 </dataProviderFactory>
-```
+
 3. Also in some case like this we need new trace type: 
-```
+
    <extension
          point="org.eclipse.linuxtools.tmf.core.tracetype">
       <type
@@ -180,7 +180,7 @@ or
             trace_type="org.eclipse.tracecompass.incubator.internal.spark_test1.core.trace.SparkTrace">
       </type>
    </extension>
-```
+
 
 UI: 
 ```
