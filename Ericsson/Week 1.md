@@ -118,22 +118,32 @@ ITmfTreeXYDataProvider<@NonNull ITmfTreeDataModel> provider = DataDrivenXYProvid
 40. Application Meld?
 41. For debugging: using F7 F8
 42. Extend vs implement
-43. in after cretinga package in tarcecompass -> plugin.xml -> new Type -> Spark Trace -> screenshot: 
+43. Class name statrt with Capital and varibale start with s
+44. in after cretinga package in tarcecompass -> plugin.xml -> new Type -> Spark Trace -> screenshot: 
 Package -> new class -> Spark Trace
 
 write and show the process here
-"org.eclipse.linuxtools.tmf.core.analysis" spark kounter:
+We want to have a new trace type. So we need a new package. where should we add it? yes in core. so we add a new pacakge name trace and in it we add a new class SparkTrace
+
+&#x1F534; Then go to plgin.xml and add it as  new Extension 
+
+"org.eclipse.linuxtools.tmf.core.analysis" spark kounter
+
+In analysis there is a Counteranalysis existed in tarceCompass and we use it. and it needs a tracetype and we use SparkTrace.
+
 ![image](https://github.com/user-attachments/assets/9c59ee63-5c4c-445c-a6b9-8bc9a8b34040)
 
 tracetype: SparkTrace (module):
 ![image](https://github.com/user-attachments/assets/7391bfd6-9ff1-4fe0-8af7-7c76a3a5d90b)
 
-  point="org.eclipse.linuxtools.tmf.core.tracetype" : Spark Trace (Type)
+point="org.eclipse.linuxtools.tmf.core.tracetype" : Spark Trace (Type)
 ![image](https://github.com/user-attachments/assets/a771ec92-86b7-40c1-b2f2-78ddf0b53710)
-
 
 In pluin.xml: 
 ![image](https://github.com/user-attachments/assets/b8994008-f2f3-4bf4-9852-d788320fe584)
+
+Also in dependency add counter.core becasue we are using some existed core 
+![image](https://github.com/user-attachments/assets/991c2a47-8085-4316-9c65-55a65fbee238)
 
 45. aspects -> culumn
 46. 
