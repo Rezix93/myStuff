@@ -153,5 +153,36 @@ Also in dependencies of ui.plugin.xml ->
 org.eclipse.tracecompass.analysis.counters.ui;bundle-version="2.1.0"
 </analysisModuleClass>
  ```
+
+```
+Core:
+1.1: mf.core.analysis -> spark Analysis (module) -> LttngUSTTrace
+or
+1.2 tmf.core.analysis -> spark Counter (module) -> SparkTrace
+
+
+2. we also need dataprovider:
+```
+<dataProviderFactory
+      class="org.eclipse.tracecompass.incubator.internal.spark_test1.core.analysis.TaskXYDataProviderFactory"
+      id="org.eclipse.tracecompass.incubator.spark.taskxy.dataprovider">
+</dataProviderFactory>
+```
+3. Also in some case like this we need new trace type: 
+```
+   <extension
+         point="org.eclipse.linuxtools.tmf.core.tracetype">
+      <type
+            event_type="org.eclipse.tracecompass.tmf.core.event.TmfEvent"
+            id="org.eclipse.tracecompass.incubator.spark_test1.core.type1"
+            isDirectory="true"
+            name="Spark Trace"
+            trace_type="org.eclipse.tracecompass.incubator.internal.spark_test1.core.trace.SparkTrace">
+      </type>
+   </extension>
+```
+
+UI: 
+```
 45. aspects -> culumn
 46. 
