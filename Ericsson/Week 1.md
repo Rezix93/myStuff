@@ -150,8 +150,8 @@ In pluin.xml:
 Also in dependencies of ui.plugin.xml -> 
   ```
 <analysisModuleClass
-        class="org.eclipse.tracecompass.incubator.spark_test1.ui.AnalysisModule1">
-  </analysisModuleClass>
+org.eclipse.tracecompass.analysis.counters.ui;bundle-version="2.1.0"
+</analysisModuleClass>
  ```
 45. aspects -> culumn
 46. 
