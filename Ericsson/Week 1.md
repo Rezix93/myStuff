@@ -118,8 +118,8 @@ ITmfTreeXYDataProvider<@NonNull ITmfTreeDataModel> provider = DataDrivenXYProvid
 40. Application Meld?
 41. For debugging: using F7 F8
 42. Extend vs implement
-43. Class name statrt with Capital and varibale start with s
-44. in after cretinga package in tarcecompass -> plugin.xml -> new Type -> Spark Trace -> screenshot: 
+43. In JAVA Class name start with Capital and varibale start with lowercase
+44. After creating package in tarcecompass -> plugin.xml -> new Type -> Spark Trace -> screenshot: 
 Package -> new class -> Spark Trace
 
 write and show the process here
@@ -139,11 +139,19 @@ tracetype: SparkTrace (module):
 point="org.eclipse.linuxtools.tmf.core.tracetype" : Spark Trace (Type)
 ![image](https://github.com/user-attachments/assets/a771ec92-86b7-40c1-b2f2-78ddf0b53710)
 
-In pluin.xml: 
-![image](https://github.com/user-attachments/assets/b8994008-f2f3-4bf4-9852-d788320fe584)
 
 Also in dependency add counter.core becasue we are using some existed core 
 ![image](https://github.com/user-attachments/assets/991c2a47-8085-4316-9c65-55a65fbee238)
 
+
+In pluin.xml: 
+![image](https://github.com/user-attachments/assets/b8994008-f2f3-4bf4-9852-d788320fe584)
+
+Also in dependencies of ui.plugin.xml -> 
+  ```
+<analysisModuleClass
+        class="org.eclipse.tracecompass.incubator.spark_test1.ui.AnalysisModule1">
+  </analysisModuleClass>
+ ```
 45. aspects -> culumn
 46. 
