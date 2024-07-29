@@ -15,5 +15,7 @@ insted ot this just get all UST traces!
 11. write a bash code to find all root file
 12. Fix this one: 
 ```
-The error message indicates that the class org.eclipse.tracecompass.incubator.spark_test1.ui.AnalysisModule1 cannot be found by the bundle org.eclipse.tracecompass.incubator.spark_test1.ui_0.1.0.qualifier. This issue is typically caused by one of the following problems:
+The error message indicates that the class org.eclipse.tracecompass.incubator.spark_test1.ui.AnalysisModule1 cannot 
+be found by the bundle org.eclipse.tracecompass.incubator.spark_test1.ui_0.1.0.qualifier.
+ This issue is typically caused by one of the following problems:
 ```
