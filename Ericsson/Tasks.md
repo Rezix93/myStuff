@@ -11,3 +11,4 @@ insted ot this just get all UST traces!
 7. He asked for a youtube videos that use counter for xy graph and spark is a useCase
 8. in DailyScrum there is somthing to sign. then I can share code in Github 
 9. some of varibale ib string. change to Inegeter
+10. write a bash code to find all root file 
