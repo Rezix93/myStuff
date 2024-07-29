@@ -22,6 +22,6 @@ be found by the bundle org.eclipse.tracecompass.incubator.spark_test1.ui_0.1.0.q
 
 13.
 ```
-tiny patch for Trace compass: CTF verificaiton
-git add -> git commit -> git push 
++ tiny patch for Trace compass: CTF verificaiton
++ git add -> git commit -> git push 
 ```
