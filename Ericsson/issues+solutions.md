@@ -1,45 +1,69 @@
 ```
-eclipse.buildId=4.30.0.20231201-1200
-java.version=17.0.9
-java.vendor=Eclipse Adoptium
-BootLoader constants: OS=linux, ARCH=x86_64, WS=gtk, NL=en_CA
-Framework arguments:  -product org.eclipse.epp.package.committers.product
-Command-line arguments:  -os linux -ws gtk -arch x86_64 -product org.eclipse.epp.package.committers.product
-
-org.eclipse.core.resources
-Error
-Mon Jul 29 11:58:36 EDT 2024
-Problems occurred when invoking code from plug-in: "org.eclipse.core.resources".
-
-org.eclipse.core.runtime.CoreException: Variable references non-existent resource : ${workspace_loc:/org.eclipse.tracecompass.tmf.pcap.doc.user/build.xml}
-	at org.eclipse.debug.internal.core.variables.WorkspaceResolver.resolveValue(WorkspaceResolver.java:66)
-	at org.eclipse.core.internal.variables.DynamicVariable.getValue(DynamicVariable.java:56)
-	at org.eclipse.core.internal.variables.StringSubstitutionEngine.resolve(StringSubstitutionEngine.java:271)
-	at org.eclipse.core.internal.variables.StringSubstitutionEngine.substitute(StringSubstitutionEngine.java:195)
-	at org.eclipse.core.internal.variables.StringSubstitutionEngine.performStringSubstitution(StringSubstitutionEngine.java:91)
-	at org.eclipse.core.internal.variables.StringVariableManager.performStringSubstitution(StringVariableManager.java:548)
-	at org.eclipse.core.internal.variables.StringVariableManager.performStringSubstitution(StringVariableManager.java:347)
-	at org.eclipse.core.externaltools.internal.launchConfigurations.ExternalToolsCoreUtil.getLocation(ExternalToolsCoreUtil.java:75)
-	at org.eclipse.ant.internal.launching.launchConfigurations.AntLaunchDelegate.launch(AntLaunchDelegate.java:172)
-	at org.eclipse.debug.internal.core.LaunchConfiguration.launch(LaunchConfiguration.java:805)
-	at org.eclipse.debug.internal.core.LaunchConfiguration.launch(LaunchConfiguration.java:716)
-	at org.eclipse.debug.internal.core.LaunchConfiguration.launch(LaunchConfiguration.java:711)
-	at org.eclipse.core.externaltools.internal.model.ExternalToolBuilder.launchBuild(ExternalToolBuilder.java:188)
-	at org.eclipse.core.externaltools.internal.model.ExternalToolBuilder.clean(ExternalToolBuilder.java:303)
-	at org.eclipse.core.internal.events.BuildManager$2.run(BuildManager.java:1084)
+org.eclipse.core.runtime.CoreException: Failed to save API description for org.eclipse.tracecompass.incubator.analysis.core
+	at org.eclipse.pde.api.tools.internal.ApiDescriptionManager.abort(ApiDescriptionManager.java:439)
+	at org.eclipse.pde.api.tools.internal.ApiDescriptionManager.saving(ApiDescriptionManager.java:246)
+	at org.eclipse.pde.api.tools.internal.provisional.ApiPlugin.saving(ApiPlugin.java:563)
+	at org.eclipse.core.internal.resources.SaveManager.executeLifecycle(SaveManager.java:453)
+	at org.eclipse.core.internal.resources.SaveManager$1.run(SaveManager.java:269)
 	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:47)
-	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:296)
-	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:352)
-	at org.eclipse.core.internal.events.BuildManager$1.run(BuildManager.java:441)
-	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:47)
-	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:444)
-	at org.eclipse.core.internal.events.BuildManager.basicBuildLoop(BuildManager.java:555)
-	at org.eclipse.core.internal.events.BuildManager.basicBuildLoop(BuildManager.java:503)
-	at org.eclipse.core.internal.events.BuildManager.build(BuildManager.java:585)
-	at org.eclipse.core.internal.resources.Workspace.buildInternal(Workspace.java:594)
-	at org.eclipse.core.internal.resources.Workspace.build(Workspace.java:483)
-	at org.eclipse.ui.internal.ide.dialogs.CleanDialog.doClean(CleanDialog.java:355)
-	at org.eclipse.ui.internal.ide.dialogs.CleanDialog$1.runInWorkspace(CleanDialog.java:159)
-	at org.eclipse.core.internal.resources.InternalWorkspaceJob.run(InternalWorkspaceJob.java:43)
+	at org.eclipse.core.internal.resources.SaveManager.broadcastLifecycle(SaveManager.java:272)
+	at org.eclipse.core.internal.resources.SaveManager.save(SaveManager.java:1226)
+	at org.eclipse.core.internal.resources.SaveManager.save(SaveManager.java:1205)
+	at org.eclipse.core.internal.resources.DelayedSnapshotJob.run(DelayedSnapshotJob.java:51)
 	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+Caused by: java.io.FileNotFoundException: /home/rezghool/eclipse-workspace/new_directory/.metadata/.plugins/org.eclipse.pde.api.tools/org.eclipse.tracecompass.incubator.analysis.core/.api_description (Permission denied)
+	at java.base/java.io.FileOutputStream.open0(Native Method)
+	at java.base/java.io.FileOutputStream.open(FileOutputStream.java:293)
+	at java.base/java.io.FileOutputStream.<init>(FileOutputStream.java:235)
+	at java.base/java.io.FileOutputStream.<init>(FileOutputStream.java:184)
+	at java.base/java.io.FileWriter.<init>(FileWriter.java:96)
+	at org.eclipse.pde.api.tools.internal.util.Util.saveFile(Util.java:1809)
+	at org.eclipse.pde.api.tools.internal.ApiDescriptionManager.saving(ApiDescriptionManager.java:243)
 ```
+
+## solution: 
+
+The error message indicates a `FileNotFoundException` due to "Permission denied" while trying to save an API description for the `org.eclipse.tracecompass.incubator.analysis.core` project. This issue is likely due to insufficient permissions for the specified directory or file.
+
+To resolve this, you need to ensure that your user account has the necessary permissions to read from and write to the relevant directories and files. Here's how to fix this:
+
+### 1. **Change Ownership and Permissions for Workspace and Project Files**
+
+First, ensure that the Eclipse workspace and all its contents have the correct ownership and permissions.
+
+#### Change Ownership:
+```bash
+sudo chown -R $(whoami) /home/rezghool/eclipse-workspace
+```
+
+#### Change Permissions:
+```bash
+sudo chmod -R u+rwx /home/rezghool/eclipse-workspace
+```
+
+These commands will apply the changes recursively to all files and directories within the workspace.
+
+### 2. **Verify and Apply Permissions for Specific Files**
+Check the specific file causing the issue, if necessary, by listing its details:
+
+```bash
+ls -l /home/rezghool/eclipse-workspace/new_directory/.metadata/.plugins/org.eclipse.pde.api.tools/org.eclipse.tracecompass.incubator.analysis.core/.api_description
+```
+
+If the file does not exist or you still encounter issues, make sure the directory structure exists and the user has the necessary permissions.
+
+### 3. **Clean and Rebuild the Project in Eclipse**
+
+After adjusting the permissions:
+
+1. **Clean the Project:**
+   - Go to `Project` > `Clean`.
+   - Select "Clean all projects" to remove any previous build artifacts.
+
+2. **Rebuild the Project:**
+   - Go to `Project` > `Build All`.
+
+### 4. **Restart Eclipse**
+
+Sometimes, Eclipse may still have cached information causing issues. Restart Eclipse to ensure all changes take effect.
+
