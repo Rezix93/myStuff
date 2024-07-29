@@ -19,3 +19,9 @@ The error message indicates that the class org.eclipse.tracecompass.incubator.sp
 be found by the bundle org.eclipse.tracecompass.incubator.spark_test1.ui_0.1.0.qualifier.
  This issue is typically caused by one of the following problems:
 ```
+
+13.
+```
+tiny patch for Trace compass: CTF verificaiton
+git add -> git commit -> git push 
+```
