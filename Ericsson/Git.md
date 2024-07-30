@@ -33,6 +33,31 @@ git config --global user.email "reza.rouhghalandari@ericsson.com"
 git config "user.name" "Reza Rouhghalandari"
 ```
 
+
+```
+Git staus
+```
+## First Add
+Choose what you want to add from the changes. For example you want to change 3 files: 
+
+```
+git add ctf/org.eclipse.tracecompass.tmf.ctf.core/src/org/eclipse/tracecompass/tmf/ctf/core/trace/CtfTmfTrace.java
+tmf/org.eclipse.tracecompass.tmf.ui/src/org/eclipse/tracecompass/tmf/ui/project/model/TmfTraceElement.java 
+lttng/org.eclipse.tracecompass.lttng2.ust.core/src/org/eclipse/tracecompass/lttng2/ust/core/trace/LttngUstTrace.java -p 
+```
+## Then Commit: 
+```
+git commit -s
+```
+`-s` means something like this: `Signed-off-by: Your Name <your-email@example.com>`
+
+``` git commit -s --amend ```
+The --amend option allows you to modify the most recent commit. This is useful if you need to correct the commit message, add changes that were missed, or include the sign-off if it was omitted initially.
+
+
+
+# Hint in general: 
+
 ```
 git checkout -b new-branch-name
 git branch
@@ -40,14 +65,5 @@ git diff
 git add file.name
 git commit -m "some message!"
 git push -u origin new-branch-name
-```
-
-```
-Git staus
-```
-Choose what you want to add from the changes. For example you want to change 3 files: 
-
-```
-git add ctf/org.eclipse.tracecompass.tmf.ctf.core/src/org/eclipse/tracecompass/tmf/ctf/core/trace/CtfTmfTrace.java  tmf/org.eclipse.tracecompass.tmf.ui/src/org/eclipse/tracecompass/tmf/ui/project/model/TmfTraceElement.java  lttng/org.eclipse.tracecompass.lttng2.ust.core/src/org/eclipse/tracecompass/lttng2/ust/core/trace/LttngUstTrace.java -p 
 ```
 
