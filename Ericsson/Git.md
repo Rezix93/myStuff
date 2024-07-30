@@ -51,10 +51,65 @@ git commit -s
 ```
 `-s` means something like this: `Signed-off-by: Your Name <your-email@example.com>`
 
-``` git commit -s --amend ```
+``` 
+git commit -s --amend
+```
 The --amend option allows you to modify the most recent commit. This is useful if you need to correct the commit message, add changes that were missed, or include the sign-off if it was omitted initially.
 
+### REMOTE Trace Compass 
+1. Go to [https://github.com/eclipse-tracecompass/org.eclipse.tracecompass] and Fork it
+2. Clone using the web URL. For example :
+```
+git remote add rezaGithub https://github.com/Rezix93/org.eclipse.tracecompass.git
+```
+### 3. **Adding a Remote:**
+To add your forked repository as a remote with a custom name:
 
+```bash
+git remote add rezaGithub https://github.com/Rezix93/org.eclipse.tracecompass.git
+```
+
+### 4. **Verify the Remote:**
+To confirm that the remote was added correctly, list all configured remotes:
+
+```bash
+git remote -v
+```
+
+
+### 5. **`git fetch --all`**
+
+This command fetches all the branches from all the remotes configured for your repository. It updates your local copy of the remote branches without merging the changes into your local branches. It's useful to see what changes have been made in all remotes.
+
+### 6. **`git status`**
+
+This command shows the status of your working directory and the staging area. It lets you see which changes have been staged, which haven't, and which files aren't being tracked by Git. It's a good practice to use `git status` before making commits to see what changes you're about to include.
+
+### 7. **`git branch USTvalidate`**
+
+This command creates a new branch named `USTvalidate` from your current branch. Branches in Git are used to isolate development work without affecting other branches in the repository. This command does not switch to the new branch; it only creates it.
+
+### 8. **`git checkout USTvalidate`**
+
+This command switches your working directory to the branch named `USTvalidate`. Any new commits you make will now be on this branch. If `USTvalidate` does not exist yet, this command would also create the branch and switch to it.
+
+### 9. **`git push rezaGithub USTvalidate`**
+
+This command pushes the `USTvalidate` branch to the `rezaGithub` remote repository. The `rezaGithub` remote points to your fork of the 
+
+
+
+# After the First Time: 
+
+1. Go to your git directory
+2. git fetch --all
+3. Add
+4. Commit
+5. status
+6. branch
+7. checkout
+8. push
+9. pull request
 
 # Hint in general: 
 
