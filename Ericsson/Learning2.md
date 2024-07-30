@@ -11,6 +11,8 @@ cd ~/research/eclipse
    2.2 back to TC and clean the project
 
 3. For having Trace compass Do no download the file and Import it. sync it from Github.
-File -> import -> 
+File -> import -> git > Project from Git -> Existing local repossitory
 ![image](https://github.com/user-attachments/assets/877d0f83-de1b-4011-b9e2-847d85ac3c90)
 ![image](https://github.com/user-attachments/assets/9c60d238-d445-4a17-825b-873702b604e0)
+
+4. 
