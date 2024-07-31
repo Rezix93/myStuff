@@ -1,8 +1,7 @@
 1. 
 ```
 cd ~/research/eclipse  
- WEBKIT_DISABLE_DMABUF_RENDERER=1
-./eclipse
+ WEBKIT_DISABLE_DMABUF_RENDERER=1 ./eclipse
 ```
 . I opened the TC and lots of Erros
    How to solve it: 1. look at erros: We see somthing like java and permission and we undestarnd
@@ -33,4 +32,11 @@ Use the same account to contribute to Eclipse, LocationTech, and PolarSys projec
 + When you push something but do not like it: - git push -d
 + When get updated the project:  - When you hear on meet we had a new big update. Then it is good time not eveyday. not nessesary
 + Remove Branch? - Wait till merge. then it suggest to be removed
+```
+
+10. Java
+```  
+sudo update-alternatives --config java
+sudo update-alternatives --set java /usr/lib/jvm/java-21-openjdk-amd64/bin/java 
+source ~/.bashrc
 ```
