@@ -40,3 +40,8 @@ sudo update-alternatives --config java
 sudo update-alternatives --set java /usr/lib/jvm/java-21-openjdk-amd64/bin/java 
 source ~/.bashrc
 ```
+
+
+                CounterAspect counterAspect = (CounterAspect) counter; -> 
+                ITmfCounterAspect counterAspect = (ITmfCounterAspect) counter;
+
