@@ -40,7 +40,17 @@ sudo update-alternatives --config java
 sudo update-alternatives --set java /usr/lib/jvm/java-21-openjdk-amd64/bin/java 
 source ~/.bashrc
 ```
-11. 
+11. In 
+```
+- if (counter instanceof CounterAspect)
++ if (counter instanceof ITmfCounterAspect)
+
+```
+
+# Flexibility and Abstraction:
+
+Using an interface (ITmfCounterAspect) instead of a class (CounterAspect) provides more flexibility and abstraction. It allows the counter variable to refer to any object that implements the ITmfCounterAspect interface, not just objects of the CounterAspect class.
+
 ```diff
 - CounterAspect counterAspect = (CounterAspect) counter;
 +  ITmfCounterAspect counterAspect = (ITmfCounterAspect) counter;
