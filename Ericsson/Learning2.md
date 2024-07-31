@@ -30,7 +30,7 @@ Use the same account to contribute to Eclipse, LocationTech, and PolarSys projec
 8. https://accounts.eclipse.org/users/rezix/edit
 9. Git notes:
 ```diff
-+ When you push something but do not like it: git push -d
-+ When get updated the project: When you hear on meet we had a new big update. Then it is good time not eveyday. not nessesary
-+ Remove Branch? Wait till merge. then it suggest to be removed
++ When you push something but do not like it: - git push -d
++ When get updated the project:  -When you hear on meet we had a new big update. Then it is good time not eveyday. not nessesary
++ Remove Branch? - Wait till merge. then it suggest to be removed
 ```
