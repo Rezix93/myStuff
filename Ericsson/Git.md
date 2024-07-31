@@ -68,7 +68,8 @@ To add your forked repository as a remote with a custom name:
 ```bash
 git remote add `github_custom_name` https://github.com/Rezix93/org.eclipse.tracecompass.git
 ```
-github_custom_name = rezaGithub
+In my case: github_custom_name = rezaGithub
+
 ### 4. **Verify the Remote:**
 To confirm that the remote was added correctly, list all configured remotes:
 
