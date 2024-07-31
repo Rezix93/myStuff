@@ -64,3 +64,8 @@ counter.core: Generalize the counterAnalysis to take ITmfCounterAspect
 ```
 
 13. Before one new push, get the lates version of project: `git rebase`
+```
+git fetch --all
+ 2013  git rebase rezaGithub/master 
+ 2014  git fetch 
+```
