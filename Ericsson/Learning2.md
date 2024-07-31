@@ -4,7 +4,7 @@ cd ~/research/eclipse
  WEBKIT_DISABLE_DMABUF_RENDERER=1
 ./eclipse
 ```
-2. I opened the TC and lots of Erros
+. I opened the TC and lots of Erros
    How to solve it: 1. look at erros: We see somthing like java and permission and we undestarnd
    This is regarding to running java in sudo mode already ->
    2.1. We have to remove build files
@@ -28,4 +28,9 @@ An Eclipse Account will grant you access to Gerrit, Bugzilla, and other Eclipse 
 Use the same account to contribute to Eclipse, LocationTech, and PolarSys projects.
 7. Email:  https://outlook.office.com/mail/
 8. https://accounts.eclipse.org/users/rezix/edit
-9. 
+9. Git notes:
+```diff
++ When you push something but do not like it: git push -d
++ When get updated the project: When you hear on meet we had a new big update. Then it is good time not eveyday. not nessesary
++ Remove Branch? Wait till merge. then it suggest to be removed
+```
