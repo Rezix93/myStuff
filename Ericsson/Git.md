@@ -60,13 +60,13 @@ The --amend option allows you to modify the most recent commit. This is useful i
 1. Go to [https://github.com/eclipse-tracecompass/org.eclipse.tracecompass] and Fork it
 2. Clone using the web URL. For example :
 ```
-git remote add rezaGithub https://github.com/Rezix93/org.eclipse.tracecompass.git
+git remote add `github_custom_name` https://github.com/Rezix93/org.eclipse.tracecompass.git
 ```
 ### 3. **Adding a Remote:**
 To add your forked repository as a remote with a custom name:
 
 ```bash
-git remote add rezaGithub https://github.com/Rezix93/org.eclipse.tracecompass.git
+git remote add `github_custom_name` https://github.com/Rezix93/org.eclipse.tracecompass.git
 ```
 
 ### 4. **Verify the Remote:**
