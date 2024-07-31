@@ -55,3 +55,12 @@ Using an interface (ITmfCounterAspect) instead of a class (CounterAspect) provid
 - CounterAspect counterAspect = (CounterAspect) counter;
 +  ITmfCounterAspect counterAspect = (ITmfCounterAspect) counter;
 ```
+12. 
+conforml commits in Github: 
+```                                     
+counter.core: Generalize the counterAnalysis to take ITmfCounterAspect
+
+[Changed] Allowed ITmfCounterAspect populate counterAnalysis  
+```
+
+13. Before one new push, get the lates version of project: `git rebase`
