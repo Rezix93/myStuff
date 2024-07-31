@@ -64,8 +64,12 @@ counter.core: Generalize the counterAnalysis to take ITmfCounterAspect
 ```
 
 13. Before one new push, get the lates version of project: `git rebase`
+### Rebase Regularly
+To keep your feature branch up-to-date with the latest changes from the base branch (like main or master), you should rebase regularly:
 ```
-git fetch --all
- 2013  git rebase rezaGithub/master 
- 2014  git fetch 
+2012 git fetch --all
+2013 git rebase rezaGithub/master 
+
+2018 git fetch --all
+2019 git rebase origin/master counterAspectChanges 
 ```
