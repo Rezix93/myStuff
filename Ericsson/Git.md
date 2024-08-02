@@ -1,4 +1,4 @@
-1. To sign an ECA:
+### 1. **Sign an ECA:**
 Create an account with the Eclipse Foundation if you have not already done so;
 Sign a ECA.
 Log into the Eclipse Contributor Agreement page;
@@ -7,8 +7,7 @@ An Eclipse Account will grant you access to Gerrit, Bugzilla, and other Eclipse 
 Use the same account to contribute to Eclipse, LocationTech, and PolarSys projects.
 
 
-
-2. **Create a Token:**
+### 2. **Create a Token:**
    - Click on `Personal access tokens` and then `Tokens (classic)`.
    - Click `Generate new token`.
    - Give your token a descriptive name and select the necessary scopes. At a minimum, you need `repo` access to push code to a repository.
@@ -19,10 +18,30 @@ Use the same account to contribute to Eclipse, LocationTech, and PolarSys projec
   git config --global credential.helper cache
   ```
 
+### 3. **REMOTE Trace Compass:**
 
+1. Go to [https://github.com/eclipse-tracecompass/org.eclipse.tracecompass] and Fork it
+2. Clone using the web URL. For example :
+```
+git remote add `github_custom_name` https://github.com/Rezix93/org.eclipse.tracecompass.git
+```
+### 4. **Adding a Remote:**
 
+To add your forked repository as a remote with a custom name:
 
-3. Now time for Github
+```bash
+git remote add `github_custom_name` https://github.com/Rezix93/org.eclipse.tracecompass.git
+```
+In my case: github_custom_name = rezaGithub
+
+### 5. **Verify the Remote:**
+To confirm that the remote was added correctly, list all configured remotes:
+
+```bash
+git remote -v
+```
+
+### 5. **Now time for Github:**
 ```
 ~/research$ cd org.eclipse.tracecompass
 ```
@@ -32,12 +51,11 @@ cat .git/config
 git config --global user.email "reza.rouhghalandari@ericsson.com"
 git config "user.name" "Reza Rouhghalandari"
 ```
-
-
 ```
 Git staus
 ```
-## First Add
+### 5. **First Add:**
+
 Choose what you want to add from the changes. For example you want to change 3 files: 
 
 ```
@@ -45,7 +63,9 @@ git add ctf/org.eclipse.tracecompass.tmf.ctf.core/src/org/eclipse/tracecompass/t
 tmf/org.eclipse.tracecompass.tmf.ui/src/org/eclipse/tracecompass/tmf/ui/project/model/TmfTraceElement.java 
 lttng/org.eclipse.tracecompass.lttng2.ust.core/src/org/eclipse/tracecompass/lttng2/ust/core/trace/LttngUstTrace.java -p 
 ```
-## Then Commit: 
+
+### 5. **Then Commit:**
+
 ```
 git commit -s
 ```
@@ -56,26 +76,7 @@ git commit -s --amend
 ```
 The --amend option allows you to modify the most recent commit. This is useful if you need to correct the commit message, add changes that were missed, or include the sign-off if it was omitted initially.
 
-### REMOTE Trace Compass 
-1. Go to [https://github.com/eclipse-tracecompass/org.eclipse.tracecompass] and Fork it
-2. Clone using the web URL. For example :
-```
-git remote add `github_custom_name` https://github.com/Rezix93/org.eclipse.tracecompass.git
-```
-### 3. **Adding a Remote:**
-To add your forked repository as a remote with a custom name:
 
-```bash
-git remote add `github_custom_name` https://github.com/Rezix93/org.eclipse.tracecompass.git
-```
-In my case: github_custom_name = rezaGithub
-
-### 4. **Verify the Remote:**
-To confirm that the remote was added correctly, list all configured remotes:
-
-```bash
-git remote -v
-```
 
 
 ### 5. **`Get update`**
