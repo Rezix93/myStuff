@@ -147,9 +147,10 @@ git checkout -b new-branch-name
 git branch
 git diff
 git add file.name
-git commit -m "some message!"
-git push -u origin new-branch-name
+git commit -m -s
+git push rezaGithub new-branch-name
 ```
+
 
 After reveiw and change: 
 ```
@@ -157,5 +158,5 @@ cd org.eclipse.tracecompass
 git status 
 git add analysis/org.eclipse.tracecompass.analysis.counters.core/src/org/eclipse/tracecompass/analysis/counters/core/aspects/ITmfCounterAspect.java
 git commit -s --amend
-git push rezaGithub counterAspectChanges -f
+git push rezaGithub new-branch-name -f
 ```
