@@ -73,3 +73,10 @@ To keep your feature branch up-to-date with the latest changes from the base bra
 2018 git fetch --all
 2019 git rebase origin/master counterAspectChanges 
 ```
+
+after change code from reviewers: 
+```
+git commit --amend 
+git push rezaGithub counterAspectChanges -f
+
+```
