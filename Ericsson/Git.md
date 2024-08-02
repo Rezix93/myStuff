@@ -86,6 +86,11 @@ git fetch --all
 ```
 git rebase origin/master counterAspectChanges 
 ```
+```
+git rebase rezaGithub/master 
+```
+
+
 This command fetches all the branches from all the remotes configured for your repository. It updates your local copy of the remote branches without merging the changes into your local branches. It's useful to see what changes have been made in all remotes.
 
 ### 6. **`Get git status`**
