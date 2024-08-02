@@ -80,3 +80,19 @@ git commit --amend
 git push rezaGithub counterAspectChanges -f
 
 ```
+
+
+14. 
+
+Now that it overrides, you can remove the Javadoc here, the one from interface will be used. So javadoc here should be removed.
+```
+/**
+ * Get the groups
+ *
+ * @return the groups
+ */
+@Override
+public Class<? extends ITmfEventAspect<?>>[] getGroups() {
+    return fGroups;
+}
+```
