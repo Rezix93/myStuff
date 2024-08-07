@@ -6,3 +6,7 @@ Doxygen is a powerful tool used for generating documentation from annotated sour
 cd ~/research/eclipse/doxygen_output/html/
 xdg-open index.html
 ```
+
+```
+file:///home/rezghool/research/eclipse/doxygen_output/html/interfaceorg_1_1eclipse_1_1tracecompass_1_1tmf_1_1core_1_1statesystem_1_1ITmfStateProvider.html
+```
