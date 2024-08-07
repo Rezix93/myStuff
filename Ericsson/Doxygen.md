@@ -10,3 +10,7 @@ xdg-open index.html
 ```
 file:///home/rezghool/research/eclipse/doxygen_output/html/interfaceorg_1_1eclipse_1_1tracecompass_1_1tmf_1_1core_1_1statesystem_1_1ITmfStateProvider.html
 ```
+
+```
+file:///home/rezghool/research/eclipse/doxygen_output/html/interfaceorg_1_1eclipse_1_1tracecompass_1_1tmf_1_1core_1_1model_1_1xy_1_1ITmfTreeXYDataProvider.html
+```
