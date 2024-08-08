@@ -27,3 +27,23 @@ Deprecation is a way to phase out old methods while maintaining backward compati
  protected void handleGroupedCounterAspect(ITmfEvent event, ITmfStateSystemBuilder ss, int rootQuark, ITmfCounterAspect aspect) {
         }
 ```
+3. ### Gerrit
+
+`Gerrit` is a web-based code review tool that integrates with Git. Ensuring "cleanliness" in Gerrit typically refers to maintaining a well-organized, efficient, and manageable code review environment. This can include several practices aimed at keeping the codebase and review process in good shape.
+
+#### Commands Recap
+
+1. **Local Changes**:
+   ```sh
+   echo "print('Hello, Gerrit!')" > hello.py
+   git add hello.py
+   git commit -m "Add hello script"
+   ```
+
+2. **Push to Gerrit**:
+   ```sh
+   git push origin HEAD:refs/for/master
+   ```
+
+3. **Review and Approval**:
+   - Use the Gerrit web interface for reviewing and approving changes.
