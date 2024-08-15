@@ -13,11 +13,13 @@ insted ot this just get all UST traces!
 
 10. some of varibale ib string. change to Inegeter
 
+11.         
+traceevent racessces counteraspectanaysis 
 
 
-
-
-
+```
+org.eclipse.tracecompass.incubator.traceevent.core > src > org.eclipse.tracecompass.incubator.internal.traceevent.core.analysis.counter > TraceEventCounterAnalysis.java
+```
 
 
 
