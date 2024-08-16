@@ -7,3 +7,7 @@ for Counter:
 
 2. If I use no stateSystem method and using Grouped it will not merge with my hardCoded Group:
 ![image](https://github.com/user-attachments/assets/b4a1737e-a2ef-4784-8a87-ece396b5555d)
+
+
+
+3. If counter tab was open it can will not expand anymore
