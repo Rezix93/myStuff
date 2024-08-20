@@ -20,3 +20,4 @@ You could try addressing this by adjusting the settings or configurations for th
    - **Y-Axis Ticks**: Set tick intervals to ensure no fractional values (e.g., 1, 2, 3…).
 
 This configuration will help you set up the core elements of your XY graph effectively.
+
