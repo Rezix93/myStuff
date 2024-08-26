@@ -12,19 +12,24 @@ An API baseline is a `reference point` used in software development to track and
 
 ## Step by step for Kaveh how change API Baseline: 
 1. Window > Perspective > Open Perspective > Other... 
+
 ![image](https://github.com/user-attachments/assets/dd1ef3c4-1bf1-4ac9-be28-254c9f8a4d84)
+
 
 2. search for API: 
 ![image](https://github.com/user-attachments/assets/69de6998-b6d9-4d99-bc1a-515abe20f986)
 
 
+
 3. Add `baseline > a target platform`
+
 ![image](https://github.com/user-attachments/assets/0eb89c64-d099-4830-96e4-635655668cd4)
 
 
 
 
 final: 
+
 ![image](https://github.com/user-attachments/assets/9c466a3c-1f66-483c-9c84-c56bfafc8ed9)
 
 
