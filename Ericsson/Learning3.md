@@ -27,7 +27,8 @@ An API baseline is a `reference point` used in software development to track and
 final: 
 ![image](https://github.com/user-attachments/assets/9c466a3c-1f66-483c-9c84-c56bfafc8ed9)
 
-2. An example of depricate Fucntion in java:
+
+#### 2. An example of depricate Fucntion in java:
 
 Deprecation is a way to phase out old methods while maintaining backward compatibility. By deprecating a method, developers are informed that they should use a new or updated method instead. This is particularly useful in large codebases where immediate removal of old methods could break existing functionality.
 
