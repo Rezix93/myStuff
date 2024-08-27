@@ -121,6 +121,8 @@ Each primitive type in Java has a corresponding wrapper class (e.g., `int -> Int
 
 Interfaces cannot have constructors because they cannot be instantiated. An interface only defines a contract that other classes must adhere to.
 
+---
+
 ## Interface vs. Abstract Class vs. Concrete Class
 
 ### 1. Purpose:
@@ -157,7 +159,7 @@ Interfaces cannot have constructors because they cannot be instantiated. An inte
 - **Interface:** Define a contract that can be implemented by any class.
 - **Abstract Class:** Share code among related classes while enforcing some methods to be overridden.
 - **Concrete Class:** A fully functional class that can be instantiated.
-
+---
 ## Generics
 
 Generics in Java is a feature that allows you to define classes, interfaces, and methods with placeholder types, which can be specified when the class, interface, or method is used. This helps create more flexible and reusable code by enabling type safety without the need to specify specific data types.
@@ -182,3 +184,13 @@ Generics in Java is a feature that allows you to define classes, interfaces, and
          }
      }
 ```
+
+Sure! Here's a concise version for your GitHub:
+
+---
+
+**Java Lambda Expressions:**
+Lambda expressions provide a succinct way to represent anonymous functions in Java, enabling functional programming. They are used primarily with functional interfaces, allowing for cleaner and more readable code. Syntax: `(parameters) -> expression`. Example: `Runnable r = () -> System.out.println("Running with a lambda");`.
+
+---
+
