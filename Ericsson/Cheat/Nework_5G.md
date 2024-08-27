@@ -105,3 +105,11 @@ Understanding these concepts is critical for roles that involve networking, cybe
   - **Complexity:** It’s straightforward, involving looking up the destination in a forwarding table and directing the packet to the correct output interface.
 
 In summary, **routing** is about planning the path, while **forwarding** is about executing that plan by sending the packet on its next step towards the destination.
+
+-------------
+
+**UDP vs. TCP:**
+
+- **TCP:** Reliable, connection-oriented, ensures data is delivered in order and error-free. Slower due to error checking and retransmission.
+- **UDP:** Unreliable, connectionless, faster but no guarantee of data delivery or order. Used for real-time applications where speed is crucial.
+---------------
