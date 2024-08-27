@@ -112,4 +112,5 @@ In summary, **routing** is about planning the path, while **forwarding** is abou
 
 - **TCP:** Reliable, connection-oriented, ensures data is delivered in order and error-free. Slower due to error checking and retransmission.
 - **UDP:** Unreliable, connectionless, faster but no guarantee of data delivery or order. Used for real-time applications where speed is crucial.
+
 ---------------
