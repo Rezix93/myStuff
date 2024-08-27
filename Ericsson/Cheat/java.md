@@ -153,3 +153,24 @@ Interfaces cannot have constructors because they cannot be instantiated. An inte
 ## Generics
 
 Generics in Java is a feature that allows you to define classes, interfaces, and methods with placeholder types, which can be specified when the class, interface, or method is used. This helps create more flexible and reusable code by enabling type safety without the need to specify specific data types.
+. **Generic Interfaces:**
+   - Interfaces can also be generic, allowing them to work with different types.
+   - **Example:**
+     ```java
+     interface Container<T> {
+         void add(T item);
+         T get();
+     }
+
+     class StringContainer implements Container<String> {
+         private String item;
+
+         public void add(String item) {
+             this.item = item;
+         }
+
+         public String get() {
+             return item;
+         }
+     }
+```
