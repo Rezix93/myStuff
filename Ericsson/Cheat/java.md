@@ -58,14 +58,13 @@ OOP is a programming paradigm centered around the concept of objects. Objects re
 
 
 Use static class or not:
-![Screenshot from 2024-08-26 18-34-33](https://github.com/user-attachments/assets/07167463-7475-4c25-9356-dd8d6af5a033)
+<img src="https://github.com/user-attachments/assets/07167463-7475-4c25-9356-dd8d6af5a033" alt="Screenshot from 2024-08-26 18-34-33" style="width:50%;">
 
-When you have a non-static meth, you have to create the class first: 
-![Screenshot from 2024-08-26 18-43-50](https://github.com/user-attachments/assets/bbeb830f-11e5-4b00-b472-50354cbdcc37)
+When you have a non-static method, you have to create the class first:
+<img src="https://github.com/user-attachments/assets/bbeb830f-11e5-4b00-b472-50354cbdcc37" alt="Screenshot from 2024-08-26 18-43-50" style="width:50%;">
 
 But for a static method inside a class, you do not need to declare it first:
-
-![Screenshot from 2024-08-26 18-45-03](https://github.com/user-attachments/assets/f7faa408-bf92-4f1b-8cb2-f062a5b68f5f)
+<img src="https://github.com/user-attachments/assets/f7faa408-bf92-4f1b-8cb2-f062a5b68f5f" alt="Screenshot from 2024-08-26 18-45-03" style="width:50%;">
 
 
 
