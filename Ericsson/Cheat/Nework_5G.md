@@ -1,7 +1,7 @@
 
 <p align="center">
   <br>
-  <img src="https://github.com/user-attachments/assets/46ff2d49-b59b-4e35-b8c6-4ad90e5225f3" style="width:50%;">
+  <img src="https://github.com/user-attachments/assets/9d05eaf1-8875-4666-bca0-3883a2ad7abe" style="width:60%;">
 </p>
 
 ### Basic Networking Concepts Overview
@@ -87,3 +87,21 @@ Understanding the following network protocols is crucial for networking and cybe
   - **Use Cases:** Social media logins, API authentication.
 
 Understanding these concepts is critical for roles that involve networking, cybersecurity, software development, and IT infrastructure. Each layer of the OSI model and each protocol in the TCP/IP suite plays a specific role in how data is transmitted and received across the internet and other networks.
+
+
+------
+
+#### Routing vs Forwarding: 
+**Routing vs. Forwarding:**
+
+- **Routing:**
+  - **Function:** The process of determining the path that data packets should take across a network to reach their destination. It involves making decisions based on routing tables and algorithms.
+  - **Scope:** Routing happens at Layer 3 (Network Layer) and is concerned with the global or network-wide path a packet will take.
+  - **Complexity:** Involves complex calculations and decision-making to optimize paths, avoid congestion, and ensure data delivery.
+
+- **Forwarding:**
+  - **Function:** The process of moving packets from one interface to another within a router or switch based on the routing table's decision. It's essentially the action of sending the packet to the next hop.
+  - **Scope:** Forwarding is a simpler, localized action that occurs at each router or switch, dealing with the immediate task of passing the packet along the route.
+  - **Complexity:** It’s straightforward, involving looking up the destination in a forwarding table and directing the packet to the correct output interface.
+
+In summary, **routing** is about planning the path, while **forwarding** is about executing that plan by sending the packet on its next step towards the destination.
