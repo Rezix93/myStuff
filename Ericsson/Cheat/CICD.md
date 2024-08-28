@@ -42,3 +42,35 @@ The terms **Continuous Integration (CI)** and **Continuous Deployment (CD)** des
   <br>
   <img src="https://github.com/user-attachments/assets/da73e48f-819a-42d2-9672-6bbb06f4eb08" style="width:60%;">
 </p>
+
+
+## Continuous Deployment (CD) Tools:
+
+Several tools are commonly used to automate Continuous Deployment in DevOps:
+
+1. **Jenkins:** Open-source automation server that supports CI/CD pipelines and has a large ecosystem of plugins.
+   
+2. **GitLab CI/CD:** Integrated CI/CD tool within GitLab for building, testing, and deploying code changes.
+
+3. **CircleCI:** Cloud-based CI/CD tool known for its speed and scalability.
+
+4. **Argo CD:** A Kubernetes-native continuous deployment tool.
+
+5. **Spinnaker:** Multi-cloud continuous delivery platform that integrates with various cloud providers.
+
+6. **Travis CI:** Continuous integration service used to build and test software projects on GitHub.
+
+These tools help automate the entire process, from code integration to deployment, ensuring fast and reliable releases.
+## DevOps
+Is a set of practices that combine software development (Dev) and IT operations (Ops) to shorten the development lifecycle and deliver high-quality software continuously. It focuses on automation, collaboration, and integration between development and operations teams. Key DevOps practices include Continuous Integration (CI), Continuous Deployment (CD), Infrastructure as Code (IaC), monitoring, and feedback loops.
+
+The main goals of DevOps are to improve deployment frequency, achieve faster time to market, lower the failure rate of new releases, and provide better collaboration and efficiency.
+
+
+
+<p align="center">
+  <br>
+  <img src="https://github.com/user-attachments/assets/3edbf527-352f-45df-9df1-1c1c0e10a136" style="width:60%;">
+</p>
+
+
