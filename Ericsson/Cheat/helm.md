@@ -20,7 +20,14 @@ It acts like a package that can be used to deploy and manage applications on Kub
 Each chart contains templates, configuration values, and dependencies required for deploying an application.
 
 A Helm chart for Prometheus would be a collection of Kubernetes manifests that define how to deploy Prometheus, an open-source monitoring and alerting tool, in a Kubernetes environment. The chart would include configurations for setting up Prometheus servers, data storage, alert managers, and service discovery components within the cluster.
+#### Explain easier: 
 
+A **Helm chart** is like a recipe for deploying applications on Kubernetes. It contains:
+
+- **Templates:** Pre-written files that define what Kubernetes should create, like an app's pods, services, etc.
+- **Values File (`values.yaml`):** This file allows you to customize the deployment by setting parameters (e.g., app version, replica count).
+
+When you use Helm with a chart, it reads these templates and values to automatically create and manage all the resources your app needs in Kubernetes. It makes deploying apps easier and repeatable.
 
 **Helm templating** allows you to create dynamic Kubernetes manifests using a template language. It uses the **Go templating** engine to make templates reusable and configurable.
 
