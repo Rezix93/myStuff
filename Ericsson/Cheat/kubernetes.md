@@ -62,5 +62,5 @@ A Pod is the smallest deployable unit in Kubernete
 
 Docker and Kubernetes are both important tools in the containerization ecosystem. Docker is used for creating and running containers, while Kubernetes is used for managing and automating the deployment, scaling, and operation of containers across clusters of hosts. Docker provides a simple and efficient way to run and manage containers, while Kubernetes provides more advanced features like automatic container deployment, scaling, and self-healing.
 
-Using Kubernetes with Docker
+### Using Kubernetes with Docker
 When using Kubernetes with Docker, Kubernetes acts as an orchestrator for the Docker containers. This means that Kubernetes can manage and automate the deployment, scaling, and operation of Docker containers.
