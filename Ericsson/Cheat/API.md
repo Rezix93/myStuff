@@ -13,3 +13,4 @@ APIs can be used for various purposes, such as accessing data, integrating diffe
 - **Team Autonomy:** When teams need the freedom to work independently on different parts of the application.
 
 Microservices are ideal for large, evolving applications where scalability, flexibility, and rapid development are critical. However, they introduce complexity in deployment, testing, and inter-service communication, so they are not always the right choice for simpler projects.
+![image](https://github.com/user-attachments/assets/d866eff3-10c7-443f-9c6b-1d99aee595db)
