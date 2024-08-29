@@ -22,3 +22,9 @@ Here is an expanded list with additional descriptions for each type of software 
 
 10. **Smoke Testing:** Basic tests to check the initial stability of a new build. It ensures that the major functions work properly before more in-depth testing begins.
 
+
+
+
+### Security Testing:
+![image](https://github.com/user-attachments/assets/0e941a14-1a8c-4675-a985-c49ea998b68a)
+
