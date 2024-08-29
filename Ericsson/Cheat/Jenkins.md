@@ -27,3 +27,4 @@ In Jenkins, the types of agents (nodes) you can configure include:
 7. **JNLP Agent:** Connects using Java Network Launch Protocol, suitable for various environments.
 
 These agents provide flexibility to run Jenkins jobs in different environments and scales, depending on your infrastructure needs.
+![image](https://github.com/user-attachments/assets/63c4da19-d9c1-4d4c-a700-51580282d441)
