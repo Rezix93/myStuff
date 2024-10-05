@@ -68,6 +68,58 @@ Consuctor:
    }
    ```
 
+### **Spring Beans - How They're Created**
+
+**Spring beans** are objects managed by the **Spring IoC (Inversion of Control) container**. The container is responsible for creating, configuring, and managing the lifecycle of these beans.
+
+### **Ways to Create Spring Beans:**
+
+1. **Using Annotations (Most Common)**:
+   - **`@Component`**, **`@Service`**, **`@Repository`**, and **`@Controller`**: Marks classes as beans.
+   - **`@Autowired`**: Injects dependencies automatically.
+   
+   Example:
+   ```java
+   @Service
+   public class MyService { }
+   
+   @Autowired
+   public MyController(MyService myService) { }
+   ```
+
+2. **Using Java Configuration (`@Configuration` & `@Bean`)**:
+   - Define beans in a configuration class with the `@Bean` annotation.
+   
+   Example:
+   ```java
+   @Configuration
+   public class AppConfig {
+       @Bean
+       public MyService myService() {
+           return new MyService();
+       }
+   }
+   ```
+
+3. **Using XML Configuration (Legacy)**:
+   - Beans are defined in XML files (older approach).
+   
+   Example:
+   ```xml
+   <bean id="myService" class="com.example.MyService"/>
+   ```
+
+### **Bean Scopes**:
+- **Singleton** (default): One instance per application context.
+- **Prototype**: New instance for every request.
+
+### **Lifecycle**:
+1. **Instantiation** → 2. **Dependency Injection** → 3. **Initialization** → 4. **Destruction**
+
+In summary, Spring beans are typically created using annotations or Java-based configurations, and Spring manages their lifecycle and dependencies automatically.
+
+Let me know if you need more details!
+
 4. **Spring Modules**:
    The Spring Framework is made up of various modules, which allow you to pick and choose the components you need for your application. Some of the main modules include:
    
