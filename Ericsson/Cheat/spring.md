@@ -14,6 +14,12 @@ The **Spring Framework** addresses several common problems in enterprise develop
    - **IoC** is a design principle where the control of object creation, configuration, and lifecycle management is handed over to the Spring container rather than being managed by the developer manually.
    - **DI** is a pattern used to implement IoC, where dependencies (objects) are "injected" into a class rather than being instantiated within the class itself. This decouples the creation of objects from their use.
 
+Field 
+![image](https://github.com/user-attachments/assets/0004d932-a7d2-46df-9a87-e3236ac947e3)
+
+Consuctor:
+![image](https://github.com/user-attachments/assets/13d43a30-ddc2-402e-b564-57e485811fb3)
+
    Example of DI:
    ```java
    @Service
