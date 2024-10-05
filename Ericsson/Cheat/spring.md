@@ -204,3 +204,6 @@ Let me know if you need more details!
    - **`@Slf4j`**: Lombok's logging feature simplifies logging within Spring-managed beans by automatically generating a logger.
 
 This is a high-level overview of Spring. The framework has extensive features, but its modular structure allows developers to pick and use only what they need for a specific project. Let me know if you want to dive deeper into any specific Spring topic!
+
+
+![image](https://github.com/user-attachments/assets/f530bd8b-5816-435a-a4ea-51634777fb2d)
